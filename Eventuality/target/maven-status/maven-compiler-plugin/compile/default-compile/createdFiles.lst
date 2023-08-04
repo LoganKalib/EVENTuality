@@ -1,3 +1,5 @@
 com/eventuality/Eventuality.class
-com/eventuality/pages/Home$1.class
 com/eventuality/pages/Home.class
+com/eventuality/objects/Event.class
+com/eventuality/controls/DbConnect.class
+com/eventuality/pages/Home$1.class
