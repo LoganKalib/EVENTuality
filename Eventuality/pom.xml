@@ -12,6 +12,5 @@
         <exec.mainClass>com.eventuality.Eventuality</exec.mainClass>
     </properties>
     <dependencies>
-       
     </dependencies>
 </project>
