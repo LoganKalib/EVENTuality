@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Fri Aug 04 19:12:04 SAST 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-0189-c188-f01a-0000073bcde8 
+on database directory /home/logan/Documents/GitHub/EVENTuality/Database/Eventuality with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@5cb0d902 
+Loaded from file:/home/logan/.m2/repository/org/apache/derby/derby/10.16.1.1/derby-10.16.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=17.0.8+9-LTS-211
+user.dir=/home/logan/Documents/GitHub/EVENTuality/Eventuality
+os.name=Linux
+os.arch=amd64
+os.version=5.19.0-50-generic
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

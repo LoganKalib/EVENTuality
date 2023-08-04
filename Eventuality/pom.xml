@@ -12,5 +12,10 @@
         <exec.mainClass>com.eventuality.Eventuality</exec.mainClass>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+            <version>10.16.1.1</version>
+        </dependency>
     </dependencies>
 </project>
