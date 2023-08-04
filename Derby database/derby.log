@@ -1,7 +1,7 @@
-Fri Aug 04 11:16:55 SAST 2023 : Apache Derby Network Server - 10.16.1.1 - (1901046) started and ready to accept connections on port 1527
+Fri Aug 04 11:50:20 SAST 2023 : Apache Derby Network Server - 10.16.1.1 - (1901046) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
-Fri Aug 04 11:17:10 SAST 2023:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-0189-bfd5-eaa1-000076efcecf 
+Fri Aug 04 11:50:36 SAST 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-0189-bff4-8299-000076efcecf 
 on database directory C:\Users\sheld\Documents\GitHub\EVENTuality\Derby database\Eventuality with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@c387f44 
 Loaded from file:/C:/Program%20Files/Java/jdk-18.0.1.1/Db/db-derby-10.16.1.1-bin/lib/derby.jar
 java.vendor=Oracle Corporation
