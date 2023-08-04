@@ -1,5 +1,7 @@
 package com.eventuality.controls;
 
+import java.sql.*;
+
 public class DbConnect {
     
     //please note the URL will change on windows so we need to remember
