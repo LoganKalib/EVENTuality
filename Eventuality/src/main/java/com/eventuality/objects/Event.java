@@ -3,14 +3,42 @@ package com.eventuality.objects;
 import java.sql.*;
 
 public class Event {
-    private String eventID, eventType, title, description, location;
-    private int eventLeader, approvedBy;
-    private boolean approvalStatus = false;
-    private Time time;
+    private String eventId, eventType, title, description, location;
+    private int leader, isApprovedBy, ticketPrice;
     private Date date;
+    private Time time; 
+    private boolean approvalStatus;
 
-    public String getEventID() {
-        return eventID;
+    public Event(String eventId, String eventType, String title, String description, String location, int leader, int isApprovedBy, int ticketPrice, Date date, Time time, boolean approvalStatus) {
+        this.eventId = eventId;
+        this.eventType = eventType;
+        this.title = title;
+        this.description = description;
+        this.location = location;
+        this.leader = leader;
+        this.isApprovedBy = isApprovedBy;
+        this.ticketPrice = ticketPrice;
+        this.date = date;
+        this.time = time;
+        this.approvalStatus = approvalStatus;
+    }
+
+    public Event() {
+        this.eventId = "";
+        this.eventType = "";
+        this.title = "";
+        this.description = "";
+        this.location = "";
+        this.leader = 0;
+        this.isApprovedBy = 0;
+        this.ticketPrice = 0;
+        this.time = null;
+        this.date = null;
+        this.approvalStatus = false; 
+    }
+
+    public String getEventId() {
+        return eventId;
     }
 
     public String getEventType() {
@@ -29,28 +57,32 @@ public class Event {
         return location;
     }
 
-    public int getEventLeader() {
-        return eventLeader;
+    public int getLeader() {
+        return leader;
     }
 
-    public int getApprovedBy() {
-        return approvedBy;
+    public int getIsApprovedBy() {
+        return isApprovedBy;
     }
 
-    public boolean isApprovalStatus() {
-        return approvalStatus;
-    }
-
-    public Time getTime() {
-        return time;
+    public int getTicketPrice() {
+        return ticketPrice;
     }
 
     public Date getDate() {
         return date;
     }
 
-    public void setEventID(String eventID) {
-        this.eventID = eventID;
+    public Time getTime() {
+        return time;
+    }
+
+    public boolean isApprovalStatus() {
+        return approvalStatus;
+    }
+
+    public void setEventId(String eventId) {
+        this.eventId = eventId;
     }
 
     public void setEventType(String eventType) {
@@ -69,52 +101,34 @@ public class Event {
         this.location = location;
     }
 
-    public void setEventLeader(int eventLeader) {
-        this.eventLeader = eventLeader;
+    public void setLeader(int leader) {
+        this.leader = leader;
     }
 
-    public void setApprovedBy(int approvedBy) {
-        this.approvedBy = approvedBy;
+    public void setIsApprovedBy(int isApprovedBy) {
+        this.isApprovedBy = isApprovedBy;
     }
 
-    public void setApprovalStatus(boolean approvalStatus) {
-        this.approvalStatus = approvalStatus;
-    }
-
-    public void setTime(Time time) {
-        this.time = time;
+    public void setTicketPrice(int ticketPrice) {
+        this.ticketPrice = ticketPrice;
     }
 
     public void setDate(Date date) {
         this.date = date;
     }
 
-    public Event(String eventID, String eventType, String title, String description, String location, int eventLeader, int approvedBy, Time time, Date date) {
-        this.eventID = eventID;
-        this.eventType = eventType;
-        this.title = title;
-        this.description = description;
-        this.location = location;
-        this.eventLeader = eventLeader;
-        this.approvedBy = approvedBy;
+    public void setTime(Time time) {
         this.time = time;
-        this.date = date;
     }
 
-    public Event() {
-        this.eventID = "";
-        this.eventType = "";
-        this.title = "";
-        this.description = "";
-        this.location = "";
-        this.eventLeader = 0;
-        this.approvedBy = 0;
+    public void setApprovalStatus(boolean approvalStatus) {
+        this.approvalStatus = approvalStatus;
     }
-    
+
     @Override
-    public String toString(){
-        return this.eventID +"\n"+ this.eventType + "\n" + this.eventLeader + "\n" +
-                this.title +"\n" + this.description + "\n" + this.location + "\n"+
-                this.approvedBy +"\n" + this.approvalStatus +"\n" + this.time +"\n" + this.date;
+    public String toString() {
+        return this.eventId  + "\n" + this.eventType + "\n" + this.title + "\n" + this.description + "\n" + 
+                this.location + "\n" + this.leader + "\n" + this.isApprovedBy + "\n" + this.ticketPrice + 
+                "\n" + this.date + "\n" + this.time + "\n" + this.approvalStatus;
     }
 }
