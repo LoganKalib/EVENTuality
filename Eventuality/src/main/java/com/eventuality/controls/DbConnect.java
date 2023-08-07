@@ -8,15 +8,15 @@ public class DbConnect {
     private String dbURL = "jdbc:derby:/home/logan/Documents/GitHub/EVENTuality/Database/Eventuality";
     
     private Connection ConnectToDB() throws SQLException{
-        return DriverManager.getConnection(dbURL);
+        return DriverManager.getConnection(dbURL, "Admin","Password");
     }
     
-    public Statement StatementCreate() throws SQLException{
-        return ConnectToDB().createStatement();
+    public Statement StatementCreate(Connection c) throws SQLException{
+        return c.createStatement();
     }
     
-    public void CloseAll(Statement s) throws SQLException{
+    public void CloseAll(Statement s, Connection c) throws SQLException{
         s.close();
-        ConnectToDB().close();
+        c.close();
     }
 }

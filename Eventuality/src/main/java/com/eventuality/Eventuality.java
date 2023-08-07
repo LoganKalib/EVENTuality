@@ -1,7 +1,6 @@
 package com.eventuality;
 
 import com.eventuality.pages.Home;
-import java.sql.*;
 
 public class Eventuality {
 
