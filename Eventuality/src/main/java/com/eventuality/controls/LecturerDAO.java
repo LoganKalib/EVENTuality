@@ -28,6 +28,7 @@ public class LecturerDAO {
 
             }
             while (rs.next());
+            rs.close();
         } else {
             return null;
         }
@@ -44,13 +45,14 @@ public class LecturerDAO {
         }
     }
 
-    public void UpdateRecord(Statement s, String setField, String setValue, int staffNum) throws SQLException {
-        delete_Values_stmt = String.format("DELETE FROM Lecturer WHERE Staff_Number= %d", staffNum);
-        int rows = s.executeUpdate(delete_Values_stmt);
+public void UpdateRecord(Statement s, String setField, String setValue, int staffNum) throws SQLException{
+        update_Values_stmt = String.format("UPDATE Lecturer SET %s=%s WHERE STAFF_NUMBER = %d",setField,setValue,staffNum);
+        int rows = s.executeUpdate(update_Values_stmt);
+        String msg = String.format("Staff_Number: %d \n Successfully updated %s, with value: %s.",staffNum,setField,setValue);
         if (rows == 0){
-            JOptionPane.showMessageDialog(null, "No record with that ID...");
+            JOptionPane.showMessageDialog(null, "No record with that Number...");
         }else{
-            JOptionPane.showMessageDialog(null, "Record(s) successfully deleted.");
+            JOptionPane.showMessageDialog(null, msg);
         }
     }
 }

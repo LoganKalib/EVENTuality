@@ -32,6 +32,7 @@ public class EventDAO {
                 ev.setDate(rs.getDate("DATE"));
                 arr.add(ev);
             }
+            rs.close();
         }
         return arr;
     }

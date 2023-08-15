@@ -15,7 +15,7 @@ public class DbConnect {
     }
     
     private Connection ConnectToDB() throws SQLException{
-        return DriverManager.getConnection(dbURL, "Admin","Password");
+        return DriverManager.getConnection(dbURL, "APP","Password");
     }
     
     private Statement StatementCreate() throws SQLException{

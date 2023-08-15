@@ -26,6 +26,7 @@ public class EventTypeDAO {
                 evc.setEventKeyword(rs.getString("KEYWORDS"));
                 arr.add(evc);
             }
+            rs.close();
         }
         return arr;
     }
@@ -33,21 +34,21 @@ public class EventTypeDAO {
     public void DeleteRecord(Statement s, String EventTypeID) throws SQLException {
         delete_Values_stmt = String.format("DELETE FROM Event_Category WHERE EVENT_TYPE_ID = %s", EventTypeID);
         int rows = s.executeUpdate(delete_Values_stmt);
-        
+
         if (rows == 0) {
             JOptionPane.showMessageDialog(null, "No record with that ID...");
         } else {
             JOptionPane.showMessageDialog(null, "Record(s) successfully deleted.");
         }
     }
-    
-    public void UpdateRecord(Statement s, String setField, String setValue, String eventTypeID) throws SQLException{
-        update_Values_stmt = String.format("UPDATE Event SET %s=%s WHERE Event_Type_Id = %s",setField,setValue,eventTypeID);
+
+    public void UpdateRecord(Statement s, String setField, String setValue, String eventTypeID) throws SQLException {
+        update_Values_stmt = String.format("UPDATE Event_Category SET %s=%s WHERE Event_Type_Id = %s", setField, setValue, eventTypeID);
         int rows = s.executeUpdate(update_Values_stmt);
-        String msg = String.format("EventTypeID: %s \n Successfully updated %s, with value: %s.",eventTypeID,setField,setValue);
-        if (rows == 0){
+        String msg = String.format("EventTypeID: %s \n Successfully updated %s, with value: %s.", eventTypeID, setField, setValue);
+        if (rows == 0) {
             JOptionPane.showMessageDialog(null, "No record with that ID...");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, msg);
         }
     }
