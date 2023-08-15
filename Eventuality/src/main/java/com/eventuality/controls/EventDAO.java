@@ -11,8 +11,8 @@ public class EventDAO {
     private String delete_Values_stmt;
     private String retrieve_Values_qry;
 
-    public ArrayList SelectTable(Statement s) throws SQLException {
-        retrieve_Values_qry = "SELECT * FROM Event ";
+    public ArrayList<Event> SelectTable(Statement s) throws SQLException {
+        retrieve_Values_qry = "SELECT * FROM Event";
         ResultSet rs = s.executeQuery(retrieve_Values_qry);
         ArrayList<Event> arr = new <Event>ArrayList();
 
@@ -20,16 +20,16 @@ public class EventDAO {
             while (rs.next()) {
                 Event ev = new Event();
                 
-                ev.setEventId(rs.getString(1));
-                ev.setEventType(rs.getString(2));
-                ev.setLeader(rs.getInt(3));
-                ev.setTitle(rs.getString(4));
-                ev.setDescription(rs.getString(5));
-                ev.setLocation(rs.getString(6));
-                ev.setIsApprovedBy(rs.getInt(7));
-                ev.setApprovalStatus(rs.getBoolean(8));
-                ev.setTime(rs.getTime(9));
-                ev.setDate(rs.getDate(10));
+                ev.setEventId(rs.getString("EVENT_ID"));
+                ev.setEventType(rs.getString("EVENT_TYPE"));
+                ev.setLeader(rs.getInt("LEADER"));
+                ev.setTitle(rs.getString("TITLE"));
+                ev.setDescription(rs.getString("DESCRIPTION"));
+                ev.setLocation(rs.getString("LOCATION"));
+                ev.setIsApprovedBy(rs.getInt("APPROVED_BY"));
+                ev.setApprovalStatus(rs.getBoolean("APPROVAL_STATUS"));
+                ev.setTime(rs.getTime("TIME"));
+                ev.setDate(rs.getDate("DATE"));
                 arr.add(ev);
             }
         }
@@ -57,7 +57,12 @@ public class EventDAO {
         }
     }
     
-    public void InsertRecord(Statement s, Event obj){
-        insert_Values_stmt = String.format("INSERT INTO Event() Values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",obj);
+    public void InsertRecord(Statement s, Event obj) throws SQLException{
+        insert_Values_stmt = String.format("INSERT INTO Event Values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+                obj.getEventId(),obj.getEventType(),obj.getLeader(),obj.getTitle(),obj.getDescription(),
+                obj.getTime(),obj.getLocation(),obj.getIsApprovedBy(),obj.isApprovalStatus(),obj.getDate());
+        
+        s.executeUpdate(insert_Values_stmt);
+        JOptionPane.showMessageDialog(null, "New Event Added.");
     }
 }
