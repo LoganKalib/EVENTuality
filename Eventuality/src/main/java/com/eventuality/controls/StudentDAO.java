@@ -33,25 +33,34 @@ public class StudentDAO {
         return stu;
     }
     
-    public void DeleteRecord(Statement s, int stuNum) throws SQLException {
-        delete_Values_stmt = String.format("DELETE FROM STUDENT WHERE STUDENT_NUMBER =%d", stuNum);
-        int rows = s.executeUpdate(delete_Values_stmt);
+    public void DeleteRecord(Connection c, int studNum) throws SQLException {
+        delete_Values_stmt = "DELETE FROM STUDENT WHERE STUDENT_NUMBER=?";
+        PreparedStatement ps = c.prepareStatement(delete_Values_stmt);
+        ps.setInt(1, studNum);
+        int rows = ps.executeUpdate(delete_Values_stmt);
         if (rows == 0) {
             JOptionPane.showMessageDialog(null, "No record with that ID...");
         } else {
             JOptionPane.showMessageDialog(null, "Record(s) successfully deleted.");
         }
+        ps.close();
     }
-    
-    public void UpdateRecord(Statement s, String setField, String setValue, int stuNum) throws SQLException{
-        update_Values_stmt = String.format("UPDATE STUDENT SET %s=%s WHERE STUDENT_NUMBER = %d",setField,setValue,stuNum);
-        int rows = s.executeUpdate(update_Values_stmt);
-        String msg = String.format("Student_Number: %d \n Successfully updated %s, with value: %s.",stuNum,setField,setValue);
-        if (rows == 0){
+
+    public void UpdateRecord(Connection c, String setField, String setValue, int staffNum) throws SQLException {
+        update_Values_stmt = "UPDATE Student SET ?=? WHERE STUDENT_NUMBER = ?";
+        PreparedStatement ps = c.prepareStatement(update_Values_stmt);
+        ps.setString(1, setField);
+        ps.setString(2, setValue);
+        ps.setInt(3, staffNum);
+
+        int rows = ps.executeUpdate(update_Values_stmt);
+        String msg = String.format("Student_Number: %d \n Successfully updated %s, with value: %s.", staffNum, setField, setValue);
+        if (rows == 0) {
             JOptionPane.showMessageDialog(null, "No record with that Number...");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, msg);
         }
+        ps.close();
     }
     
 }

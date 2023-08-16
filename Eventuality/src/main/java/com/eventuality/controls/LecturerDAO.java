@@ -35,24 +35,33 @@ public class LecturerDAO {
         return lec;
     }
 
-    public void DeleteRecord(Statement s, int staffNum) throws SQLException {
-        delete_Values_stmt = String.format("DELETE FROM Lecturer WHERE STAFF_NUMBER=%d", staffNum);
-        int rows = s.executeUpdate(delete_Values_stmt);
+    public void DeleteRecord(Connection c, int staffNum) throws SQLException {
+        delete_Values_stmt = "DELETE FROM Lecturer WHERE STAFF_NUMBER=?";
+        PreparedStatement ps = c.prepareStatement(delete_Values_stmt);
+        ps.setInt(1,staffNum);
+        int rows = ps.executeUpdate(delete_Values_stmt);
         if (rows == 0) {
             JOptionPane.showMessageDialog(null, "No record with that ID...");
         } else {
             JOptionPane.showMessageDialog(null, "Record(s) successfully deleted.");
         }
+        ps.close();
     }
 
-public void UpdateRecord(Statement s, String setField, String setValue, int staffNum) throws SQLException{
-        update_Values_stmt = String.format("UPDATE Lecturer SET %s=%s WHERE STAFF_NUMBER = %d",setField,setValue,staffNum);
-        int rows = s.executeUpdate(update_Values_stmt);
+public void UpdateRecord(Connection c, String setField, String setValue, int staffNum) throws SQLException{
+        update_Values_stmt = "UPDATE Lecturer SET ?=? WHERE STAFF_NUMBER = ?";
+        PreparedStatement ps = c.prepareStatement(update_Values_stmt);
+        ps.setString(1, setField);
+        ps.setString(2, setValue);
+        ps.setInt(3, staffNum);
+        
+        int rows = ps.executeUpdate(update_Values_stmt);
         String msg = String.format("Staff_Number: %d \n Successfully updated %s, with value: %s.",staffNum,setField,setValue);
         if (rows == 0){
             JOptionPane.showMessageDialog(null, "No record with that Number...");
         }else{
             JOptionPane.showMessageDialog(null, msg);
         }
+        ps.close();
     }
 }
