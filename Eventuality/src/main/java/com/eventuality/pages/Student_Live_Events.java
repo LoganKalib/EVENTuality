@@ -23,6 +23,10 @@ public class Student_Live_Events extends javax.swing.JFrame {
         lblLive = new javax.swing.JLabel();
         lblDetails = new javax.swing.JLabel();
         btnBook = new javax.swing.JButton();
+        spLiveEvents = new javax.swing.JScrollPane();
+        lstLiveEvents = new javax.swing.JList<>();
+        spDetails = new javax.swing.JScrollPane();
+        txtEventDetails = new javax.swing.JTextArea();
         pnlMyEvents = new javax.swing.JPanel();
         txtTitle = new javax.swing.JTextField();
         txtdscription = new javax.swing.JTextField();
@@ -42,6 +46,8 @@ public class Student_Live_Events extends javax.swing.JFrame {
         lblTitle = new javax.swing.JLabel();
         lblBooked = new javax.swing.JLabel();
         lblApprove = new javax.swing.JLabel();
+        spBookedE = new javax.swing.JScrollPane();
+        lstBooked = new javax.swing.JList<>();
         lblCreate = new javax.swing.JLabel();
         lblEvent = new javax.swing.JLabel();
         btnRedo = new javax.swing.JButton();
@@ -61,18 +67,38 @@ public class Student_Live_Events extends javax.swing.JFrame {
 
         btnBook.setText("Book Event");
 
+        lstLiveEvents.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        spLiveEvents.setViewportView(lstLiveEvents);
+
+        txtEventDetails.setColumns(20);
+        txtEventDetails.setRows(5);
+        spDetails.setViewportView(txtEventDetails);
+
         javax.swing.GroupLayout pnlLiveEventsLayout = new javax.swing.GroupLayout(pnlLiveEvents);
         pnlLiveEvents.setLayout(pnlLiveEventsLayout);
         pnlLiveEventsLayout.setHorizontalGroup(
             pnlLiveEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLiveEventsLayout.createSequentialGroup()
+            .addGroup(pnlLiveEventsLayout.createSequentialGroup()
                 .addGap(72, 72, 72)
-                .addComponent(lblLive)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 399, Short.MAX_VALUE)
                 .addGroup(pnlLiveEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBook)
-                    .addComponent(lblDetails))
-                .addGap(150, 150, 150))
+                    .addComponent(lblLive)
+                    .addComponent(spLiveEvents, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
+                .addGroup(pnlLiveEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLiveEventsLayout.createSequentialGroup()
+                        .addComponent(lblDetails)
+                        .addGap(170, 170, 170))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLiveEventsLayout.createSequentialGroup()
+                        .addComponent(spDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLiveEventsLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnBook)
+                .addGap(141, 141, 141))
         );
         pnlLiveEventsLayout.setVerticalGroup(
             pnlLiveEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,9 +107,13 @@ public class Student_Live_Events extends javax.swing.JFrame {
                 .addGroup(pnlLiveEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLive)
                     .addComponent(lblDetails))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 340, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlLiveEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(spLiveEvents, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+                    .addComponent(spDetails))
+                .addGap(34, 34, 34)
                 .addComponent(btnBook)
-                .addGap(93, 93, 93))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
 
         tabStudent.addTab("Live Events", pnlLiveEvents);
@@ -103,6 +133,8 @@ public class Student_Live_Events extends javax.swing.JFrame {
         });
 
         cbxCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "category", "Item 2", "Item 3", "Item 4" }));
+
+        jCalender.setDateFormatString("dd MMM yyyy");
 
         cbxSTime.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -130,7 +162,14 @@ public class Student_Live_Events extends javax.swing.JFrame {
 
         lblBooked.setText("Booked Events");
 
-        lblApprove.setText("jLabel1");
+        lblApprove.setText("Status");
+
+        lstBooked.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        spBookedE.setViewportView(lstBooked);
 
         javax.swing.GroupLayout pnlBookedELayout = new javax.swing.GroupLayout(pnlBookedE);
         pnlBookedE.setLayout(pnlBookedELayout);
@@ -147,7 +186,10 @@ public class Student_Live_Events extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBookedELayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(lblBooked)
-                        .addGap(245, 245, 245))))
+                        .addGap(245, 245, 245))
+                    .addGroup(pnlBookedELayout.createSequentialGroup()
+                        .addComponent(spBookedE, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         pnlBookedELayout.setVerticalGroup(
             pnlBookedELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,7 +200,9 @@ public class Student_Live_Events extends javax.swing.JFrame {
                     .addComponent(lblApprove))
                 .addGap(81, 81, 81)
                 .addComponent(lblBooked)
-                .addContainerGap(224, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(spBookedE, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         lblCreate.setText("Create Event");
@@ -393,12 +437,18 @@ public class Student_Live_Events extends javax.swing.JFrame {
     private javax.swing.JLabel lblLive;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JList<String> lstBooked;
+    private javax.swing.JList<String> lstLiveEvents;
     private javax.swing.JButton navGallery;
     private javax.swing.JButton navHome;
     private javax.swing.JPanel pnlBookedE;
     private javax.swing.JPanel pnlLiveEvents;
     private javax.swing.JPanel pnlMyEvents;
+    private javax.swing.JScrollPane spBookedE;
+    private javax.swing.JScrollPane spDetails;
+    private javax.swing.JScrollPane spLiveEvents;
     private javax.swing.JTabbedPane tabStudent;
+    private javax.swing.JTextArea txtEventDetails;
     private javax.swing.JTextField txtStudentNo;
     private javax.swing.JTextField txtTitle;
     private javax.swing.JTextArea txtVolunteer;
