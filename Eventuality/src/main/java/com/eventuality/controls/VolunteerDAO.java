@@ -26,6 +26,7 @@ public class VolunteerDAO {
                 arr.add(vol);
             }
         }
+        rs.close();
         return arr;
     }
     
@@ -42,12 +43,13 @@ public class VolunteerDAO {
         ps.close();
     }
 
-    public void UpdateRecord(Connection c, String setField, String setValue, int studNum) throws SQLException {
-        update_Values_stmt = "UPDATE VOLUNTEERS SET ?=? WHERE STUDENT_NUMBER = ?";
+    public void UpdateRecord(Connection c, String setField, String setValue, int studNum, String email) throws SQLException {
+        update_Values_stmt = "UPDATE VOLUNTEERS SET ?=? WHERE STUDENT_NUMBER = ? , EMAIL=?";
         PreparedStatement ps = c.prepareStatement(update_Values_stmt);
         ps.setString(1, setField);
         ps.setString(2, setValue);
         ps.setInt(3, studNum);
+        ps.setString(4, email);
 
         int rows = ps.executeUpdate(update_Values_stmt);
         String msg = String.format("Student_Number: %d \n Successfully updated %s, with value: %s.", studNum, setField, setValue);

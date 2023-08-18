@@ -13,6 +13,16 @@ public class DbConnect {
         this.s = StatementCreate();
         this.c = ConnectToDB();
     }
+
+    public Connection getC() {
+        return c;
+    }
+
+    public Statement getS() {
+        return s;
+    }
+    
+    
     
     private Connection ConnectToDB() throws SQLException{
         return DriverManager.getConnection(dbURL, "APP","Password");

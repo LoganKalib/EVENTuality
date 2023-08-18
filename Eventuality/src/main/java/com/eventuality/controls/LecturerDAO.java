@@ -12,8 +12,8 @@ public class LecturerDAO {
     private String delete_Values_stmt;
     private String retrieve_Values_qry;
 
-    public Lecturer SelectLogin(Statement s, int staffNum, String password) throws SQLException {
-        retrieve_Values_qry = String.format("SELECT * FROM Lecturer WHERE Staff_Number= %d AND Password =%s", staffNum, password);
+    public Lecturer SelectLogin(Statement s, String staffEmail, String password) throws SQLException {
+        retrieve_Values_qry = String.format("SELECT * FROM Lecturer WHERE Email= %s AND Password =%s", staffEmail, password);
         ResultSet rs = s.executeQuery(retrieve_Values_qry);
         Lecturer lec;
 
@@ -30,6 +30,7 @@ public class LecturerDAO {
             while (rs.next());
             rs.close();
         } else {
+            rs.close();
             return null;
         }
         return lec;
