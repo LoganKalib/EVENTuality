@@ -36,17 +36,17 @@ public class Home extends javax.swing.JFrame {
 
         navSignIn.setText("SIGN IN");
 
-        lblWlcome.setText("jLabel1");
+        lblWlcome.setText("welcome text");
 
-        lblGallery.setText("jLabel2");
+        lblGallery.setText("gallery heading");
 
-        jLabel3.setText("jLabel3");
+        jLabel3.setText("immg");
 
-        jLabel4.setText("jLabel4");
+        jLabel4.setText("img");
 
-        jLabel5.setText("jLabel5");
+        jLabel5.setText("img");
 
-        jLabel6.setText("jLabel6");
+        jLabel6.setText("img");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
