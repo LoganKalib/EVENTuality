@@ -3,36 +3,38 @@ package com.eventuality.objects;
 import java.sql.*;
 
 public class Booking {
-    private int ticketNumber, attdNumber;
+    private int ticketNumber, attdNumberStud, attdNumberLec;
     private String eventId;
     private Time time;
     private Date date;
     private char attdType;
 
-    public Booking(int ticketNumber, int attdNumber, String eventId, Time time, Date date, char attdType) {
+    public Booking(int ticketNumber, int attdNumberStud, String eventId, Time time, Date date, char attdType) {
         this.ticketNumber = ticketNumber;
-        this.attdNumber = attdNumber;
+        this.attdNumberStud = attdNumberStud;
         this.eventId = eventId;
         this.time = time;
         this.date = date;
         this.attdType = attdType;
+        
     }
 
     public Booking() {
         this.ticketNumber = 0;
-        this.attdNumber = 0;
+        this.attdNumberStud = 0;
         this.eventId = "";
         this.time = null;
         this.date = null;
         this.attdType = '\0';
+        this.attdNumberLec = 0;
     } 
 
     public int getTicketNumber() {
         return ticketNumber;
     }
 
-    public int getAttdNumber() {
-        return attdNumber;
+    public int getAttdNumberStud() {
+        return attdNumberStud;
     }
 
     public String getEventId() {
@@ -51,12 +53,14 @@ public class Booking {
         return attdType;
     }
 
+    public int getAttdNumberLec() {
+        return attdNumberLec;
+    }
+    
+    
+
     public void setTicketNumber(int ticketNumber) {
         this.ticketNumber = ticketNumber;
-    }
-
-    public void setAttdNumber(int attdNumber) {
-        this.attdNumber = attdNumber;
     }
 
     public void setEventId(String eventId) {
@@ -75,9 +79,19 @@ public class Booking {
         this.attdType = attdType;
     }
 
+    public void setAttdNumberStud(int attdNumberStud) {
+        this.attdNumberStud = attdNumberStud;
+    }
+
+    public void setAttdNumberLec(int attdNumberLec) {
+        this.attdNumberLec = attdNumberLec;
+    }
+    
+    
+
     @Override
     public String toString() {
-        return this.ticketNumber + "\n" + this.attdNumber + "\n" + this.eventId +
+        return this.ticketNumber + "\n" + this.attdNumberStud + "\n" + this.eventId +
                 "\n" + this.time + "\n" + this.date + "\n" + this.attdType;
     }  
 }

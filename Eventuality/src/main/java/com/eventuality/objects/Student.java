@@ -1,9 +1,11 @@
 package com.eventuality.objects;
 
 public class Student {
+    private int studNum;
     private String studName, studSurname, studPassword, studEmail;
 
-    public Student(String studName, String studSurname, String studPassword, String studEmail) {
+    public Student(int studNum, String studName, String studSurname, String studPassword, String studEmail) {
+        this.studNum = studNum;
         this.studName = studName;
         this.studSurname = studSurname;
         this.studPassword = studPassword;
@@ -11,10 +13,19 @@ public class Student {
     }
 
     public Student() {
+        this.studNum = 0;
         this.studName = "";
         this.studSurname = "";
         this.studPassword = "";
         this.studEmail = "";
+    }
+
+    public void setStudNum(int studNum) {
+        this.studNum = studNum;
+    }
+
+    public int getStudNum() {
+        return studNum;
     }
 
     public String getStudName() {
