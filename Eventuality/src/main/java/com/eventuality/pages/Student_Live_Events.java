@@ -58,6 +58,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
         navGallery = new javax.swing.JButton();
         btnSignOut = new javax.swing.JButton();
         lblLogo = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,7 +88,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
                 .addGroup(pnlLiveEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblLive)
                     .addComponent(spLiveEvents, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                 .addGroup(pnlLiveEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLiveEventsLayout.createSequentialGroup()
                         .addComponent(lblDetails)
@@ -113,7 +114,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
                     .addComponent(spDetails))
                 .addGap(34, 34, 34)
                 .addComponent(btnBook)
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         tabStudent.addTab("Live Events", pnlLiveEvents);
@@ -259,7 +260,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
                     .addGroup(pnlMyEventsLayout.createSequentialGroup()
                         .addGap(167, 167, 167)
                         .addComponent(btnApprove)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlMyEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlBookedE, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMyEventsLayout.createSequentialGroup()
@@ -314,7 +315,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
                 .addGroup(pnlMyEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtStudentNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbxVolunteer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnRegister)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jspVolunteer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -331,6 +332,10 @@ public class Student_Live_Events extends javax.swing.JFrame {
 
         lblLogo.setText("LOGO");
 
+        jLabel2.setBackground(new java.awt.Color(102, 153, 255));
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\white_blue_marble_hd_marble.jpg")); // NOI18N
+        jLabel2.setText("jLabel2");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -339,7 +344,9 @@ public class Student_Live_Events extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(tabStudent))
+                        .addComponent(tabStudent, javax.swing.GroupLayout.DEFAULT_SIZE, 715, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addComponent(lblLogo)
@@ -361,9 +368,15 @@ public class Student_Live_Events extends javax.swing.JFrame {
                         .addComponent(navHome)
                         .addComponent(lblLogo)
                         .addComponent(navGallery)))
-                .addGap(15, 15, 15)
-                .addComponent(tabStudent)
-                .addGap(24, 24, 24))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(tabStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(546, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(31, 31, 31))))
         );
 
         pack();
@@ -428,6 +441,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxSTime;
     private javax.swing.JComboBox<String> cbxVolunteer;
     private com.toedter.calendar.JDateChooser jCalender;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jspVolunteer;
     private javax.swing.JLabel lblApprove;
     private javax.swing.JLabel lblBooked;

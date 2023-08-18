@@ -40,8 +40,10 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         btnLHome = new javax.swing.JButton();
         btnLGallery = new javax.swing.JButton();
         btnLSignOut = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         lblPending.setText("Pending Events");
 
@@ -77,7 +79,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
                 .addComponent(spPending, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(spDetailsE, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(276, Short.MAX_VALUE))
             .addGroup(pnlPendingLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAppStatus)
@@ -135,7 +137,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
             .addGroup(pnlLiveLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 360, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLiveLayout.createSequentialGroup()
@@ -161,47 +163,29 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
 
         tabLecturer.addTab("Live Events", pnlLive);
 
-        lblLectLogo.setText("LOGO");
+        getContentPane().add(tabLecturer);
+        tabLecturer.setBounds(30, 110, 880, 402);
+
+        lblLectLogo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\log.png")); // NOI18N
+        getContentPane().add(lblLectLogo);
+        lblLectLogo.setBounds(190, 10, 540, 80);
 
         btnLHome.setText("HOME");
+        getContentPane().add(btnLHome);
+        btnLHome.setBounds(670, 100, 63, 25);
 
         btnLGallery.setText("GALLERY");
+        getContentPane().add(btnLGallery);
+        btnLGallery.setBounds(740, 100, 83, 25);
 
         btnLSignOut.setText("SIGN OUT");
+        getContentPane().add(btnLSignOut);
+        btnLSignOut.setBounds(830, 100, 82, 25);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(tabLecturer))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(lblLectLogo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnLHome)
-                        .addGap(29, 29, 29)
-                        .addComponent(btnLGallery)
-                        .addGap(40, 40, 40)
-                        .addComponent(btnLSignOut)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLectLogo)
-                    .addComponent(btnLHome)
-                    .addComponent(btnLGallery)
-                    .addComponent(btnLSignOut))
-                .addGap(36, 36, 36)
-                .addComponent(tabLecturer, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\white_blue_marble_hd_marble.jpg")); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 960, 540);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -248,6 +232,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     private javax.swing.JButton btnLGallery;
     private javax.swing.JButton btnLHome;
     private javax.swing.JButton btnLSignOut;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblDetailsEvent;
