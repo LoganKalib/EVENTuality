@@ -18,17 +18,189 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        tabLecturer = new javax.swing.JTabbedPane();
+        pnlPending = new javax.swing.JPanel();
+        lblPending = new javax.swing.JLabel();
+        spPending = new javax.swing.JScrollPane();
+        lstPending = new javax.swing.JList<>();
+        lblEDetails = new javax.swing.JLabel();
+        spDetailsE = new javax.swing.JScrollPane();
+        txtEDetails = new javax.swing.JTextArea();
+        btnAppStatus = new javax.swing.JButton();
+        btnDenyStatus = new javax.swing.JButton();
+        pnlLive = new javax.swing.JPanel();
+        lblLiveE = new javax.swing.JLabel();
+        lblDetailsEvent = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lstEventsL = new javax.swing.JList<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtDispDetails = new javax.swing.JTextArea();
+        btnBookEvent = new javax.swing.JButton();
+        lblLectLogo = new javax.swing.JLabel();
+        btnLHome = new javax.swing.JButton();
+        btnLGallery = new javax.swing.JButton();
+        btnLSignOut = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblPending.setText("Pending Events");
+
+        lstPending.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        spPending.setViewportView(lstPending);
+
+        lblEDetails.setText("Event details");
+
+        txtEDetails.setColumns(20);
+        txtEDetails.setRows(5);
+        spDetailsE.setViewportView(txtEDetails);
+
+        btnAppStatus.setText("Approve");
+
+        btnDenyStatus.setText("Deny");
+
+        javax.swing.GroupLayout pnlPendingLayout = new javax.swing.GroupLayout(pnlPending);
+        pnlPending.setLayout(pnlPendingLayout);
+        pnlPendingLayout.setHorizontalGroup(
+            pnlPendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlPendingLayout.createSequentialGroup()
+                .addGap(92, 92, 92)
+                .addComponent(lblPending)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblEDetails)
+                .addGap(150, 150, 150))
+            .addGroup(pnlPendingLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(spPending, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(spDetailsE, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
+            .addGroup(pnlPendingLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAppStatus)
+                .addGap(88, 88, 88)
+                .addComponent(btnDenyStatus)
+                .addGap(66, 66, 66))
+        );
+        pnlPendingLayout.setVerticalGroup(
+            pnlPendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlPendingLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(pnlPendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPending)
+                    .addComponent(lblEDetails))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlPendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(spDetailsE)
+                    .addComponent(spPending, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlPendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAppStatus)
+                    .addComponent(btnDenyStatus))
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        tabLecturer.addTab("Pending Events", pnlPending);
+
+        lblLiveE.setText("Live Events");
+
+        lblDetailsEvent.setText("Event Details");
+
+        lstEventsL.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(lstEventsL);
+
+        txtDispDetails.setColumns(20);
+        txtDispDetails.setRows(5);
+        jScrollPane2.setViewportView(txtDispDetails);
+
+        btnBookEvent.setText("Book Event");
+
+        javax.swing.GroupLayout pnlLiveLayout = new javax.swing.GroupLayout(pnlLive);
+        pnlLive.setLayout(pnlLiveLayout);
+        pnlLiveLayout.setHorizontalGroup(
+            pnlLiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlLiveLayout.createSequentialGroup()
+                .addGap(113, 113, 113)
+                .addComponent(lblLiveE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblDetailsEvent)
+                .addGap(131, 131, 131))
+            .addGroup(pnlLiveLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLiveLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnBookEvent)
+                .addGap(101, 101, 101))
+        );
+        pnlLiveLayout.setVerticalGroup(
+            pnlLiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlLiveLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(pnlLiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblLiveE)
+                    .addComponent(lblDetailsEvent))
+                .addGap(18, 18, 18)
+                .addGroup(pnlLiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(btnBookEvent)
+                .addGap(29, 29, 29))
+        );
+
+        tabLecturer.addTab("Live Events", pnlLive);
+
+        lblLectLogo.setText("LOGO");
+
+        btnLHome.setText("HOME");
+
+        btnLGallery.setText("GALLERY");
+
+        btnLSignOut.setText("SIGN OUT");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(tabLecturer))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(lblLectLogo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLHome)
+                        .addGap(29, 29, 29)
+                        .addComponent(btnLGallery)
+                        .addGap(40, 40, 40)
+                        .addComponent(btnLSignOut)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblLectLogo)
+                    .addComponent(btnLHome)
+                    .addComponent(btnLGallery)
+                    .addComponent(btnLSignOut))
+                .addGap(36, 36, 36)
+                .addComponent(tabLecturer, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -70,5 +242,27 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAppStatus;
+    private javax.swing.JButton btnBookEvent;
+    private javax.swing.JButton btnDenyStatus;
+    private javax.swing.JButton btnLGallery;
+    private javax.swing.JButton btnLHome;
+    private javax.swing.JButton btnLSignOut;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblDetailsEvent;
+    private javax.swing.JLabel lblEDetails;
+    private javax.swing.JLabel lblLectLogo;
+    private javax.swing.JLabel lblLiveE;
+    private javax.swing.JLabel lblPending;
+    private javax.swing.JList<String> lstEventsL;
+    private javax.swing.JList<String> lstPending;
+    private javax.swing.JPanel pnlLive;
+    private javax.swing.JPanel pnlPending;
+    private javax.swing.JScrollPane spDetailsE;
+    private javax.swing.JScrollPane spPending;
+    private javax.swing.JTabbedPane tabLecturer;
+    private javax.swing.JTextArea txtDispDetails;
+    private javax.swing.JTextArea txtEDetails;
     // End of variables declaration//GEN-END:variables
 }
