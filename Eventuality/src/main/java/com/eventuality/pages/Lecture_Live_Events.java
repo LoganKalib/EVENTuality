@@ -28,6 +28,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         txtEDetails = new javax.swing.JTextArea();
         btnAppStatus = new javax.swing.JButton();
         btnDenyStatus = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         pnlLive = new javax.swing.JPanel();
         lblLiveE = new javax.swing.JLabel();
         lblDetailsEvent = new javax.swing.JLabel();
@@ -36,6 +37,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         txtDispDetails = new javax.swing.JTextArea();
         btnBookEvent = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         lblLectLogo = new javax.swing.JLabel();
         btnLHome = new javax.swing.JButton();
         btnLGallery = new javax.swing.JButton();
@@ -45,143 +47,159 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        lblPending.setText("Pending Events");
+        tabLecturer.setBackground(new java.awt.Color(102, 153, 255));
+        tabLecturer.setForeground(new java.awt.Color(255, 255, 255));
+        tabLecturer.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
 
-        lstPending.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        pnlPending.setBackground(new java.awt.Color(102, 153, 255));
+        pnlPending.setLayout(null);
+
+        lblPending.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 18)); // NOI18N
+        lblPending.setForeground(new java.awt.Color(0, 0, 0));
+        lblPending.setText("PENDING EVENTS");
+        pnlPending.add(lblPending);
+        lblPending.setBounds(130, 20, 150, 25);
+
+        lstPending.setFont(new java.awt.Font("Malgun Gothic", 1, 12)); // NOI18N
         spPending.setViewportView(lstPending);
 
-        lblEDetails.setText("Event details");
+        pnlPending.add(spPending);
+        spPending.setBounds(30, 60, 370, 320);
+
+        lblEDetails.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 18)); // NOI18N
+        lblEDetails.setForeground(new java.awt.Color(0, 0, 0));
+        lblEDetails.setText("EVENT DETAILS  ");
+        pnlPending.add(lblEDetails);
+        lblEDetails.setBounds(590, 20, 140, 25);
 
         txtEDetails.setColumns(20);
+        txtEDetails.setFont(new java.awt.Font("Malgun Gothic", 1, 12)); // NOI18N
         txtEDetails.setRows(5);
         spDetailsE.setViewportView(txtEDetails);
 
-        btnAppStatus.setText("Approve");
+        pnlPending.add(spDetailsE);
+        spDetailsE.setBounds(470, 60, 370, 260);
 
-        btnDenyStatus.setText("Deny");
+        btnAppStatus.setBackground(new java.awt.Color(102, 153, 255));
+        btnAppStatus.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
+        btnAppStatus.setForeground(new java.awt.Color(0, 0, 0));
+        btnAppStatus.setText("APPROVE");
+        btnAppStatus.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(102, 102, 255), new java.awt.Color(255, 255, 255), null, null));
+        btnAppStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAppStatusActionPerformed(evt);
+            }
+        });
+        pnlPending.add(btnAppStatus);
+        btnAppStatus.setBounds(470, 330, 370, 24);
 
-        javax.swing.GroupLayout pnlPendingLayout = new javax.swing.GroupLayout(pnlPending);
-        pnlPending.setLayout(pnlPendingLayout);
-        pnlPendingLayout.setHorizontalGroup(
-            pnlPendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlPendingLayout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addComponent(lblPending)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblEDetails)
-                .addGap(150, 150, 150))
-            .addGroup(pnlPendingLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(spPending, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(spDetailsE, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(276, Short.MAX_VALUE))
-            .addGroup(pnlPendingLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAppStatus)
-                .addGap(88, 88, 88)
-                .addComponent(btnDenyStatus)
-                .addGap(66, 66, 66))
-        );
-        pnlPendingLayout.setVerticalGroup(
-            pnlPendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlPendingLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(pnlPendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPending)
-                    .addComponent(lblEDetails))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlPendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(spDetailsE)
-                    .addComponent(spPending, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(pnlPendingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAppStatus)
-                    .addComponent(btnDenyStatus))
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
+        btnDenyStatus.setBackground(new java.awt.Color(102, 153, 255));
+        btnDenyStatus.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
+        btnDenyStatus.setForeground(new java.awt.Color(0, 0, 0));
+        btnDenyStatus.setText("DENY");
+        btnDenyStatus.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(102, 102, 255), new java.awt.Color(255, 255, 255), null, null));
+        pnlPending.add(btnDenyStatus);
+        btnDenyStatus.setBounds(470, 360, 370, 24);
 
-        tabLecturer.addTab("Pending Events", pnlPending);
+        jLabel1.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\white_blue_marble_hd_marble.jpg")); // NOI18N
+        jLabel1.setText("jLabel1");
+        pnlPending.add(jLabel1);
+        jLabel1.setBounds(-40, 0, 930, 410);
 
-        lblLiveE.setText("Live Events");
+        tabLecturer.addTab("PENDING EVENTS", pnlPending);
 
-        lblDetailsEvent.setText("Event Details");
+        pnlLive.setBackground(new java.awt.Color(102, 153, 255));
+        pnlLive.setLayout(null);
 
+        lblLiveE.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 18)); // NOI18N
+        lblLiveE.setForeground(new java.awt.Color(0, 0, 0));
+        lblLiveE.setText("LIVE EVENTS");
+        pnlLive.add(lblLiveE);
+        lblLiveE.setBounds(160, 20, 110, 25);
+
+        lblDetailsEvent.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 18)); // NOI18N
+        lblDetailsEvent.setForeground(new java.awt.Color(0, 0, 0));
+        lblDetailsEvent.setText("EVENT DETAILS");
+        pnlLive.add(lblDetailsEvent);
+        lblDetailsEvent.setBounds(590, 20, 130, 25);
+
+        lstEventsL.setBackground(new java.awt.Color(0, 51, 102));
+        lstEventsL.setFont(new java.awt.Font("Malgun Gothic", 1, 12)); // NOI18N
         lstEventsL.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { " " };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane1.setViewportView(lstEventsL);
 
+        pnlLive.add(jScrollPane1);
+        jScrollPane1.setBounds(30, 60, 370, 320);
+
+        txtDispDetails.setBackground(new java.awt.Color(0, 51, 102));
         txtDispDetails.setColumns(20);
+        txtDispDetails.setFont(new java.awt.Font("Malgun Gothic", 1, 12)); // NOI18N
         txtDispDetails.setRows(5);
         jScrollPane2.setViewportView(txtDispDetails);
 
-        btnBookEvent.setText("Book Event");
+        pnlLive.add(jScrollPane2);
+        jScrollPane2.setBounds(470, 60, 370, 280);
 
-        javax.swing.GroupLayout pnlLiveLayout = new javax.swing.GroupLayout(pnlLive);
-        pnlLive.setLayout(pnlLiveLayout);
-        pnlLiveLayout.setHorizontalGroup(
-            pnlLiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlLiveLayout.createSequentialGroup()
-                .addGap(113, 113, 113)
-                .addComponent(lblLiveE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblDetailsEvent)
-                .addGap(131, 131, 131))
-            .addGroup(pnlLiveLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 360, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLiveLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnBookEvent)
-                .addGap(101, 101, 101))
-        );
-        pnlLiveLayout.setVerticalGroup(
-            pnlLiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlLiveLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(pnlLiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLiveE)
-                    .addComponent(lblDetailsEvent))
-                .addGap(18, 18, 18)
-                .addGroup(pnlLiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(btnBookEvent)
-                .addGap(29, 29, 29))
-        );
+        btnBookEvent.setBackground(new java.awt.Color(102, 153, 255));
+        btnBookEvent.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
+        btnBookEvent.setForeground(new java.awt.Color(0, 0, 0));
+        btnBookEvent.setText("BOOK EVENT");
+        btnBookEvent.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlLive.add(btnBookEvent);
+        btnBookEvent.setBounds(470, 350, 370, 30);
 
-        tabLecturer.addTab("Live Events", pnlLive);
+        jLabel3.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\white_blue_marble_hd_marble.jpg")); // NOI18N
+        jLabel3.setText("jLabel1");
+        pnlLive.add(jLabel3);
+        jLabel3.setBounds(-40, 0, 930, 410);
+
+        tabLecturer.addTab("LIVE EVENTS", pnlLive);
 
         getContentPane().add(tabLecturer);
-        tabLecturer.setBounds(30, 110, 880, 402);
+        tabLecturer.setBounds(40, 80, 880, 440);
 
-        lblLectLogo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\log.png")); // NOI18N
+        lblLectLogo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\log11.png")); // NOI18N
         getContentPane().add(lblLectLogo);
-        lblLectLogo.setBounds(190, 10, 540, 80);
+        lblLectLogo.setBounds(0, 10, 340, 50);
 
+        btnLHome.setBackground(new java.awt.Color(102, 153, 255));
+        btnLHome.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        btnLHome.setForeground(new java.awt.Color(0, 0, 0));
         btnLHome.setText("HOME");
+        btnLHome.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(153, 153, 255), null, null));
         getContentPane().add(btnLHome);
-        btnLHome.setBounds(670, 100, 63, 25);
+        btnLHome.setBounds(530, 20, 120, 26);
 
+        btnLGallery.setBackground(new java.awt.Color(102, 153, 255));
+        btnLGallery.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        btnLGallery.setForeground(new java.awt.Color(0, 0, 0));
         btnLGallery.setText("GALLERY");
+        btnLGallery.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(153, 153, 255), null, null));
         getContentPane().add(btnLGallery);
-        btnLGallery.setBounds(740, 100, 83, 25);
+        btnLGallery.setBounds(660, 20, 120, 26);
 
+        btnLSignOut.setBackground(new java.awt.Color(102, 153, 255));
+        btnLSignOut.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        btnLSignOut.setForeground(new java.awt.Color(0, 0, 0));
         btnLSignOut.setText("SIGN OUT");
+        btnLSignOut.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(153, 153, 255), null, null));
+        btnLSignOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLSignOutActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnLSignOut);
-        btnLSignOut.setBounds(830, 100, 82, 25);
+        btnLSignOut.setBounds(790, 20, 120, 26);
 
+        jLabel2.setBackground(new java.awt.Color(102, 153, 255));
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\white_blue_marble_hd_marble.jpg")); // NOI18N
         jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2);
@@ -189,6 +207,14 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAppStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAppStatusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAppStatusActionPerformed
+
+    private void btnLSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLSignOutActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLSignOutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,7 +258,9 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     private javax.swing.JButton btnLGallery;
     private javax.swing.JButton btnLHome;
     private javax.swing.JButton btnLSignOut;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblDetailsEvent;

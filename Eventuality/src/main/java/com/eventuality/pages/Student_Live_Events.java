@@ -29,31 +29,39 @@ public class Student_Live_Events extends javax.swing.JFrame {
         txtEventDetails = new javax.swing.JTextArea();
         pnlMyEvents = new javax.swing.JPanel();
         txtTitle = new javax.swing.JTextField();
-        txtdscription = new javax.swing.JTextField();
+        lblTitle = new javax.swing.JLabel();
         cbxCategory = new javax.swing.JComboBox<>();
         jCalender = new com.toedter.calendar.JDateChooser();
+        lblDescription = new javax.swing.JLabel();
         cbxSTime = new javax.swing.JComboBox<>();
         cbxETime = new javax.swing.JComboBox<>();
-        cbxDNTime = new javax.swing.JComboBox<>();
-        cbxNDTime = new javax.swing.JComboBox<>();
-        cbxCampus = new javax.swing.JComboBox<>();
         cbxCapacity = new javax.swing.JComboBox<>();
         txtStudentNo = new javax.swing.JTextField();
         cbxVolunteer = new javax.swing.JComboBox<>();
         btnRegister = new javax.swing.JButton();
         btnApprove = new javax.swing.JButton();
         pnlBookedE = new javax.swing.JPanel();
-        lblTitle = new javax.swing.JLabel();
+        lblTCreate = new javax.swing.JLabel();
         lblBooked = new javax.swing.JLabel();
         lblApprove = new javax.swing.JLabel();
         spBookedE = new javax.swing.JScrollPane();
         lstBooked = new javax.swing.JList<>();
+        jLabel3 = new javax.swing.JLabel();
         lblCreate = new javax.swing.JLabel();
         lblEvent = new javax.swing.JLabel();
         btnRedo = new javax.swing.JButton();
         btnStatus = new javax.swing.JButton();
         jspVolunteer = new javax.swing.JScrollPane();
         txtVolunteer = new javax.swing.JTextArea();
+        txtDescription = new javax.swing.JScrollPane();
+        txtDescript = new javax.swing.JTextArea();
+        lblDate = new javax.swing.JLabel();
+        lblSTime = new javax.swing.JLabel();
+        lblETime = new javax.swing.JLabel();
+        lblLocation = new javax.swing.JLabel();
+        cbxCampus = new javax.swing.JComboBox<>();
+        lblCapacity = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         navHome = new javax.swing.JButton();
         navGallery = new javax.swing.JButton();
         btnSignOut = new javax.swing.JButton();
@@ -61,6 +69,10 @@ public class Student_Live_Events extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
+
+        tabStudent.setBackground(new java.awt.Color(102, 153, 255));
+        tabStudent.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
 
         lblLive.setText("Live Events");
 
@@ -88,7 +100,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
                 .addGroup(pnlLiveEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblLive)
                     .addComponent(spLiveEvents, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 320, Short.MAX_VALUE)
                 .addGroup(pnlLiveEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLiveEventsLayout.createSequentialGroup()
                         .addComponent(lblDetails)
@@ -114,281 +126,292 @@ public class Student_Live_Events extends javax.swing.JFrame {
                     .addComponent(spDetails))
                 .addGap(34, 34, 34)
                 .addComponent(btnBook)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
-        tabStudent.addTab("Live Events", pnlLiveEvents);
+        tabStudent.addTab("LIVE EVENTS", pnlLiveEvents);
 
-        txtTitle.setText("title");
+        pnlMyEvents.setLayout(null);
+
+        txtTitle.setBackground(new java.awt.Color(102, 153, 255));
+        txtTitle.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         txtTitle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTitleActionPerformed(evt);
             }
         });
+        pnlMyEvents.add(txtTitle);
+        txtTitle.setBounds(30, 50, 410, 30);
 
-        txtdscription.setText("Description");
-        txtdscription.addActionListener(new java.awt.event.ActionListener() {
+        lblTitle.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(0, 0, 0));
+        lblTitle.setText("Title:");
+        pnlMyEvents.add(lblTitle);
+        lblTitle.setBounds(30, 30, 110, 20);
+
+        cbxCategory.setBackground(new java.awt.Color(102, 153, 255));
+        cbxCategory.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
+        cbxCategory.setForeground(new java.awt.Color(0, 0, 0));
+        cbxCategory.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlMyEvents.add(cbxCategory);
+        cbxCategory.setBounds(480, 240, 130, 30);
+
+        jCalender.setBackground(new java.awt.Color(102, 153, 255));
+        jCalender.setForeground(new java.awt.Color(0, 0, 0));
+        jCalender.setDateFormatString("dd MMM yyyy");
+        jCalender.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
+        jCalender.setOpaque(false);
+        pnlMyEvents.add(jCalender);
+        jCalender.setBounds(30, 190, 180, 30);
+
+        lblDescription.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        lblDescription.setForeground(new java.awt.Color(0, 0, 0));
+        lblDescription.setText("Description:");
+        pnlMyEvents.add(lblDescription);
+        lblDescription.setBounds(30, 90, 110, 20);
+
+        cbxSTime.setBackground(new java.awt.Color(102, 153, 255));
+        cbxSTime.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
+        cbxSTime.setForeground(new java.awt.Color(0, 0, 0));
+        cbxSTime.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cbxSTime.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtdscriptionActionPerformed(evt);
+                cbxSTimeActionPerformed(evt);
             }
         });
+        pnlMyEvents.add(cbxSTime);
+        cbxSTime.setBounds(230, 190, 100, 30);
 
-        cbxCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "category", "Item 2", "Item 3", "Item 4" }));
+        cbxETime.setBackground(new java.awt.Color(102, 153, 255));
+        cbxETime.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
+        cbxETime.setForeground(new java.awt.Color(0, 0, 0));
+        cbxETime.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cbxETime.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxETimeActionPerformed(evt);
+            }
+        });
+        pnlMyEvents.add(cbxETime);
+        cbxETime.setBounds(340, 190, 100, 30);
 
-        jCalender.setDateFormatString("dd MMM yyyy");
+        cbxCapacity.setBackground(new java.awt.Color(102, 153, 255));
+        cbxCapacity.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
+        cbxCapacity.setForeground(new java.awt.Color(0, 0, 0));
+        cbxCapacity.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlMyEvents.add(cbxCapacity);
+        cbxCapacity.setBounds(340, 250, 100, 30);
 
-        cbxSTime.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        cbxETime.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        cbxDNTime.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        cbxNDTime.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        cbxCampus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        cbxCapacity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
+        txtStudentNo.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         txtStudentNo.setText("jTextField3");
+        pnlMyEvents.add(txtStudentNo);
+        txtStudentNo.setBounds(470, 160, 170, 30);
 
-        cbxVolunteer.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxVolunteer.setBackground(new java.awt.Color(102, 153, 255));
+        cbxVolunteer.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
+        cbxVolunteer.setForeground(new java.awt.Color(0, 0, 0));
+        cbxVolunteer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlMyEvents.add(cbxVolunteer);
+        cbxVolunteer.setBounds(360, 280, 230, 30);
 
-        btnRegister.setText("Register Staff");
+        btnRegister.setBackground(new java.awt.Color(102, 153, 255));
+        btnRegister.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
+        btnRegister.setForeground(new java.awt.Color(0, 0, 0));
+        btnRegister.setText("REGISTER STAFF");
+        btnRegister.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlMyEvents.add(btnRegister);
+        btnRegister.setBounds(30, 290, 410, 24);
 
-        btnApprove.setText("Request Approval");
+        btnApprove.setBackground(new java.awt.Color(102, 153, 255));
+        btnApprove.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
+        btnApprove.setForeground(new java.awt.Color(0, 0, 0));
+        btnApprove.setText("REQUEST APPROVAL");
+        btnApprove.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlMyEvents.add(btnApprove);
+        btnApprove.setBounds(30, 410, 410, 24);
 
         pnlBookedE.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        pnlBookedE.setLayout(null);
 
-        lblTitle.setText("No Events Created");
+        lblTCreate.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
+        lblTCreate.setForeground(new java.awt.Color(0, 0, 0));
+        lblTCreate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTCreate.setText("NO CURRENT EVENT CREATED");
+        pnlBookedE.add(lblTCreate);
+        lblTCreate.setBounds(10, 10, 260, 20);
 
-        lblBooked.setText("Booked Events");
+        lblBooked.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
+        lblBooked.setForeground(new java.awt.Color(0, 0, 0));
+        lblBooked.setText("BOOKED EVENTS");
+        pnlBookedE.add(lblBooked);
+        lblBooked.setBounds(80, 90, 120, 20);
 
-        lblApprove.setText("Status");
+        lblApprove.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
+        lblApprove.setForeground(new java.awt.Color(0, 0, 0));
+        lblApprove.setText("Status: PENDING");
+        pnlBookedE.add(lblApprove);
+        lblApprove.setBounds(10, 50, 110, 20);
 
-        lstBooked.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        spBookedE.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
+
+        lstBooked.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
         spBookedE.setViewportView(lstBooked);
 
-        javax.swing.GroupLayout pnlBookedELayout = new javax.swing.GroupLayout(pnlBookedE);
-        pnlBookedE.setLayout(pnlBookedELayout);
-        pnlBookedELayout.setHorizontalGroup(
-            pnlBookedELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlBookedELayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlBookedELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlBookedELayout.createSequentialGroup()
-                        .addComponent(lblTitle)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblApprove)
-                        .addGap(110, 110, 110))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBookedELayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lblBooked)
-                        .addGap(245, 245, 245))
-                    .addGroup(pnlBookedELayout.createSequentialGroup()
-                        .addComponent(spBookedE, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        pnlBookedELayout.setVerticalGroup(
-            pnlBookedELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlBookedELayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlBookedELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTitle)
-                    .addComponent(lblApprove))
-                .addGap(81, 81, 81)
-                .addComponent(lblBooked)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(spBookedE, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(91, Short.MAX_VALUE))
-        );
+        pnlBookedE.add(spBookedE);
+        spBookedE.setBounds(10, 110, 260, 200);
 
-        lblCreate.setText("Create Event");
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\white_blue_marble_hd_marble.jpg")); // NOI18N
+        jLabel3.setText("jLabel3");
+        jLabel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlBookedE.add(jLabel3);
+        jLabel3.setBounds(0, 0, 280, 320);
 
-        lblEvent.setText("My Events");
+        pnlMyEvents.add(pnlBookedE);
+        pnlBookedE.setBounds(640, 61, 280, 320);
 
-        btnRedo.setText("Re-Create Event");
+        lblCreate.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 18)); // NOI18N
+        lblCreate.setForeground(new java.awt.Color(0, 0, 0));
+        lblCreate.setText("CREATE EVENT");
+        pnlMyEvents.add(lblCreate);
+        lblCreate.setBounds(140, 0, 130, 25);
 
-        btnStatus.setText("Check Event Status");
+        lblEvent.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 18)); // NOI18N
+        lblEvent.setForeground(new java.awt.Color(0, 0, 0));
+        lblEvent.setText("MY EVENTS");
+        pnlMyEvents.add(lblEvent);
+        lblEvent.setBounds(730, 20, 100, 25);
+
+        btnRedo.setBackground(new java.awt.Color(102, 153, 255));
+        btnRedo.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
+        btnRedo.setForeground(new java.awt.Color(0, 0, 0));
+        btnRedo.setText("RE-CREATE EVENT");
+        btnRedo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlMyEvents.add(btnRedo);
+        btnRedo.setBounds(480, 380, 410, 24);
+
+        btnStatus.setBackground(new java.awt.Color(102, 153, 255));
+        btnStatus.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
+        btnStatus.setForeground(new java.awt.Color(0, 0, 0));
+        btnStatus.setText("CHECK EVENT STATUS");
+        btnStatus.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlMyEvents.add(btnStatus);
+        btnStatus.setBounds(480, 410, 410, 24);
 
         txtVolunteer.setColumns(20);
         txtVolunteer.setRows(5);
         jspVolunteer.setViewportView(txtVolunteer);
 
-        javax.swing.GroupLayout pnlMyEventsLayout = new javax.swing.GroupLayout(pnlMyEvents);
-        pnlMyEvents.setLayout(pnlMyEventsLayout);
-        pnlMyEventsLayout.setHorizontalGroup(
-            pnlMyEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMyEventsLayout.createSequentialGroup()
-                .addGroup(pnlMyEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlMyEventsLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(pnlMyEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbxCapacity, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jCalender, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnlMyEventsLayout.createSequentialGroup()
-                                .addGroup(pnlMyEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlMyEventsLayout.createSequentialGroup()
-                                        .addComponent(cbxSTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cbxDNTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(pnlMyEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(txtTitle, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtdscription, javax.swing.GroupLayout.Alignment.LEADING)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pnlMyEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblCreate)
-                                    .addGroup(pnlMyEventsLayout.createSequentialGroup()
-                                        .addComponent(cbxETime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cbxNDTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(cbxCampus, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnlMyEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlMyEventsLayout.createSequentialGroup()
-                                    .addGap(10, 10, 10)
-                                    .addComponent(txtStudentNo, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cbxVolunteer, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jspVolunteer, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(pnlMyEventsLayout.createSequentialGroup()
-                        .addGap(162, 162, 162)
-                        .addComponent(btnRegister))
-                    .addGroup(pnlMyEventsLayout.createSequentialGroup()
-                        .addGap(167, 167, 167)
-                        .addComponent(btnApprove)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlMyEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlBookedE, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMyEventsLayout.createSequentialGroup()
-                        .addComponent(lblEvent)
-                        .addGap(118, 118, 118))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMyEventsLayout.createSequentialGroup()
-                        .addGroup(pnlMyEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnRedo)
-                            .addComponent(btnStatus))
-                        .addContainerGap())))
-        );
-        pnlMyEventsLayout.setVerticalGroup(
-            pnlMyEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMyEventsLayout.createSequentialGroup()
-                .addGap(4, 4, 4)
-                .addComponent(lblEvent)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlBookedE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnRedo)
-                .addGap(18, 18, 18)
-                .addGroup(pnlMyEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnStatus)
-                    .addComponent(btnApprove))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(pnlMyEventsLayout.createSequentialGroup()
-                .addGroup(pnlMyEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlMyEventsLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMyEventsLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblCreate)
-                        .addGap(33, 33, 33)))
-                .addComponent(txtdscription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCalender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlMyEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbxSTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxETime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxDNTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxNDTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbxCampus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbxCapacity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addGroup(pnlMyEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtStudentNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxVolunteer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRegister)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jspVolunteer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79))
-        );
+        pnlMyEvents.add(jspVolunteer);
+        jspVolunteer.setBounds(30, 320, 410, 80);
 
-        tabStudent.addTab("My Events", pnlMyEvents);
+        txtDescript.setBackground(new java.awt.Color(102, 153, 255));
+        txtDescript.setColumns(20);
+        txtDescript.setRows(5);
+        txtDescription.setViewportView(txtDescript);
 
+        pnlMyEvents.add(txtDescription);
+        txtDescription.setBounds(30, 110, 410, 50);
+
+        lblDate.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        lblDate.setForeground(new java.awt.Color(0, 0, 0));
+        lblDate.setText("Date: ");
+        pnlMyEvents.add(lblDate);
+        lblDate.setBounds(30, 170, 110, 20);
+
+        lblSTime.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        lblSTime.setForeground(new java.awt.Color(0, 0, 0));
+        lblSTime.setText("Start Time:");
+        pnlMyEvents.add(lblSTime);
+        lblSTime.setBounds(230, 170, 110, 20);
+
+        lblETime.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        lblETime.setForeground(new java.awt.Color(0, 0, 0));
+        lblETime.setText("End Time:");
+        pnlMyEvents.add(lblETime);
+        lblETime.setBounds(340, 170, 110, 20);
+
+        lblLocation.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        lblLocation.setForeground(new java.awt.Color(0, 0, 0));
+        lblLocation.setText("Location:");
+        pnlMyEvents.add(lblLocation);
+        lblLocation.setBounds(30, 230, 110, 20);
+
+        cbxCampus.setBackground(new java.awt.Color(102, 153, 255));
+        cbxCampus.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
+        cbxCampus.setForeground(new java.awt.Color(0, 0, 0));
+        cbxCampus.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlMyEvents.add(cbxCampus);
+        cbxCampus.setBounds(30, 250, 300, 30);
+
+        lblCapacity.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        lblCapacity.setForeground(new java.awt.Color(0, 0, 0));
+        lblCapacity.setText("Capacity:");
+        pnlMyEvents.add(lblCapacity);
+        lblCapacity.setBounds(340, 230, 110, 20);
+
+        jLabel1.setBackground(new java.awt.Color(102, 153, 255));
+        jLabel1.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\white_blue_marble_hd_marble.jpg")); // NOI18N
+        jLabel1.setText("jLabel1");
+        pnlMyEvents.add(jLabel1);
+        jLabel1.setBounds(0, 0, 940, 450);
+
+        tabStudent.addTab("MY EVENTS", pnlMyEvents);
+
+        getContentPane().add(tabStudent);
+        tabStudent.setBounds(10, 60, 936, 470);
+        tabStudent.getAccessibleContext().setAccessibleName("LIVE EVENTS");
+
+        navHome.setBackground(new java.awt.Color(102, 153, 255));
+        navHome.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        navHome.setForeground(new java.awt.Color(0, 0, 0));
         navHome.setText("HOME");
+        navHome.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        navHome.setMaximumSize(new java.awt.Dimension(46, 26));
+        navHome.setMinimumSize(new java.awt.Dimension(46, 26));
+        getContentPane().add(navHome);
+        navHome.setBounds(510, 20, 120, 30);
 
+        navGallery.setBackground(new java.awt.Color(102, 153, 255));
+        navGallery.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        navGallery.setForeground(new java.awt.Color(0, 0, 0));
         navGallery.setText("GALLERY");
+        navGallery.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        getContentPane().add(navGallery);
+        navGallery.setBounds(640, 20, 120, 30);
 
+        btnSignOut.setBackground(new java.awt.Color(102, 153, 255));
+        btnSignOut.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        btnSignOut.setForeground(new java.awt.Color(0, 0, 0));
         btnSignOut.setText("SIGN OUT");
+        btnSignOut.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        getContentPane().add(btnSignOut);
+        btnSignOut.setBounds(770, 20, 130, 30);
 
-        lblLogo.setText("LOGO");
+        lblLogo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\log11.png")); // NOI18N
+        getContentPane().add(lblLogo);
+        lblLogo.setBounds(0, 10, 350, 50);
 
         jLabel2.setBackground(new java.awt.Color(102, 153, 255));
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\white_blue_marble_hd_marble.jpg")); // NOI18N
         jLabel2.setText("jLabel2");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(tabStudent, javax.swing.GroupLayout.DEFAULT_SIZE, 715, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(lblLogo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(navHome)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(navGallery)
-                        .addGap(14, 14, 14)
-                        .addComponent(btnSignOut)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSignOut)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(navHome)
-                        .addComponent(lblLogo)
-                        .addComponent(navGallery)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(tabStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(546, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(31, 31, 31))))
-        );
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 960, 540);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtdscriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdscriptionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtdscriptionActionPerformed
-
     private void txtTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTitleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTitleActionPerformed
+
+    private void cbxETimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxETimeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxETimeActionPerformed
+
+    private void cbxSTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxSTimeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxSTimeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -435,21 +458,28 @@ public class Student_Live_Events extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxCampus;
     private javax.swing.JComboBox<String> cbxCapacity;
     private javax.swing.JComboBox<String> cbxCategory;
-    private javax.swing.JComboBox<String> cbxDNTime;
     private javax.swing.JComboBox<String> cbxETime;
-    private javax.swing.JComboBox<String> cbxNDTime;
     private javax.swing.JComboBox<String> cbxSTime;
     private javax.swing.JComboBox<String> cbxVolunteer;
     private com.toedter.calendar.JDateChooser jCalender;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jspVolunteer;
     private javax.swing.JLabel lblApprove;
     private javax.swing.JLabel lblBooked;
+    private javax.swing.JLabel lblCapacity;
     private javax.swing.JLabel lblCreate;
+    private javax.swing.JLabel lblDate;
+    private javax.swing.JLabel lblDescription;
     private javax.swing.JLabel lblDetails;
+    private javax.swing.JLabel lblETime;
     private javax.swing.JLabel lblEvent;
     private javax.swing.JLabel lblLive;
+    private javax.swing.JLabel lblLocation;
     private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblSTime;
+    private javax.swing.JLabel lblTCreate;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JList<String> lstBooked;
     private javax.swing.JList<String> lstLiveEvents;
@@ -462,10 +492,11 @@ public class Student_Live_Events extends javax.swing.JFrame {
     private javax.swing.JScrollPane spDetails;
     private javax.swing.JScrollPane spLiveEvents;
     private javax.swing.JTabbedPane tabStudent;
+    private javax.swing.JTextArea txtDescript;
+    private javax.swing.JScrollPane txtDescription;
     private javax.swing.JTextArea txtEventDetails;
     private javax.swing.JTextField txtStudentNo;
     private javax.swing.JTextField txtTitle;
     private javax.swing.JTextArea txtVolunteer;
-    private javax.swing.JTextField txtdscription;
     // End of variables declaration//GEN-END:variables
 }
