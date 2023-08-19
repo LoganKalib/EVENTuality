@@ -23,18 +23,18 @@ public class Student_Live_Events extends javax.swing.JFrame {
         lblLive = new javax.swing.JLabel();
         btnBook = new javax.swing.JButton();
         lblDetails = new javax.swing.JLabel();
-        lblTCreate = new javax.swing.JLabel();
         lblBooked = new javax.swing.JLabel();
         spBookedE = new javax.swing.JScrollPane();
         lstBooked = new javax.swing.JList<>();
         spLiveEvents = new javax.swing.JScrollPane();
         lstLiveEvents = new javax.swing.JList<>();
-        spDetails = new javax.swing.JScrollPane();
-        txtEventDetails = new javax.swing.JTextArea();
-        lblMyEvent = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        btnStatus = new javax.swing.JButton();
         lblApprove = new javax.swing.JLabel();
+        lblTCreate = new javax.swing.JLabel();
+        btnStatus = new javax.swing.JButton();
+        lblMyEvents = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lstEventDetails = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         pnlMyEvents = new javax.swing.JPanel();
@@ -52,8 +52,6 @@ public class Student_Live_Events extends javax.swing.JFrame {
         btnApprove = new javax.swing.JButton();
         lblCreate = new javax.swing.JLabel();
         btnRedo = new javax.swing.JButton();
-        jspVolunteer = new javax.swing.JScrollPane();
-        txtVolunteer = new javax.swing.JTextArea();
         txtDescription = new javax.swing.JScrollPane();
         txtDescript = new javax.swing.JTextArea();
         lblDate = new javax.swing.JLabel();
@@ -66,6 +64,8 @@ public class Student_Live_Events extends javax.swing.JFrame {
         lblStudNo = new javax.swing.JLabel();
         lblRoll = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        lstVolunteers = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         navHome = new javax.swing.JButton();
         navGallery = new javax.swing.JButton();
@@ -85,7 +85,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
         lblLive.setForeground(new java.awt.Color(0, 0, 0));
         lblLive.setText("LIVE EVENTS");
         pnlLiveEvents.add(lblLive);
-        lblLive.setBounds(180, 180, 105, 20);
+        lblLive.setBounds(180, 20, 105, 20);
 
         btnBook.setBackground(new java.awt.Color(102, 153, 255));
         btnBook.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
@@ -106,16 +106,6 @@ public class Student_Live_Events extends javax.swing.JFrame {
         pnlLiveEvents.add(lblDetails);
         lblDetails.setBounds(630, 20, 140, 25);
 
-        lblTCreate.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
-        lblTCreate.setForeground(new java.awt.Color(0, 0, 0));
-        lblTCreate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTCreate.setText("NO CURRENT EVENT CREATED");
-        lblTCreate.setToolTipText("");
-        lblTCreate.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, new java.awt.Color(102, 153, 255), null, null));
-        lblTCreate.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        pnlLiveEvents.add(lblTCreate);
-        lblTCreate.setBounds(70, 50, 340, 30);
-
         lblBooked.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         lblBooked.setForeground(new java.awt.Color(0, 0, 0));
         lblBooked.setText("BOOKED EVENTS");
@@ -124,38 +114,43 @@ public class Student_Live_Events extends javax.swing.JFrame {
 
         spBookedE.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
 
+        lstBooked.setBackground(new java.awt.Color(0, 51, 102));
         lstBooked.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
         spBookedE.setViewportView(lstBooked);
 
         pnlLiveEvents.add(spBookedE);
         spBookedE.setBounds(490, 260, 410, 130);
 
-        lstLiveEvents.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        lstLiveEvents.setBackground(new java.awt.Color(0, 51, 102));
         spLiveEvents.setViewportView(lstLiveEvents);
 
         pnlLiveEvents.add(spLiveEvents);
-        spLiveEvents.setBounds(30, 210, 410, 180);
+        spLiveEvents.setBounds(30, 50, 410, 180);
 
-        txtEventDetails.setColumns(20);
-        txtEventDetails.setRows(5);
-        spDetails.setViewportView(txtEventDetails);
-
-        pnlLiveEvents.add(spDetails);
-        spDetails.setBounds(490, 50, 410, 150);
-
-        lblMyEvent.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 18)); // NOI18N
-        lblMyEvent.setForeground(new java.awt.Color(0, 0, 0));
-        lblMyEvent.setText("MY EVENT");
-        pnlLiveEvents.add(lblMyEvent);
-        lblMyEvent.setBounds(190, 20, 90, 25);
-
-        jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(27, 27, 54), 4, true));
+        jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 153, 255), 3, true));
         jPanel4.setOpaque(false);
         jPanel4.setLayout(null);
+
+        lblApprove.setBackground(new java.awt.Color(0, 0, 0));
+        lblApprove.setFont(new java.awt.Font("Castellar", 1, 14)); // NOI18N
+        lblApprove.setForeground(new java.awt.Color(0, 0, 153));
+        lblApprove.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblApprove.setText("STATUS ");
+        jPanel4.add(lblApprove);
+        lblApprove.setBounds(0, 50, 410, 17);
+
+        lblTCreate.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        lblTCreate.setForeground(new java.awt.Color(0, 0, 0));
+        lblTCreate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTCreate.setText("NO CURRENT EVENT CREATED");
+        lblTCreate.setToolTipText("");
+        lblTCreate.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 153, 255)));
+        lblTCreate.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jPanel4.add(lblTCreate);
+        lblTCreate.setBounds(10, 10, 390, 30);
+
+        pnlLiveEvents.add(jPanel4);
+        jPanel4.setBounds(30, 260, 410, 80);
 
         btnStatus.setBackground(new java.awt.Color(102, 153, 255));
         btnStatus.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
@@ -167,19 +162,21 @@ public class Student_Live_Events extends javax.swing.JFrame {
                 btnStatusActionPerformed(evt);
             }
         });
-        jPanel4.add(btnStatus);
-        btnStatus.setBounds(40, 100, 340, 24);
+        pnlLiveEvents.add(btnStatus);
+        btnStatus.setBounds(30, 360, 410, 24);
 
-        lblApprove.setBackground(new java.awt.Color(0, 0, 0));
-        lblApprove.setFont(new java.awt.Font("Castellar", 1, 14)); // NOI18N
-        lblApprove.setForeground(new java.awt.Color(0, 0, 153));
-        lblApprove.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblApprove.setText("STATUS ");
-        jPanel4.add(lblApprove);
-        lblApprove.setBounds(0, 80, 410, 17);
+        lblMyEvents.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        lblMyEvents.setForeground(new java.awt.Color(0, 0, 0));
+        lblMyEvents.setText("MY EVENT");
+        pnlLiveEvents.add(lblMyEvents);
+        lblMyEvents.setBounds(30, 240, 120, 20);
 
-        pnlLiveEvents.add(jPanel4);
-        jPanel4.setBounds(30, 10, 410, 140);
+        lstEventDetails.setBackground(new java.awt.Color(0, 51, 102));
+        lstEventDetails.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
+        jScrollPane1.setViewportView(lstEventDetails);
+
+        pnlLiveEvents.add(jScrollPane1);
+        jScrollPane1.setBounds(490, 50, 410, 150);
 
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\white_blue_marble_hd_marble.jpg")); // NOI18N
         jLabel3.setText("jLabel3");
@@ -319,14 +316,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
         btnRedo.setText("RE-CREATE EVENT");
         btnRedo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlMyEvents.add(btnRedo);
-        btnRedo.setBounds(490, 340, 410, 24);
-
-        txtVolunteer.setColumns(20);
-        txtVolunteer.setRows(5);
-        jspVolunteer.setViewportView(txtVolunteer);
-
-        pnlMyEvents.add(jspVolunteer);
-        jspVolunteer.setBounds(490, 150, 410, 180);
+        btnRedo.setBounds(490, 370, 410, 24);
 
         txtDescript.setBackground(new java.awt.Color(102, 153, 255));
         txtDescript.setColumns(20);
@@ -407,6 +397,12 @@ public class Student_Live_Events extends javax.swing.JFrame {
 
         pnlMyEvents.add(jPanel1);
         jPanel1.setBounds(460, 80, 10, 310);
+
+        lstVolunteers.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
+        jScrollPane2.setViewportView(lstVolunteers);
+
+        pnlMyEvents.add(jScrollPane2);
+        jScrollPane2.setBounds(490, 160, 410, 180);
 
         jLabel1.setBackground(new java.awt.Color(102, 153, 255));
         jLabel1.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
@@ -536,7 +532,8 @@ public class Student_Live_Events extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jspVolunteer;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblApprove;
     private javax.swing.JLabel lblBooked;
     private javax.swing.JLabel lblCapacity;
@@ -549,27 +546,26 @@ public class Student_Live_Events extends javax.swing.JFrame {
     private javax.swing.JLabel lblLive;
     private javax.swing.JLabel lblLocation;
     private javax.swing.JLabel lblLogo;
-    private javax.swing.JLabel lblMyEvent;
+    private javax.swing.JLabel lblMyEvents;
     private javax.swing.JLabel lblRoll;
     private javax.swing.JLabel lblSTime;
     private javax.swing.JLabel lblStudNo;
     private javax.swing.JLabel lblTCreate;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JList<String> lstBooked;
+    private javax.swing.JList<String> lstEventDetails;
     private javax.swing.JList<String> lstLiveEvents;
+    private javax.swing.JList<String> lstVolunteers;
     private javax.swing.JButton navGallery;
     private javax.swing.JButton navHome;
     private javax.swing.JPanel pnlLiveEvents;
     private javax.swing.JPanel pnlMyEvents;
     private javax.swing.JScrollPane spBookedE;
-    private javax.swing.JScrollPane spDetails;
     private javax.swing.JScrollPane spLiveEvents;
     private javax.swing.JTabbedPane tabStudent;
     private javax.swing.JTextArea txtDescript;
     private javax.swing.JScrollPane txtDescription;
-    private javax.swing.JTextArea txtEventDetails;
     private javax.swing.JTextField txtStudentNo;
     private javax.swing.JTextField txtTitle;
-    private javax.swing.JTextArea txtVolunteer;
     // End of variables declaration//GEN-END:variables
 }

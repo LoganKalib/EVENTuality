@@ -24,19 +24,24 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         spPending = new javax.swing.JScrollPane();
         lstPending = new javax.swing.JList<>();
         lblEDetails = new javax.swing.JLabel();
-        spDetailsE = new javax.swing.JScrollPane();
-        txtEDetails = new javax.swing.JTextArea();
         btnAppStatus = new javax.swing.JButton();
         btnDenyStatus = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        lstEDetails = new javax.swing.JList<>();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         pnlLive = new javax.swing.JPanel();
         lblLiveE = new javax.swing.JLabel();
         lblDetailsEvent = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstEventsL = new javax.swing.JList<>();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtDispDetails = new javax.swing.JTextArea();
         btnBookEvent = new javax.swing.JButton();
+        lblBooked = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        lstDetails = new javax.swing.JList<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        lstBooked = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
         lblLectLogo = new javax.swing.JLabel();
         btnLHome = new javax.swing.JButton();
@@ -64,21 +69,13 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         spPending.setViewportView(lstPending);
 
         pnlPending.add(spPending);
-        spPending.setBounds(30, 60, 370, 320);
+        spPending.setBounds(30, 60, 370, 330);
 
         lblEDetails.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 18)); // NOI18N
         lblEDetails.setForeground(new java.awt.Color(0, 0, 0));
         lblEDetails.setText("EVENT DETAILS  ");
         pnlPending.add(lblEDetails);
         lblEDetails.setBounds(590, 20, 140, 25);
-
-        txtEDetails.setColumns(20);
-        txtEDetails.setFont(new java.awt.Font("Malgun Gothic", 1, 12)); // NOI18N
-        txtEDetails.setRows(5);
-        spDetailsE.setViewportView(txtEDetails);
-
-        pnlPending.add(spDetailsE);
-        spDetailsE.setBounds(470, 60, 370, 260);
 
         btnAppStatus.setBackground(new java.awt.Color(102, 153, 255));
         btnAppStatus.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
@@ -100,6 +97,16 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         btnDenyStatus.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(102, 102, 255), new java.awt.Color(255, 255, 255), null, null));
         pnlPending.add(btnDenyStatus);
         btnDenyStatus.setBounds(470, 360, 370, 24);
+
+        lstEDetails.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
+        jScrollPane4.setViewportView(lstEDetails);
+
+        pnlPending.add(jScrollPane4);
+        jScrollPane4.setBounds(470, 60, 370, 260);
+
+        jPanel1.setBackground(new java.awt.Color(102, 153, 255));
+        pnlPending.add(jPanel1);
+        jPanel1.setBounds(430, 60, 10, 330);
 
         jLabel1.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
@@ -135,16 +142,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         jScrollPane1.setViewportView(lstEventsL);
 
         pnlLive.add(jScrollPane1);
-        jScrollPane1.setBounds(30, 60, 370, 320);
-
-        txtDispDetails.setBackground(new java.awt.Color(0, 51, 102));
-        txtDispDetails.setColumns(20);
-        txtDispDetails.setFont(new java.awt.Font("Malgun Gothic", 1, 12)); // NOI18N
-        txtDispDetails.setRows(5);
-        jScrollPane2.setViewportView(txtDispDetails);
-
-        pnlLive.add(jScrollPane2);
-        jScrollPane2.setBounds(470, 60, 370, 280);
+        jScrollPane1.setBounds(30, 50, 370, 350);
 
         btnBookEvent.setBackground(new java.awt.Color(102, 153, 255));
         btnBookEvent.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
@@ -152,7 +150,31 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         btnBookEvent.setText("BOOK EVENT");
         btnBookEvent.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlLive.add(btnBookEvent);
-        btnBookEvent.setBounds(470, 350, 370, 30);
+        btnBookEvent.setBounds(470, 200, 370, 30);
+
+        lblBooked.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        lblBooked.setForeground(new java.awt.Color(0, 0, 0));
+        lblBooked.setText("BOOKED EVENTS");
+        pnlLive.add(lblBooked);
+        lblBooked.setBounds(470, 240, 120, 20);
+
+        jPanel2.setBackground(new java.awt.Color(102, 153, 255));
+        pnlLive.add(jPanel2);
+        jPanel2.setBounds(430, 50, 100, 350);
+
+        lstDetails.setBackground(new java.awt.Color(0, 51, 102));
+        lstDetails.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
+        jScrollPane5.setViewportView(lstDetails);
+
+        pnlLive.add(jScrollPane5);
+        jScrollPane5.setBounds(470, 50, 370, 140);
+
+        lstBooked.setBackground(new java.awt.Color(0, 51, 102));
+        lstBooked.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
+        jScrollPane2.setViewportView(lstBooked);
+
+        pnlLive.add(jScrollPane2);
+        jScrollPane2.setBounds(470, 260, 370, 131);
 
         jLabel3.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
@@ -176,7 +198,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         btnLHome.setText("HOME");
         btnLHome.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(153, 153, 255), null, null));
         getContentPane().add(btnLHome);
-        btnLHome.setBounds(530, 20, 120, 26);
+        btnLHome.setBounds(530, 20, 120, 30);
 
         btnLGallery.setBackground(new java.awt.Color(102, 153, 255));
         btnLGallery.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
@@ -184,7 +206,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         btnLGallery.setText("GALLERY");
         btnLGallery.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(153, 153, 255), null, null));
         getContentPane().add(btnLGallery);
-        btnLGallery.setBounds(660, 20, 120, 26);
+        btnLGallery.setBounds(660, 20, 120, 30);
 
         btnLSignOut.setBackground(new java.awt.Color(102, 153, 255));
         btnLSignOut.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
@@ -197,7 +219,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnLSignOut);
-        btnLSignOut.setBounds(790, 20, 120, 26);
+        btnLSignOut.setBounds(790, 20, 120, 30);
 
         jLabel2.setBackground(new java.awt.Color(102, 153, 255));
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\white_blue_marble_hd_marble.jpg")); // NOI18N
@@ -261,21 +283,26 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JLabel lblBooked;
     private javax.swing.JLabel lblDetailsEvent;
     private javax.swing.JLabel lblEDetails;
     private javax.swing.JLabel lblLectLogo;
     private javax.swing.JLabel lblLiveE;
     private javax.swing.JLabel lblPending;
+    private javax.swing.JList<String> lstBooked;
+    private javax.swing.JList<String> lstDetails;
+    private javax.swing.JList<String> lstEDetails;
     private javax.swing.JList<String> lstEventsL;
     private javax.swing.JList<String> lstPending;
     private javax.swing.JPanel pnlLive;
     private javax.swing.JPanel pnlPending;
-    private javax.swing.JScrollPane spDetailsE;
     private javax.swing.JScrollPane spPending;
     private javax.swing.JTabbedPane tabLecturer;
-    private javax.swing.JTextArea txtDispDetails;
-    private javax.swing.JTextArea txtEDetails;
     // End of variables declaration//GEN-END:variables
 }
