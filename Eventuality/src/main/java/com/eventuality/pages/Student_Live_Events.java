@@ -19,24 +19,6 @@ public class Student_Live_Events extends javax.swing.JFrame {
     private void initComponents() {
 
         tabStudent = new javax.swing.JTabbedPane();
-        pnlLiveEvents = new javax.swing.JPanel();
-        lblLive = new javax.swing.JLabel();
-        btnBook = new javax.swing.JButton();
-        lblDetails = new javax.swing.JLabel();
-        lblBooked = new javax.swing.JLabel();
-        spBookedE = new javax.swing.JScrollPane();
-        lstBooked = new javax.swing.JList<>();
-        spLiveEvents = new javax.swing.JScrollPane();
-        lstLiveEvents = new javax.swing.JList<>();
-        jPanel4 = new javax.swing.JPanel();
-        lblApprove = new javax.swing.JLabel();
-        lblTCreate = new javax.swing.JLabel();
-        btnStatus = new javax.swing.JButton();
-        lblMyEvents = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        lstEventDetails = new javax.swing.JList<>();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
         pnlMyEvents = new javax.swing.JPanel();
         txtTitle = new javax.swing.JTextField();
         lblTitle = new javax.swing.JLabel();
@@ -67,6 +49,24 @@ public class Student_Live_Events extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         lstVolunteers = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
+        pnlLiveEvents = new javax.swing.JPanel();
+        lblLive = new javax.swing.JLabel();
+        btnBook = new javax.swing.JButton();
+        lblDetails = new javax.swing.JLabel();
+        lblBooked = new javax.swing.JLabel();
+        spBookedE = new javax.swing.JScrollPane();
+        lstBooked = new javax.swing.JList<>();
+        spLiveEvents = new javax.swing.JScrollPane();
+        lstLiveEvents = new javax.swing.JList<>();
+        jPanel4 = new javax.swing.JPanel();
+        lblApprove = new javax.swing.JLabel();
+        lblTCreate = new javax.swing.JLabel();
+        btnStatus = new javax.swing.JButton();
+        lblMyEvents = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lstEventDetails = new javax.swing.JList<>();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         navHome = new javax.swing.JButton();
         navGallery = new javax.swing.JButton();
         btnSignOut = new javax.swing.JButton();
@@ -78,6 +78,225 @@ public class Student_Live_Events extends javax.swing.JFrame {
 
         tabStudent.setBackground(new java.awt.Color(102, 153, 255));
         tabStudent.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
+
+        pnlMyEvents.setLayout(null);
+
+        txtTitle.setBackground(new java.awt.Color(102, 153, 255));
+        txtTitle.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
+        txtTitle.setForeground(new java.awt.Color(0, 0, 0));
+        txtTitle.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        txtTitle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTitleActionPerformed(evt);
+            }
+        });
+        pnlMyEvents.add(txtTitle);
+        txtTitle.setBounds(30, 80, 410, 30);
+
+        lblTitle.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(0, 0, 0));
+        lblTitle.setText("Title:");
+        pnlMyEvents.add(lblTitle);
+        lblTitle.setBounds(30, 60, 110, 20);
+
+        cbxCategory.setBackground(new java.awt.Color(102, 153, 255));
+        cbxCategory.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
+        cbxCategory.setForeground(new java.awt.Color(0, 0, 0));
+        cbxCategory.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlMyEvents.add(cbxCategory);
+        cbxCategory.setBounds(30, 310, 410, 30);
+
+        jCalender.setBackground(new java.awt.Color(102, 153, 255));
+        jCalender.setForeground(new java.awt.Color(0, 0, 0));
+        jCalender.setDateFormatString("dd MMM yyyy");
+        jCalender.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
+        jCalender.setOpaque(false);
+        pnlMyEvents.add(jCalender);
+        jCalender.setBounds(30, 260, 180, 30);
+
+        lblDescription.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        lblDescription.setForeground(new java.awt.Color(0, 0, 0));
+        lblDescription.setText("Description:");
+        pnlMyEvents.add(lblDescription);
+        lblDescription.setBounds(30, 110, 110, 20);
+
+        cbxSTime.setBackground(new java.awt.Color(102, 153, 255));
+        cbxSTime.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
+        cbxSTime.setForeground(new java.awt.Color(0, 0, 0));
+        cbxSTime.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", " " }));
+        cbxSTime.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cbxSTime.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxSTimeActionPerformed(evt);
+            }
+        });
+        pnlMyEvents.add(cbxSTime);
+        cbxSTime.setBounds(230, 260, 100, 30);
+
+        cbxETime.setBackground(new java.awt.Color(102, 153, 255));
+        cbxETime.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
+        cbxETime.setForeground(new java.awt.Color(0, 0, 0));
+        cbxETime.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "00:00" }));
+        cbxETime.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cbxETime.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxETimeActionPerformed(evt);
+            }
+        });
+        pnlMyEvents.add(cbxETime);
+        cbxETime.setBounds(340, 260, 100, 30);
+
+        cbxCapacity.setBackground(new java.awt.Color(102, 153, 255));
+        cbxCapacity.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
+        cbxCapacity.setForeground(new java.awt.Color(0, 0, 0));
+        cbxCapacity.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlMyEvents.add(cbxCapacity);
+        cbxCapacity.setBounds(340, 360, 100, 30);
+
+        txtStudentNo.setBackground(new java.awt.Color(102, 153, 255));
+        txtStudentNo.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
+        txtStudentNo.setForeground(new java.awt.Color(0, 0, 0));
+        txtStudentNo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        pnlMyEvents.add(txtStudentNo);
+        txtStudentNo.setBounds(490, 80, 170, 30);
+
+        cbxVolunteer.setBackground(new java.awt.Color(102, 153, 255));
+        cbxVolunteer.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
+        cbxVolunteer.setForeground(new java.awt.Color(0, 0, 0));
+        cbxVolunteer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlMyEvents.add(cbxVolunteer);
+        cbxVolunteer.setBounds(670, 80, 230, 30);
+
+        btnRegister.setBackground(new java.awt.Color(102, 153, 255));
+        btnRegister.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
+        btnRegister.setForeground(new java.awt.Color(0, 0, 0));
+        btnRegister.setText("REGISTER STAFF");
+        btnRegister.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlMyEvents.add(btnRegister);
+        btnRegister.setBounds(490, 120, 410, 24);
+
+        btnApprove.setBackground(new java.awt.Color(102, 153, 255));
+        btnApprove.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
+        btnApprove.setForeground(new java.awt.Color(0, 0, 0));
+        btnApprove.setText("REQUEST APPROVAL");
+        btnApprove.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlMyEvents.add(btnApprove);
+        btnApprove.setBounds(490, 330, 410, 24);
+
+        lblCreate.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 18)); // NOI18N
+        lblCreate.setForeground(new java.awt.Color(0, 0, 0));
+        lblCreate.setText("CREATE EVENT");
+        pnlMyEvents.add(lblCreate);
+        lblCreate.setBounds(400, 20, 130, 25);
+
+        btnRedo.setBackground(new java.awt.Color(102, 153, 255));
+        btnRedo.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
+        btnRedo.setForeground(new java.awt.Color(0, 0, 0));
+        btnRedo.setText("RE-CREATE EVENT");
+        btnRedo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnRedo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRedoActionPerformed(evt);
+            }
+        });
+        pnlMyEvents.add(btnRedo);
+        btnRedo.setBounds(490, 360, 410, 24);
+
+        txtDescript.setBackground(new java.awt.Color(102, 153, 255));
+        txtDescript.setColumns(20);
+        txtDescript.setForeground(new java.awt.Color(0, 0, 0));
+        txtDescript.setRows(5);
+        txtDescription.setViewportView(txtDescript);
+
+        pnlMyEvents.add(txtDescription);
+        txtDescription.setBounds(30, 130, 410, 80);
+
+        lblDate.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        lblDate.setForeground(new java.awt.Color(0, 0, 0));
+        lblDate.setText("Date: ");
+        pnlMyEvents.add(lblDate);
+        lblDate.setBounds(30, 240, 110, 20);
+
+        lblSTime.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        lblSTime.setForeground(new java.awt.Color(0, 0, 0));
+        lblSTime.setText("Start Time:");
+        pnlMyEvents.add(lblSTime);
+        lblSTime.setBounds(230, 240, 110, 20);
+
+        lblETime.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        lblETime.setForeground(new java.awt.Color(0, 0, 0));
+        lblETime.setText("End Time:");
+        pnlMyEvents.add(lblETime);
+        lblETime.setBounds(340, 240, 110, 20);
+
+        lblLocation.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        lblLocation.setForeground(new java.awt.Color(0, 0, 0));
+        lblLocation.setText("Location:");
+        pnlMyEvents.add(lblLocation);
+        lblLocation.setBounds(30, 340, 110, 20);
+
+        cbxCampus.setBackground(new java.awt.Color(102, 153, 255));
+        cbxCampus.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
+        cbxCampus.setForeground(new java.awt.Color(0, 0, 0));
+        cbxCampus.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlMyEvents.add(cbxCampus);
+        cbxCampus.setBounds(30, 360, 300, 30);
+
+        lblCapacity.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        lblCapacity.setForeground(new java.awt.Color(0, 0, 0));
+        lblCapacity.setText("Capacity:");
+        pnlMyEvents.add(lblCapacity);
+        lblCapacity.setBounds(340, 340, 110, 20);
+
+        lblCategory.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        lblCategory.setForeground(new java.awt.Color(0, 0, 0));
+        lblCategory.setText("Category:");
+        pnlMyEvents.add(lblCategory);
+        lblCategory.setBounds(30, 290, 110, 20);
+
+        lblStudNo.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        lblStudNo.setForeground(new java.awt.Color(0, 0, 0));
+        lblStudNo.setText("Volunteer ID:");
+        pnlMyEvents.add(lblStudNo);
+        lblStudNo.setBounds(490, 60, 150, 20);
+
+        lblRoll.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        lblRoll.setForeground(new java.awt.Color(0, 0, 0));
+        lblRoll.setText("Registered Roll:");
+        pnlMyEvents.add(lblRoll);
+        lblRoll.setBounds(670, 60, 100, 20);
+
+        jPanel1.setBackground(new java.awt.Color(102, 153, 255));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 310, Short.MAX_VALUE)
+        );
+
+        pnlMyEvents.add(jPanel1);
+        jPanel1.setBounds(460, 80, 10, 310);
+
+        lstVolunteers.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
+        jScrollPane2.setViewportView(lstVolunteers);
+
+        pnlMyEvents.add(jScrollPane2);
+        jScrollPane2.setBounds(490, 150, 410, 170);
+
+        jLabel1.setBackground(new java.awt.Color(102, 153, 255));
+        jLabel1.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\white_blue_marble_hd_marble.jpg")); // NOI18N
+        jLabel1.setText("jLabel1");
+        pnlMyEvents.add(jLabel1);
+        jLabel1.setBounds(0, 0, 940, 450);
+
+        tabStudent.addTab("MY EVENTS", pnlMyEvents);
 
         pnlLiveEvents.setLayout(null);
 
@@ -136,6 +355,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
         lblApprove.setForeground(new java.awt.Color(0, 0, 153));
         lblApprove.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblApprove.setText("STATUS ");
+        lblApprove.setEnabled(false);
         jPanel4.add(lblApprove);
         lblApprove.setBounds(0, 50, 410, 17);
 
@@ -202,218 +422,6 @@ public class Student_Live_Events extends javax.swing.JFrame {
 
         tabStudent.addTab("LIVE EVENTS", pnlLiveEvents);
 
-        pnlMyEvents.setLayout(null);
-
-        txtTitle.setBackground(new java.awt.Color(102, 153, 255));
-        txtTitle.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
-        txtTitle.setForeground(new java.awt.Color(0, 0, 0));
-        txtTitle.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        txtTitle.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTitleActionPerformed(evt);
-            }
-        });
-        pnlMyEvents.add(txtTitle);
-        txtTitle.setBounds(30, 80, 410, 30);
-
-        lblTitle.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
-        lblTitle.setForeground(new java.awt.Color(0, 0, 0));
-        lblTitle.setText("Title:");
-        pnlMyEvents.add(lblTitle);
-        lblTitle.setBounds(30, 60, 110, 20);
-
-        cbxCategory.setBackground(new java.awt.Color(102, 153, 255));
-        cbxCategory.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
-        cbxCategory.setForeground(new java.awt.Color(0, 0, 0));
-        cbxCategory.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        pnlMyEvents.add(cbxCategory);
-        cbxCategory.setBounds(30, 260, 410, 30);
-
-        jCalender.setBackground(new java.awt.Color(102, 153, 255));
-        jCalender.setForeground(new java.awt.Color(0, 0, 0));
-        jCalender.setDateFormatString("dd MMM yyyy");
-        jCalender.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
-        jCalender.setOpaque(false);
-        pnlMyEvents.add(jCalender);
-        jCalender.setBounds(30, 210, 180, 30);
-
-        lblDescription.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
-        lblDescription.setForeground(new java.awt.Color(0, 0, 0));
-        lblDescription.setText("Description:");
-        pnlMyEvents.add(lblDescription);
-        lblDescription.setBounds(30, 110, 110, 20);
-
-        cbxSTime.setBackground(new java.awt.Color(102, 153, 255));
-        cbxSTime.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
-        cbxSTime.setForeground(new java.awt.Color(0, 0, 0));
-        cbxSTime.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        cbxSTime.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxSTimeActionPerformed(evt);
-            }
-        });
-        pnlMyEvents.add(cbxSTime);
-        cbxSTime.setBounds(230, 210, 100, 30);
-
-        cbxETime.setBackground(new java.awt.Color(102, 153, 255));
-        cbxETime.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
-        cbxETime.setForeground(new java.awt.Color(0, 0, 0));
-        cbxETime.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        cbxETime.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxETimeActionPerformed(evt);
-            }
-        });
-        pnlMyEvents.add(cbxETime);
-        cbxETime.setBounds(340, 210, 100, 30);
-
-        cbxCapacity.setBackground(new java.awt.Color(102, 153, 255));
-        cbxCapacity.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
-        cbxCapacity.setForeground(new java.awt.Color(0, 0, 0));
-        cbxCapacity.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        pnlMyEvents.add(cbxCapacity);
-        cbxCapacity.setBounds(340, 310, 100, 30);
-
-        txtStudentNo.setBackground(new java.awt.Color(102, 153, 255));
-        txtStudentNo.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
-        txtStudentNo.setForeground(new java.awt.Color(0, 0, 0));
-        txtStudentNo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        pnlMyEvents.add(txtStudentNo);
-        txtStudentNo.setBounds(490, 80, 170, 30);
-
-        cbxVolunteer.setBackground(new java.awt.Color(102, 153, 255));
-        cbxVolunteer.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
-        cbxVolunteer.setForeground(new java.awt.Color(0, 0, 0));
-        cbxVolunteer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        pnlMyEvents.add(cbxVolunteer);
-        cbxVolunteer.setBounds(670, 80, 230, 30);
-
-        btnRegister.setBackground(new java.awt.Color(102, 153, 255));
-        btnRegister.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
-        btnRegister.setForeground(new java.awt.Color(0, 0, 0));
-        btnRegister.setText("REGISTER STAFF");
-        btnRegister.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        pnlMyEvents.add(btnRegister);
-        btnRegister.setBounds(490, 120, 410, 24);
-
-        btnApprove.setBackground(new java.awt.Color(102, 153, 255));
-        btnApprove.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
-        btnApprove.setForeground(new java.awt.Color(0, 0, 0));
-        btnApprove.setText("REQUEST APPROVAL");
-        btnApprove.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        pnlMyEvents.add(btnApprove);
-        btnApprove.setBounds(30, 370, 410, 24);
-
-        lblCreate.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 18)); // NOI18N
-        lblCreate.setForeground(new java.awt.Color(0, 0, 0));
-        lblCreate.setText("CREATE EVENT");
-        pnlMyEvents.add(lblCreate);
-        lblCreate.setBounds(400, 20, 130, 25);
-
-        btnRedo.setBackground(new java.awt.Color(102, 153, 255));
-        btnRedo.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
-        btnRedo.setForeground(new java.awt.Color(0, 0, 0));
-        btnRedo.setText("RE-CREATE EVENT");
-        btnRedo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        pnlMyEvents.add(btnRedo);
-        btnRedo.setBounds(490, 370, 410, 24);
-
-        txtDescript.setBackground(new java.awt.Color(102, 153, 255));
-        txtDescript.setColumns(20);
-        txtDescript.setForeground(new java.awt.Color(0, 0, 0));
-        txtDescript.setRows(5);
-        txtDescription.setViewportView(txtDescript);
-
-        pnlMyEvents.add(txtDescription);
-        txtDescription.setBounds(30, 130, 410, 50);
-
-        lblDate.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
-        lblDate.setForeground(new java.awt.Color(0, 0, 0));
-        lblDate.setText("Date: ");
-        pnlMyEvents.add(lblDate);
-        lblDate.setBounds(30, 190, 110, 20);
-
-        lblSTime.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
-        lblSTime.setForeground(new java.awt.Color(0, 0, 0));
-        lblSTime.setText("Start Time:");
-        pnlMyEvents.add(lblSTime);
-        lblSTime.setBounds(230, 190, 110, 20);
-
-        lblETime.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
-        lblETime.setForeground(new java.awt.Color(0, 0, 0));
-        lblETime.setText("End Time:");
-        pnlMyEvents.add(lblETime);
-        lblETime.setBounds(340, 190, 110, 20);
-
-        lblLocation.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
-        lblLocation.setForeground(new java.awt.Color(0, 0, 0));
-        lblLocation.setText("Location:");
-        pnlMyEvents.add(lblLocation);
-        lblLocation.setBounds(30, 290, 110, 20);
-
-        cbxCampus.setBackground(new java.awt.Color(102, 153, 255));
-        cbxCampus.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
-        cbxCampus.setForeground(new java.awt.Color(0, 0, 0));
-        cbxCampus.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        pnlMyEvents.add(cbxCampus);
-        cbxCampus.setBounds(30, 310, 300, 30);
-
-        lblCapacity.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
-        lblCapacity.setForeground(new java.awt.Color(0, 0, 0));
-        lblCapacity.setText("Capacity:");
-        pnlMyEvents.add(lblCapacity);
-        lblCapacity.setBounds(340, 290, 110, 20);
-
-        lblCategory.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
-        lblCategory.setForeground(new java.awt.Color(0, 0, 0));
-        lblCategory.setText("Category:");
-        pnlMyEvents.add(lblCategory);
-        lblCategory.setBounds(30, 240, 110, 20);
-
-        lblStudNo.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
-        lblStudNo.setForeground(new java.awt.Color(0, 0, 0));
-        lblStudNo.setText("Volunteer ID:");
-        pnlMyEvents.add(lblStudNo);
-        lblStudNo.setBounds(490, 60, 150, 20);
-
-        lblRoll.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
-        lblRoll.setForeground(new java.awt.Color(0, 0, 0));
-        lblRoll.setText("Registered Roll:");
-        pnlMyEvents.add(lblRoll);
-        lblRoll.setBounds(670, 60, 100, 20);
-
-        jPanel1.setBackground(new java.awt.Color(102, 153, 255));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 310, Short.MAX_VALUE)
-        );
-
-        pnlMyEvents.add(jPanel1);
-        jPanel1.setBounds(460, 80, 10, 310);
-
-        lstVolunteers.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
-        jScrollPane2.setViewportView(lstVolunteers);
-
-        pnlMyEvents.add(jScrollPane2);
-        jScrollPane2.setBounds(490, 160, 410, 180);
-
-        jLabel1.setBackground(new java.awt.Color(102, 153, 255));
-        jLabel1.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\white_blue_marble_hd_marble.jpg")); // NOI18N
-        jLabel1.setText("jLabel1");
-        pnlMyEvents.add(jLabel1);
-        jLabel1.setBounds(0, 0, 940, 450);
-
-        tabStudent.addTab("MY EVENTS", pnlMyEvents);
-
         getContentPane().add(tabStudent);
         tabStudent.setBounds(10, 90, 940, 440);
         tabStudent.getAccessibleContext().setAccessibleName("LIVE EVENTS");
@@ -476,6 +484,10 @@ public class Student_Live_Events extends javax.swing.JFrame {
     private void btnBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBookActionPerformed
+
+    private void btnRedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRedoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRedoActionPerformed
 
     /**
      * @param args the command line arguments
