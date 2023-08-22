@@ -10,8 +10,8 @@ public class DbConnect {
     private final Statement s;
 
     public DbConnect() throws SQLException {
-        this.s = StatementCreate();
         this.c = ConnectToDB();
+        this.s = StatementCreate();
     }
 
     public Connection getC() {
