@@ -18,21 +18,204 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        imgAvatar = new javax.swing.JLabel();
+        navGallery = new javax.swing.JButton();
+        navHome = new javax.swing.JButton();
+        lblLogo = new javax.swing.JLabel();
+        tabLogin = new javax.swing.JTabbedPane();
+        pnlLogin = new javax.swing.JPanel();
+        txtPass = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        btnLog = new javax.swing.JButton();
+        btnForgotPass = new javax.swing.JButton();
+        pnlSignIn = new javax.swing.JPanel();
+        txtName = new javax.swing.JTextField();
+        txtSurname = new javax.swing.JTextField();
+        txtSID = new javax.swing.JTextField();
+        txtSEmail = new javax.swing.JTextField();
+        txtSPass = new javax.swing.JTextField();
+        txtConfirmPass = new javax.swing.JTextField();
+        btnSignIn = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        imgAvatar.setText("AVATAR");
+
+        navGallery.setText("Gallery");
+
+        navHome.setText("Home");
+        navHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                navHomeActionPerformed(evt);
+            }
+        });
+
+        lblLogo.setText("LOGO");
+
+        txtPass.setText("PASSWORD");
+
+        txtEmail.setText("EMAIL");
+
+        btnLog.setText("LOGIN");
+
+        btnForgotPass.setText("Forgot Password");
+        btnForgotPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnForgotPassActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlLoginLayout = new javax.swing.GroupLayout(pnlLogin);
+        pnlLogin.setLayout(pnlLoginLayout);
+        pnlLoginLayout.setHorizontalGroup(
+            pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlLoginLayout.createSequentialGroup()
+                .addGroup(pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlLoginLayout.createSequentialGroup()
+                        .addGap(188, 188, 188)
+                        .addGroup(pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pnlLoginLayout.createSequentialGroup()
+                        .addGap(248, 248, 248)
+                        .addComponent(btnLog))
+                    .addGroup(pnlLoginLayout.createSequentialGroup()
+                        .addGap(208, 208, 208)
+                        .addComponent(btnForgotPass)))
+                .addContainerGap(371, Short.MAX_VALUE))
+        );
+        pnlLoginLayout.setVerticalGroup(
+            pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoginLayout.createSequentialGroup()
+                .addContainerGap(125, Short.MAX_VALUE)
+                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(btnForgotPass)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnLog)
+                .addContainerGap())
+        );
+
+        txtPass.getAccessibleContext().setAccessibleName("txtPass");
+        txtEmail.getAccessibleContext().setAccessibleName("txtEmail");
+
+        tabLogin.addTab("LOGIN", pnlLogin);
+
+        txtName.setText("Name");
+        txtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameActionPerformed(evt);
+            }
+        });
+
+        txtSurname.setText("Surname");
+
+        txtSID.setText("Campus ID Number");
+
+        txtSEmail.setText("Email");
+
+        txtSPass.setText("Password");
+
+        txtConfirmPass.setText("Confirm Password");
+
+        btnSignIn.setText("SIGN IN");
+
+        javax.swing.GroupLayout pnlSignInLayout = new javax.swing.GroupLayout(pnlSignIn);
+        pnlSignIn.setLayout(pnlSignInLayout);
+        pnlSignInLayout.setHorizontalGroup(
+            pnlSignInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSignInLayout.createSequentialGroup()
+                .addGroup(pnlSignInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlSignInLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(pnlSignInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlSignInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtSID, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtSPass, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtSEmail, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtConfirmPass, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlSignInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtName, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtSurname, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(pnlSignInLayout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(btnSignIn)))
+                .addContainerGap(519, Short.MAX_VALUE))
+        );
+        pnlSignInLayout.setVerticalGroup(
+            pnlSignInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSignInLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtSurname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtSID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtSEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtSPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtConfirmPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnSignIn)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+
+        tabLogin.addTab("SIGN UP", pnlSignIn);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(lblLogo)
+                .addGap(173, 173, 173)
+                .addComponent(imgAvatar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(navGallery)
+                .addGap(52, 52, 52)
+                .addComponent(navHome)
+                .addGap(130, 130, 130))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(tabLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 729, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(imgAvatar)
+                        .addComponent(navHome)
+                        .addComponent(lblLogo))
+                    .addComponent(navGallery))
+                .addGap(66, 66, 66)
+                .addComponent(tabLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
+
+        imgAvatar.getAccessibleContext().setAccessibleName("imgAvatar");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnForgotPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForgotPassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnForgotPassActionPerformed
+
+    private void navHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navHomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_navHomeActionPerformed
+
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,5 +253,23 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnForgotPass;
+    private javax.swing.JButton btnLog;
+    private javax.swing.JButton btnSignIn;
+    private javax.swing.JLabel imgAvatar;
+    private javax.swing.JLabel lblLogo;
+    private javax.swing.JButton navGallery;
+    private javax.swing.JButton navHome;
+    private javax.swing.JPanel pnlLogin;
+    private javax.swing.JPanel pnlSignIn;
+    private javax.swing.JTabbedPane tabLogin;
+    private javax.swing.JTextField txtConfirmPass;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPass;
+    private javax.swing.JTextField txtSEmail;
+    private javax.swing.JTextField txtSID;
+    private javax.swing.JTextField txtSPass;
+    private javax.swing.JTextField txtSurname;
     // End of variables declaration//GEN-END:variables
 }

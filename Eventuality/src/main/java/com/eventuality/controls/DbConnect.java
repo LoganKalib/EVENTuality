@@ -6,17 +6,34 @@ public class DbConnect {
     
     //please note the URL will change on windows so we need to remember
     private String dbURL = "jdbc:derby:/home/logan/Documents/GitHub/EVENTuality/Database/Eventuality";
-    
-    private Connection ConnectToDB() throws SQLException{
-        return DriverManager.getConnection(dbURL, "Admin","Password");
+    private final Connection c;
+    private final Statement s;
+
+    public DbConnect() throws SQLException {
+        this.s = StatementCreate();
+        this.c = ConnectToDB();
+    }
+
+    public Connection getC() {
+        return c;
+    }
+
+    public Statement getS() {
+        return s;
     }
     
-    public Statement StatementCreate(Connection c) throws SQLException{
+    
+    
+    private Connection ConnectToDB() throws SQLException{
+        return DriverManager.getConnection(dbURL, "APP","Password");
+    }
+    
+    private Statement StatementCreate() throws SQLException{
         return c.createStatement();
     }
     
-    public void CloseAll(Statement s, Connection c) throws SQLException{
-        s.close();
-        c.close();
+    public void CloseAll() throws SQLException{
+        this.s.close();
+        this.c.close();
     }
 }
