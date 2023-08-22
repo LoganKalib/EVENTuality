@@ -12,8 +12,12 @@ public class Connetions {
             
             ArrayList<Event> arr = new ArrayList();
             
+            arr = evt.SelectTable(db.getS());
+            db.CloseAll();
+            
             for(var i : arr){
                 System.out.println(i.toString());
+                System.out.println("------------------------------------");
             }
             
         } catch(Exception ex){
