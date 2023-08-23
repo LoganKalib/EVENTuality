@@ -6,6 +6,7 @@ import com.eventuality.controls.StudentDAO;
 import com.eventuality.objects.Lecturer;
 import com.eventuality.objects.Student;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
 
@@ -305,7 +306,44 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogActionPerformed
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
-
+        if(evt.getSource() == btnSignIn){
+            if(cbxRoll.getSelectedIndex() == 0){
+                stu = new Student();
+                stu.setStudName(txtName.getText());
+                stu.setStudSurname(txtSurname.getText());
+                stu.setStudNum(Integer.parseInt(txtSID.getText()));
+                stu.setStudEmail(txtEmail.getText());
+                if(txtSPass.getText().equals(txtConfirmPass.getText())){
+                    stu.setStudPassword(txtSPass.getText());
+                }else{
+                    JOptionPane.showMessageDialog(rootPane, "Passwords do not match.");
+                }
+                StudentDAO studDao = new StudentDAO();
+                try{
+                 studDao.InsertRecord(db.getC(), stu);   
+                }catch(SQLException ex){
+                    System.out.println("Err:" + ex.getMessage());
+                }
+                
+            } else{
+                lec = new Lecturer();
+                lec.setLectName(txtName.getText());
+                lec.setLectSurname(txtSurname.getText());
+                lec.setStaffNumber(Integer.parseInt(txtSID.getText()));
+                lec.setLectEmail(txtEmail.getText());
+                if(txtSPass.getText().equals(txtConfirmPass.getText())){
+                    lec.setLectPassword(txtSPass.getText());
+                }else{
+                    JOptionPane.showMessageDialog(rootPane, "Passwords do not match.");
+                }
+                LecturerDAO lecDao = new LecturerDAO();
+                try{
+                    lecDao.InsertRecord(db.getC(), lec);
+                }catch(SQLException ex){
+                    System.out.println("Err:" + ex.getMessage());
+                }
+            }
+        }
     }//GEN-LAST:event_btnSignInActionPerformed
 
     /**

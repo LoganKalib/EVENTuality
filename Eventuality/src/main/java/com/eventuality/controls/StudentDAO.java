@@ -69,4 +69,16 @@ public class StudentDAO {
         ps.close();
     }
     
+    
+    public void InsertRecord(Connection c, Student stud) throws SQLException{
+        insert_Values_stmt = "INSERT INTO Student VALUES(?,?,?,?,?)";
+        PreparedStatement ps = c.prepareStatement(insert_Values_stmt);
+        int rows = ps.executeUpdate();
+        
+        if(rows!=0){
+            JOptionPane.showMessageDialog(null, "Row added successfully.");
+        }
+        ps.close();
+    }
+    
 }
