@@ -11,8 +11,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
 
 public class Student_Live_Events extends javax.swing.JFrame {
+    
+    private DbConnect db;
+    private ArrayList<Volunteer> volArr = new ArrayList();
 
     /**
      * Creates new form Student_Live_Events
@@ -22,7 +27,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
 
         try {
 
-            DbConnect db = new DbConnect();
+            db = new DbConnect();
             EventTypeDAO evtTypeDAO = new EventTypeDAO();
             ArrayList<Event_Category> evtType = evtTypeDAO.SelectTable(db.getS());
 
@@ -44,8 +49,6 @@ public class Student_Live_Events extends javax.swing.JFrame {
             for (var i : volArr) {
                 cbxVolunteer.addItem(i.getRole());
             }
-
-            db.CloseAll();
 
         } catch (SQLException ex) {
             Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
@@ -512,7 +515,17 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRedoActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        // TODO add your handling code here:
+        if(evt.getSource() == btnRegister){
+            DefaultListModel<String> dlm = new DefaultListModel();
+            Volunteer vol = new Volunteer();
+            vol.setStudentNumber(Integer.parseInt(txtStudentNo.getText()));
+            vol.setRole((String)cbxVolunteer.getSelectedItem());
+            volArr.add(vol);
+            dlm.addElement(vol.getStudentNumber() + "-" + vol.getRole());
+            lstVolunteers = new JList(dlm);
+            txtStudentNo.setText("");
+            cbxVolunteer.setSelectedIndex(0);
+        }
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
