@@ -39,6 +39,7 @@ public class Login extends javax.swing.JFrame {
         imgAvatar = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        cboRoll = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         pnlSignIn = new javax.swing.JPanel();
         txtName = new javax.swing.JTextField();
@@ -57,6 +58,7 @@ public class Login extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         lblWlcome1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        cbxRoll = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -139,6 +141,10 @@ public class Login extends javax.swing.JFrame {
         jLabel11.setText("Email:");
         pnlLogin.add(jLabel11);
         jLabel11.setBounds(300, 210, 50, 20);
+
+        cboRoll.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Lecturer" }));
+        pnlLogin.add(cboRoll);
+        cboRoll.setBounds(110, 150, 160, 22);
 
         jLabel2.setText("jLabel2");
         pnlLogin.add(jLabel2);
@@ -240,6 +246,10 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(102, 153, 255));
         pnlSignIn.add(jPanel1);
         jPanel1.setBounds(20, 50, 870, 10);
+
+        cbxRoll.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Lecturer" }));
+        pnlSignIn.add(cbxRoll);
+        cbxRoll.setBounds(110, 160, 150, 22);
         pnlSignIn.add(jLabel3);
         jLabel3.setBounds(-10, 0, 940, 420);
 
@@ -268,7 +278,7 @@ public class Login extends javax.swing.JFrame {
             String email = txtEmail.getText();
             String[] array;
             array = email.split("@");
-            if(array[1].equalsIgnoreCase("mycput.ac.za")){
+            if(cboRoll.getSelectedIndex()==0){
                 try{
                     db = new DbConnect();
                     StudentDAO dao = new StudentDAO();
@@ -281,7 +291,7 @@ public class Login extends javax.swing.JFrame {
                     System.out.println("Error during sign in");
                 }
             }
-            if(array[1].equalsIgnoreCase("cput.ac.za")){
+            if(cboRoll.getSelectedIndex()==1){
                 try{
                     db = new DbConnect();
                     LecturerDAO dao = new LecturerDAO();
@@ -341,6 +351,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton btnForgotPass;
     private javax.swing.JButton btnLog;
     private javax.swing.JButton btnSignIn;
+    private javax.swing.JComboBox<String> cboRoll;
+    private javax.swing.JComboBox<String> cbxRoll;
     private javax.swing.JLabel imgAvatar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
