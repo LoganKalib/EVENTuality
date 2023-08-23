@@ -65,4 +65,26 @@ public class EventDAO {
         }
         ps.close();
     }
+    
+    public void InsertRecord(Connection c, Event obj) throws SQLException{
+        insert_Values_stmt = "INSERT INTO EVENT VALUES(?,?,?,?,?,?,?,?,?,?)";
+        PreparedStatement ps =c.prepareStatement(insert_Values_stmt);
+        ps.setString(1, obj.getEventId());
+        ps.setString(2, obj.getEventType());
+        ps.setInt(3, obj.getLeader());
+        ps.setString(4, obj.getTitle());
+        ps.setString(5, obj.getDescription());
+        ps.setTime(6, obj.getTime());
+        ps.setString(7, obj.getLocation());
+        ps.setInt(8, obj.getIsApprovedBy());
+        ps.setBoolean(9, obj.isApprovalStatus());
+        ps.setDate(10, obj.getDate());
+        int rows = ps.executeUpdate();
+        if (rows == 0){
+            JOptionPane.showMessageDialog(null, "No record added");
+        }else{
+            JOptionPane.showMessageDialog(null, "Record(s) successfully added.");
+        }
+        ps.close();
+    }
 }

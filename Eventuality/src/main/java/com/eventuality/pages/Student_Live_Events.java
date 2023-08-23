@@ -1,23 +1,29 @@
 package com.eventuality.pages;
 
 import com.eventuality.controls.DbConnect;
+import com.eventuality.controls.EventDAO;
 import com.eventuality.controls.EventTypeDAO;
 import com.eventuality.controls.LocationDAO;
 import com.eventuality.controls.VolunteerDAO;
+import com.eventuality.objects.Event;
 import com.eventuality.objects.Event_Category;
 import com.eventuality.objects.Location;
+import com.eventuality.objects.Student;
 import com.eventuality.objects.Volunteer;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultListModel;
-import javax.swing.JList;
 
 public class Student_Live_Events extends javax.swing.JFrame {
     
+    private Student loggedin = new Student();
     private DbConnect db;
     private ArrayList<Volunteer> volArr = new ArrayList();
+    private ArrayList<Location> locArr;
+    private String eventID = "BOR267W";
 
     /**
      * Creates new form Student_Live_Events
@@ -528,7 +534,33 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
-        // TODO add your handling code here:
+        if(evt.getSource() == btnApprove){
+            Event e = new Event();
+            e.setEventId(eventID);
+            e.setEventType((String) cbxCategory.getSelectedItem());
+            e.setLeader(loggedin.getStudNum());
+            e.setTitle(txtTitle.getText());
+            e.setDescription(txtDescript.getText());
+            e.setTime((Time) cbxSTime.getSelectedItem());
+            e.setLocation(locArr.get(cbxCampus.getSelectedIndex()).getEventLocation());
+            e.setApprovalStatus(false);
+            e.setIsApprovedBy(0);
+            e.setDate((Date) jCalender.getDate());
+            EventDAO evtDAO = new EventDAO();
+            try{
+                 evtDAO.InsertRecord(db.getC(), e);
+            }catch(SQLException ex){
+                System.out.println("Err: " + ex.getMessage());
+            }
+            
+            cbxCategory.setSelectedIndex(0);
+            txtTitle.setText("");
+            txtDescript.setText("");
+            cbxSTime.setSelectedIndex(0);
+            cbxCampus.setSelectedIndex(0);
+            cbxVolunteer.setSelectedIndex(0);
+            txtVolsArea.setText("");
+        }
     }//GEN-LAST:event_btnApproveActionPerformed
 
     /**
