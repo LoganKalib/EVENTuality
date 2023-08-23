@@ -30,6 +30,24 @@ public class VolunteerDAO {
         return arr;
     }
     
+    public ArrayList<Volunteer> SelectVols(Statement s) throws SQLException {
+        retrieve_Values_qry = "SELECT * FROM VOLUNTEERS ";
+        ResultSet rs = s.executeQuery(retrieve_Values_qry);
+        ArrayList<Volunteer> arr = new ArrayList();
+        
+        if(rs != null){
+            while(rs.next()){
+                Volunteer vol = new Volunteer();
+                vol.setStudentNumber(rs.getInt("STUDENT_NUMBER"));
+                vol.setEventId(rs.getString("EVENT_ID"));
+                vol.setRole(rs.getString("ROLE"));
+                arr.add(vol);
+            }
+        }
+        rs.close();
+        return arr;
+    }
+    
     public void DeleteRecord(Connection c, int studNum) throws SQLException {
         delete_Values_stmt = "DELETE FROM VOLUNTEERS WHERE STUDENT_NUMBER=?";
         PreparedStatement ps = c.prepareStatement(delete_Values_stmt);

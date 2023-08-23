@@ -1,5 +1,17 @@
 package com.eventuality.pages;
 
+import com.eventuality.controls.DbConnect;
+import com.eventuality.controls.EventTypeDAO;
+import com.eventuality.controls.LocationDAO;
+import com.eventuality.controls.VolunteerDAO;
+import com.eventuality.objects.Event_Category;
+import com.eventuality.objects.Location;
+import com.eventuality.objects.Volunteer;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Student_Live_Events extends javax.swing.JFrame {
 
     /**
@@ -7,6 +19,53 @@ public class Student_Live_Events extends javax.swing.JFrame {
      */
     public Student_Live_Events() {
         initComponents();
+        
+         try {
+
+            DbConnect db = new DbConnect();
+            EventTypeDAO evtTypeDAO = new EventTypeDAO();
+            ArrayList<Event_Category> evtType = evtTypeDAO.SelectTable(db.getS());
+            
+            for(var i: evtType){
+                cbxCategory.addItem(i.getEventKeyword());
+            }
+            db.CloseAll();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+         
+         try{
+             DbConnect db = new DbConnect();
+             LocationDAO locDAO = new LocationDAO();
+             ArrayList<Location> locArr = locDAO.SeleteAll(db.getS());
+             
+             for(var i: locArr){
+                 cbxCampus.addItem(i.getCampus() + " - " + i.getDepartment() + " - " + i.getDepartment());
+                 String cap =Integer.toString(i.getCapacity());
+                 cbxCapacity.addItem(cap);
+             }
+             
+             db.CloseAll();
+             
+         } catch (SQLException ex) {
+            Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+         
+         try{
+             DbConnect db = new DbConnect();
+             VolunteerDAO volDAO = new VolunteerDAO();
+             ArrayList<Volunteer> volArr = volDAO.SelectVols(db.getS());
+             for(var i : volArr){
+                 cbxVolunteer.addItem(i.getRole());
+             }
+             
+             db.CloseAll();
+         } catch (SQLException ex) {
+            Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
