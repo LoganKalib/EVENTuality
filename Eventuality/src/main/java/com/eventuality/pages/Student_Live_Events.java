@@ -93,9 +93,9 @@ public class Student_Live_Events extends javax.swing.JFrame {
         lblStudNo = new javax.swing.JLabel();
         lblRoll = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        lstVolunteers = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
+        txtAVols = new javax.swing.JScrollPane();
+        txtVolsArea = new javax.swing.JTextArea();
         pnlLiveEvents = new javax.swing.JPanel();
         lblLive = new javax.swing.JLabel();
         btnBook = new javax.swing.JButton();
@@ -324,18 +324,19 @@ public class Student_Live_Events extends javax.swing.JFrame {
         pnlMyEvents.add(jPanel1);
         jPanel1.setBounds(460, 80, 10, 310);
 
-        lstVolunteers.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
-        jScrollPane2.setViewportView(lstVolunteers);
-
-        pnlMyEvents.add(jScrollPane2);
-        jScrollPane2.setBounds(490, 150, 410, 170);
-
         jLabel1.setBackground(new java.awt.Color(102, 153, 255));
         jLabel1.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("jLabel1");
         pnlMyEvents.add(jLabel1);
         jLabel1.setBounds(0, 0, 940, 450);
+
+        txtVolsArea.setColumns(20);
+        txtVolsArea.setRows(5);
+        txtAVols.setViewportView(txtVolsArea);
+
+        pnlMyEvents.add(txtAVols);
+        txtAVols.setBounds(490, 150, 410, 170);
 
         tabStudent.addTab("MY EVENTS", pnlMyEvents);
 
@@ -516,13 +517,11 @@ public class Student_Live_Events extends javax.swing.JFrame {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         if(evt.getSource() == btnRegister){
-            DefaultListModel<String> dlm = new DefaultListModel();
             Volunteer vol = new Volunteer();
             vol.setStudentNumber(Integer.parseInt(txtStudentNo.getText()));
             vol.setRole((String)cbxVolunteer.getSelectedItem());
             volArr.add(vol);
-            dlm.addElement(vol.getStudentNumber() + "-" + vol.getRole());
-            lstVolunteers = new JList(dlm);
+            txtVolsArea.append(vol.getStudentNumber() + "\t" + vol.getRole() + "\n");
             txtStudentNo.setText("");
             cbxVolunteer.setSelectedIndex(0);
         }
@@ -588,7 +587,6 @@ public class Student_Live_Events extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblApprove;
     private javax.swing.JLabel lblBooked;
     private javax.swing.JLabel lblCapacity;
@@ -610,7 +608,6 @@ public class Student_Live_Events extends javax.swing.JFrame {
     private javax.swing.JList<String> lstBooked;
     private javax.swing.JList<String> lstEventDetails;
     private javax.swing.JList<String> lstLiveEvents;
-    private javax.swing.JList<String> lstVolunteers;
     private javax.swing.JButton navGallery;
     private javax.swing.JButton navHome;
     private javax.swing.JPanel pnlLiveEvents;
@@ -618,9 +615,11 @@ public class Student_Live_Events extends javax.swing.JFrame {
     private javax.swing.JScrollPane spBookedE;
     private javax.swing.JScrollPane spLiveEvents;
     private javax.swing.JTabbedPane tabStudent;
+    private javax.swing.JScrollPane txtAVols;
     private javax.swing.JTextArea txtDescript;
     private javax.swing.JScrollPane txtDescription;
     private javax.swing.JTextField txtStudentNo;
     private javax.swing.JTextField txtTitle;
+    private javax.swing.JTextArea txtVolsArea;
     // End of variables declaration//GEN-END:variables
 }
