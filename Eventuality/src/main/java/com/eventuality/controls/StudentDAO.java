@@ -16,7 +16,7 @@ public class StudentDAO {
         PreparedStatement ps = c.prepareStatement(retrieve_Values_qry);
         ps.setString(1, studentEmail);
         ps.setString(2, password);
-        ResultSet rs = ps.executeQuery(retrieve_Values_qry);
+        ResultSet rs = ps.executeQuery();
         Student stu;
 
         if (rs != null) {

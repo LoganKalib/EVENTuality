@@ -17,7 +17,7 @@ public class LecturerDAO {
         PreparedStatement ps = c.prepareStatement(retrieve_Values_qry);
         ps.setString(1, staffEmail);
         ps.setString(2, password);
-        ResultSet rs = ps.executeQuery(retrieve_Values_qry);
+        ResultSet rs = ps.executeQuery();
         Lecturer lec;
 
         if (rs != null) {
