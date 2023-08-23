@@ -285,7 +285,7 @@ public class Login extends javax.swing.JFrame {
                     new Student_Live_Events().setVisible(true);
                     db.CloseAll();
                 } catch (SQLException ex) {
-                    System.out.println("Error during sign in:");
+                    System.out.println("Error during sign in: " +ex.getMessage());
                 }
             }
             if (cboRoll.getSelectedIndex() == 1) {
@@ -297,7 +297,7 @@ public class Login extends javax.swing.JFrame {
                     new Lecture_Live_Events().setVisible(true);
                     db.CloseAll();
                 } catch (SQLException ex) {
-                    System.out.println("Error during sign in");
+                    System.out.println("Error during sign in: " + ex.getMessage());
                 }
             }
 
