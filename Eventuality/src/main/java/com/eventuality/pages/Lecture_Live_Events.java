@@ -5,6 +5,8 @@ import com.eventuality.controls.EventDAO;
 import com.eventuality.objects.Event;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
 
 public class Lecture_Live_Events extends javax.swing.JFrame {
 private DbConnect db;
@@ -18,9 +20,13 @@ private DbConnect db;
             db = new DbConnect();
             EventDAO evtDAO = new EventDAO();
             ArrayList<Event> evtArray = new ArrayList();
+            DefaultListModel<String> dlm = new DefaultListModel<String>();
             evtArray = evtDAO.SelectTable(db.getS());
             for(var i:evtArray) {
-                
+                if(i.isApprovalStatus()==false) {
+                   dlm.addElement(i.toString());
+                   lstPending = new JList<>(dlm);
+                }
             }
         }catch(SQLException e) {
             
