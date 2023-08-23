@@ -18,10 +18,10 @@ public class LecturerDAO {
         ps.setString(1, staffEmail);
         ps.setString(2, password);
         ResultSet rs = ps.executeQuery();
-        Lecturer lec;
+        Lecturer lec=null;
 
         if (rs != null) {
-            {
+            while (rs.next()){
                 lec = new Lecturer();
                 lec.setStaffNumber(rs.getInt("STAFF_NUMBER"));
                 lec.setLectName(rs.getString("FIRST_NAME"));
@@ -30,7 +30,6 @@ public class LecturerDAO {
                 lec.setLectEmail(rs.getString("EMAIL"));
 
             }
-            while (rs.next());
             rs.close();
             ps.close();
         } else {

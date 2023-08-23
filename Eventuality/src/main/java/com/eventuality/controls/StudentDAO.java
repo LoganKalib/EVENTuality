@@ -17,10 +17,10 @@ public class StudentDAO {
         ps.setString(1, studentEmail);
         ps.setString(2, password);
         ResultSet rs = ps.executeQuery();
-        Student stu;
+        Student stu = null;
 
         if (rs != null) {
-            {
+            while (rs.next()){
                 stu = new Student();
                 stu.setStudNum(rs.getInt("STUDENT_NUMBER"));
                 stu.setStudName(rs.getString("FIRST_NAME"));
@@ -29,7 +29,6 @@ public class StudentDAO {
                 stu.setStudEmail(rs.getString("EMAIL"));
 
             }
-            while (rs.next());
         } else {
             rs.close();
             ps.close();
