@@ -8,10 +8,11 @@ import com.eventuality.objects.Student;
 import java.sql.SQLException;
 
 public class Login extends javax.swing.JFrame {
-    
+
     DbConnect db;
     Student stu;
     Lecturer lec;
+
     /**
      * Creates new form Login
      */
@@ -274,37 +275,30 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_navHomeActionPerformed
 
     private void btnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogActionPerformed
-                if(evt.getSource()==btnLog){
-            String email = txtEmail.getText();
-            String[] array;
-            array = email.split("@");
-            if(cboRoll.getSelectedIndex()==0){
-                try{
+        if (evt.getSource() == btnLog) {
+            if (cboRoll.getSelectedIndex() == 0) {
+                try {
                     db = new DbConnect();
                     StudentDAO dao = new StudentDAO();
                     stu = dao.SelectLogin(db.getC(), txtEmail.getText(), txtPass.getText());
                     this.setVisible(false);
-                    new Student_Live_Events().setVisible(true); 
-                }
-                
-                catch(SQLException ex){
-                    System.out.println("Error during sign in");
+                    new Student_Live_Events().setVisible(true);
+                } catch (SQLException ex) {
+                    System.out.println("Error during sign in:");
                 }
             }
-            if(cboRoll.getSelectedIndex()==1){
-                try{
+            if (cboRoll.getSelectedIndex() == 1) {
+                try {
                     db = new DbConnect();
                     LecturerDAO dao = new LecturerDAO();
                     lec = dao.SelectLogin(db.getC(), txtEmail.getText(), txtPass.getText());
                     this.setVisible(false);
-                    new Lecture_Live_Events().setVisible(true); 
-                }
-                
-                catch(SQLException ex){
+                    new Lecture_Live_Events().setVisible(true);
+                } catch (SQLException ex) {
                     System.out.println("Error during sign in");
                 }
             }
-            
+
         }
     }//GEN-LAST:event_btnLogActionPerformed
 
