@@ -1,12 +1,31 @@
 package com.eventuality.pages;
 
+import com.eventuality.controls.DbConnect;
+import com.eventuality.controls.EventDAO;
+import com.eventuality.objects.Event;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 public class Lecture_Live_Events extends javax.swing.JFrame {
+private DbConnect db;
 
     /**
      * Creates new form Lecture_Live_Events
      */
     public Lecture_Live_Events() {
         initComponents();
+        try{
+            db = new DbConnect();
+            EventDAO evtDAO = new EventDAO();
+            ArrayList<Event> evtArray = new ArrayList();
+            evtArray = evtDAO.SelectTable(db.getS());
+            for(var i:evtArray) {
+                
+            }
+        }catch(SQLException e) {
+            
+        }
+        
     }
 
     /**
