@@ -19,101 +19,142 @@ public class Home extends javax.swing.JFrame {
     private void initComponents() {
 
         navHome = new javax.swing.JButton();
-        navGallery = new javax.swing.JButton();
         navSignIn = new javax.swing.JButton();
         lblWlcome = new javax.swing.JLabel();
         lblGallery = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        lblWlcome1 = new javax.swing.JLabel();
+        lblWlcome2 = new javax.swing.JLabel();
+        lblWlcome3 = new javax.swing.JLabel();
+        lblWlcome4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
+        navHome.setBackground(new java.awt.Color(102, 153, 255));
+        navHome.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        navHome.setForeground(new java.awt.Color(0, 0, 0));
         navHome.setText("HOME");
-
-        navGallery.setText("GALLERY");
-
-        navSignIn.setText("SIGN IN");
-
-        lblWlcome.setText("welcome text");
-
-        lblGallery.setText("gallery heading");
-
-        jLabel3.setText("immg");
-
-        jLabel4.setText("img");
-
-        jLabel5.setText("img");
-
-        jLabel6.setText("img");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblGallery)
-                            .addComponent(lblWlcome))
-                        .addGap(202, 202, 202))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(navHome, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(87, 87, 87)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel5))
-                            .addComponent(navGallery, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(navSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(30, 30, 30))))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(navHome)
-                    .addComponent(navGallery)
-                    .addComponent(navSignIn))
-                .addGap(18, 18, 18)
-                .addComponent(lblWlcome)
-                .addGap(18, 18, 18)
-                .addComponent(lblGallery)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
-                .addGap(103, 103, 103))
-        );
-
+        navHome.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
+        getContentPane().add(navHome);
+        navHome.setBounds(660, 20, 135, 30);
         navHome.getAccessibleContext().setAccessibleName("");
-        navGallery.getAccessibleContext().setAccessibleName("");
+
+        navSignIn.setBackground(new java.awt.Color(102, 153, 255));
+        navSignIn.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        navSignIn.setForeground(new java.awt.Color(0, 0, 0));
+        navSignIn.setText("SIGN IN");
+        navSignIn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
+        getContentPane().add(navSignIn);
+        navSignIn.setBounds(810, 20, 135, 30);
         navSignIn.getAccessibleContext().setAccessibleName("");
+
+        lblWlcome.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 18)); // NOI18N
+        lblWlcome.setForeground(new java.awt.Color(51, 0, 51));
+        lblWlcome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblWlcome.setText(" Eventuality is the start to a more fun and interactive student life turning inspiring ideas into Eventual Reality.");
+        getContentPane().add(lblWlcome);
+        lblWlcome.setBounds(50, 240, 870, 40);
         lblWlcome.getAccessibleContext().setAccessibleName("");
+
+        lblGallery.setBackground(new java.awt.Color(102, 153, 255));
+        lblGallery.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 24)); // NOI18N
+        lblGallery.setForeground(new java.awt.Color(0, 0, 0));
+        lblGallery.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblGallery.setText("GALLERY");
+        lblGallery.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblGallery.setOpaque(true);
+        lblGallery.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        getContentPane().add(lblGallery);
+        lblGallery.setBounds(10, 300, 940, 40);
         lblGallery.getAccessibleContext().setAccessibleName("");
-        jLabel3.getAccessibleContext().setAccessibleName("");
-        jLabel4.getAccessibleContext().setAccessibleName("");
-        jLabel5.getAccessibleContext().setAccessibleName("");
-        jLabel6.getAccessibleContext().setAccessibleName("");
+
+        jPanel1.setBackground(new java.awt.Color(102, 153, 255));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 940, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(10, 80, 940, 10);
+
+        jLabel4.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\log11.png")); // NOI18N
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(0, 10, 340, 60);
+
+        jLabel8.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\111.jpeg")); // NOI18N
+        jLabel8.setText("img");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(770, 370, 180, 120);
+
+        jLabel9.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\113.jpg")); // NOI18N
+        jLabel9.setText("img");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(10, 370, 180, 120);
+
+        jLabel10.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\114.jpg")); // NOI18N
+        jLabel10.setText("img");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(260, 370, 180, 120);
+
+        jLabel11.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\115.jpg")); // NOI18N
+        jLabel11.setText("img");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(520, 370, 180, 120);
+
+        lblWlcome1.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 18)); // NOI18N
+        lblWlcome1.setForeground(new java.awt.Color(51, 0, 51));
+        lblWlcome1.setText("WELCOME TO EVENTUALITY");
+        getContentPane().add(lblWlcome1);
+        lblWlcome1.setBounds(360, 90, 240, 60);
+
+        lblWlcome2.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 18)); // NOI18N
+        lblWlcome2.setForeground(new java.awt.Color(51, 0, 51));
+        lblWlcome2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblWlcome2.setText("A simple platform in which students can express their creative and intellectual experiences through on and off campus");
+        getContentPane().add(lblWlcome2);
+        lblWlcome2.setBounds(20, 140, 920, 40);
+
+        lblWlcome3.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 18)); // NOI18N
+        lblWlcome3.setForeground(new java.awt.Color(51, 0, 51));
+        lblWlcome3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblWlcome3.setText("held events. This platform serves as networking opportunities for students within their respective fields of study");
+        getContentPane().add(lblWlcome3);
+        lblWlcome3.setBounds(50, 170, 880, 40);
+
+        lblWlcome4.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 18)); // NOI18N
+        lblWlcome4.setForeground(new java.awt.Color(51, 0, 51));
+        lblWlcome4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblWlcome4.setText(" by expanding campus experiences with peers and their interests in and around CPUT campuses.");
+        getContentPane().add(lblWlcome4);
+        lblWlcome4.setBounds(50, 200, 870, 40);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\white_blue_marble_hd_marble.jpg")); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 960, 540);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -154,13 +195,19 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblGallery;
     private javax.swing.JLabel lblWlcome;
-    private javax.swing.JButton navGallery;
+    private javax.swing.JLabel lblWlcome1;
+    private javax.swing.JLabel lblWlcome2;
+    private javax.swing.JLabel lblWlcome3;
+    private javax.swing.JLabel lblWlcome4;
     private javax.swing.JButton navHome;
     private javax.swing.JButton navSignIn;
     // End of variables declaration//GEN-END:variables
