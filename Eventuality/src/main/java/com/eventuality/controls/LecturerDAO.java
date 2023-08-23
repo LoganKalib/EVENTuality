@@ -12,9 +12,10 @@ public class LecturerDAO {
     private String delete_Values_stmt;
     private String retrieve_Values_qry;
 
-    public Lecturer SelectLogin(Statement s, String staffEmail, String password) throws SQLException {
-        retrieve_Values_qry = String.format("SELECT * FROM Lecturer WHERE Email= %s AND Password =%s", staffEmail, password);
-        ResultSet rs = s.executeQuery(retrieve_Values_qry);
+    public Lecturer SelectLogin(Connection c, String staffEmail, String password) throws SQLException {
+        retrieve_Values_qry ="SELECT * FROM Lecturer WHERE Email=? AND Password =?";
+        PreparedStatement ps = c.prepareStatement(retrieve_Values_qry);
+        ResultSet rs = ps.executeQuery(retrieve_Values_qry);
         Lecturer lec;
 
         if (rs != null) {
@@ -29,8 +30,10 @@ public class LecturerDAO {
             }
             while (rs.next());
             rs.close();
+            ps.close();
         } else {
             rs.close();
+            ps.close();
             return null;
         }
         return lec;

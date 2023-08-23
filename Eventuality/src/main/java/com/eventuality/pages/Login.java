@@ -112,7 +112,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         pnlLogin.add(btnLog);
-        btnLog.setBounds(300, 360, 316, 24);
+        btnLog.setBounds(300, 360, 316, 21);
 
         btnForgotPass.setBackground(new java.awt.Color(102, 153, 255));
         btnForgotPass.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
@@ -135,16 +135,16 @@ public class Login extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel10.setText("Password:");
         pnlLogin.add(jLabel10);
-        jLabel10.setBounds(300, 270, 70, 20);
+        jLabel10.setBounds(300, 270, 70, 17);
 
         jLabel11.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel11.setText("Email:");
         pnlLogin.add(jLabel11);
-        jLabel11.setBounds(300, 210, 50, 20);
+        jLabel11.setBounds(300, 210, 50, 17);
 
         cboRoll.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Lecturer" }));
         pnlLogin.add(cboRoll);
-        cboRoll.setBounds(110, 150, 160, 22);
+        cboRoll.setBounds(110, 150, 160, 25);
 
         jLabel2.setText("jLabel2");
         pnlLogin.add(jLabel2);
@@ -201,37 +201,37 @@ public class Login extends javax.swing.JFrame {
             }
         });
         pnlSignIn.add(btnSignIn);
-        btnSignIn.setBounds(520, 380, 370, 24);
+        btnSignIn.setBounds(520, 380, 370, 21);
 
         jLabel4.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel4.setText("Name:");
         pnlSignIn.add(jLabel4);
-        jLabel4.setBounds(520, 70, 150, 20);
+        jLabel4.setBounds(520, 70, 150, 17);
 
         jLabel5.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel5.setText("Surname:");
         pnlSignIn.add(jLabel5);
-        jLabel5.setBounds(520, 120, 150, 20);
+        jLabel5.setBounds(520, 120, 150, 17);
 
         jLabel6.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel6.setText("Campus ID:");
         pnlSignIn.add(jLabel6);
-        jLabel6.setBounds(520, 170, 150, 20);
+        jLabel6.setBounds(520, 170, 150, 17);
 
         jLabel7.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel7.setText("Email:");
         pnlSignIn.add(jLabel7);
-        jLabel7.setBounds(520, 220, 150, 20);
+        jLabel7.setBounds(520, 220, 150, 17);
 
         jLabel8.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel8.setText("Password:");
         pnlSignIn.add(jLabel8);
-        jLabel8.setBounds(520, 270, 150, 20);
+        jLabel8.setBounds(520, 270, 150, 17);
 
         jLabel9.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel9.setText("Confirm Password:");
         pnlSignIn.add(jLabel9);
-        jLabel9.setBounds(520, 320, 150, 20);
+        jLabel9.setBounds(520, 320, 150, 17);
 
         jLabel13.setText("jLabel13");
         pnlSignIn.add(jLabel13);
@@ -249,7 +249,7 @@ public class Login extends javax.swing.JFrame {
 
         cbxRoll.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Lecturer" }));
         pnlSignIn.add(cbxRoll);
-        cbxRoll.setBounds(110, 160, 150, 22);
+        cbxRoll.setBounds(110, 160, 150, 25);
         pnlSignIn.add(jLabel3);
         jLabel3.setBounds(-10, 0, 940, 420);
 
@@ -282,7 +282,7 @@ public class Login extends javax.swing.JFrame {
                 try{
                     db = new DbConnect();
                     StudentDAO dao = new StudentDAO();
-                    stu = dao.SelectLogin(db.getS(), txtEmail.getText(), txtPass.getText());
+                    stu = dao.SelectLogin(db.getC(), txtEmail.getText(), txtPass.getText());
                     this.setVisible(false);
                     new Student_Live_Events().setVisible(true); 
                 }
@@ -295,7 +295,7 @@ public class Login extends javax.swing.JFrame {
                 try{
                     db = new DbConnect();
                     LecturerDAO dao = new LecturerDAO();
-                    lec = dao.SelectLogin(db.getS(), txtEmail.getText(), txtPass.getText());
+                    lec = dao.SelectLogin(db.getC(), txtEmail.getText(), txtPass.getText());
                     this.setVisible(false);
                     new Lecture_Live_Events().setVisible(true); 
                 }

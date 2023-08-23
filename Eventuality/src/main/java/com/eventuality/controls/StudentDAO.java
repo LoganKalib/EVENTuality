@@ -11,9 +11,10 @@ public class StudentDAO {
     private String delete_Values_stmt;
     private String retrieve_Values_qry;
     
-    public Student SelectLogin(Statement s, String studentEmail, String password) throws SQLException {
-        retrieve_Values_qry = String.format("SELECT * FROM Student WHERE EMAIL= %s AND Password =%s", studentEmail, password);
-        ResultSet rs = s.executeQuery(retrieve_Values_qry);
+    public Student SelectLogin(Connection c, String studentEmail, String password) throws SQLException {
+        retrieve_Values_qry = "SELECT * FROM Student WHERE EMAIL=? AND Password =?";
+        PreparedStatement ps = c.prepareStatement(retrieve_Values_qry);
+        ResultSet rs = ps.executeQuery(retrieve_Values_qry);
         Student stu;
 
         if (rs != null) {
@@ -29,9 +30,11 @@ public class StudentDAO {
             while (rs.next());
         } else {
             rs.close();
+            ps.close();
             return null;
         }
         rs.close();
+        ps.close();
         return stu;
     }
     
