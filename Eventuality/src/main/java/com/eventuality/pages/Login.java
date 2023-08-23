@@ -67,7 +67,6 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(navHome);
         navHome.setBounds(800, 20, 130, 30);
 
-        lblLogo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\log11.png")); // NOI18N
         lblLogo.setText("LOGO");
         getContentPane().add(lblLogo);
         lblLogo.setBounds(0, 10, 340, 50);
@@ -82,11 +81,6 @@ public class Login extends javax.swing.JFrame {
         txtPass.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         txtPass.setForeground(new java.awt.Color(0, 0, 0));
         txtPass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, java.awt.Color.white, null, null));
-        txtPass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPassActionPerformed(evt);
-            }
-        });
         pnlLogin.add(txtPass);
         txtPass.setBounds(300, 290, 316, 37);
         txtPass.getAccessibleContext().setAccessibleName("txtPass");
@@ -95,11 +89,6 @@ public class Login extends javax.swing.JFrame {
         txtEmail.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(0, 0, 0));
         txtEmail.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, java.awt.Color.white, null, null));
-        txtEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailActionPerformed(evt);
-            }
-        });
         pnlLogin.add(txtEmail);
         txtEmail.setBounds(300, 230, 316, 37);
         txtEmail.getAccessibleContext().setAccessibleName("txtEmail");
@@ -109,15 +98,19 @@ public class Login extends javax.swing.JFrame {
         btnLog.setForeground(new java.awt.Color(0, 0, 0));
         btnLog.setText("LOGIN");
         btnLog.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnLog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogActionPerformed(evt);
+            }
+        });
         pnlLogin.add(btnLog);
-        btnLog.setBounds(300, 360, 316, 24);
+        btnLog.setBounds(300, 360, 316, 21);
 
         btnForgotPass.setBackground(new java.awt.Color(102, 153, 255));
         btnForgotPass.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
         btnForgotPass.setForeground(new java.awt.Color(0, 0, 204));
         btnForgotPass.setText("FORGOT PASSWORD");
         btnForgotPass.setBorder(null);
-        btnForgotPass.setOpaque(false);
         btnForgotPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnForgotPassActionPerformed(evt);
@@ -126,7 +119,6 @@ public class Login extends javax.swing.JFrame {
         pnlLogin.add(btnForgotPass);
         btnForgotPass.setBounds(360, 320, 195, 40);
 
-        imgAvatar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\avatar.png")); // NOI18N
         imgAvatar.setText("AVATAR");
         pnlLogin.add(imgAvatar);
         imgAvatar.setBounds(390, 40, 130, 130);
@@ -136,15 +128,14 @@ public class Login extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Password:");
         pnlLogin.add(jLabel10);
-        jLabel10.setBounds(300, 270, 70, 20);
+        jLabel10.setBounds(300, 270, 70, 17);
 
         jLabel11.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Email:");
         pnlLogin.add(jLabel11);
-        jLabel11.setBounds(300, 210, 50, 20);
+        jLabel11.setBounds(300, 210, 50, 17);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\white_blue_marble_hd_marble.jpg")); // NOI18N
         jLabel2.setText("jLabel2");
         pnlLogin.add(jLabel2);
         jLabel2.setBounds(-20, 0, 930, 420);
@@ -158,11 +149,6 @@ public class Login extends javax.swing.JFrame {
         txtName.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         txtName.setForeground(new java.awt.Color(0, 0, 0));
         txtName.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, java.awt.Color.white, null, null));
-        txtName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNameActionPerformed(evt);
-            }
-        });
         pnlSignIn.add(txtName);
         txtName.setBounds(520, 90, 370, 30);
 
@@ -177,11 +163,6 @@ public class Login extends javax.swing.JFrame {
         txtSID.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         txtSID.setForeground(new java.awt.Color(0, 0, 0));
         txtSID.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, java.awt.Color.white, null, null));
-        txtSID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSIDActionPerformed(evt);
-            }
-        });
         pnlSignIn.add(txtSID);
         txtSID.setBounds(520, 190, 370, 30);
 
@@ -203,11 +184,6 @@ public class Login extends javax.swing.JFrame {
         txtConfirmPass.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         txtConfirmPass.setForeground(new java.awt.Color(0, 0, 0));
         txtConfirmPass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, java.awt.Color.white, null, null));
-        txtConfirmPass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtConfirmPassActionPerformed(evt);
-            }
-        });
         pnlSignIn.add(txtConfirmPass);
         txtConfirmPass.setBounds(520, 340, 370, 30);
 
@@ -216,46 +192,50 @@ public class Login extends javax.swing.JFrame {
         btnSignIn.setForeground(new java.awt.Color(0, 0, 0));
         btnSignIn.setText("SIGN IN");
         btnSignIn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
+        btnSignIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignInActionPerformed(evt);
+            }
+        });
         pnlSignIn.add(btnSignIn);
-        btnSignIn.setBounds(520, 380, 370, 24);
+        btnSignIn.setBounds(520, 380, 370, 21);
 
         jLabel4.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Name:");
         pnlSignIn.add(jLabel4);
-        jLabel4.setBounds(520, 70, 150, 20);
+        jLabel4.setBounds(520, 70, 150, 17);
 
         jLabel5.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Surname:");
         pnlSignIn.add(jLabel5);
-        jLabel5.setBounds(520, 120, 150, 20);
+        jLabel5.setBounds(520, 120, 150, 17);
 
         jLabel6.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Campus ID:");
         pnlSignIn.add(jLabel6);
-        jLabel6.setBounds(520, 170, 150, 20);
+        jLabel6.setBounds(520, 170, 150, 17);
 
         jLabel7.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Email:");
         pnlSignIn.add(jLabel7);
-        jLabel7.setBounds(520, 220, 150, 20);
+        jLabel7.setBounds(520, 220, 150, 17);
 
         jLabel8.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Password:");
         pnlSignIn.add(jLabel8);
-        jLabel8.setBounds(520, 270, 150, 20);
+        jLabel8.setBounds(520, 270, 150, 17);
 
         jLabel9.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Confirm Password:");
         pnlSignIn.add(jLabel9);
-        jLabel9.setBounds(520, 320, 150, 20);
+        jLabel9.setBounds(520, 320, 150, 17);
 
-        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\place.jpg")); // NOI18N
         jLabel13.setText("jLabel13");
         pnlSignIn.add(jLabel13);
         jLabel13.setBounds(20, 90, 480, 310);
@@ -269,8 +249,6 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(102, 153, 255));
         pnlSignIn.add(jPanel1);
         jPanel1.setBounds(20, 50, 870, 10);
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\white_blue_marble_hd_marble.jpg")); // NOI18N
         pnlSignIn.add(jLabel3);
         jLabel3.setBounds(-10, 0, 940, 420);
 
@@ -279,7 +257,6 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(tabLogin);
         tabLogin.setBounds(23, 78, 910, 450);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\white_blue_marble_hd_marble.jpg")); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 960, 540);
@@ -295,25 +272,13 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_navHomeActionPerformed
 
-    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+    private void btnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameActionPerformed
+    }//GEN-LAST:event_btnLogActionPerformed
 
-    private void txtConfirmPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfirmPassActionPerformed
+    private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtConfirmPassActionPerformed
-
-    private void txtSIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSIDActionPerformed
-
-    private void txtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPassActionPerformed
-
-    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailActionPerformed
+    }//GEN-LAST:event_btnSignInActionPerformed
 
     /**
      * @param args the command line arguments
