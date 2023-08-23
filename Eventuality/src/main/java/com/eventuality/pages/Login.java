@@ -283,6 +283,7 @@ public class Login extends javax.swing.JFrame {
                     stu = dao.SelectLogin(db.getC(), txtEmail.getText(), txtPass.getText());
                     this.setVisible(false);
                     new Student_Live_Events().setVisible(true);
+                    db.CloseAll();
                 } catch (SQLException ex) {
                     System.out.println("Error during sign in:");
                 }
@@ -294,6 +295,7 @@ public class Login extends javax.swing.JFrame {
                     lec = dao.SelectLogin(db.getC(), txtEmail.getText(), txtPass.getText());
                     this.setVisible(false);
                     new Lecture_Live_Events().setVisible(true);
+                    db.CloseAll();
                 } catch (SQLException ex) {
                     System.out.println("Error during sign in");
                 }

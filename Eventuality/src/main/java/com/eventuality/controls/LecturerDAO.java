@@ -15,6 +15,8 @@ public class LecturerDAO {
     public Lecturer SelectLogin(Connection c, String staffEmail, String password) throws SQLException {
         retrieve_Values_qry ="SELECT * FROM Lecturer WHERE Email=? AND Password =?";
         PreparedStatement ps = c.prepareStatement(retrieve_Values_qry);
+        ps.setString(1, staffEmail);
+        ps.setString(2, password);
         ResultSet rs = ps.executeQuery(retrieve_Values_qry);
         Lecturer lec;
 
