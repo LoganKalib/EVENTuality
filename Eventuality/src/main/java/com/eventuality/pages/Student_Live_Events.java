@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 
 public class Student_Live_Events extends javax.swing.JFrame {
 
-    private Student loggedin;
+    private Student loggedin = new Student() ;
     private DbConnect db;
     private ArrayList<Volunteer> volArr = new ArrayList();
     private ArrayList<Location> locArr;
@@ -542,6 +542,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
             Event e = new Event();
             e.setEventId(eventID);
             e.setEventType((String) cbxCategory.getSelectedItem());
+            loggedin.setStudNum(221534067);
             e.setLeader(loggedin.getStudNum());
             e.setTitle(txtTitle.getText());
             e.setDescription(txtDescript.getText());
