@@ -73,6 +73,11 @@ public class StudentDAO {
     public void InsertRecord(Connection c, Student stud) throws SQLException{
         insert_Values_stmt = "INSERT INTO Student VALUES(?,?,?,?,?)";
         PreparedStatement ps = c.prepareStatement(insert_Values_stmt);
+        ps.setInt(1, stud.getStudNum());
+        ps.setString(2, stud.getStudName());
+        ps.setString(3, stud.getStudSurname());
+        ps.setString(4, stud.getStudPassword());
+        ps.setString(5, stud.getStudEmail());
         int rows = ps.executeUpdate();
         
         if(rows!=0){

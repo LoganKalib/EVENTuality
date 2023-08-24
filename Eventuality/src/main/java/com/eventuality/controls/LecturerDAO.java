@@ -73,6 +73,11 @@ public class LecturerDAO {
     public void InsertRecord(Connection c, Lecturer obj) throws SQLException {
         insert_Values_stmt = "INSERT INTO LECTURER VALUES(?,?,?,?,?)";
         PreparedStatement ps = c.prepareStatement(insert_Values_stmt);
+        ps.setInt(1, obj.getStaffNumber());
+        ps.setString(2, obj.getLectName());
+        ps.setString(3, obj.getLectSurname());
+        ps.setString(4, obj.getLectPassword());
+        ps.setString(5, obj.getLectEmail());
         int rows = ps.executeUpdate();
         
         if(rows!=0){
