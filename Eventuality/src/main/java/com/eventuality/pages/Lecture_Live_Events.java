@@ -25,9 +25,9 @@ private DbConnect db;
             for(var i:evtArray) {
                 if(i.isApprovalStatus()==false) {
                    dlm.addElement(i.toString());
-                   lstPending = new JList<>(dlm);
                 }
             }
+            lstPending.setModel(dlm);
         }catch(SQLException e) {
             
         }
