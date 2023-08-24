@@ -12,13 +12,16 @@ public class LecturerDAO {
     private String delete_Values_stmt;
     private String retrieve_Values_qry;
 
-    public Lecturer SelectLogin(Statement s, String staffEmail, String password) throws SQLException {
-        retrieve_Values_qry = String.format("SELECT * FROM Lecturer WHERE Email= %s AND Password =%s", staffEmail, password);
-        ResultSet rs = s.executeQuery(retrieve_Values_qry);
-        Lecturer lec;
+    public Lecturer SelectLogin(Connection c, String staffEmail, String password) throws SQLException {
+        retrieve_Values_qry = "SELECT * FROM Lecturer WHERE Email=? AND Password =?";
+        PreparedStatement ps = c.prepareStatement(retrieve_Values_qry);
+        ps.setString(1, staffEmail);
+        ps.setString(2, password);
+        ResultSet rs = ps.executeQuery();
+        Lecturer lec = null;
 
         if (rs != null) {
-            {
+            while (rs.next()) {
                 lec = new Lecturer();
                 lec.setStaffNumber(rs.getInt("STAFF_NUMBER"));
                 lec.setLectName(rs.getString("FIRST_NAME"));
@@ -27,10 +30,11 @@ public class LecturerDAO {
                 lec.setLectEmail(rs.getString("EMAIL"));
 
             }
-            while (rs.next());
             rs.close();
+            ps.close();
         } else {
             rs.close();
+            ps.close();
             return null;
         }
         return lec;
@@ -39,7 +43,7 @@ public class LecturerDAO {
     public void DeleteRecord(Connection c, int staffNum) throws SQLException {
         delete_Values_stmt = "DELETE FROM Lecturer WHERE STAFF_NUMBER=?";
         PreparedStatement ps = c.prepareStatement(delete_Values_stmt);
-        ps.setInt(1,staffNum);
+        ps.setInt(1, staffNum);
         int rows = ps.executeUpdate(delete_Values_stmt);
         if (rows == 0) {
             JOptionPane.showMessageDialog(null, "No record with that ID...");
@@ -49,19 +53,35 @@ public class LecturerDAO {
         ps.close();
     }
 
-public void UpdateRecord(Connection c, String setField, String setValue, int staffNum) throws SQLException{
+    public void UpdateRecord(Connection c, String setField, String setValue, int staffNum) throws SQLException {
         update_Values_stmt = "UPDATE Lecturer SET ?=? WHERE STAFF_NUMBER = ?";
         PreparedStatement ps = c.prepareStatement(update_Values_stmt);
         ps.setString(1, setField);
         ps.setString(2, setValue);
         ps.setInt(3, staffNum);
-        
+
         int rows = ps.executeUpdate(update_Values_stmt);
-        String msg = String.format("Staff_Number: %d \n Successfully updated %s, with value: %s.",staffNum,setField,setValue);
-        if (rows == 0){
+        String msg = String.format("Staff_Number: %d \n Successfully updated %s, with value: %s.", staffNum, setField, setValue);
+        if (rows == 0) {
             JOptionPane.showMessageDialog(null, "No record with that Number...");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, msg);
+        }
+        ps.close();
+    }
+
+    public void InsertRecord(Connection c, Lecturer obj) throws SQLException {
+        insert_Values_stmt = "INSERT INTO LECTURER VALUES(?,?,?,?,?)";
+        PreparedStatement ps = c.prepareStatement(insert_Values_stmt);
+        ps.setInt(1, obj.getStaffNumber());
+        ps.setString(2, obj.getLectName());
+        ps.setString(3, obj.getLectSurname());
+        ps.setString(4, obj.getLectPassword());
+        ps.setString(5, obj.getLectEmail());
+        int rows = ps.executeUpdate();
+        
+        if(rows!=0){
+            JOptionPane.showMessageDialog(null, "Row added successfully.");
         }
         ps.close();
     }
