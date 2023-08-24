@@ -13,13 +13,17 @@ import com.eventuality.objects.Volunteer;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Student_Live_Events extends javax.swing.JFrame {
-    
-    private Student loggedin = new Student();
+
+    private Student loggedin;
     private DbConnect db;
     private ArrayList<Volunteer> volArr = new ArrayList();
     private ArrayList<Location> locArr;
@@ -49,7 +53,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
                 String cap = Integer.toString(i.getCapacity());
                 cbxCapacity.addItem(cap);
             }
-            
+
             VolunteerDAO volDAO = new VolunteerDAO();
             ArrayList<Volunteer> volArr = volDAO.SelectVols(db.getS());
             for (var i : volArr) {
@@ -522,10 +526,10 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRedoActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        if(evt.getSource() == btnRegister){
+        if (evt.getSource() == btnRegister) {
             Volunteer vol = new Volunteer();
             vol.setStudentNumber(Integer.parseInt(txtStudentNo.getText()));
-            vol.setRole((String)cbxVolunteer.getSelectedItem());
+            vol.setRole((String) cbxVolunteer.getSelectedItem());
             volArr.add(vol);
             txtVolsArea.append(vol.getStudentNumber() + "\t" + vol.getRole() + "\n");
             txtStudentNo.setText("");
@@ -534,25 +538,27 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
-        if(evt.getSource() == btnApprove){
+        if (evt.getSource() == btnApprove) {
             Event e = new Event();
             e.setEventId(eventID);
             e.setEventType((String) cbxCategory.getSelectedItem());
             e.setLeader(loggedin.getStudNum());
             e.setTitle(txtTitle.getText());
             e.setDescription(txtDescript.getText());
-            e.setTime((Time) cbxSTime.getSelectedItem());
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+            LocalTime localTime = LocalTime.parse(cbxSTime.getSelectedItem().toString(), formatter);
+            e.setTime(localTime);
             e.setLocation(locArr.get(cbxCampus.getSelectedIndex()).getEventLocation());
             e.setApprovalStatus(false);
             e.setIsApprovedBy(0);
             e.setDate((Date) jCalender.getDate());
             EventDAO evtDAO = new EventDAO();
-            try{
-                 evtDAO.InsertRecord(db.getC(), e);
-            }catch(SQLException ex){
+            try {
+                evtDAO.InsertRecord(db.getC(), e);
+            } catch (SQLException ex) {
                 System.out.println("Err: " + ex.getMessage());
             }
-            
+
             cbxCategory.setSelectedIndex(0);
             txtTitle.setText("");
             txtDescript.setText("");

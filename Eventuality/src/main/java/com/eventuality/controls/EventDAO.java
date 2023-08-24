@@ -28,7 +28,7 @@ public class EventDAO {
                 ev.setLocation(rs.getString("LOCATION"));
                 ev.setIsApprovedBy(rs.getInt("APPROVED_BY"));
                 ev.setApprovalStatus(rs.getBoolean("APPROVAL_STATUS"));
-                ev.setTime(rs.getTime("TIME"));
+                ev.setTime(rs.getTime("TIME").toLocalTime());
                 ev.setDate(rs.getDate("DATE"));
                 arr.add(ev);
             }
@@ -74,7 +74,7 @@ public class EventDAO {
         ps.setInt(3, obj.getLeader());
         ps.setString(4, obj.getTitle());
         ps.setString(5, obj.getDescription());
-        ps.setTime(6, obj.getTime());
+        ps.setTime(6, Time.valueOf(obj.getTime()));
         ps.setString(7, obj.getLocation());
         ps.setInt(8, obj.getIsApprovedBy());
         ps.setBoolean(9, obj.isApprovalStatus());
