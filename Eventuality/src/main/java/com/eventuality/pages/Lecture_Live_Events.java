@@ -24,7 +24,7 @@ private DbConnect db;
             evtArray = evtDAO.SelectTable(db.getS());
             for(var i:evtArray) {
                 if(i.isApprovalStatus()==false) {
-                   dlm.addElement(i.toString());
+                   dlm.addElement(i.getEventId() + "\t" + i.getTitle()+ "\t" + i.getTicketPrice()+ "\t" + i.getDate());
                 }
             }
             lstPending.setModel(dlm);
