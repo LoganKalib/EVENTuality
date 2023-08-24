@@ -21,6 +21,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 
 public class Student_Live_Events extends javax.swing.JFrame {
 
@@ -137,6 +138,11 @@ public class Student_Live_Events extends javax.swing.JFrame {
 
         tabStudent.setBackground(new java.awt.Color(102, 153, 255));
         tabStudent.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
+        tabStudent.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                Student_Live_Events.this.stateChanged(evt);
+            }
+        });
 
         pnlMyEvents.setLayout(null);
 
@@ -593,6 +599,24 @@ public class Student_Live_Events extends javax.swing.JFrame {
             txtVolsArea.setText("");
         }
     }//GEN-LAST:event_btnApproveActionPerformed
+
+    private void stateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_stateChanged
+        try{
+            db = new DbConnect();
+            EventDAO evtDAO = new EventDAO();
+            ArrayList<Event> evtArray = new ArrayList();
+            DefaultListModel<String> dlm = new DefaultListModel<String>();
+            evtArray = evtDAO.SelectTable(db.getS());
+            for(var i:evtArray) {
+                if(i.isApprovalStatus()==true) {
+                   dlm.addElement(i.getEventId() + " - " + i.getTitle()+ " - " + i.getLeader()+ " - " + i.getDate());
+                }
+            }
+            lstLiveEvents.setModel(dlm);
+        }catch(SQLException e) {
+            
+        }
+    }//GEN-LAST:event_stateChanged
 
     /**
      * @param args the command line arguments
