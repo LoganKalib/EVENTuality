@@ -24,6 +24,7 @@ import java.util.logging.Logger;
 public class Student_Live_Events extends javax.swing.JFrame {
 
     private Student loggedin = new Student() ;
+    LocationDAO locDAO;
     private DbConnect db;
     private ArrayList<Volunteer> volArr = new ArrayList();
     private ArrayList<Location> locArr;
@@ -45,7 +46,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
                 cbxCategory.addItem(i.getEventKeyword());
             }
 
-            LocationDAO locDAO = new LocationDAO();
+            locDAO = new LocationDAO();
             ArrayList<Location> locArr = locDAO.SeleteAll(db.getS());
 
             for (var i : locArr) {
@@ -549,6 +550,12 @@ public class Student_Live_Events extends javax.swing.JFrame {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
             LocalTime localTime = LocalTime.parse(cbxSTime.getSelectedItem().toString(), formatter);
             e.setTime(localTime);
+            try{
+                locArr = locDAO.SeleteAll(db.getS());
+            }catch(SQLException ex){
+                System.out.println("Err:" + ex.getMessage());
+            }
+            
             e.setLocation(locArr.get(cbxCampus.getSelectedIndex()).getEventLocation());
             e.setApprovalStatus(false);
             e.setIsApprovedBy(0);
