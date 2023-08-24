@@ -543,7 +543,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
             Event e = new Event();
             e.setEventId(eventID);
             e.setEventType((String) cbxCategory.getSelectedItem());
-            loggedin.setStudNum(221534067);
+            loggedin.setStudNum(22159867);
             e.setLeader(loggedin.getStudNum());
             e.setTitle(txtTitle.getText());
             e.setDescription(txtDescript.getText());
