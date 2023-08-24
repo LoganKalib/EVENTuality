@@ -1,5 +1,6 @@
 package com.eventuality.pages;
 
+import com.eventuality.controls.BookingDAO;
 import com.eventuality.controls.DbConnect;
 import com.eventuality.controls.EventDAO;
 import com.eventuality.controls.EventTypeDAO;
@@ -23,7 +24,7 @@ import java.util.logging.Logger;
 
 public class Student_Live_Events extends javax.swing.JFrame {
 
-    private Student loggedin = new Student() ;
+    private Student loggedin = new Student();
     LocationDAO locDAO;
     private DbConnect db;
     private ArrayList<Volunteer> volArr = new ArrayList();
@@ -550,16 +551,16 @@ public class Student_Live_Events extends javax.swing.JFrame {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
             LocalTime localTime = LocalTime.parse(cbxSTime.getSelectedItem().toString(), formatter);
             e.setTime(localTime);
-            try{
+            try {
                 locArr = locDAO.SeleteAll(db.getS());
-            }catch(SQLException ex){
+            } catch (SQLException ex) {
                 System.out.println("Err:" + ex.getMessage());
             }
-            
+
             e.setLocation(locArr.get(cbxCampus.getSelectedIndex()).getEventLocation());
             e.setApprovalStatus(false);
             e.setIsApprovedBy(34156738);
-            
+
             java.sql.Date sqlDate = new java.sql.Date(jCalender.getDate().getTime());
             e.setDate(sqlDate);
             EventDAO evtDAO = new EventDAO();
@@ -567,6 +568,20 @@ public class Student_Live_Events extends javax.swing.JFrame {
                 evtDAO.InsertRecord(db.getC(), e);
             } catch (SQLException ex) {
                 System.out.println("Err: " + ex.getMessage());
+            }
+
+            for (var i : volArr) {
+                i.setEventId(eventID);
+            }
+
+            try {
+                VolunteerDAO volDAO = new VolunteerDAO();
+                for (var i : volArr) {
+                    volDAO.InserRecord(db.getC(), i);
+                }
+            } catch (Exception ex) {
+                System.out.println("Err: " + ex.getMessage());
+
             }
 
             cbxCategory.setSelectedIndex(0);
