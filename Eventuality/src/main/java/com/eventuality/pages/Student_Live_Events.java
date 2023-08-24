@@ -558,7 +558,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
             
             e.setLocation(locArr.get(cbxCampus.getSelectedIndex()).getEventLocation());
             e.setApprovalStatus(false);
-            e.setIsApprovedBy(0);
+            e.setIsApprovedBy(34156738);
             
             java.sql.Date sqlDate = new java.sql.Date(jCalender.getDate().getTime());
             e.setDate(sqlDate);
