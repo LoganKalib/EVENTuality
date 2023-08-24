@@ -307,6 +307,11 @@ public class Login extends javax.swing.JFrame {
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
         if(evt.getSource() == btnSignIn){
+            try{
+                 db = new DbConnect();   
+                }catch(SQLException ex){
+                    System.out.println("Err:" + ex.getMessage());
+                }
             if(cbxRoll.getSelectedIndex() == 0){
                 stu = new Student();
                 stu.setStudName(txtName.getText());
