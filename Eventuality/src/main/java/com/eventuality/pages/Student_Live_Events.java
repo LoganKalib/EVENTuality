@@ -559,7 +559,9 @@ public class Student_Live_Events extends javax.swing.JFrame {
             e.setLocation(locArr.get(cbxCampus.getSelectedIndex()).getEventLocation());
             e.setApprovalStatus(false);
             e.setIsApprovedBy(0);
-            e.setDate((Date) jCalender.getDate());
+            
+            java.sql.Date sqlDate = new java.sql.Date(jCalender.getDate().getTime());
+            e.setDate(sqlDate);
             EventDAO evtDAO = new EventDAO();
             try {
                 evtDAO.InsertRecord(db.getC(), e);
