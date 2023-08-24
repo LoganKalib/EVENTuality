@@ -13,10 +13,12 @@ public class BookingDAO {
     private String retrieve_Values_qry;
     
     
-    public ArrayList<Booking>SelectStudRecords(Statement s,int studNum) throws SQLException{
+    public ArrayList<Booking>SelectStudRecords(Connection c,int studNum) throws SQLException{
         ArrayList<Booking> arr = new ArrayList();
-        retrieve_Values_qry = String.format("SELECT * FROM BOOKING WHERE Student_number=%d",studNum);
-        ResultSet rs = s.executeQuery(retrieve_Values_qry);
+        retrieve_Values_qry = "SELECT * FROM BOOKING WHERE Student_number=?";
+        PreparedStatement ps = c.prepareStatement(retrieve_Values_qry);
+        ps.setInt(1, studNum);
+        ResultSet rs = ps.executeQuery();
         
         if(rs !=null){
             while(rs.next()){
@@ -31,13 +33,15 @@ public class BookingDAO {
             }
         }
         rs.close();
+        ps.close();
         return arr;
     }
     
-    public ArrayList<Booking>SelectLectRecords(Statement s,int staffNum) throws SQLException{
+    public ArrayList<Booking>SelectLectRecords(Connection c,int staffNum) throws SQLException{
         ArrayList<Booking> arr = new ArrayList();
-        retrieve_Values_qry = String.format("SELECT * FROM BOOKING WHERE Staff_number=%d",staffNum);
-        ResultSet rs = s.executeQuery(retrieve_Values_qry);
+        retrieve_Values_qry = "SELECT * FROM BOOKING WHERE Staff_number=?";
+        PreparedStatement ps = c.prepareStatement(retrieve_Values_qry);
+        ResultSet rs = ps.executeQuery();
         
         if(rs !=null){
             while(rs.next()){
@@ -52,13 +56,15 @@ public class BookingDAO {
             }
         }
         rs.close();
+        ps.close();
         return arr;
     }
     
-    public ArrayList<Booking>SelectEventRecords(Statement s,String eventId) throws SQLException{
+    public ArrayList<Booking>SelectEventRecords(Connection c,String eventId) throws SQLException{
         ArrayList<Booking> arr = new ArrayList();
-        retrieve_Values_qry = String.format("SELECT * FROM BOOKING WHERE Event_Id=%s",eventId);
-        ResultSet rs = s.executeQuery(retrieve_Values_qry);
+        retrieve_Values_qry = "SELECT * FROM BOOKING WHERE Event_Id=?";
+        PreparedStatement ps = c.prepareStatement(eventId);
+        ResultSet rs = ps.executeQuery();
         
         if(rs !=null){
             while(rs.next()){
@@ -74,6 +80,7 @@ public class BookingDAO {
             }
         }
         rs.close();
+        ps.close();
         return arr;
     }
     
