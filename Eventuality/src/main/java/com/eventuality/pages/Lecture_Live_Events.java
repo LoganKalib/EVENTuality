@@ -389,6 +389,7 @@ int i = lstEventsL.getSelectedIndex();
         lecBook.setAttdType("L".charAt(0));
         lecBook.setDate(ev.getDate());
         lecBook.setAttdNumberLec(ev.getIsApprovedBy());
+        lecBook.setAttdNumberStud(ev.getLeader());
         
         bookDAO = new BookingDAO();
         
