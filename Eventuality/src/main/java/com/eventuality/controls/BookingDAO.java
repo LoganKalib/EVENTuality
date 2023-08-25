@@ -89,7 +89,7 @@ public class BookingDAO {
         PreparedStatement ps = c.prepareStatement(delete_Values_stmt);
         ps.setInt(1, studNum);
         ps.setString(2, eventId);
-        int rows = ps.executeUpdate(delete_Values_stmt);
+        int rows = ps.executeUpdate();
         if (rows == 0) {
             JOptionPane.showMessageDialog(null, "No record with that ID...");
         } else {
@@ -102,7 +102,7 @@ public class BookingDAO {
         delete_Values_stmt = "DELETE FROM BOOKING WHERE Event_id=?";
         PreparedStatement ps = c.prepareStatement(delete_Values_stmt);
         ps.setString(1, eventId);
-        int rows = ps.executeUpdate(delete_Values_stmt);
+        int rows = ps.executeUpdate();
         if (rows == 0) {
             JOptionPane.showMessageDialog(null, "No record with that ID...");
         } else {
@@ -116,7 +116,7 @@ public class BookingDAO {
         PreparedStatement ps = c.prepareStatement(delete_Values_stmt);
         ps.setInt(1, staffNum);
         ps.setString(2, eventId);
-        int rows = ps.executeUpdate(delete_Values_stmt);
+        int rows = ps.executeUpdate();
         if (rows == 0) {
             JOptionPane.showMessageDialog(null, "No record with that ID...");
         } else {
