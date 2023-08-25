@@ -31,6 +31,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
     private ArrayList<Volunteer> volArr = new ArrayList();
     private ArrayList<Location> locArr;
     private String eventID = "BOR267W";
+    private ArrayList<Event> events = new ArrayList();
 
     /**
      * Creates new form Student_Live_Events
@@ -401,6 +402,11 @@ public class Student_Live_Events extends javax.swing.JFrame {
         spBookedE.setBounds(490, 260, 410, 130);
 
         lstLiveEvents.setBackground(new java.awt.Color(0, 51, 102));
+        lstLiveEvents.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                DisplayDetails(evt);
+            }
+        });
         spLiveEvents.setViewportView(lstLiveEvents);
 
         pnlLiveEvents.add(spLiveEvents);
@@ -609,6 +615,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
             evtArray = evtDAO.SelectTable(db.getS());
             for(var i:evtArray) {
                 if(i.isApprovalStatus()==true) {
+                    events.add(i);
                    dlm.addElement(i.getEventId() + " - " + i.getTitle()+ " - " + i.getLeader()+ " - " + i.getDate());
                 }
             }
@@ -617,6 +624,24 @@ public class Student_Live_Events extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_stateChanged
+
+    private void DisplayDetails(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_DisplayDetails
+        int i = lstLiveEvents.getSelectedIndex();
+        DefaultListModel<String> dlm = new DefaultListModel<String>();
+        Event ev = events.get(i);
+        
+        dlm.addElement("TITLE: " + ev.getTitle());
+        dlm.addElement("DESCRIPTION: " + ev.getDescription());
+        dlm.addElement("START TIME:" + ev.getTime());
+        dlm.addElement("EVENT DATE: " + ev.getDate());
+        for(var x:locArr){
+            if(ev.getLocation() == x.getEventLocation()){
+                dlm.addElement("EVENT LOCATION: " + x.getCampus() + "\t" + x.getBuilding() +" \t" + x.getDepartment() + "\t" + x.getRoom());
+            }
+        }
+        dlm.addElement("EVENT TYPE: " + ev.getEventType());
+        lstLiveEvents.setModel(dlm);
+    }//GEN-LAST:event_DisplayDetails
 
     /**
      * @param args the command line arguments
