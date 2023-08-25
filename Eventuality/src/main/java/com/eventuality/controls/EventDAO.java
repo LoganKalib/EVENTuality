@@ -50,18 +50,16 @@ public class EventDAO {
         ps.close();
     }
     
-    public void UpdateRecord(Connection c, String setField,String setValue, String eventID) throws SQLException{
-        update_Values_stmt = "UPDATE Event SET ?=? WHERE Event_Id = ?";
+    public void UpdateRecord(Connection c,String setValue, String eventID) throws SQLException{
+        update_Values_stmt = "UPDATE Event SET APPROVAL_STATUS=? WHERE Event_Id = ?";
         PreparedStatement ps = c.prepareStatement(update_Values_stmt);
-        ps.setString(1, setField);
-        ps.setString(2, setValue);
-        ps.setString(3,eventID);
+        ps.setString(1, setValue);
+        ps.setString(2,eventID);
         int rows = ps.executeUpdate(update_Values_stmt);
-        String msg = String.format("EventID: %s \n Successfully updated %s, with value: %s.",eventID,setField,setValue);
         if (rows == 0){
             JOptionPane.showMessageDialog(null, "No record with that ID...");
         }else{
-            JOptionPane.showMessageDialog(null, msg);
+            JOptionPane.showMessageDialog(null, "Update successful.");
         }
         ps.close();
     }
