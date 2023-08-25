@@ -541,8 +541,8 @@ public class Student_Live_Events extends javax.swing.JFrame {
         Event ev = events.get(i);
         studBook = new Booking();
         
-        studBook.setTicketNumber(58315094);
-        loggedin.setStudNum(22159867);
+        studBook.setTicketNumber(5831509);
+        loggedin.setStudNum(47891324);
         studBook.setAttdNumberStud(loggedin.getStudNum());
         studBook.setTime(ev.getTime());
         studBook.setEventId(ev.getEventId());
@@ -584,7 +584,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
             e.setEventId(eventID);
             e.setEventType((String) cbxCategory.getSelectedItem());
             
-            loggedin.setStudNum(22159867);
+            loggedin.setStudNum(47891324);
             
             e.setLeader(loggedin.getStudNum());
             e.setTitle(txtTitle.getText());
@@ -659,8 +659,8 @@ public class Student_Live_Events extends javax.swing.JFrame {
             book = bookDAO.SelectStudRecords(db.getC(), loggedin.getStudNum());
             for(var x:book){
                 dlmBook.addElement(x.getEventId() +" - " + x.getTicketNumber() + " - " + x.getDate() + " - "+  x.getTime());
-                lstBooked.setModel(dlmBook);
             }
+            lstBooked.setModel(dlmBook);
         } catch (SQLException ex) {
             Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
         }
