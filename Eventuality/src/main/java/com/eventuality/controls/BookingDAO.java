@@ -124,7 +124,7 @@ public class BookingDAO {
         ps.setDate(6, obj.getDate());
         ps.setInt(7, obj.getAttdNumberLec());
         
-        int rows = ps.executeUpdate(delete_Values_stmt);
+        int rows = ps.executeUpdate();
         if (rows == 0) {
             JOptionPane.showMessageDialog(null, "Record not added.");
         } else {

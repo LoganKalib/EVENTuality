@@ -658,6 +658,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
         try {
             book = bookDAO.SelectStudRecords(db.getC(), loggedin.getStudNum());
             for(var x:book){
+                System.out.println("Event: " + x.getEventId());
                 dlmBook.addElement(x.getEventId() +" - " + x.getTicketNumber() + " - " + x.getDate() + " - "+  x.getTime());
             }
             lstBooked.setModel(dlmBook);
