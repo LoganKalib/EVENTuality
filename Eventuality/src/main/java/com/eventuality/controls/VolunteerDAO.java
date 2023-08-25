@@ -12,8 +12,29 @@ public class VolunteerDAO {
     private String delete_Values_stmt;
     private String retrieve_Values_qry;
 
-    public ArrayList<Volunteer> SelectVols(Statement s, int studNum, String EventID) throws SQLException {
-        retrieve_Values_qry = String.format("SELECT * FROM VOLUNTEERS WHERE STUDENT_NUMBER = %d, EVENT_ID= %s", studNum, EventID);
+    public ArrayList<Volunteer> SelectVols(Connection c, int studNum, String EventID) throws SQLException {
+        retrieve_Values_qry ="SELECT * FROM VOLUNTEERS WHERE STUDENT_NUMBER = ?, EVENT_ID=?";
+        PreparedStatement ps = c.prepareStatement(retrieve_Values_qry);
+        ps.setInt(1, studNum);
+        ps.setString(2, EventID);
+        ResultSet rs = ps.executeQuery();
+        ArrayList<Volunteer> arr = new ArrayList();
+        
+        if(rs != null){
+            while(rs.next()){
+                Volunteer vol = new Volunteer();
+                vol.setStudentNumber(rs.getInt("STUDENT_NUMBER"));
+                vol.setEventId(rs.getString("EVENT_ID"));
+                vol.setRole(rs.getString("ROLE"));
+                arr.add(vol);
+            }
+        }
+        rs.close();
+        return arr;
+    }
+    
+    public ArrayList<Volunteer> SelectVols(Statement s) throws SQLException {
+        retrieve_Values_qry = "SELECT * FROM VOLUNTEERS";
         ResultSet rs = s.executeQuery(retrieve_Values_qry);
         ArrayList<Volunteer> arr = new ArrayList();
         
@@ -58,6 +79,16 @@ public class VolunteerDAO {
         } else {
             JOptionPane.showMessageDialog(null, msg);
         }
+        ps.close();
+    }
+    
+    public void InserRecord(Connection c, Volunteer vol) throws SQLException{
+        insert_Values_stmt = "INSERT INTO VOLUNTEERS VALUES(?,?,?)";
+        PreparedStatement ps = c.prepareStatement(insert_Values_stmt);
+        ps.setInt(1, vol.getStudentNumber());
+        ps.setString(2, vol.getEventId());
+        ps.setString(3, vol.getRole());
+        ps.executeUpdate();
         ps.close();
     }
 }
