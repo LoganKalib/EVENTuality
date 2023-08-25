@@ -634,13 +634,18 @@ public class Student_Live_Events extends javax.swing.JFrame {
         dlm.addElement("DESCRIPTION: " + ev.getDescription());
         dlm.addElement("START TIME:" + ev.getTime());
         dlm.addElement("EVENT DATE: " + ev.getDate());
+        try {
+            locArr = locDAO.SeleteAll(db.getS());
+        } catch (SQLException ex) {
+            Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+        }
         for(var x:locArr){
             if(ev.getLocation() == x.getEventLocation()){
                 dlm.addElement("EVENT LOCATION: " + x.getCampus() + "\t" + x.getBuilding() +" \t" + x.getDepartment() + "\t" + x.getRoom());
             }
         }
         dlm.addElement("EVENT TYPE: " + ev.getEventType());
-        lstLiveEvents.setModel(dlm);
+        lstEventDetails.setModel(dlm);
     }//GEN-LAST:event_DisplayDetails
 
     /**
