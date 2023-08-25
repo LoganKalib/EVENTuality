@@ -13,7 +13,7 @@ public class LocationDAO {
     private String retrieve_Values_qry;
 
     public ArrayList<Location> SeleteAll(Statement s) throws SQLException {
-        retrieve_Values_qry = "Selete * From Location";
+        retrieve_Values_qry = "SELECT * From Location";
         ResultSet rs = s.executeQuery(retrieve_Values_qry);
         ArrayList<Location> arr = new ArrayList();
 

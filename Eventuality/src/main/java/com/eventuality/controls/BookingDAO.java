@@ -13,10 +13,12 @@ public class BookingDAO {
     private String retrieve_Values_qry;
     
     
-    public ArrayList<Booking>SelectStudRecords(Statement s,int studNum) throws SQLException{
+    public ArrayList<Booking>SelectStudRecords(Connection c,int studNum) throws SQLException{
         ArrayList<Booking> arr = new ArrayList();
-        retrieve_Values_qry = String.format("SELECT * FROM BOOKING WHERE Student_number=%d",studNum);
-        ResultSet rs = s.executeQuery(retrieve_Values_qry);
+        retrieve_Values_qry = "SELECT * FROM BOOKING WHERE Student_number=?";
+        PreparedStatement ps = c.prepareStatement(retrieve_Values_qry);
+        ps.setInt(1, studNum);
+        ResultSet rs = ps.executeQuery();
         
         if(rs !=null){
             while(rs.next()){
@@ -26,18 +28,20 @@ public class BookingDAO {
                 book.setEventId(rs.getString("EVENT_ID"));
                 book.setAttdType(rs.getString("ATT_TYPE").charAt(0));
                 book.setDate(rs.getDate("DATE"));
-                book.setTime(rs.getTime("TIME"));
+                book.setTime(rs.getTime("TIME").toLocalTime());
                 arr.add(book);
             }
         }
         rs.close();
+        ps.close();
         return arr;
     }
     
-    public ArrayList<Booking>SelectLectRecords(Statement s,int staffNum) throws SQLException{
+    public ArrayList<Booking>SelectLectRecords(Connection c,int staffNum) throws SQLException{
         ArrayList<Booking> arr = new ArrayList();
-        retrieve_Values_qry = String.format("SELECT * FROM BOOKING WHERE Staff_number=%d",staffNum);
-        ResultSet rs = s.executeQuery(retrieve_Values_qry);
+        retrieve_Values_qry = "SELECT * FROM BOOKING WHERE Staff_number=?";
+        PreparedStatement ps = c.prepareStatement(retrieve_Values_qry);
+        ResultSet rs = ps.executeQuery();
         
         if(rs !=null){
             while(rs.next()){
@@ -47,18 +51,20 @@ public class BookingDAO {
                 book.setEventId(rs.getString("EVENT_ID"));
                 book.setAttdType(rs.getString("ATT_TYPE").charAt(0));
                 book.setDate(rs.getDate("DATE"));
-                book.setTime(rs.getTime("TIME"));
+                book.setTime(rs.getTime("TIME").toLocalTime());
                 arr.add(book);
             }
         }
         rs.close();
+        ps.close();
         return arr;
     }
     
-    public ArrayList<Booking>SelectEventRecords(Statement s,String eventId) throws SQLException{
+    public ArrayList<Booking>SelectEventRecords(Connection c,String eventId) throws SQLException{
         ArrayList<Booking> arr = new ArrayList();
-        retrieve_Values_qry = String.format("SELECT * FROM BOOKING WHERE Event_Id=%s",eventId);
-        ResultSet rs = s.executeQuery(retrieve_Values_qry);
+        retrieve_Values_qry = "SELECT * FROM BOOKING WHERE Event_Id=?";
+        PreparedStatement ps = c.prepareStatement(eventId);
+        ResultSet rs = ps.executeQuery();
         
         if(rs !=null){
             while(rs.next()){
@@ -68,12 +74,13 @@ public class BookingDAO {
                 book.setEventId(rs.getString("EVENT_ID"));
                 book.setAttdType(rs.getString("ATT_TYPE").charAt(0));
                 book.setDate(rs.getDate("DATE"));
-                book.setTime(rs.getTime("TIME"));
+                book.setTime(rs.getTime("TIME").toLocalTime());
                 book.setAttdNumberLec(rs.getInt("STAFF_NUMBER"));
                 arr.add(book);
             }
         }
         rs.close();
+        ps.close();
         return arr;
     }
     
@@ -105,6 +112,25 @@ public class BookingDAO {
         
     }
     
-  
+    public void InsertRecord(Connection c,Booking obj) throws SQLException{
+        insert_Values_stmt = "INSERT INTO BOOKING VALUES(?,?,?,?,?,?,?)";
+        
+        PreparedStatement ps = c.prepareStatement(insert_Values_stmt);
+        ps.setInt(1, obj.getTicketNumber());
+        ps.setInt(2, obj.getAttdNumberStud());
+        ps.setTime(3, Time.valueOf(obj.getTime()));
+        ps.setString(4, obj.getEventId());
+        ps.setString(5, String.valueOf(obj.getAttdType()));
+        ps.setDate(6, obj.getDate());
+        ps.setInt(7, obj.getAttdNumberLec());
+        
+        int rows = ps.executeUpdate();
+        if (rows == 0) {
+            JOptionPane.showMessageDialog(null, "Record not added.");
+        } else {
+            JOptionPane.showMessageDialog(null, "Record(s) successfully added.");
+        }
+        
+    }
    
 }

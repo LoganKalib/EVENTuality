@@ -1,12 +1,78 @@
 package com.eventuality.pages;
 
+import com.eventuality.controls.BookingDAO;
+import com.eventuality.controls.DbConnect;
+import com.eventuality.controls.EventDAO;
+import com.eventuality.controls.EventTypeDAO;
+import com.eventuality.controls.LocationDAO;
+import com.eventuality.controls.VolunteerDAO;
+import com.eventuality.objects.Booking;
+import com.eventuality.objects.Event;
+import com.eventuality.objects.Event_Category;
+import com.eventuality.objects.Location;
+import com.eventuality.objects.Student;
+import com.eventuality.objects.Volunteer;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
+
 public class Student_Live_Events extends javax.swing.JFrame {
+
+    private Student loggedin = new Student();
+    LocationDAO locDAO;
+    private DbConnect db;
+    private ArrayList<Volunteer> volArr = new ArrayList();
+    private ArrayList<Location> locArr;
+    private String eventID = "BOR267W";
+    private ArrayList<Event> events = new ArrayList();
+    DefaultListModel<String> dlmBook = new DefaultListModel<String>();
+    private ArrayList<Booking> book = new ArrayList();
+    Booking studBook;
+    BookingDAO bookDAO;
 
     /**
      * Creates new form Student_Live_Events
      */
     public Student_Live_Events() {
         initComponents();
+
+        try {
+
+            db = new DbConnect();
+            EventTypeDAO evtTypeDAO = new EventTypeDAO();
+            ArrayList<Event_Category> evtType = evtTypeDAO.SelectTable(db.getS());
+
+            for (var i : evtType) {
+                cbxCategory.addItem(i.getEventKeyword());
+            }
+
+            locDAO = new LocationDAO();
+            ArrayList<Location> locArr = locDAO.SeleteAll(db.getS());
+
+            for (var i : locArr) {
+                cbxCampus.addItem(i.getCampus() + " - " + i.getDepartment() + " - " + i.getBuilding());
+                String cap = Integer.toString(i.getCapacity());
+                cbxCapacity.addItem(cap);
+            }
+
+            VolunteerDAO volDAO = new VolunteerDAO();
+            ArrayList<Volunteer> volArr = volDAO.SelectVols(db.getS());
+            for (var i : volArr) {
+                cbxVolunteer.addItem(i.getRole());
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     /**
@@ -46,9 +112,9 @@ public class Student_Live_Events extends javax.swing.JFrame {
         lblStudNo = new javax.swing.JLabel();
         lblRoll = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        lstVolunteers = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
+        txtAVols = new javax.swing.JScrollPane();
+        txtVolsArea = new javax.swing.JTextArea();
         pnlLiveEvents = new javax.swing.JPanel();
         lblLive = new javax.swing.JLabel();
         btnBook = new javax.swing.JButton();
@@ -78,6 +144,11 @@ public class Student_Live_Events extends javax.swing.JFrame {
 
         tabStudent.setBackground(new java.awt.Color(102, 153, 255));
         tabStudent.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
+        tabStudent.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                Student_Live_Events.this.stateChanged(evt);
+            }
+        });
 
         pnlMyEvents.setLayout(null);
 
@@ -277,18 +348,19 @@ public class Student_Live_Events extends javax.swing.JFrame {
         pnlMyEvents.add(jPanel1);
         jPanel1.setBounds(460, 80, 10, 310);
 
-        lstVolunteers.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
-        jScrollPane2.setViewportView(lstVolunteers);
-
-        pnlMyEvents.add(jScrollPane2);
-        jScrollPane2.setBounds(490, 150, 410, 170);
-
         jLabel1.setBackground(new java.awt.Color(102, 153, 255));
         jLabel1.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("jLabel1");
         pnlMyEvents.add(jLabel1);
         jLabel1.setBounds(0, 0, 940, 450);
+
+        txtVolsArea.setColumns(20);
+        txtVolsArea.setRows(5);
+        txtAVols.setViewportView(txtVolsArea);
+
+        pnlMyEvents.add(txtAVols);
+        txtAVols.setBounds(490, 150, 410, 170);
 
         tabStudent.addTab("MY EVENTS", pnlMyEvents);
 
@@ -335,6 +407,11 @@ public class Student_Live_Events extends javax.swing.JFrame {
         spBookedE.setBounds(490, 260, 410, 130);
 
         lstLiveEvents.setBackground(new java.awt.Color(0, 51, 102));
+        lstLiveEvents.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                DisplayDetails(evt);
+            }
+        });
         spLiveEvents.setViewportView(lstLiveEvents);
 
         pnlLiveEvents.add(spLiveEvents);
@@ -460,7 +537,29 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_btnStatusActionPerformed
 
     private void btnBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookActionPerformed
-        // TODO add your handling code here:
+        int i = lstLiveEvents.getSelectedIndex();
+        Event ev = events.get(i);
+        studBook = new Booking();
+        
+        studBook.setTicketNumber(5831509);
+        loggedin.setStudNum(47891324);
+        studBook.setAttdNumberStud(loggedin.getStudNum());
+        studBook.setTime(ev.getTime());
+        studBook.setEventId(ev.getEventId());
+        studBook.setAttdType("S".charAt(0));
+        studBook.setDate(ev.getDate());
+        studBook.setAttdNumberLec(ev.getIsApprovedBy());
+        
+        bookDAO = new BookingDAO();
+        
+        try {
+            bookDAO.InsertRecord(db.getC(), studBook);
+            dlmBook.addElement(studBook.getEventId() +" - " + studBook.getTicketNumber() + " - " + studBook.getDate() + " - "+  studBook.getTime());
+        } catch (SQLException ex) {
+            Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }//GEN-LAST:event_btnBookActionPerformed
 
     private void btnRedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRedoActionPerformed
@@ -468,12 +567,128 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRedoActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        // TODO add your handling code here:
+        if (evt.getSource() == btnRegister) {
+            Volunteer vol = new Volunteer();
+            vol.setStudentNumber(Integer.parseInt(txtStudentNo.getText()));
+            vol.setRole((String) cbxVolunteer.getSelectedItem());
+            volArr.add(vol);
+            txtVolsArea.append(vol.getStudentNumber() + "\t" + vol.getRole() + "\n");
+            txtStudentNo.setText("");
+            cbxVolunteer.setSelectedIndex(0);
+        }
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
-        // TODO add your handling code here:
+        if (evt.getSource() == btnApprove) {
+            Event e = new Event();
+            e.setEventId(eventID);
+            e.setEventType((String) cbxCategory.getSelectedItem());
+            
+            loggedin.setStudNum(47891324);
+            
+            e.setLeader(loggedin.getStudNum());
+            e.setTitle(txtTitle.getText());
+            e.setDescription(txtDescript.getText());
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+            LocalTime localTime = LocalTime.parse(cbxSTime.getSelectedItem().toString(), formatter);
+            e.setTime(localTime);
+            try {
+                locArr = locDAO.SeleteAll(db.getS());
+            } catch (SQLException ex) {
+                System.out.println("Err:" + ex.getMessage());
+            }
+
+            e.setLocation(locArr.get(cbxCampus.getSelectedIndex()).getEventLocation());
+            e.setApprovalStatus(false);
+            e.setIsApprovedBy(34156738);
+
+            java.sql.Date sqlDate = new java.sql.Date(jCalender.getDate().getTime());
+            e.setDate(sqlDate);
+            EventDAO evtDAO = new EventDAO();
+            try {
+                evtDAO.InsertRecord(db.getC(), e);
+            } catch (SQLException ex) {
+                System.out.println("Err: " + ex.getMessage());
+            }
+
+            for (var i : volArr) {
+                i.setEventId(eventID);
+            }
+
+            try {
+                VolunteerDAO volDAO = new VolunteerDAO();
+                for (var i : volArr) {
+                    volDAO.InserRecord(db.getC(), i);
+                }
+            } catch (Exception ex) {
+                System.out.println("Err: " + ex.getMessage());
+
+            }
+
+            cbxCategory.setSelectedIndex(0);
+            txtTitle.setText("");
+            txtDescript.setText("");
+            cbxSTime.setSelectedIndex(0);
+            cbxCampus.setSelectedIndex(0);
+            cbxVolunteer.setSelectedIndex(0);
+            txtVolsArea.setText("");
+        }
     }//GEN-LAST:event_btnApproveActionPerformed
+
+    private void stateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_stateChanged
+        try {
+            db = new DbConnect();
+            EventDAO evtDAO = new EventDAO();
+            ArrayList<Event> evtArray = new ArrayList();
+            DefaultListModel<String> dlm = new DefaultListModel<String>();
+            evtArray = evtDAO.SelectTable(db.getS());
+            for (var i : evtArray) {
+                if (i.isApprovalStatus() == true) {
+                    events.add(i);
+                    dlm.addElement(i.getEventId() + " - " + i.getTitle() + " - " + i.getLeader() + " - " + i.getDate());
+                }
+            }
+            lstLiveEvents.setModel(dlm);
+        } catch (SQLException e) {
+            System.out.println("Err: " + e.getMessage());
+        }
+        
+        bookDAO = new BookingDAO();
+        
+        try {
+            book = bookDAO.SelectStudRecords(db.getC(), loggedin.getStudNum());
+            for(var x:book){
+                System.out.println("Event: " + x.getEventId());
+                dlmBook.addElement(x.getEventId() +" - " + x.getTicketNumber() + " - " + x.getDate() + " - "+  x.getTime());
+            }
+            lstBooked.setModel(dlmBook);
+        } catch (SQLException ex) {
+            Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_stateChanged
+
+    private void DisplayDetails(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_DisplayDetails
+        int i = lstLiveEvents.getSelectedIndex();
+        DefaultListModel<String> dlm = new DefaultListModel<String>();
+        Event ev = events.get(i);
+
+        dlm.addElement("TITLE: " + ev.getTitle());
+        dlm.addElement("DESCRIPTION: " + ev.getDescription());
+        dlm.addElement("START TIME:" + ev.getTime());
+        dlm.addElement("EVENT DATE: " + ev.getDate());
+        try {
+            locArr = locDAO.SeleteAll(db.getS());
+        } catch (SQLException ex) {
+            Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for (var x : locArr) {
+            if (ev.getLocation().equalsIgnoreCase(x.getEventLocation())) {
+                dlm.addElement("EVENT LOCATION: " + x.getCampus() + "-" + x.getBuilding() + " -" + x.getDepartment() + "-" + x.getRoom());
+            }
+        }
+        dlm.addElement("EVENT TYPE: " + ev.getEventType());
+        lstEventDetails.setModel(dlm);
+    }//GEN-LAST:event_DisplayDetails
 
     /**
      * @param args the command line arguments
@@ -531,7 +746,6 @@ public class Student_Live_Events extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblApprove;
     private javax.swing.JLabel lblBooked;
     private javax.swing.JLabel lblCapacity;
@@ -553,7 +767,6 @@ public class Student_Live_Events extends javax.swing.JFrame {
     private javax.swing.JList<String> lstBooked;
     private javax.swing.JList<String> lstEventDetails;
     private javax.swing.JList<String> lstLiveEvents;
-    private javax.swing.JList<String> lstVolunteers;
     private javax.swing.JButton navGallery;
     private javax.swing.JButton navHome;
     private javax.swing.JPanel pnlLiveEvents;
@@ -561,9 +774,11 @@ public class Student_Live_Events extends javax.swing.JFrame {
     private javax.swing.JScrollPane spBookedE;
     private javax.swing.JScrollPane spLiveEvents;
     private javax.swing.JTabbedPane tabStudent;
+    private javax.swing.JScrollPane txtAVols;
     private javax.swing.JTextArea txtDescript;
     private javax.swing.JScrollPane txtDescription;
     private javax.swing.JTextField txtStudentNo;
     private javax.swing.JTextField txtTitle;
+    private javax.swing.JTextArea txtVolsArea;
     // End of variables declaration//GEN-END:variables
 }

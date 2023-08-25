@@ -1,15 +1,16 @@
 package com.eventuality.objects;
 
 import java.sql.*;
+import java.time.LocalTime;
 
 public class Event {
     private String eventId, eventType, title, description, location;
     private int leader, isApprovedBy, ticketPrice;
     private Date date;
-    private Time time; 
+    private LocalTime time; 
     private boolean approvalStatus;
 
-    public Event(String eventId, String eventType, String title, String description, String location, int leader, int isApprovedBy, int ticketPrice, Date date, Time time, boolean approvalStatus) {
+    public Event(String eventId, String eventType, String title, String description, String location, int leader, int isApprovedBy, int ticketPrice, Date date, LocalTime time, boolean approvalStatus) {
         this.eventId = eventId;
         this.eventType = eventType;
         this.title = title;
@@ -73,7 +74,7 @@ public class Event {
         return date;
     }
 
-    public Time getTime() {
+    public LocalTime getTime() {
         return time;
     }
 
@@ -117,7 +118,7 @@ public class Event {
         this.date = date;
     }
 
-    public void setTime(Time time) {
+    public void setTime(LocalTime time) {
         this.time = time;
     }
 
