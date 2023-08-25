@@ -640,7 +640,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
             Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
         }
         for(var x:locArr){
-            if(ev.getLocation() == x.getEventLocation()){
+            if(ev.getLocation().equalsIgnoreCase(x.getEventLocation())){
                 dlm.addElement("EVENT LOCATION: " + x.getCampus() + "-" + x.getBuilding() +" -" + x.getDepartment() + "-" + x.getRoom());
             }
         }
