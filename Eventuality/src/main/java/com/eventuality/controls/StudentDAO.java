@@ -11,13 +11,16 @@ public class StudentDAO {
     private String delete_Values_stmt;
     private String retrieve_Values_qry;
     
-    public Student SelectLogin(Statement s, String studentEmail, String password) throws SQLException {
-        retrieve_Values_qry = String.format("SELECT * FROM Student WHERE EMAIL= %s AND Password =%s", studentEmail, password);
-        ResultSet rs = s.executeQuery(retrieve_Values_qry);
-        Student stu;
+    public Student SelectLogin(Connection c, String studentEmail, String password) throws SQLException {
+        retrieve_Values_qry = "SELECT * FROM Student WHERE EMAIL=? AND Password =?";
+        PreparedStatement ps = c.prepareStatement(retrieve_Values_qry);
+        ps.setString(1, studentEmail);
+        ps.setString(2, password);
+        ResultSet rs = ps.executeQuery();
+        Student stu = null;
 
         if (rs != null) {
-            {
+            while (rs.next()){
                 stu = new Student();
                 stu.setStudNum(rs.getInt("STUDENT_NUMBER"));
                 stu.setStudName(rs.getString("FIRST_NAME"));
@@ -26,12 +29,13 @@ public class StudentDAO {
                 stu.setStudEmail(rs.getString("EMAIL"));
 
             }
-            while (rs.next());
         } else {
             rs.close();
+            ps.close();
             return null;
         }
         rs.close();
+        ps.close();
         return stu;
     }
     
@@ -61,6 +65,23 @@ public class StudentDAO {
             JOptionPane.showMessageDialog(null, "No record with that Number...");
         } else {
             JOptionPane.showMessageDialog(null, msg);
+        }
+        ps.close();
+    }
+    
+    
+    public void InsertRecord(Connection c, Student stud) throws SQLException{
+        insert_Values_stmt = "INSERT INTO Student VALUES(?,?,?,?,?)";
+        PreparedStatement ps = c.prepareStatement(insert_Values_stmt);
+        ps.setInt(1, stud.getStudNum());
+        ps.setString(2, stud.getStudName());
+        ps.setString(3, stud.getStudSurname());
+        ps.setString(4, stud.getStudPassword());
+        ps.setString(5, stud.getStudEmail());
+        int rows = ps.executeUpdate();
+        
+        if(rows!=0){
+            JOptionPane.showMessageDialog(null, "Row added successfully.");
         }
         ps.close();
     }
