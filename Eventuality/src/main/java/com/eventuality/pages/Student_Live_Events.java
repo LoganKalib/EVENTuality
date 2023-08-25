@@ -624,6 +624,12 @@ public class Student_Live_Events extends javax.swing.JFrame {
                 System.out.println("Err: " + ex.getMessage());
 
             }
+            
+            try {
+                db.CloseAll();
+            } catch (SQLException ex) {
+                Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
             cbxCategory.setSelectedIndex(0);
             txtTitle.setText("");
