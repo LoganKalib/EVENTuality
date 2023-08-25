@@ -340,6 +340,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     private void SwitchPage(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SwitchPage
          try {
             db = new DbConnect();
+            loggedin.setStaffNumber(34156738);
             EventDAO evtDAO = new EventDAO();
             ArrayList<Event> evtArray = new ArrayList();
             DefaultListModel<String> dlm = new DefaultListModel<String>();
