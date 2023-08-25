@@ -5,33 +5,45 @@ import com.eventuality.controls.EventDAO;
 import com.eventuality.objects.Event;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 
 public class Lecture_Live_Events extends javax.swing.JFrame {
-private DbConnect db;
+
+    private DbConnect db;
+    private ArrayList<Event> evtArray;
+    private ArrayList<Event> pendevtArray;
 
     /**
      * Creates new form Lecture_Live_Events
      */
     public Lecture_Live_Events() {
         initComponents();
-        try{
+        try {
             db = new DbConnect();
             EventDAO evtDAO = new EventDAO();
-            ArrayList<Event> evtArray = new ArrayList();
+            evtArray = new ArrayList();
             DefaultListModel<String> dlm = new DefaultListModel<String>();
             evtArray = evtDAO.SelectTable(db.getS());
-            for(var i:evtArray) {
-                if(i.isApprovalStatus()==false) {
-                   dlm.addElement(i.getEventId() + " - " + i.getTitle()+ " - " + i.getLeader()+ " - " + i.getDate());
+            for (var i : evtArray) {
+                if (i.isApprovalStatus() == false) {
+                    pendevtArray.add(i);
+                    dlm.addElement(i.getEventId() + " - " + i.getTitle() + " - " + i.getLeader() + " - " + i.getDate());
                 }
             }
             lstPending.setModel(dlm);
-        }catch(SQLException e) {
-            
+        } catch (SQLException e) {
+
+        } finally {
+            try {
+                db.CloseAll();
+            } catch (SQLException ex) {
+                Logger.getLogger(Lecture_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        
+
     }
 
     /**
@@ -266,7 +278,13 @@ private DbConnect db;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAppStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAppStatusActionPerformed
-        // TODO add your handling code here:
+        try {
+            int i = lstPending.getSelectedIndex();
+            EventDAO evtDao = new EventDAO();
+            evtDao.DeleteRecord(db.getC(), pendevtArray.get(i).getEventId());
+        } catch (SQLException ex) {
+            Logger.getLogger(Lecture_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnAppStatusActionPerformed
 
     private void btnLSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLSignOutActionPerformed
@@ -274,11 +292,26 @@ private DbConnect db;
     }//GEN-LAST:event_btnLSignOutActionPerformed
 
     private void PendingEventsChane(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_PendingEventsChane
-        // TODO add your handling code here:
+        int i = lstPending.getSelectedIndex();
+        DefaultListModel<String> dlm = new DefaultListModel<String>();
+        dlm.addElement("EVENT ID: " + pendevtArray.get(i).getEventId());
+        dlm.addElement("TITLE: " + pendevtArray.get(i).getTitle());
+        dlm.addElement("DESCRIPTION: " + pendevtArray.get(i).getDescription());
+        dlm.addElement("EVENT DATE: " + pendevtArray.get(i).getDate());
+        dlm.addElement("START TIME: " + pendevtArray.get(i).getTime());
+        dlm.addElement("EVENT ID: " + pendevtArray.get(i).getLocation());
+        lstEDetails.setModel(dlm);
+
     }//GEN-LAST:event_PendingEventsChane
 
     private void btnDenyStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDenyStatusActionPerformed
-        // TODO add your handling code here:
+        try {
+            EventDAO evtDao = new EventDAO();
+            int i = lstPending.getSelectedIndex();
+            evtDao.DeleteRecord(db.getC(), pendevtArray.get(i).getEventId());
+        } catch (SQLException ex) {
+            Logger.getLogger(Lecture_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnDenyStatusActionPerformed
 
     private void LiveEventList(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_LiveEventList
