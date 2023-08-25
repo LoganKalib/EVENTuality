@@ -28,7 +28,7 @@ public class BookingDAO {
                 book.setEventId(rs.getString("EVENT_ID"));
                 book.setAttdType(rs.getString("ATT_TYPE").charAt(0));
                 book.setDate(rs.getDate("DATE"));
-                book.setTime(rs.getTime("TIME"));
+                book.setTime(rs.getTime("TIME").toLocalTime());
                 arr.add(book);
             }
         }
@@ -51,7 +51,7 @@ public class BookingDAO {
                 book.setEventId(rs.getString("EVENT_ID"));
                 book.setAttdType(rs.getString("ATT_TYPE").charAt(0));
                 book.setDate(rs.getDate("DATE"));
-                book.setTime(rs.getTime("TIME"));
+                book.setTime(rs.getTime("TIME").toLocalTime());
                 arr.add(book);
             }
         }
@@ -74,7 +74,7 @@ public class BookingDAO {
                 book.setEventId(rs.getString("EVENT_ID"));
                 book.setAttdType(rs.getString("ATT_TYPE").charAt(0));
                 book.setDate(rs.getDate("DATE"));
-                book.setTime(rs.getTime("TIME"));
+                book.setTime(rs.getTime("TIME").toLocalTime());
                 book.setAttdNumberLec(rs.getInt("STAFF_NUMBER"));
                 arr.add(book);
             }
@@ -112,6 +112,25 @@ public class BookingDAO {
         
     }
     
-  
+    public void InsertRecord(Connection c,Booking obj) throws SQLException{
+        insert_Values_stmt = "INSERT INTO BOOKING VALUES(?,?,?,?,?,?,?)";
+        
+        PreparedStatement ps = c.prepareStatement(insert_Values_stmt);
+        ps.setInt(1, obj.getTicketNumber());
+        ps.setInt(2, obj.getAttdNumberStud());
+        ps.setTime(3, Time.valueOf(obj.getTime()));
+        ps.setString(4, obj.getEventId());
+        ps.setString(5, String.valueOf(obj.getAttdType()));
+        ps.setDate(6, obj.getDate());
+        ps.setInt(7, obj.getAttdNumberLec());
+        
+        int rows = ps.executeUpdate(delete_Values_stmt);
+        if (rows == 0) {
+            JOptionPane.showMessageDialog(null, "Record not added.");
+        } else {
+            JOptionPane.showMessageDialog(null, "Record(s) successfully added.");
+        }
+        
+    }
    
 }
