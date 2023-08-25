@@ -1,5 +1,6 @@
 package com.eventuality.pages;
 
+import com.eventuality.controls.BookingDAO;
 import com.eventuality.controls.DbConnect;
 import com.eventuality.controls.EventDAO;
 import com.eventuality.objects.Event;
@@ -316,9 +317,10 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     private void btnDenyStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDenyStatusActionPerformed
         try {
             EventDAO evtDao = new EventDAO();
+            BookingDAO bookDao = new BookingDAO();
             int i = lstPending.getSelectedIndex();
             db = new DbConnect();
-
+            bookDao.DeleteRecord(db.getC(), pendevtArray.get(i).getEventId());
             evtDao.DeleteRecord(db.getC(), pendevtArray.get(i).getEventId());
         } catch (SQLException ex) {
             Logger.getLogger(Lecture_Live_Events.class.getName()).log(Level.SEVERE, null, ex);

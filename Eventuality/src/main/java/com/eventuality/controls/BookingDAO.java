@@ -97,9 +97,22 @@ public class BookingDAO {
         }
         
     }
+    
+     public void DeleteRecord(Connection c,String eventId) throws SQLException{
+        delete_Values_stmt = "DELETE FROM BOOKING WHERE Event_id=?";
+        PreparedStatement ps = c.prepareStatement(delete_Values_stmt);
+        ps.setString(1, eventId);
+        int rows = ps.executeUpdate(delete_Values_stmt);
+        if (rows == 0) {
+            JOptionPane.showMessageDialog(null, "No record with that ID...");
+        } else {
+            JOptionPane.showMessageDialog(null, "Record(s) successfully deleted.");
+        }
+        
+    }
    
     public void DeleteRecordLec(Connection c, int staffNum,String eventId) throws SQLException{
-        delete_Values_stmt = "DELETE FROM BOOKING WHERE Staff_Number=?,Event_id=?";
+        delete_Values_stmt = "DELETE FROM BOOKING WHERE Event_id=?";
         PreparedStatement ps = c.prepareStatement(delete_Values_stmt);
         ps.setInt(1, staffNum);
         ps.setString(2, eventId);
