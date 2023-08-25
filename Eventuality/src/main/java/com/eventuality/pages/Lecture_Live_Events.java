@@ -284,8 +284,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
             int i = lstPending.getSelectedIndex();
             EventDAO evtDao = new EventDAO();
             db = new DbConnect();
-
-            evtDao.DeleteRecord(db.getC(), pendevtArray.get(i).getEventId());
+            evtDao.UpdateRecord(db.getC(),"APPROVAL_STATUS" , "TRUE", pendevtArray.get(i).getEventId());
         } catch (SQLException ex) {
             Logger.getLogger(Lecture_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
