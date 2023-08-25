@@ -40,7 +40,9 @@ public class BookingDAO {
     public ArrayList<Booking>SelectLectRecords(Connection c,int staffNum) throws SQLException{
         ArrayList<Booking> arr = new ArrayList();
         retrieve_Values_qry = "SELECT * FROM BOOKING WHERE Staff_number=?";
+        
         PreparedStatement ps = c.prepareStatement(retrieve_Values_qry);
+        ps.setInt(1, staffNum);
         ResultSet rs = ps.executeQuery();
         
         if(rs !=null){
