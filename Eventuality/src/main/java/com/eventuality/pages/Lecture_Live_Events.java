@@ -27,6 +27,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
             evtArray = new ArrayList();
             DefaultListModel<String> dlm = new DefaultListModel<String>();
             evtArray = evtDAO.SelectTable(db.getS());
+            pendevtArray = new ArrayList<>();
             for (var i : evtArray) {
                 if (i.isApprovalStatus() == false) {
                     pendevtArray.add(i);
