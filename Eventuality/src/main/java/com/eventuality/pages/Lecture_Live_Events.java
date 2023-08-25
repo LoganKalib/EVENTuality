@@ -3,6 +3,7 @@ package com.eventuality.pages;
 import com.eventuality.controls.BookingDAO;
 import com.eventuality.controls.DbConnect;
 import com.eventuality.controls.EventDAO;
+import com.eventuality.controls.LocationDAO;
 import com.eventuality.objects.Booking;
 import com.eventuality.objects.Event;
 import com.eventuality.objects.Lecturer;
@@ -16,6 +17,7 @@ import javax.swing.JList;
 public class Lecture_Live_Events extends javax.swing.JFrame {
 
     private DbConnect db;
+    LocationDAO locDAO;
     private ArrayList<Event> evtArray;
     private ArrayList<Event> pendevtArray;
     private Lecturer loggedin = new Lecturer();
@@ -207,6 +209,11 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         btnBookEvent.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
         btnBookEvent.setText("BOOK EVENT");
         btnBookEvent.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBookEvent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBookEventActionPerformed(evt);
+            }
+        });
         pnlLive.add(btnBookEvent);
         btnBookEvent.setBounds(470, 200, 370, 30);
 
@@ -369,6 +376,28 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
             Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_SwitchPage
+
+    private void btnBookEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookEventActionPerformed
+int i = lstEventsL.getSelectedIndex();
+        Event ev = events.get(i);
+        Booking lecBook = new Booking();
+        
+        lecBook.setTicketNumber(5631509);
+        lecBook.setAttdNumberLec(loggedin.getStaffNumber());
+        lecBook.setTime(ev.getTime());
+        lecBook.setEventId(ev.getEventId());
+        lecBook.setAttdType("L".charAt(0));
+        lecBook.setDate(ev.getDate());
+        lecBook.setAttdNumberLec(ev.getIsApprovedBy());
+        
+        bookDAO = new BookingDAO();
+        
+        try {
+            bookDAO.InsertRecord(db.getC(), lecBook);
+            dlmBook.addElement(lecBook.getEventId() +" - " + lecBook.getTicketNumber() + " - " + lecBook.getDate() + " - "+  lecBook.getTime());
+        } catch (SQLException ex) {
+            Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+        }    }//GEN-LAST:event_btnBookEventActionPerformed
 
     /**
      * @param args the command line arguments
