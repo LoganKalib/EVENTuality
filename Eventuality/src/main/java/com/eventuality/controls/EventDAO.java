@@ -55,7 +55,7 @@ public class EventDAO {
         PreparedStatement ps = c.prepareStatement(update_Values_stmt);
         ps.setString(1, setValue);
         ps.setString(2,eventID);
-        int rows = ps.executeUpdate(update_Values_stmt);
+        int rows = ps.executeUpdate();
         if (rows == 0){
             JOptionPane.showMessageDialog(null, "No record with that ID...");
         }else{
