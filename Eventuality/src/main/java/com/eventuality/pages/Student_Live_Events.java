@@ -682,6 +682,13 @@ public class Student_Live_Events extends javax.swing.JFrame {
                     break;
                 }
             }
+            
+            for (var i : evtArray) {
+                if (i.getLeader() == loggedin.getStudNum()) {
+                    lblApprove.setText(Boolean.toString(i.isApprovalStatus()));
+                    break;
+                } 
+            }
         } catch (SQLException e) {
             System.out.println("Err: " + e.getMessage());
         }
@@ -695,6 +702,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
                 dlmBook.addElement(x.getEventId() + " - " + x.getTicketNumber() + " - " + x.getDate() + " - " + x.getTime());
             }
             lstBooked.setModel(dlmBook);
+            
         } catch (SQLException ex) {
             Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
         }
