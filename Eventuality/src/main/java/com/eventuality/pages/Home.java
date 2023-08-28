@@ -92,34 +92,34 @@ public class Home extends javax.swing.JFrame {
         jPanel1.setBounds(10, 80, 940, 10);
 
         jLabel4.setForeground(new java.awt.Color(0, 51, 102));
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\log11.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\isha school\\PRJ\\Github\\EVENTuality\\Images\\logo (1).png")); // NOI18N
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 10, 340, 60);
+        jLabel4.setBounds(0, 10, 390, 60);
 
         jLabel8.setForeground(new java.awt.Color(0, 51, 102));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\111.jpeg")); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\isha school\\PRJ\\Github\\EVENTuality\\Images\\E1.jpg")); // NOI18N
         jLabel8.setText("img");
         getContentPane().add(jLabel8);
         jLabel8.setBounds(770, 370, 180, 120);
 
         jLabel9.setForeground(new java.awt.Color(0, 51, 102));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\113.jpg")); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\isha school\\PRJ\\Github\\EVENTuality\\Images\\e16.jpg")); // NOI18N
         jLabel9.setText("img");
         getContentPane().add(jLabel9);
         jLabel9.setBounds(10, 370, 180, 120);
 
         jLabel10.setForeground(new java.awt.Color(0, 51, 102));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\114.jpg")); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\isha school\\PRJ\\Github\\EVENTuality\\Images\\e15.jpg")); // NOI18N
         jLabel10.setText("img");
         getContentPane().add(jLabel10);
         jLabel10.setBounds(260, 370, 180, 120);
 
         jLabel11.setForeground(new java.awt.Color(0, 51, 102));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\115.jpg")); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\isha school\\PRJ\\Github\\EVENTuality\\Images\\e14.jpeg")); // NOI18N
         jLabel11.setText("img");
         getContentPane().add(jLabel11);
         jLabel11.setBounds(520, 370, 180, 120);
@@ -151,7 +151,7 @@ public class Home extends javax.swing.JFrame {
         getContentPane().add(lblWlcome4);
         lblWlcome4.setBounds(50, 200, 870, 40);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\Eventuality\\Images\\white_blue_marble_hd_marble.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\isha school\\PRJ\\Github\\EVENTuality\\Images\\white_blue_marble_hd_marble.jpg")); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 960, 540);

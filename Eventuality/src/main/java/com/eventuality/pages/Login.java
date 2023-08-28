@@ -70,6 +70,7 @@ public class Login extends javax.swing.JFrame {
 
         navHome.setBackground(new java.awt.Color(102, 153, 255));
         navHome.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        navHome.setForeground(new java.awt.Color(0, 0, 0));
         navHome.setText("HOME");
         navHome.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
         navHome.addActionListener(new java.awt.event.ActionListener() {
@@ -80,9 +81,10 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(navHome);
         navHome.setBounds(800, 20, 130, 30);
 
+        lblLogo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\isha school\\PRJ\\Github\\EVENTuality\\Images\\logo (1).png")); // NOI18N
         lblLogo.setText("LOGO");
         getContentPane().add(lblLogo);
-        lblLogo.setBounds(0, 10, 340, 50);
+        lblLogo.setBounds(0, 10, 390, 50);
 
         tabLogin.setBackground(new java.awt.Color(102, 153, 255));
         tabLogin.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
@@ -106,6 +108,7 @@ public class Login extends javax.swing.JFrame {
 
         btnLog.setBackground(new java.awt.Color(102, 153, 255));
         btnLog.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
+        btnLog.setForeground(new java.awt.Color(0, 0, 0));
         btnLog.setText("LOGIN");
         btnLog.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnLog.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +117,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         pnlLogin.add(btnLog);
-        btnLog.setBounds(300, 360, 316, 21);
+        btnLog.setBounds(300, 360, 316, 24);
 
         btnForgotPass.setBackground(new java.awt.Color(102, 153, 255));
         btnForgotPass.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
@@ -135,19 +138,26 @@ public class Login extends javax.swing.JFrame {
         imgAvatar.getAccessibleContext().setAccessibleName("imgAvatar");
 
         jLabel10.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Password:");
         pnlLogin.add(jLabel10);
-        jLabel10.setBounds(300, 270, 70, 17);
+        jLabel10.setBounds(300, 270, 70, 20);
 
         jLabel11.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Email:");
         pnlLogin.add(jLabel11);
-        jLabel11.setBounds(300, 210, 50, 17);
+        jLabel11.setBounds(300, 210, 50, 20);
 
+        cboRoll.setBackground(new java.awt.Color(102, 153, 255));
+        cboRoll.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
+        cboRoll.setForeground(new java.awt.Color(0, 0, 0));
         cboRoll.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Lecturer" }));
+        cboRoll.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
         pnlLogin.add(cboRoll);
-        cboRoll.setBounds(110, 150, 160, 25);
+        cboRoll.setBounds(380, 190, 160, 24);
 
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\isha school\\PRJ\\Github\\EVENTuality\\Images\\white_blue_marble_hd_marble.jpg")); // NOI18N
         jLabel2.setText("jLabel2");
         pnlLogin.add(jLabel2);
         jLabel2.setBounds(-20, 0, 930, 420);
@@ -161,40 +171,41 @@ public class Login extends javax.swing.JFrame {
         txtName.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         txtName.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, java.awt.Color.white, null, null));
         pnlSignIn.add(txtName);
-        txtName.setBounds(520, 90, 370, 30);
+        txtName.setBounds(260, 90, 370, 30);
 
         txtSurname.setBackground(new java.awt.Color(102, 153, 255));
         txtSurname.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         txtSurname.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, java.awt.Color.white, null, null));
         pnlSignIn.add(txtSurname);
-        txtSurname.setBounds(520, 140, 370, 30);
+        txtSurname.setBounds(260, 140, 370, 30);
 
         txtSID.setBackground(new java.awt.Color(102, 153, 255));
         txtSID.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         txtSID.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, java.awt.Color.white, null, null));
         pnlSignIn.add(txtSID);
-        txtSID.setBounds(520, 190, 370, 30);
+        txtSID.setBounds(260, 190, 370, 30);
 
         txtSEmail.setBackground(new java.awt.Color(102, 153, 255));
         txtSEmail.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         txtSEmail.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, java.awt.Color.white, null, null));
         pnlSignIn.add(txtSEmail);
-        txtSEmail.setBounds(520, 240, 370, 30);
+        txtSEmail.setBounds(260, 240, 370, 30);
 
         txtSPass.setBackground(new java.awt.Color(102, 153, 255));
         txtSPass.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         txtSPass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, java.awt.Color.white, null, null));
         pnlSignIn.add(txtSPass);
-        txtSPass.setBounds(520, 290, 370, 30);
+        txtSPass.setBounds(260, 290, 370, 30);
 
         txtConfirmPass.setBackground(new java.awt.Color(102, 153, 255));
         txtConfirmPass.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         txtConfirmPass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, java.awt.Color.white, null, null));
         pnlSignIn.add(txtConfirmPass);
-        txtConfirmPass.setBounds(520, 340, 370, 30);
+        txtConfirmPass.setBounds(260, 340, 370, 30);
 
         btnSignIn.setBackground(new java.awt.Color(102, 153, 255));
         btnSignIn.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
+        btnSignIn.setForeground(new java.awt.Color(0, 0, 0));
         btnSignIn.setText("SIGN IN");
         btnSignIn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
         btnSignIn.addActionListener(new java.awt.event.ActionListener() {
@@ -203,38 +214,46 @@ public class Login extends javax.swing.JFrame {
             }
         });
         pnlSignIn.add(btnSignIn);
-        btnSignIn.setBounds(520, 380, 370, 21);
+        btnSignIn.setBounds(260, 380, 370, 24);
 
         jLabel4.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Name:");
         pnlSignIn.add(jLabel4);
-        jLabel4.setBounds(520, 70, 150, 17);
+        jLabel4.setBounds(260, 70, 150, 20);
 
         jLabel5.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Surname:");
         pnlSignIn.add(jLabel5);
-        jLabel5.setBounds(520, 120, 150, 17);
+        jLabel5.setBounds(260, 120, 150, 20);
 
         jLabel6.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Campus ID:");
         pnlSignIn.add(jLabel6);
-        jLabel6.setBounds(520, 170, 150, 17);
+        jLabel6.setBounds(260, 170, 150, 20);
 
         jLabel7.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Email:");
         pnlSignIn.add(jLabel7);
-        jLabel7.setBounds(520, 220, 150, 17);
+        jLabel7.setBounds(260, 220, 150, 20);
 
         jLabel8.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Password:");
         pnlSignIn.add(jLabel8);
-        jLabel8.setBounds(520, 270, 150, 17);
+        jLabel8.setBounds(260, 270, 150, 20);
 
         jLabel9.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Confirm Password:");
         pnlSignIn.add(jLabel9);
-        jLabel9.setBounds(520, 320, 150, 17);
+        jLabel9.setBounds(260, 320, 150, 20);
 
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\isha school\\PRJ\\Github\\EVENTuality\\Images\\white_blue_marble_hd_marble.jpg")); // NOI18N
         jLabel13.setText("jLabel13");
         pnlSignIn.add(jLabel13);
         jLabel13.setBounds(20, 90, 480, 310);
@@ -251,7 +270,9 @@ public class Login extends javax.swing.JFrame {
 
         cbxRoll.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Lecturer" }));
         pnlSignIn.add(cbxRoll);
-        cbxRoll.setBounds(110, 160, 150, 25);
+        cbxRoll.setBounds(110, 160, 150, 24);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\isha school\\PRJ\\Github\\EVENTuality\\Images\\white_blue_marble_hd_marble.jpg")); // NOI18N
         pnlSignIn.add(jLabel3);
         jLabel3.setBounds(-10, 0, 940, 420);
 
@@ -260,6 +281,7 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(tabLogin);
         tabLogin.setBounds(23, 78, 910, 450);
 
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\isha school\\PRJ\\Github\\EVENTuality\\Images\\white_blue_marble_hd_marble.jpg")); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 960, 540);

@@ -114,9 +114,10 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         pnlPending.setLayout(null);
 
         lblPending.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 18)); // NOI18N
+        lblPending.setForeground(new java.awt.Color(0, 0, 0));
         lblPending.setText("PENDING EVENTS");
         pnlPending.add(lblPending);
-        lblPending.setBounds(130, 20, 150, 22);
+        lblPending.setBounds(130, 20, 270, 25);
 
         lstPending.setFont(new java.awt.Font("Malgun Gothic", 1, 12)); // NOI18N
         lstPending.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
@@ -130,12 +131,14 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         spPending.setBounds(30, 60, 370, 330);
 
         lblEDetails.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 18)); // NOI18N
+        lblEDetails.setForeground(new java.awt.Color(0, 0, 0));
         lblEDetails.setText("EVENT DETAILS  ");
         pnlPending.add(lblEDetails);
-        lblEDetails.setBounds(590, 20, 140, 22);
+        lblEDetails.setBounds(590, 20, 260, 25);
 
         btnAppStatus.setBackground(new java.awt.Color(102, 153, 255));
         btnAppStatus.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
+        btnAppStatus.setForeground(new java.awt.Color(0, 0, 0));
         btnAppStatus.setText("APPROVE");
         btnAppStatus.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(102, 102, 255), new java.awt.Color(255, 255, 255), null, null));
         btnAppStatus.addActionListener(new java.awt.event.ActionListener() {
@@ -144,10 +147,11 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
             }
         });
         pnlPending.add(btnAppStatus);
-        btnAppStatus.setBounds(470, 330, 370, 21);
+        btnAppStatus.setBounds(470, 330, 370, 24);
 
         btnDenyStatus.setBackground(new java.awt.Color(102, 153, 255));
         btnDenyStatus.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
+        btnDenyStatus.setForeground(new java.awt.Color(0, 0, 0));
         btnDenyStatus.setText("DENY");
         btnDenyStatus.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(102, 102, 255), new java.awt.Color(255, 255, 255), null, null));
         btnDenyStatus.addActionListener(new java.awt.event.ActionListener() {
@@ -156,7 +160,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
             }
         });
         pnlPending.add(btnDenyStatus);
-        btnDenyStatus.setBounds(470, 360, 370, 21);
+        btnDenyStatus.setBounds(470, 360, 370, 24);
 
         lstEDetails.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
         jScrollPane4.setViewportView(lstEDetails);
@@ -170,6 +174,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\isha school\\PRJ\\Github\\EVENTuality\\Images\\white_blue_marble_hd_marble.jpg")); // NOI18N
         jLabel1.setText("jLabel1");
         pnlPending.add(jLabel1);
         jLabel1.setBounds(-40, 0, 930, 410);
@@ -180,22 +185,19 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         pnlLive.setLayout(null);
 
         lblLiveE.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 18)); // NOI18N
+        lblLiveE.setForeground(new java.awt.Color(0, 0, 0));
         lblLiveE.setText("LIVE EVENTS");
         pnlLive.add(lblLiveE);
-        lblLiveE.setBounds(160, 20, 110, 22);
+        lblLiveE.setBounds(160, 20, 220, 25);
 
         lblDetailsEvent.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 18)); // NOI18N
+        lblDetailsEvent.setForeground(new java.awt.Color(0, 0, 0));
         lblDetailsEvent.setText("EVENT DETAILS");
         pnlLive.add(lblDetailsEvent);
-        lblDetailsEvent.setBounds(590, 20, 142, 22);
+        lblDetailsEvent.setBounds(590, 20, 250, 25);
 
         lstEventsL.setBackground(new java.awt.Color(0, 51, 102));
         lstEventsL.setFont(new java.awt.Font("Malgun Gothic", 1, 12)); // NOI18N
-        lstEventsL.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { " " };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         lstEventsL.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 LiveEventList(evt);
@@ -208,6 +210,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
 
         btnBookEvent.setBackground(new java.awt.Color(102, 153, 255));
         btnBookEvent.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
+        btnBookEvent.setForeground(new java.awt.Color(0, 0, 0));
         btnBookEvent.setText("BOOK EVENT");
         btnBookEvent.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnBookEvent.addActionListener(new java.awt.event.ActionListener() {
@@ -219,9 +222,10 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         btnBookEvent.setBounds(470, 200, 370, 30);
 
         lblBooked.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        lblBooked.setForeground(new java.awt.Color(0, 0, 0));
         lblBooked.setText("BOOKED EVENTS");
         pnlLive.add(lblBooked);
-        lblBooked.setBounds(470, 240, 120, 17);
+        lblBooked.setBounds(470, 240, 120, 20);
 
         jPanel2.setBackground(new java.awt.Color(102, 153, 255));
         pnlLive.add(jPanel2);
@@ -239,10 +243,11 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         jScrollPane2.setViewportView(lstBooked);
 
         pnlLive.add(jScrollPane2);
-        jScrollPane2.setBounds(470, 260, 370, 134);
+        jScrollPane2.setBounds(470, 260, 370, 131);
 
         jLabel3.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\isha school\\PRJ\\Github\\EVENTuality\\Images\\white_blue_marble_hd_marble.jpg")); // NOI18N
         jLabel3.setText("jLabel1");
         pnlLive.add(jLabel3);
         jLabel3.setBounds(-40, 0, 930, 410);
@@ -251,11 +256,14 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
 
         getContentPane().add(tabLecturer);
         tabLecturer.setBounds(40, 80, 880, 440);
+
+        lblLectLogo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\isha school\\PRJ\\Github\\EVENTuality\\Images\\logo (1).png")); // NOI18N
         getContentPane().add(lblLectLogo);
-        lblLectLogo.setBounds(0, 10, 340, 50);
+        lblLectLogo.setBounds(0, 10, 390, 50);
 
         btnLHome.setBackground(new java.awt.Color(102, 153, 255));
         btnLHome.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        btnLHome.setForeground(new java.awt.Color(0, 0, 0));
         btnLHome.setText("HOME");
         btnLHome.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(153, 153, 255), null, null));
         getContentPane().add(btnLHome);
@@ -263,6 +271,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
 
         btnLGallery.setBackground(new java.awt.Color(102, 153, 255));
         btnLGallery.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        btnLGallery.setForeground(new java.awt.Color(0, 0, 0));
         btnLGallery.setText("GALLERY");
         btnLGallery.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(153, 153, 255), null, null));
         getContentPane().add(btnLGallery);
@@ -270,6 +279,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
 
         btnLSignOut.setBackground(new java.awt.Color(102, 153, 255));
         btnLSignOut.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
+        btnLSignOut.setForeground(new java.awt.Color(0, 0, 0));
         btnLSignOut.setText("SIGN OUT");
         btnLSignOut.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(153, 153, 255), null, null));
         btnLSignOut.addActionListener(new java.awt.event.ActionListener() {
@@ -281,6 +291,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         btnLSignOut.setBounds(790, 20, 120, 30);
 
         jLabel2.setBackground(new java.awt.Color(102, 153, 255));
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mogamat Deen\\Desktop\\isha school\\PRJ\\Github\\EVENTuality\\Images\\white_blue_marble_hd_marble.jpg")); // NOI18N
         jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 0, 960, 540);
