@@ -7,6 +7,7 @@ import com.eventuality.controls.LocationDAO;
 import com.eventuality.objects.Booking;
 import com.eventuality.objects.Event;
 import com.eventuality.objects.Lecturer;
+import com.eventuality.objects.Location;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -341,11 +342,31 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDenyStatusActionPerformed
 
     private void LiveEventList(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_LiveEventList
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LiveEventList
+        int i = lstEventsL.getSelectedIndex();
+        DefaultListModel<String> dlm = new DefaultListModel<String>();
+        Event ev = events.get(i);
+        LocationDAO locDAO = new LocationDAO();
+        
+        dlm.addElement("TITLE: " + ev.getTitle());
+        dlm.addElement("DESCRIPTION: " + ev.getDescription());
+        dlm.addElement("START TIME:" + ev.getTime());
+        dlm.addElement("EVENT DATE: " + ev.getDate());
+        ArrayList<Location> locArr = new ArrayList();
+        try {
+            locArr = locDAO.SeleteAll(db.getS());
+        } catch (SQLException ex) {
+            Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for (var x : locArr) {
+            if (ev.getLocation().equalsIgnoreCase(x.getEventLocation())) {
+                dlm.addElement("EVENT LOCATION: " + x.getCampus() + "-" + x.getBuilding() + " -" + x.getDepartment() + "-" + x.getRoom());
+            }
+        }
+        dlm.addElement("EVENT TYPE: " + ev.getEventType());
+        lstDetails.setModel(dlm);    }//GEN-LAST:event_LiveEventList
 
     private void SwitchPage(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SwitchPage
-         try {
+        try {
             db = new DbConnect();
             loggedin.setStaffNumber(34156738);
             EventDAO evtDAO = new EventDAO();
@@ -362,14 +383,14 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         } catch (SQLException e) {
             System.out.println("Err: " + e.getMessage());
         }
-        
+
         bookDAO = new BookingDAO();
-        
+
         try {
             book = bookDAO.SelectLectRecords(db.getC(), loggedin.getStaffNumber());
-            for(var x:book){
+            for (var x : book) {
                 System.out.println("Event: " + x.getEventId());
-                dlmBook.addElement(x.getEventId() +" - " + x.getTicketNumber() + " - " + x.getDate() + " - "+  x.getTime());
+                dlmBook.addElement(x.getEventId() + " - " + x.getTicketNumber() + " - " + x.getDate() + " - " + x.getTime());
             }
             lstBooked.setModel(dlmBook);
         } catch (SQLException ex) {
@@ -378,10 +399,10 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_SwitchPage
 
     private void btnBookEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookEventActionPerformed
-int i = lstEventsL.getSelectedIndex();
+        int i = lstEventsL.getSelectedIndex();
         Event ev = events.get(i);
         Booking lecBook = new Booking();
-        
+
         lecBook.setTicketNumber(5631509);
         lecBook.setAttdNumberLec(loggedin.getStaffNumber());
         lecBook.setTime(ev.getTime());
@@ -390,12 +411,12 @@ int i = lstEventsL.getSelectedIndex();
         lecBook.setDate(ev.getDate());
         lecBook.setAttdNumberLec(ev.getIsApprovedBy());
         lecBook.setAttdNumberStud(ev.getLeader());
-        
+
         bookDAO = new BookingDAO();
-        
+
         try {
             bookDAO.InsertRecord(db.getC(), lecBook);
-            dlmBook.addElement(lecBook.getEventId() +" - " + lecBook.getTicketNumber() + " - " + lecBook.getDate() + " - "+  lecBook.getTime());
+            dlmBook.addElement(lecBook.getEventId() + " - " + lecBook.getTicketNumber() + " - " + lecBook.getDate() + " - " + lecBook.getTime());
         } catch (SQLException ex) {
             Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
         }    }//GEN-LAST:event_btnBookEventActionPerformed

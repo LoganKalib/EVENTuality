@@ -519,6 +519,11 @@ public class Student_Live_Events extends javax.swing.JFrame {
         btnSignOut.setForeground(new java.awt.Color(0, 0, 0));
         btnSignOut.setText("SIGN OUT");
         btnSignOut.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSignOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignOutActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnSignOut);
         btnSignOut.setBounds(820, 30, 130, 30);
         getContentPane().add(lblLogo);
@@ -725,6 +730,14 @@ public class Student_Live_Events extends javax.swing.JFrame {
         dlm.addElement("EVENT TYPE: " + ev.getEventType());
         lstEventDetails.setModel(dlm);
     }//GEN-LAST:event_DisplayDetails
+
+    private void btnSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignOutActionPerformed
+        try {
+            db.CloseAll();
+        } catch (SQLException ex) {
+            Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnSignOutActionPerformed
 
     /**
      * @param args the command line arguments
