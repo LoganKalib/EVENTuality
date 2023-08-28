@@ -533,14 +533,31 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStatusActionPerformed
-        // TODO add your handling code here:
+        try {
+            db = new DbConnect();
+            EventDAO evtDAO = new EventDAO();
+            ArrayList<Event> evtArray = new ArrayList();
+            evtArray = evtDAO.SelectTable(db.getS());
+            
+            for (var i : evtArray) {
+                if (i.getLeader() == loggedin.getStudNum()) {
+                    lblApprove.setText(Boolean.toString(i.isApprovalStatus()));
+                    break;
+                } else {
+                    btnStatus.setEnabled(false);
+                    break;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnStatusActionPerformed
 
     private void btnBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookActionPerformed
         int i = lstLiveEvents.getSelectedIndex();
         Event ev = events.get(i);
         studBook = new Booking();
-        
+
         studBook.setTicketNumber(5831509);
         loggedin.setStudNum(47891324);
         studBook.setAttdNumberStud(loggedin.getStudNum());
@@ -549,17 +566,17 @@ public class Student_Live_Events extends javax.swing.JFrame {
         studBook.setAttdType("S".charAt(0));
         studBook.setDate(ev.getDate());
         studBook.setAttdNumberLec(ev.getIsApprovedBy());
-        
+
         bookDAO = new BookingDAO();
-        
+
         try {
             bookDAO.InsertRecord(db.getC(), studBook);
-            dlmBook.addElement(studBook.getEventId() +" - " + studBook.getTicketNumber() + " - " + studBook.getDate() + " - "+  studBook.getTime());
+            dlmBook.addElement(studBook.getEventId() + " - " + studBook.getTicketNumber() + " - " + studBook.getDate() + " - " + studBook.getTime());
         } catch (SQLException ex) {
             Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
+
     }//GEN-LAST:event_btnBookActionPerformed
 
     private void btnRedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRedoActionPerformed
@@ -583,9 +600,9 @@ public class Student_Live_Events extends javax.swing.JFrame {
             Event e = new Event();
             e.setEventId(eventID);
             e.setEventType((String) cbxCategory.getSelectedItem());
-            
+
             loggedin.setStudNum(47891324);
-            
+
             e.setLeader(loggedin.getStudNum());
             e.setTitle(txtTitle.getText());
             e.setDescription(txtDescript.getText());
@@ -624,7 +641,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
                 System.out.println("Err: " + ex.getMessage());
 
             }
-            
+
             try {
                 db.CloseAll();
             } catch (SQLException ex) {
@@ -655,17 +672,27 @@ public class Student_Live_Events extends javax.swing.JFrame {
                 }
             }
             lstLiveEvents.setModel(dlm);
+
+            for (var i : evtArray) {
+                if (i.getLeader() == loggedin.getStudNum()) {
+                    lblTCreate.setText(i.getEventId() + " - " + i.getTitle());
+                    break;
+                } else {
+                    btnStatus.setEnabled(false);
+                    break;
+                }
+            }
         } catch (SQLException e) {
             System.out.println("Err: " + e.getMessage());
         }
-        
+
         bookDAO = new BookingDAO();
-        
+
         try {
             book = bookDAO.SelectStudRecords(db.getC(), loggedin.getStudNum());
-            for(var x:book){
+            for (var x : book) {
                 System.out.println("Event: " + x.getEventId());
-                dlmBook.addElement(x.getEventId() +" - " + x.getTicketNumber() + " - " + x.getDate() + " - "+  x.getTime());
+                dlmBook.addElement(x.getEventId() + " - " + x.getTicketNumber() + " - " + x.getDate() + " - " + x.getTime());
             }
             lstBooked.setModel(dlmBook);
         } catch (SQLException ex) {
