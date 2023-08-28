@@ -538,7 +538,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
             EventDAO evtDAO = new EventDAO();
             ArrayList<Event> evtArray = new ArrayList();
             evtArray = evtDAO.SelectTable(db.getS());
-            
+
             for (var i : evtArray) {
                 if (i.getLeader() == loggedin.getStudNum()) {
                     lblApprove.setText(Boolean.toString(i.isApprovalStatus()));
@@ -670,20 +670,17 @@ public class Student_Live_Events extends javax.swing.JFrame {
             }
             lstLiveEvents.setModel(dlm);
 
+            Boolean eventFound = false;
             for (var i : evtArray) {
                 if (i.getLeader() == loggedin.getStudNum()) {
                     lblTCreate.setText(i.getEventId() + " - " + i.getTitle());
+                    eventFound = true;
                     break;
-                } else {
-                    btnStatus.setEnabled(false);
                 }
             }
-            
-            for (var i : evtArray) {
-                if (i.getLeader() == loggedin.getStudNum()) {
-                    lblApprove.setText(Boolean.toString(i.isApprovalStatus()));
-                    break;
-                } 
+
+            if (!eventFound) {
+                btnStatus.setEnabled(false);
             }
         } catch (SQLException e) {
             System.out.println("Err: " + e.getMessage());
@@ -698,7 +695,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
                 dlmBook.addElement(x.getEventId() + " - " + x.getTicketNumber() + " - " + x.getDate() + " - " + x.getTime());
             }
             lstBooked.setModel(dlmBook);
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
         }
