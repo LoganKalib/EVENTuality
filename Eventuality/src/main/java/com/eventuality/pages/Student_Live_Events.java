@@ -543,9 +543,6 @@ public class Student_Live_Events extends javax.swing.JFrame {
                 if (i.getLeader() == loggedin.getStudNum()) {
                     lblApprove.setText(Boolean.toString(i.isApprovalStatus()));
                     break;
-                } else {
-                    btnStatus.setEnabled(false);
-                    break;
                 }
             }
         } catch (SQLException ex) {
@@ -679,7 +676,6 @@ public class Student_Live_Events extends javax.swing.JFrame {
                     break;
                 } else {
                     btnStatus.setEnabled(false);
-                    break;
                 }
             }
             
