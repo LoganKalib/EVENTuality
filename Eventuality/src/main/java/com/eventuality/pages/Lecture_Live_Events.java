@@ -345,7 +345,8 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         int i = lstEventsL.getSelectedIndex();
         DefaultListModel<String> dlm = new DefaultListModel<String>();
         Event ev = events.get(i);
-
+        LocationDAO locDAO = new LocationDAO();
+s
         dlm.addElement("TITLE: " + ev.getTitle());
         dlm.addElement("DESCRIPTION: " + ev.getDescription());
         dlm.addElement("START TIME:" + ev.getTime());
