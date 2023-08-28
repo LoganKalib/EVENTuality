@@ -671,6 +671,8 @@ public class Student_Live_Events extends javax.swing.JFrame {
             lstLiveEvents.setModel(dlm);
 
             Boolean eventFound = false;
+            loggedin.setStudNum(47891324);
+            
             for (var i : evtArray) {
                 if (i.getLeader() == loggedin.getStudNum()) {
                     lblTCreate.setText(i.getEventId() + " - " + i.getTitle());
