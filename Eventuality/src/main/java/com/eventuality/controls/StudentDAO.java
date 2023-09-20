@@ -87,16 +87,16 @@ public class StudentDAO {
     }
     
     public void Checkuser(Connection c, String email) throws SQLException{
-        String checkif = "SELECT FROM Student WHERE email=?";
+        String checkif = "SELECT * FROM Student WHERE email=?";
         PreparedStatement ps = c.prepareStatement(checkif);
         ps.setString(1, email);
         ResultSet rows = ps.executeQuery();
         
-        if(rows == null){
-            JOptionPane.showMessageDialog(null, "this user does not exsist, please sign up.");
-        }else{
+        if(rows != null){
             String newPass = JOptionPane.showInputDialog(null, "please enter a new password");
             UpdateRecord(c,"Password",newPass,email);
+        }else{
+            JOptionPane.showMessageDialog(null, "this user does not exsist, please sign up.");
         }
     }
     
