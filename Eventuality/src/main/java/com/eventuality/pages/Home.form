@@ -77,6 +77,9 @@
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
       </AccessibilityProperties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="navSignInActionPerformed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="810" y="20" width="135" height="30"/>
@@ -159,9 +162,6 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="33" red="0" type="rgb"/>
         </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Mogamat Deen\Desktop\isha school\PRJ\Github\EVENTuality\Images\logo (1).png"/>
-        </Property>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -175,9 +175,6 @@
           <Color blue="66" green="33" red="0" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Mogamat Deen\Desktop\isha school\PRJ\Github\EVENTuality\Images\E1.jpg"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="img"/>
       </Properties>
       <Constraints>
@@ -192,9 +189,6 @@
           <Color blue="66" green="33" red="0" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Mogamat Deen\Desktop\isha school\PRJ\Github\EVENTuality\Images\e16.jpg"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="img"/>
       </Properties>
       <Constraints>
@@ -209,9 +203,6 @@
           <Color blue="66" green="33" red="0" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Mogamat Deen\Desktop\isha school\PRJ\Github\EVENTuality\Images\e15.jpg"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="img"/>
       </Properties>
       <Constraints>
@@ -226,9 +217,6 @@
           <Color blue="66" green="33" red="0" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Mogamat Deen\Desktop\isha school\PRJ\Github\EVENTuality\Images\e14.jpeg"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="img"/>
       </Properties>
       <Constraints>
@@ -306,9 +294,6 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Mogamat Deen\Desktop\isha school\PRJ\Github\EVENTuality\Images\white_blue_marble_hd_marble.jpg"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="jLabel1"/>
       </Properties>
       <Constraints>

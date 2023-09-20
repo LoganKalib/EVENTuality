@@ -52,15 +52,15 @@ public class StudentDAO {
         ps.close();
     }
 
-    public void UpdateRecord(Connection c, String setField, String setValue, int staffNum) throws SQLException {
-        update_Values_stmt = "UPDATE Student SET ?=? WHERE STUDENT_NUMBER = ?";
+    public void UpdateRecord(Connection c, String setField, String setValue, String Email) throws SQLException {
+        update_Values_stmt = "UPDATE Student SET ?=? WHERE email= ?";
         PreparedStatement ps = c.prepareStatement(update_Values_stmt);
         ps.setString(1, setField);
         ps.setString(2, setValue);
-        ps.setInt(3, staffNum);
+        ps.setString(3, Email);
 
         int rows = ps.executeUpdate(update_Values_stmt);
-        String msg = String.format("Student_Number: %d \n Successfully updated %s, with value: %s.", staffNum, setField, setValue);
+        String msg = String.format("Student_Number: %s \n Successfully updated %s, with value: %s.", Email, setField, setValue);
         if (rows == 0) {
             JOptionPane.showMessageDialog(null, "No record with that Number...");
         } else {
@@ -84,6 +84,20 @@ public class StudentDAO {
             JOptionPane.showMessageDialog(null, "Row added successfully.");
         }
         ps.close();
+    }
+    
+    public void Checkuser(Connection c, String email) throws SQLException{
+        String checkif = "SELECT FROM Student WHERE email=?";
+        PreparedStatement ps = c.prepareStatement(checkif);
+        ps.setString(1, email);
+        ResultSet rows = ps.executeQuery();
+        
+        if(rows == null){
+            JOptionPane.showMessageDialog(null, "this user does not exsist, please sign up.");
+        }else{
+            String newPass = JOptionPane.showInputDialog(null, "please enter a new password");
+            UpdateRecord(c,"Password",newPass,email);
+        }
     }
     
 }

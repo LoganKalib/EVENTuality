@@ -285,16 +285,39 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnForgotPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForgotPassActionPerformed
-        // TODO add your handling code here:
+        // this is used to update password for a user, depending on if its a stud or lec
+        if (cboRoll.getSelectedIndex() == 0) {
+            String user = JOptionPane.showInputDialog(null, "Please enter your email...");
+            try {
+                db = new DbConnect();
+                StudentDAO dao = new StudentDAO();
+                dao.Checkuser(db.getC(), user);
+
+            } catch (SQLException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            String user = JOptionPane.showInputDialog(null, "Please enter your email...");
+            try {
+                db = new DbConnect();
+                LecturerDAO dao = new LecturerDAO();
+                dao.Checkuser(db.getC(), user);
+
+            } catch (SQLException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
     }//GEN-LAST:event_btnForgotPassActionPerformed
 
     private void navHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navHomeActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        new Home().setVisible(true);
     }//GEN-LAST:event_navHomeActionPerformed
 
     private void btnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogActionPerformed
         if (evt.getSource() == btnLog) {
-            
+
             //if the logging in user is a student the below will execute
             if (cboRoll.getSelectedIndex() == 0) {
                 try {
@@ -308,7 +331,7 @@ public class Login extends javax.swing.JFrame {
                     System.out.println("Error during sign in: " + ex.getMessage());
                 }
             }
-            
+
             if (cboRoll.getSelectedIndex() == 1) {
                 //if its a lecturer the below will execute
                 try {
@@ -333,7 +356,7 @@ public class Login extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 System.out.println("Err:" + ex.getMessage());
             }
-            
+
             // this if will run in the user being created is a student
             if (cbxRoll.getSelectedIndex() == 0) {
                 stu = new Student();
@@ -360,14 +383,14 @@ public class Login extends javax.swing.JFrame {
                 }
 
             } else {
-                
+
                 //else this will run if a lecturer is being created
                 lec = new Lecturer();
                 lec.setLectName(txtName.getText());
                 lec.setLectSurname(txtSurname.getText());
                 lec.setStaffNumber(Integer.parseInt(txtSID.getText()));
                 lec.setLectEmail(txtEmail.getText());
-                
+
                 if (txtSPass.getText().equals(txtConfirmPass.getText())) {
                     lec.setLectPassword(txtSPass.getText());
                 } else {
