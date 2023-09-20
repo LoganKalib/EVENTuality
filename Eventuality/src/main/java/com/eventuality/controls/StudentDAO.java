@@ -93,10 +93,10 @@ public class StudentDAO {
         ResultSet rows = ps.executeQuery();
         
         if(rows.wasNull()){
+            JOptionPane.showMessageDialog(null, "this user does not exsist, please sign up.");
+        }else{
             String newPass = JOptionPane.showInputDialog(null, "please enter a new password");
             UpdateRecord(c,"Password",newPass,email);
-        }else{
-            JOptionPane.showMessageDialog(null, "this user does not exsist, please sign up.");
         }
     }
     
