@@ -32,7 +32,6 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        navHome = new javax.swing.JButton();
         lblLogo = new javax.swing.JLabel();
         tabLogin = new javax.swing.JTabbedPane();
         pnlLogin = new javax.swing.JPanel();
@@ -68,19 +67,6 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(960, 540));
         getContentPane().setLayout(null);
-
-        navHome.setBackground(new java.awt.Color(102, 153, 255));
-        navHome.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
-        navHome.setForeground(new java.awt.Color(0, 0, 0));
-        navHome.setText("HOME");
-        navHome.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
-        navHome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                navHomeActionPerformed(evt);
-            }
-        });
-        getContentPane().add(navHome);
-        navHome.setBounds(800, 20, 130, 30);
 
         lblLogo.setIcon(new javax.swing.ImageIcon("/home/logan/Documents/GitHub/EVENTuality/Images/logo (1).png")); // NOI18N
         lblLogo.setText("LOGO");
@@ -310,11 +296,6 @@ public class Login extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnForgotPassActionPerformed
 
-    private void navHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navHomeActionPerformed
-        this.setVisible(false);
-        new Home().setVisible(true);
-    }//GEN-LAST:event_navHomeActionPerformed
-
     private void btnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogActionPerformed
         if (evt.getSource() == btnLog) {
 
@@ -468,7 +449,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblWlcome1;
-    private javax.swing.JButton navHome;
     private javax.swing.JPanel pnlLogin;
     private javax.swing.JPanel pnlSignIn;
     private javax.swing.JTabbedPane tabLogin;

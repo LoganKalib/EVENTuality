@@ -101,8 +101,6 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         lstBooked = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
         lblLectLogo = new javax.swing.JLabel();
-        btnLHome = new javax.swing.JButton();
-        btnLGallery = new javax.swing.JButton();
         btnLSignOut = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -268,22 +266,6 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         lblLectLogo.setIcon(new javax.swing.ImageIcon("/home/logan/Documents/GitHub/EVENTuality/Images/logo (1).png")); // NOI18N
         getContentPane().add(lblLectLogo);
         lblLectLogo.setBounds(0, 10, 390, 50);
-
-        btnLHome.setBackground(new java.awt.Color(102, 153, 255));
-        btnLHome.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
-        btnLHome.setForeground(new java.awt.Color(0, 0, 0));
-        btnLHome.setText("HOME");
-        btnLHome.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(153, 153, 255), null, null));
-        getContentPane().add(btnLHome);
-        btnLHome.setBounds(530, 20, 120, 30);
-
-        btnLGallery.setBackground(new java.awt.Color(102, 153, 255));
-        btnLGallery.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
-        btnLGallery.setForeground(new java.awt.Color(0, 0, 0));
-        btnLGallery.setText("GALLERY");
-        btnLGallery.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(153, 153, 255), null, null));
-        getContentPane().add(btnLGallery);
-        btnLGallery.setBounds(660, 20, 120, 30);
 
         btnLSignOut.setBackground(new java.awt.Color(102, 153, 255));
         btnLSignOut.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
@@ -487,8 +469,6 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     private javax.swing.JButton btnAppStatus;
     private javax.swing.JButton btnBookEvent;
     private javax.swing.JButton btnDenyStatus;
-    private javax.swing.JButton btnLGallery;
-    private javax.swing.JButton btnLHome;
     private javax.swing.JButton btnLSignOut;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

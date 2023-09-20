@@ -134,8 +134,6 @@ public class Student_Live_Events extends javax.swing.JFrame {
         lstEventDetails = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        navHome = new javax.swing.JButton();
-        navGallery = new javax.swing.JButton();
         btnSignOut = new javax.swing.JButton();
         lblLogo = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -499,24 +497,6 @@ public class Student_Live_Events extends javax.swing.JFrame {
         tabStudent.setBounds(10, 90, 940, 440);
         tabStudent.getAccessibleContext().setAccessibleName("LIVE EVENTS");
 
-        navHome.setBackground(new java.awt.Color(102, 153, 255));
-        navHome.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
-        navHome.setForeground(new java.awt.Color(0, 0, 0));
-        navHome.setText("HOME");
-        navHome.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        navHome.setMaximumSize(new java.awt.Dimension(46, 26));
-        navHome.setMinimumSize(new java.awt.Dimension(46, 26));
-        getContentPane().add(navHome);
-        navHome.setBounds(560, 30, 120, 30);
-
-        navGallery.setBackground(new java.awt.Color(102, 153, 255));
-        navGallery.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
-        navGallery.setForeground(new java.awt.Color(0, 0, 0));
-        navGallery.setText("GALLERY");
-        navGallery.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(navGallery);
-        navGallery.setBounds(690, 30, 120, 30);
-
         btnSignOut.setBackground(new java.awt.Color(102, 153, 255));
         btnSignOut.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         btnSignOut.setForeground(new java.awt.Color(0, 0, 0));
@@ -830,8 +810,6 @@ public class Student_Live_Events extends javax.swing.JFrame {
     private javax.swing.JList<String> lstBooked;
     private javax.swing.JList<String> lstEventDetails;
     private javax.swing.JList<String> lstLiveEvents;
-    private javax.swing.JButton navGallery;
-    private javax.swing.JButton navHome;
     private javax.swing.JPanel pnlLiveEvents;
     private javax.swing.JPanel pnlMyEvents;
     private javax.swing.JScrollPane spBookedE;
