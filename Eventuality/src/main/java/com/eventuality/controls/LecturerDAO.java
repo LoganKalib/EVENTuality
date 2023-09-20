@@ -87,7 +87,7 @@ public class LecturerDAO {
     }
     
     public void Checkuser(Connection c, String email) throws SQLException{
-        String checkif = "SELECT FROM Lecturer WHERE email=?";
+        String checkif = "SELECT * FROM Lecturer WHERE email=?";
         PreparedStatement ps = c.prepareStatement(checkif);
         ps.setString(1, email);
         ResultSet rows = ps.executeQuery();
