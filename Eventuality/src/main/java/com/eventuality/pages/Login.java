@@ -294,6 +294,8 @@ public class Login extends javax.swing.JFrame {
 
     private void btnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogActionPerformed
         if (evt.getSource() == btnLog) {
+            
+            //if the logging in user is a student the below will execute
             if (cboRoll.getSelectedIndex() == 0) {
                 try {
                     db = new DbConnect();
@@ -306,7 +308,9 @@ public class Login extends javax.swing.JFrame {
                     System.out.println("Error during sign in: " + ex.getMessage());
                 }
             }
+            
             if (cboRoll.getSelectedIndex() == 1) {
+                //if its a lecturer the below will execute
                 try {
                     db = new DbConnect();
                     LecturerDAO dao = new LecturerDAO();
@@ -329,6 +333,8 @@ public class Login extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 System.out.println("Err:" + ex.getMessage());
             }
+            
+            // this if will run in the user being created is a student
             if (cbxRoll.getSelectedIndex() == 0) {
                 stu = new Student();
                 stu.setStudName(txtName.getText());
@@ -354,6 +360,8 @@ public class Login extends javax.swing.JFrame {
                 }
 
             } else {
+                
+                //else this will run if a lecturer is being created
                 lec = new Lecturer();
                 lec.setLectName(txtName.getText());
                 lec.setLectSurname(txtSurname.getText());

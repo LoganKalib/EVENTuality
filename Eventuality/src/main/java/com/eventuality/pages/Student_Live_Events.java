@@ -44,6 +44,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
     public Student_Live_Events() {
         initComponents();
 
+        // when the page loads it populates the form
         try {
 
             db = new DbConnect();
@@ -543,6 +544,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStatusActionPerformed
+       // this is so that a user can check the status of there event
         try {
             db = new DbConnect();
             EventDAO evtDAO = new EventDAO();
@@ -561,6 +563,8 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_btnStatusActionPerformed
 
     private void btnBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookActionPerformed
+        
+        // this books a ticket to the event for a stud
         int i = lstLiveEvents.getSelectedIndex();
         Event ev = events.get(i);
         studBook = new Booking();
@@ -591,6 +595,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRedoActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        // this populates the volunteer panel when they are added
         if (evt.getSource() == btnRegister) {
             Volunteer vol = new Volunteer();
             vol.setStudentNumber(Integer.parseInt(txtStudentNo.getText()));
@@ -604,6 +609,8 @@ public class Student_Live_Events extends javax.swing.JFrame {
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
         if (evt.getSource() == btnApprove) {
+            // this creates the event when the user clicks approve
+            // it addeds it to the event table and the volunteer table
             Event e = new Event();
             e.setEventId(eventID);
             e.setEventType((String) cbxCategory.getSelectedItem());
@@ -666,6 +673,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_btnApproveActionPerformed
 
     private void stateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_stateChanged
+
         try {
             db = new DbConnect();
             EventDAO evtDAO = new EventDAO();
@@ -714,6 +722,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_stateChanged
 
     private void DisplayDetails(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_DisplayDetails
+         // this displays event details when a user clicks on it
         int i = lstLiveEvents.getSelectedIndex();
         DefaultListModel<String> dlm = new DefaultListModel<String>();
         Event ev = events.get(i);

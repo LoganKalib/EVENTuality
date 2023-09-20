@@ -39,6 +39,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         initComponents();
         loggedin();
         
+        // the below try is used to populate the the pending events list
         try {
             db = new DbConnect();
             EventDAO evtDAO = new EventDAO();
@@ -307,6 +308,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAppStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAppStatusActionPerformed
+        // the below code executes when the user approves an event
         try {
             int i = lstPending.getSelectedIndex();
             EventDAO evtDao = new EventDAO();
@@ -328,6 +330,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLSignOutActionPerformed
 
     private void PendingEventsChane(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_PendingEventsChane
+        // if a user clicks on a pending event the below displays its details 
         int i = lstPending.getSelectedIndex();
         DefaultListModel<String> dlm = new DefaultListModel<String>();
         dlm.addElement("EVENT ID: " + pendevtArray.get(i).getEventId());
@@ -341,6 +344,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_PendingEventsChane
 
     private void btnDenyStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDenyStatusActionPerformed
+        // if the user deny an event it will delete it from the database, as well as any volunteers registered
         try {
             EventDAO evtDao = new EventDAO();
             VolunteerDAO volDao = new VolunteerDAO();
@@ -360,6 +364,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDenyStatusActionPerformed
 
     private void LiveEventList(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_LiveEventList
+        //this function is used to populate the live events list on the second tab
         int i = lstEventsL.getSelectedIndex();
         DefaultListModel<String> dlm = new DefaultListModel<String>();
         Event ev = events.get(i);
@@ -384,6 +389,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         lstDetails.setModel(dlm);    }//GEN-LAST:event_LiveEventList
 
     private void SwitchPage(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SwitchPage
+        // when the user clicks on the tab this runs to populate the page with info from the database
         try {
             db = new DbConnect();
             EventDAO evtDAO = new EventDAO();
@@ -403,6 +409,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
 
         bookDAO = new BookingDAO();
 
+        // this populates the booking section
         try {
             book = bookDAO.SelectLectRecords(db.getC(), loggedin.getStaffNumber());
             for (var x : book) {
@@ -416,6 +423,9 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_SwitchPage
 
     private void btnBookEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookEventActionPerformed
+        
+        // when the user books to an event the below writes it the database
+        
         int i = lstEventsL.getSelectedIndex();
         Event ev = events.get(i);
         Booking lecBook = new Booking();
