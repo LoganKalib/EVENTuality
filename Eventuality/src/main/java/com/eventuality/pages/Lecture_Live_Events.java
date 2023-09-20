@@ -308,7 +308,13 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAppStatusActionPerformed
 
     private void btnLSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLSignOutActionPerformed
-        // TODO add your handling code here:
+        try {
+            db.CloseAll();
+        } catch (SQLException ex) {
+            Logger.getLogger(Lecture_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.setVisible(false);
+        new Login().setVisible(true);
     }//GEN-LAST:event_btnLSignOutActionPerformed
 
     private void PendingEventsChane(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_PendingEventsChane

@@ -728,6 +728,8 @@ public class Student_Live_Events extends javax.swing.JFrame {
     private void btnSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignOutActionPerformed
         try {
             db.CloseAll();
+            this.setVisible(false);
+            new Login().setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
         }
