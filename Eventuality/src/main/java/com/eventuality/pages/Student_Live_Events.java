@@ -571,7 +571,14 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBookActionPerformed
 
     private void btnRedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRedoActionPerformed
-        // TODO add your handling code here:
+
+        cbxCategory.setSelectedIndex(0);
+            txtTitle.setText("");
+            txtDescript.setText("");
+            cbxSTime.setSelectedIndex(0);
+            cbxCampus.setSelectedIndex(0);
+            cbxVolunteer.setSelectedIndex(0);
+            txtVolsArea.setText("");
     }//GEN-LAST:event_btnRedoActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
