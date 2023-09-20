@@ -6,6 +6,8 @@ import com.eventuality.controls.StudentDAO;
 import com.eventuality.objects.Lecturer;
 import com.eventuality.objects.Student;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
@@ -301,7 +303,7 @@ public class Login extends javax.swing.JFrame {
                     new Student_Live_Events().setVisible(true);
                     db.CloseAll();
                 } catch (SQLException ex) {
-                    System.out.println("Error during sign in: " +ex.getMessage());
+                    System.out.println("Error during sign in: " + ex.getMessage());
                 }
             }
             if (cboRoll.getSelectedIndex() == 1) {
@@ -321,46 +323,59 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogActionPerformed
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
-        if(evt.getSource() == btnSignIn){
-            try{
-                 db = new DbConnect();   
-                }catch(SQLException ex){
-                    System.out.println("Err:" + ex.getMessage());
-                }
-            if(cbxRoll.getSelectedIndex() == 0){
+        if (evt.getSource() == btnSignIn) {
+            try {
+                db = new DbConnect();
+            } catch (SQLException ex) {
+                System.out.println("Err:" + ex.getMessage());
+            }
+            if (cbxRoll.getSelectedIndex() == 0) {
                 stu = new Student();
                 stu.setStudName(txtName.getText());
                 stu.setStudSurname(txtSurname.getText());
                 stu.setStudNum(Integer.parseInt(txtSID.getText()));
                 stu.setStudEmail(txtEmail.getText());
-                if(txtSPass.getText().equals(txtConfirmPass.getText())){
+                if (txtSPass.getText().equals(txtConfirmPass.getText())) {
                     stu.setStudPassword(txtSPass.getText());
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(rootPane, "Passwords do not match.");
                 }
                 StudentDAO studDao = new StudentDAO();
-                try{
-                 studDao.InsertRecord(db.getC(), stu);   
-                }catch(SQLException ex){
+                try {
+                    studDao.InsertRecord(db.getC(), stu);
+                } catch (SQLException ex) {
                     System.out.println("Err:" + ex.getMessage());
+                } finally {
+                    try {
+                        db.CloseAll();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
-                
-            } else{
+
+            } else {
                 lec = new Lecturer();
                 lec.setLectName(txtName.getText());
                 lec.setLectSurname(txtSurname.getText());
                 lec.setStaffNumber(Integer.parseInt(txtSID.getText()));
                 lec.setLectEmail(txtEmail.getText());
-                if(txtSPass.getText().equals(txtConfirmPass.getText())){
+                
+                if (txtSPass.getText().equals(txtConfirmPass.getText())) {
                     lec.setLectPassword(txtSPass.getText());
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(rootPane, "Passwords do not match.");
                 }
                 LecturerDAO lecDao = new LecturerDAO();
-                try{
+                try {
                     lecDao.InsertRecord(db.getC(), lec);
-                }catch(SQLException ex){
+                } catch (SQLException ex) {
                     System.out.println("Err:" + ex.getMessage());
+                } finally {
+                    try {
+                        db.CloseAll();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
         }

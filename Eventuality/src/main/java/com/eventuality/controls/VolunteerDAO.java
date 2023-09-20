@@ -51,10 +51,10 @@ public class VolunteerDAO {
         return arr;
     }
     
-    public void DeleteRecord(Connection c, int studNum) throws SQLException {
-        delete_Values_stmt = "DELETE FROM VOLUNTEERS WHERE STUDENT_NUMBER=?";
+    public void DeleteRecord(Connection c, String evntID) throws SQLException {
+        delete_Values_stmt = "DELETE FROM VOLUNTEERS WHERE EVENT_ID=?";
         PreparedStatement ps = c.prepareStatement(delete_Values_stmt);
-        ps.setInt(1, studNum);
+        ps.setString(1, evntID);
         int rows = ps.executeUpdate(delete_Values_stmt);
         if (rows == 0) {
             JOptionPane.showMessageDialog(null, "No record with that ID...");

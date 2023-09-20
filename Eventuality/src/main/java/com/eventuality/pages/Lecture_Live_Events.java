@@ -4,6 +4,7 @@ import com.eventuality.controls.BookingDAO;
 import com.eventuality.controls.DbConnect;
 import com.eventuality.controls.EventDAO;
 import com.eventuality.controls.LocationDAO;
+import com.eventuality.controls.VolunteerDAO;
 import com.eventuality.objects.Booking;
 import com.eventuality.objects.Event;
 import com.eventuality.objects.Lecturer;
@@ -18,10 +19,9 @@ import javax.swing.JList;
 public class Lecture_Live_Events extends javax.swing.JFrame {
 
     private DbConnect db;
-    LocationDAO locDAO;
     private ArrayList<Event> evtArray;
     private ArrayList<Event> pendevtArray;
-    private Lecturer loggedin = new Lecturer();
+    private Lecturer loggedin;
     private ArrayList<Event> events = new ArrayList();
     DefaultListModel<String> dlmBook = new DefaultListModel<String>();
     private ArrayList<Booking> book = new ArrayList();
@@ -30,8 +30,15 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     /**
      * Creates new form Lecture_Live_Events
      */
+    
+    public void loggedin(){
+        loggedin = new Login().lec;
+    }
+            
     public Lecture_Live_Events() {
         initComponents();
+        loggedin();
+        
         try {
             db = new DbConnect();
             EventDAO evtDAO = new EventDAO();
@@ -336,10 +343,10 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     private void btnDenyStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDenyStatusActionPerformed
         try {
             EventDAO evtDao = new EventDAO();
-            BookingDAO bookDao = new BookingDAO();
+            VolunteerDAO volDao = new VolunteerDAO();
             int i = lstPending.getSelectedIndex();
             db = new DbConnect();
-            bookDao.DeleteRecord(db.getC(), pendevtArray.get(i).getEventId());
+            volDao.DeleteRecord(db.getC(), pendevtArray.get(i).getEventId());
             evtDao.DeleteRecord(db.getC(), pendevtArray.get(i).getEventId());
         } catch (SQLException ex) {
             Logger.getLogger(Lecture_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
@@ -379,7 +386,6 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     private void SwitchPage(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SwitchPage
         try {
             db = new DbConnect();
-            loggedin.setStaffNumber(34156738);
             EventDAO evtDAO = new EventDAO();
             ArrayList<Event> evtArray = new ArrayList();
             DefaultListModel<String> dlm = new DefaultListModel<String>();
