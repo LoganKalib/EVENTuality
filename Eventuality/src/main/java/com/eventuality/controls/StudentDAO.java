@@ -92,7 +92,7 @@ public class StudentDAO {
         ps.setString(1, email);
         ResultSet rows = ps.executeQuery();
         
-        if(rows != null){
+        if(rows.wasNull()){
             String newPass = JOptionPane.showInputDialog(null, "please enter a new password");
             UpdateRecord(c,"Password",newPass,email);
         }else{
