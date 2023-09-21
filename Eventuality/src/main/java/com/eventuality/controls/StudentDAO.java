@@ -92,7 +92,7 @@ public class StudentDAO {
         ps.setString(1, email);
         ResultSet rows = ps.executeQuery();
         
-        if(rows.wasNull()){
+        if(!rows.next()){
             JOptionPane.showMessageDialog(null, "this user does not exsist, please sign up.");
         }else{
             String newPass = JOptionPane.showInputDialog(null, "please enter a new password");
