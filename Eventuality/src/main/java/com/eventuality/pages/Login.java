@@ -401,6 +401,7 @@ public class Login extends javax.swing.JFrame {
         if (stud == null) {
             JOptionPane.showMessageDialog(null, "This Lecturer does not exist");
         } else {
+            db.CloseAll();
             new Student_Live_Events(stud).setVisible(true);
             this.dispose();
         }
@@ -413,6 +414,7 @@ public class Login extends javax.swing.JFrame {
         if (lec == null) {
             JOptionPane.showMessageDialog(null, "This user does not exist");
         } else {
+            db.CloseAll();
             new Lecture_Live_Events(lec).setVisible(true);
             this.dispose();
         }
@@ -428,6 +430,7 @@ public class Login extends javax.swing.JFrame {
         if (txtSPass.getText().equals(txtConfirmPass.getText())) {
             stu.setStudPassword(txtSPass.getText());
             UserCreated(stu);
+            tabLogin.setSelectedIndex(0);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Passwords do not match.");
         }
@@ -443,6 +446,7 @@ public class Login extends javax.swing.JFrame {
         if (txtSPass.getText().equals(txtConfirmPass.getText())) {
             staff.setLectPassword(txtSPass.getText());
             UserCreated(staff);
+            tabLogin.setSelectedIndex(0);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Passwords do not match.");
         }
