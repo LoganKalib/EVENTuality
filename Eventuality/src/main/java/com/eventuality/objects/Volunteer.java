@@ -42,6 +42,6 @@ public class Volunteer {
 
     @Override
     public String toString() {
-        return this.role + "\n" + this.studentNumber + "\n" + this.eventId;
+        return this.role + "\n" + this.studentNumber;
     }
 }

@@ -18,11 +18,10 @@ public class LecturerDAO {
         ps.setString(1, staffEmail);
         ps.setString(2, password);
         ResultSet rs = ps.executeQuery();
-        Lecturer lec = null;
+        Lecturer lec = new Lecturer();
 
         if (rs != null) {
             while (rs.next()) {
-                lec = new Lecturer();
                 lec.setStaffNumber(rs.getInt("STAFF_NUMBER"));
                 lec.setLectName(rs.getString("FIRST_NAME"));
                 lec.setLectSurname("SURNAME");
@@ -32,12 +31,12 @@ public class LecturerDAO {
             }
             rs.close();
             ps.close();
+            return lec;
         } else {
             rs.close();
             ps.close();
             return null;
         }
-        return lec;
     }
 
     public void DeleteRecord(Connection c, int staffNum) throws SQLException {

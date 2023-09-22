@@ -33,9 +33,11 @@ public class VolunteerDAO {
         return arr;
     }
     
-    public ArrayList<Volunteer> SelectVols(Statement s) throws SQLException {
-        retrieve_Values_qry = "SELECT * FROM VOLUNTEERS";
-        ResultSet rs = s.executeQuery(retrieve_Values_qry);
+    public ArrayList<Volunteer> SelectVols(Connection c, String eventId) throws SQLException {
+        retrieve_Values_qry = "SELECT * FROM VOLUNTEERS WHERE EVENT_ID=?";
+        PreparedStatement ps = c.prepareStatement(retrieve_Values_qry);
+        ps.setString(1, eventId);
+        ResultSet rs = ps.executeQuery();
         ArrayList<Volunteer> arr = new ArrayList();
         
         if(rs != null){
@@ -57,7 +59,7 @@ public class VolunteerDAO {
         ps.setString(1, evntID);
         int rows = ps.executeUpdate(delete_Values_stmt);
         if (rows == 0) {
-            JOptionPane.showMessageDialog(null, "No record with that ID...");
+            JOptionPane.showMessageDialog(null, "No volunteer record(s) with that ID...");
         } else {
             JOptionPane.showMessageDialog(null, "Record(s) successfully deleted.");
         }

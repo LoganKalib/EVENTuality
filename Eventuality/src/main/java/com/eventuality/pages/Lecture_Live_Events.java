@@ -14,28 +14,32 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
-import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 public class Lecture_Live_Events extends javax.swing.JFrame {
 
     private DbConnect db;
+    private Lecturer loggedin;
+
     private ArrayList<Event> evtArray;
     private ArrayList<Event> pendevtArray;
-    private Lecturer loggedin;
+
     private ArrayList<Event> events = new ArrayList();
-    DefaultListModel<String> dlmBook = new DefaultListModel<String>();
-    private ArrayList<Booking> book = new ArrayList();
-    BookingDAO bookDAO;
 
     /**
      * Creates new form Lecture_Live_Events
      */
-    
-   
-            
-    public Lecture_Live_Events(Lecturer lec) {
+    public Lecture_Live_Events(Lecturer lec) throws SQLException {
         initComponents();
-        
+        db = new DbConnect();
+        loggedin = lec;
+
+        // the below try is used to populate the the pending events list
+        PopulatePendingEvt();
+
+        // this populates the booking section
+        PopulateBookingEvt();
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -52,32 +56,6 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Student_Live_Events.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-    
-        // the below try is used to populate the the pending events list
-        try {
-            db = new DbConnect();
-            EventDAO evtDAO = new EventDAO();
-            evtArray = new ArrayList();
-            DefaultListModel<String> dlm = new DefaultListModel<String>();
-            evtArray = evtDAO.SelectTable(db.getS());
-            pendevtArray = new ArrayList<>();
-            for (var i : evtArray) {
-                if (i.isApprovalStatus() == false) {
-                    pendevtArray.add(i);
-                    dlm.addElement(i.getEventId() + " - " + i.getTitle() + " - " + i.getLeader() + " - " + i.getDate());
-                }
-            }
-            lstPending.setModel(dlm);
-        } catch (SQLException e) {
-
-        } finally {
-            try {
-                db.CloseAll();
-            } catch (SQLException ex) {
-                Logger.getLogger(Lecture_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
     }
 
     /**
@@ -304,64 +282,36 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAppStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAppStatusActionPerformed
-        // the below code executes when the user approves an event
         try {
-            int i = lstPending.getSelectedIndex();
-            EventDAO evtDao = new EventDAO();
-            db = new DbConnect();
-            evtDao.UpdateRecord(db.getC(), "TRUE", pendevtArray.get(i).getEventId());
+            // the below code executes when the user approves an event
+            ApproveEvt();
         } catch (SQLException ex) {
             Logger.getLogger(Lecture_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                db.CloseAll();
-            } catch (SQLException ex) {
-                Logger.getLogger(Lecture_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
     }//GEN-LAST:event_btnAppStatusActionPerformed
 
     private void btnLSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLSignOutActionPerformed
         try {
             db.CloseAll();
+            new Login().setVisible(true);
+            this.dispose();
         } catch (SQLException ex) {
             Logger.getLogger(Lecture_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.setVisible(false);
-        //new Login().setVisible(true);
     }//GEN-LAST:event_btnLSignOutActionPerformed
 
     private void PendingEventsChane(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_PendingEventsChane
         // if a user clicks on a pending event the below displays its details 
-        int i = lstPending.getSelectedIndex();
-        DefaultListModel<String> dlm = new DefaultListModel<String>();
-        dlm.addElement("EVENT ID: " + pendevtArray.get(i).getEventId());
-        dlm.addElement("TITLE: " + pendevtArray.get(i).getTitle());
-        dlm.addElement("DESCRIPTION: " + pendevtArray.get(i).getDescription());
-        dlm.addElement("EVENT DATE: " + pendevtArray.get(i).getDate());
-        dlm.addElement("START TIME: " + pendevtArray.get(i).getTime());
-        dlm.addElement("EVENT ID: " + pendevtArray.get(i).getLocation());
-        lstEDetails.setModel(dlm);
+        
 
     }//GEN-LAST:event_PendingEventsChane
 
     private void btnDenyStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDenyStatusActionPerformed
-        // if the user deny an event it will delete it from the database, as well as any volunteers registered
         try {
-            EventDAO evtDao = new EventDAO();
-            VolunteerDAO volDao = new VolunteerDAO();
-            int i = lstPending.getSelectedIndex();
-            db = new DbConnect();
-            volDao.DeleteRecord(db.getC(), pendevtArray.get(i).getEventId());
-            evtDao.DeleteRecord(db.getC(), pendevtArray.get(i).getEventId());
+            // if the user deny an event it will delete it from the database, as well as any volunteers registered
+            DenyEvt();
         } catch (SQLException ex) {
             Logger.getLogger(Lecture_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                db.CloseAll();
-            } catch (SQLException ex) {
-                Logger.getLogger(Lecture_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
     }//GEN-LAST:event_btnDenyStatusActionPerformed
 
@@ -371,7 +321,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         DefaultListModel<String> dlm = new DefaultListModel<String>();
         Event ev = events.get(i);
         LocationDAO locDAO = new LocationDAO();
-        
+
         dlm.addElement("TITLE: " + ev.getTitle());
         dlm.addElement("DESCRIPTION: " + ev.getDescription());
         dlm.addElement("START TIME:" + ev.getTime());
@@ -408,26 +358,11 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         } catch (SQLException e) {
             System.out.println("Err: " + e.getMessage());
         }
-
-        bookDAO = new BookingDAO();
-
-        // this populates the booking section
-        try {
-            book = bookDAO.SelectLectRecords(db.getC(), loggedin.getStaffNumber());
-            for (var x : book) {
-                System.out.println("Event: " + x.getEventId());
-                dlmBook.addElement(x.getEventId() + " - " + x.getTicketNumber() + " - " + x.getDate() + " - " + x.getTime());
-            }
-            lstBooked.setModel(dlmBook);
-        } catch (SQLException ex) {
-            Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }//GEN-LAST:event_SwitchPage
 
     private void btnBookEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookEventActionPerformed
-        
+
         // when the user books to an event the below writes it the database
-        
         int i = lstEventsL.getSelectedIndex();
         Event ev = events.get(i);
         Booking lecBook = new Booking();
@@ -480,4 +415,77 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     private javax.swing.JScrollPane spPending;
     private javax.swing.JTabbedPane tabLecturer;
     // End of variables declaration//GEN-END:variables
+
+    public void PopulatePendingEvt() throws SQLException {
+
+        EventDAO evtDAO = new EventDAO();
+        evtArray = new ArrayList();
+        pendevtArray = new ArrayList<>();
+        DefaultListModel<String> dlm = new DefaultListModel<String>();
+
+        evtArray = evtDAO.SelectTable(db.getS());
+
+        for (var i : evtArray) {
+            if (i.isApprovalStatus() == false) {
+                pendevtArray.add(i);
+                dlm.addElement(i.getEventId() + " - " + i.getTitle() + " - " + i.getLeader() + " - " + i.getDate());
+            }
+        }
+        lstPending.setModel(dlm);
+
+    }
+
+    public void PopulateBookingEvt() {
+        DefaultListModel<String> dlmBook = new DefaultListModel<String>();
+        ArrayList<Booking> book = new ArrayList();
+        BookingDAO bookDAO = new BookingDAO();
+        lstBooked.setModel(dlmBook);
+
+        try {
+            book = bookDAO.SelectLectRecords(db.getC(), loggedin.getStaffNumber());
+            for (var x : book) {
+                System.out.println("Event: " + x.getEventId());
+                dlmBook.addElement(x.getEventId() + " - " + x.getTicketNumber() + " - " + x.getDate() + " - " + x.getTime());
+            }
+            lstBooked.setModel(dlmBook);
+        } catch (SQLException ex) {
+            Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void ApproveEvt() throws SQLException {
+        int i = lstPending.getSelectedIndex();
+        EventDAO evtDao = new EventDAO();
+        int confirm = JOptionPane.showConfirmDialog(null, pendevtArray.get(i).toString() + "Are you sure you want to approve this event?");
+
+        if (confirm == 0) {
+            evtDao.UpdateRecord(db.getC(), "TRUE", pendevtArray.get(i).getEventId(), loggedin.getStaffNumber());
+        }
+    }
+
+    public void DenyEvt() throws SQLException {
+        EventDAO evtDao = new EventDAO();
+        VolunteerDAO volDao = new VolunteerDAO();
+        int i = lstPending.getSelectedIndex();
+        int confirm = JOptionPane.showConfirmDialog(null, pendevtArray.get(i).toString() + "Are you sure you want to deny this event? please note this will delete the event.");
+        
+        if(confirm ==0){
+        volDao.DeleteRecord(db.getC(), pendevtArray.get(i).getEventId());
+        evtDao.DeleteRecord(db.getC(), pendevtArray.get(i).getEventId());
+        }
+    }
+    
+    public void DisplayAll(){
+        int i = lstPending.getSelectedIndex();
+        DefaultListModel<String> dlm = new DefaultListModel<String>();
+        dlm.addElement("EVENT ID: " + pendevtArray.get(i).getEventId());
+        dlm.addElement("TITLE: " + pendevtArray.get(i).getTitle());
+        dlm.addElement("DESCRIPTION: " + pendevtArray.get(i).getDescription());
+        dlm.addElement("EVENT DATE: " + pendevtArray.get(i).getDate());
+        dlm.addElement("START TIME: " + pendevtArray.get(i).getTime());
+        dlm.addElement("EVENT ID: " + pendevtArray.get(i).getLocation());
+        dlm.addElement("====================================================");
+        for()
+        lstEDetails.setModel(dlm);
+    }
 }

@@ -130,6 +130,6 @@ public class Event {
     public String toString() {
         return this.eventId  + "\n" + this.eventType + "\n" + this.title + "\n" + this.description + "\n" + 
                 this.location + "\n" + this.leader + "\n" + this.isApprovedBy + "\n" + this.ticketPrice + 
-                "\n" + this.date + "\n" + this.time + "\n" + this.approvalStatus;
+                "\n" + this.date + "\n" + this.time + "\n" + this.approvalStatus + "\n";
     }
 }

@@ -63,7 +63,7 @@ public class Lecturer {
     @Override
     public String toString() {
         return this.lectName + "\n" + this.lectSurname + "\n" + 
-                this.lectPassword + "\n" + this.lectEmail + "\n" + this.staffNumber;
+                this.lectPassword + "\n" + this.lectEmail + "\n" + this.staffNumber + "\n";
     }
     
     

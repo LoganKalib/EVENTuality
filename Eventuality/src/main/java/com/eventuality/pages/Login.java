@@ -20,6 +20,18 @@ public class Login extends javax.swing.JFrame {
     public Login() throws SQLException {
         initComponents();
         db = new DbConnect();
+
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Student_Live_Events.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+
     }
 
     /**
@@ -305,7 +317,6 @@ public class Login extends javax.swing.JFrame {
                 //if the logging in user is a student the below will execute
                 java.awt.EventQueue.invokeLater(new Runnable() {
                     public void run() {
-                        Student stud = null;
                         try {
                             LoginStud();
                         } catch (SQLException ex) {
@@ -317,7 +328,6 @@ public class Login extends javax.swing.JFrame {
                 //if its a lecturer the below will execute
                 java.awt.EventQueue.invokeLater(new Runnable() {
                     public void run() {
-                        Lecturer staff = null;
                         try {
                             LoginStaff();
                         } catch (SQLException ex) {
