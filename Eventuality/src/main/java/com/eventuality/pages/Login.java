@@ -13,14 +13,13 @@ import javax.swing.JOptionPane;
 public class Login extends javax.swing.JFrame {
 
     DbConnect db;
-    Student stu;
-    Lecturer lec;
 
     /**
      * Creates new form Login
      */
-    public Login() {
+    public Login() throws SQLException {
         initComponents();
+        db = new DbConnect();
     }
 
     /**
@@ -272,22 +271,25 @@ public class Login extends javax.swing.JFrame {
 
     private void btnForgotPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForgotPassActionPerformed
         // this is used to update password for a user, depending on if its a stud or lec
-        if (cboRoll.getSelectedIndex() == 0) {
-            String user = JOptionPane.showInputDialog(null, "Please enter your email...");
-            try {
-                db = new DbConnect();
-                StudentDAO dao = new StudentDAO();
-                dao.Checkuser(db.getC(), user);
+        String user;
+        String num;
 
+        if (cboRoll.getSelectedIndex() == 0) {
+            user = JOptionPane.showInputDialog(null, "Please enter your email...");
+            num = JOptionPane.showInputDialog(null, "Please enter your student number...");
+
+            try {
+                ForgotPass(user, num);
             } catch (SQLException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
+
         } else {
-            String user = JOptionPane.showInputDialog(null, "Please enter your email...");
+            user = JOptionPane.showInputDialog(null, "Please enter your email...");
+            num = JOptionPane.showInputDialog(null, "Please enter you staff number...");
+
             try {
-                db = new DbConnect();
-                LecturerDAO dao = new LecturerDAO();
-                dao.Checkuser(db.getC(), user);
+                ForgotPass(user, Integer.parseInt(num));
 
             } catch (SQLException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
@@ -299,69 +301,30 @@ public class Login extends javax.swing.JFrame {
     private void btnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogActionPerformed
         if (evt.getSource() == btnLog) {
 
-            //if the logging in user is a student the below will execute
             if (cboRoll.getSelectedIndex() == 0) {
+                //if the logging in user is a student the below will execute
                 try {
-                    db = new DbConnect();
-                    StudentDAO dao = new StudentDAO();
-                    stu = dao.SelectLogin(db.getC(), txtEmail.getText(), txtPass.getText());
-                    this.setVisible(false);
-                    new Student_Live_Events().setVisible(true);
-                    db.CloseAll();
+                    LoginStud();
                 } catch (SQLException ex) {
                     System.out.println("Error during sign in: " + ex.getMessage());
                 }
-            }
-
-            if (cboRoll.getSelectedIndex() == 1) {
+            } else {
                 //if its a lecturer the below will execute
                 try {
-                    db = new DbConnect();
-                    LecturerDAO dao = new LecturerDAO();
-                    lec = dao.SelectLogin(db.getC(), txtEmail.getText(), txtPass.getText());
-                    this.setVisible(false);
-                    new Lecture_Live_Events().setVisible(true);
-                    db.CloseAll();
+                    LoginStaff();
                 } catch (SQLException ex) {
                     System.out.println("Error during sign in: " + ex.getMessage());
                 }
             }
-
         }
     }//GEN-LAST:event_btnLogActionPerformed
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
         if (evt.getSource() == btnSignIn) {
-            try {
-                db = new DbConnect();
-            } catch (SQLException ex) {
-                System.out.println("Err:" + ex.getMessage());
-            }
 
             // this if will run in the user being created is a student
             if (cbxRoll.getSelectedIndex() == 0) {
                 stu = new Student();
-                stu.setStudName(txtName.getText());
-                stu.setStudSurname(txtSurname.getText());
-                stu.setStudNum(Integer.parseInt(txtSID.getText()));
-                stu.setStudEmail(txtEmail.getText());
-                if (txtSPass.getText().equals(txtConfirmPass.getText())) {
-                    stu.setStudPassword(txtSPass.getText());
-                } else {
-                    JOptionPane.showMessageDialog(rootPane, "Passwords do not match.");
-                }
-                StudentDAO studDao = new StudentDAO();
-                try {
-                    studDao.InsertRecord(db.getC(), stu);
-                } catch (SQLException ex) {
-                    System.out.println("Err:" + ex.getMessage());
-                } finally {
-                    try {
-                        db.CloseAll();
-                    } catch (SQLException ex) {
-                        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
 
             } else {
 
@@ -423,7 +386,11 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                try {
+                    new Login().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -461,4 +428,78 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField txtSPass;
     private javax.swing.JTextField txtSurname;
     // End of variables declaration//GEN-END:variables
+
+    public void ForgotPass(String studEmail, String studNum) throws SQLException {
+        StudentDAO dao = new StudentDAO();
+        dao.Checkuser(db.getC(), studEmail, studNum);
+    }
+
+    public void ForgotPass(String lecEmail, int staffNum) throws SQLException {
+        LecturerDAO dao = new LecturerDAO();
+        dao.Checkuser(db.getC(), lecEmail, staffNum);
+    }
+
+    public Student LoginStud() throws SQLException {
+        StudentDAO dao = new StudentDAO();
+        Student stud = new Student();
+        stud = dao.SelectLogin(db.getC(), txtEmail.getText(), txtPass.getText());
+        return stud;
+    }
+
+    public Lecturer LoginStaff() throws SQLException {
+        LecturerDAO dao = new LecturerDAO();
+        Lecturer lec = new Lecturer();
+        lec = dao.SelectLogin(db.getC(), txtEmail.getText(), txtPass.getText());
+        return lec;
+    }
+
+    public void NewStud() throws SQLException {
+        Student stu = new Student();
+        stu.setStudName(txtName.getText());
+        stu.setStudSurname(txtSurname.getText());
+        stu.setStudNum(Integer.parseInt(txtSID.getText()));
+        stu.setStudEmail(txtEmail.getText());
+
+        if (txtSPass.getText().equals(txtConfirmPass.getText())) {
+            stu.setStudPassword(txtSPass.getText());
+            UserCreated(stu);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Passwords do not match.");
+        }
+    }
+    
+    public void NewLec() throws SQLException {
+        Lecturer staff = new Lecturer();
+        staff.setLectName(txtName.getText());
+        staff.setLectSurname(txtSurname.getText());
+        staff.setStaffNumber(Integer.parseInt(txtSID.getText()));
+        staff.setLectEmail(txtEmail.getText());
+
+        if (txtSPass.getText().equals(txtConfirmPass.getText())) {
+            staff.setLectPassword(txtSPass.getText());
+            UserCreated(staff);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Passwords do not match.");
+        }
+    }
+
+    private void UserCreated(Student stud) throws SQLException {
+        StudentDAO studDao = new StudentDAO();
+        int confirm = JOptionPane.showConfirmDialog(null,stud.toString()+ "Are you sure your want to create this Student?");
+        
+        if(confirm ==0){
+            studDao.InsertRecord(db.getC(), stud);
+        }
+
+    }
+    
+    private void UserCreated(Lecturer lec) throws SQLException {
+        LecturerDAO studDao = new LecturerDAO();
+        int confirm = JOptionPane.showConfirmDialog(null,lec.toString()+ "Are you sure your want to create this Student?");
+        
+        if(confirm ==0){
+            studDao.InsertRecord(db.getC(), lec);
+        }
+
+    }
 }

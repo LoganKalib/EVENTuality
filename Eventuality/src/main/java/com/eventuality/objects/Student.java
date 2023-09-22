@@ -63,6 +63,6 @@ public class Student {
     @Override
     public String toString() {
         return this.studName + "\n" + this.studSurname + "\n" + 
-                this.studPassword + "\n" + this.studEmail;
+                this.studPassword + "\n" + this.studEmail +"\n" + this.studNum +"\n";
     }
 }
