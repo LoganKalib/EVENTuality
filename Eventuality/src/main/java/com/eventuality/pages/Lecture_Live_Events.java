@@ -34,12 +34,6 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         db = new DbConnect();
         loggedin = lec;
 
-        // the below try is used to populate the the pending events list
-        PopulatePendingEvt();
-
-        // this populates the booking section
-        PopulateBookingEvt();
-
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -322,17 +316,24 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     private void LiveEventList(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_LiveEventList
         try {
             //this function is used to populate the live events list on the second tab
-            DisplayAllDetails(lstEventsL,lstDetails,events);
+            DisplayAllDetails(lstEventsL, lstDetails, events);
         } catch (SQLException ex) {
             Logger.getLogger(Lecture_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
     }//GEN-LAST:event_LiveEventList
 
 
     private void SwitchPage(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SwitchPage
-        // when the user clicks on the tab this runs to populate the page with info from the database
         try {
+            // the below try is used to populate the the pending events list
+            PopulatePendingEvt();
+
+            // this populates the booking section
+            PopulateBookingEvt();
+
+            //this populates the live event list
             PopulateLiveEvents();
+            
         } catch (SQLException e) {
             System.out.println("Err: " + e.getMessage());
         }
@@ -341,8 +342,8 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     private void btnBookEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookEventActionPerformed
 
         // when the user books to an event the below writes it the database
-        int i = lstEventsL.getSelectedIndex();
-        Event ev = events.get(i);
+ 
+        Event ev = events.get(lstEventsL.getSelectedIndex());
         Booking lecBook = new Booking();
 
         lecBook.setTicketNumber(5631509);
@@ -481,18 +482,18 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         dlm.addElement("DESCRIPTION: " + array.get(i).getDescription());
         dlm.addElement("EVENT DATE: " + array.get(i).getDate());
         dlm.addElement("START TIME: " + array.get(i).getTime());
-        
+
         LocationDAO locDAO = new LocationDAO();
         ArrayList<Location> locArr = new ArrayList();
         locArr = locDAO.SeleteAll(db.getS());
-        
+
         for (var x : locArr) {
             if (array.get(i).getLocation().equalsIgnoreCase(x.getEventLocation())) {
                 dlm.addElement("EVENT LOCATION: " + x.getCampus() + "---" + x.getBuilding() + "---" + x.getDepartment() + "---" + x.getRoom());
                 break;
             }
         }
-        
+
         dlm.addElement("====================================================");
         dlm.addElement("Volunteers:");
         for (var v : volsArr) {
@@ -500,8 +501,8 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         }
         list2.setModel(dlm);
     }
-
-    public void DisplayLiveEvt() {
-
+    
+    public void BookEvt(){
+        
     }
 }
