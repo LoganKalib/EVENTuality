@@ -303,18 +303,28 @@ public class Login extends javax.swing.JFrame {
 
             if (cboRoll.getSelectedIndex() == 0) {
                 //if the logging in user is a student the below will execute
-                try {
-                    LoginStud();
-                } catch (SQLException ex) {
-                    System.out.println("Error during sign in: " + ex.getMessage());
-                }
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        Student stud = null;
+                        try {
+                            LoginStud();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                });
             } else {
                 //if its a lecturer the below will execute
-                try {
-                    LoginStaff();
-                } catch (SQLException ex) {
-                    System.out.println("Error during sign in: " + ex.getMessage());
-                }
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        Lecturer staff = null;
+                        try {
+                            LoginStaff();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                });
             }
         }
     }//GEN-LAST:event_btnLogActionPerformed
@@ -322,78 +332,23 @@ public class Login extends javax.swing.JFrame {
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
         if (evt.getSource() == btnSignIn) {
 
-            // this if will run in the user being created is a student
             if (cbxRoll.getSelectedIndex() == 0) {
-                stu = new Student();
-
-            } else {
-
-                //else this will run if a lecturer is being created
-                lec = new Lecturer();
-                lec.setLectName(txtName.getText());
-                lec.setLectSurname(txtSurname.getText());
-                lec.setStaffNumber(Integer.parseInt(txtSID.getText()));
-                lec.setLectEmail(txtEmail.getText());
-
-                if (txtSPass.getText().equals(txtConfirmPass.getText())) {
-                    lec.setLectPassword(txtSPass.getText());
-                } else {
-                    JOptionPane.showMessageDialog(rootPane, "Passwords do not match.");
-                }
-                LecturerDAO lecDao = new LecturerDAO();
+                // this if will run in the user being created is a student
                 try {
-                    lecDao.InsertRecord(db.getC(), lec);
+                    NewStud();
                 } catch (SQLException ex) {
-                    System.out.println("Err:" + ex.getMessage());
-                } finally {
-                    try {
-                        db.CloseAll();
-                    } catch (SQLException ex) {
-                        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
-        }
-    }//GEN-LAST:event_btnSignInActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+            } else {
+                // this if will run in the user being created is a lecturer
                 try {
-                    new Login().setVisible(true);
+                    NewLec();
                 } catch (SQLException ex) {
                     Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-        });
-    }
+        }
+    }//GEN-LAST:event_btnSignInActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnForgotPass;
@@ -439,18 +394,28 @@ public class Login extends javax.swing.JFrame {
         dao.Checkuser(db.getC(), lecEmail, staffNum);
     }
 
-    public Student LoginStud() throws SQLException {
+    public void LoginStud() throws SQLException {
         StudentDAO dao = new StudentDAO();
         Student stud = new Student();
         stud = dao.SelectLogin(db.getC(), txtEmail.getText(), txtPass.getText());
-        return stud;
+        if (stud == null) {
+            JOptionPane.showMessageDialog(null, "This Lecturer does not exist");
+        } else {
+            new Student_Live_Events(stud).setVisible(true);
+            this.dispose();
+        }
     }
 
-    public Lecturer LoginStaff() throws SQLException {
+    public void LoginStaff() throws SQLException {
         LecturerDAO dao = new LecturerDAO();
         Lecturer lec = new Lecturer();
         lec = dao.SelectLogin(db.getC(), txtEmail.getText(), txtPass.getText());
-        return lec;
+        if (lec == null) {
+            JOptionPane.showMessageDialog(null, "This user does not exist");
+        } else {
+            new Lecture_Live_Events(lec).setVisible(true);
+            this.dispose();
+        }
     }
 
     public void NewStud() throws SQLException {
@@ -467,7 +432,7 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Passwords do not match.");
         }
     }
-    
+
     public void NewLec() throws SQLException {
         Lecturer staff = new Lecturer();
         staff.setLectName(txtName.getText());
@@ -485,19 +450,19 @@ public class Login extends javax.swing.JFrame {
 
     private void UserCreated(Student stud) throws SQLException {
         StudentDAO studDao = new StudentDAO();
-        int confirm = JOptionPane.showConfirmDialog(null,stud.toString()+ "Are you sure your want to create this Student?");
-        
-        if(confirm ==0){
+        int confirm = JOptionPane.showConfirmDialog(null, stud.toString() + "Are you sure your want to create this Student?");
+
+        if (confirm == 0) {
             studDao.InsertRecord(db.getC(), stud);
         }
 
     }
-    
+
     private void UserCreated(Lecturer lec) throws SQLException {
         LecturerDAO studDao = new LecturerDAO();
-        int confirm = JOptionPane.showConfirmDialog(null,lec.toString()+ "Are you sure your want to create this Student?");
-        
-        if(confirm ==0){
+        int confirm = JOptionPane.showConfirmDialog(null, lec.toString() + "Are you sure your want to create this Lecturer?");
+
+        if (confirm == 0) {
             studDao.InsertRecord(db.getC(), lec);
         }
 

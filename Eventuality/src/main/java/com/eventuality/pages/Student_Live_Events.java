@@ -41,7 +41,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
     /**
      * Creates new form Student_Live_Events
      */
-    public Student_Live_Events() {
+    public Student_Live_Events(Student stud) {
         initComponents();
 
         // when the page loads it populates the form
