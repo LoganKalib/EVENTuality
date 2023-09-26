@@ -18,16 +18,13 @@ public class LecturerDAO {
         ps.setString(1, staffEmail);
         ps.setString(2, password);
         ResultSet rs = ps.executeQuery();
-        Lecturer lec = new Lecturer();
+        Lecturer lec = null;
 
         if (rs != null) {
             while (rs.next()) {
-                lec.setStaffNumber(rs.getInt("STAFF_NUMBER"));
-                lec.setLectName(rs.getString("FIRST_NAME"));
-                lec.setLectSurname("SURNAME");
-                lec.setLectPassword(rs.getString("PASSWORD"));
-                lec.setLectEmail(rs.getString("EMAIL"));
-
+                lec = new Lecturer(rs.getString("FIRST_NAME"),
+                        rs.getString("SURNAME"),rs.getString("PASSWORD"),
+                        rs.getString("EMAIL"),rs.getInt("STAFF_NUMBER"));
             }
             rs.close();
             ps.close();

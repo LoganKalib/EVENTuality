@@ -31,9 +31,10 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
      * Creates new form Lecture_Live_Events
      */
     public Lecture_Live_Events(Lecturer lec, DbConnect thisDB) throws SQLException {
-        initComponents();
         db = thisDB;
         loggedin = lec;
+        initComponents();
+        
 
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
