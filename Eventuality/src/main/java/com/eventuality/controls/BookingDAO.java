@@ -13,42 +13,17 @@ public class BookingDAO {
     private String retrieve_Values_qry;
     
     
-    public ArrayList<Booking>SelectStudRecords(Connection c,int studNum) throws SQLException{
+    public ArrayList<Booking>SelectRecords(Connection c,int Num) throws SQLException{
         ArrayList<Booking> arr = new ArrayList();
-        retrieve_Values_qry = "SELECT * FROM BOOKING WHERE Student_number=?";
+        retrieve_Values_qry = "SELECT * FROM BOOKING WHERE Att_number=?";
         PreparedStatement ps = c.prepareStatement(retrieve_Values_qry);
-        ps.setInt(1, studNum);
+        ps.setInt(1, Num);
         ResultSet rs = ps.executeQuery();
         
         if(rs !=null){
             while(rs.next()){
                 Booking book = new Booking();
-                book.setAttdNumberStud(rs.getInt("STUDENT_NUMBER"));
-                book.setTicketNumber(rs.getInt("TICKET_NUMBER"));
-                book.setEventId(rs.getString("EVENT_ID"));
-                book.setAttdType(rs.getString("ATT_TYPE").charAt(0));
-                book.setDate(rs.getDate("DATE"));
-                book.setTime(rs.getTime("TIME").toLocalTime());
-                arr.add(book);
-            }
-        }
-        rs.close();
-        ps.close();
-        return arr;
-    }
-    
-    public ArrayList<Booking>SelectLectRecords(Connection c,int staffNum) throws SQLException{
-        ArrayList<Booking> arr = new ArrayList();
-        retrieve_Values_qry = "SELECT * FROM BOOKING WHERE Staff_number=?";
-        
-        PreparedStatement ps = c.prepareStatement(retrieve_Values_qry);
-        ps.setInt(1, staffNum);
-        ResultSet rs = ps.executeQuery();
-        
-        if(rs !=null){
-            while(rs.next()){
-                Booking book = new Booking();
-                book.setAttdNumberLec(rs.getInt("STAFF_NUMBER"));
+                book.setAttdNumber(rs.getInt("ATT_NUMBER"));
                 book.setTicketNumber(rs.getInt("TICKET_NUMBER"));
                 book.setEventId(rs.getString("EVENT_ID"));
                 book.setAttdType(rs.getString("ATT_TYPE").charAt(0));
@@ -71,13 +46,12 @@ public class BookingDAO {
         if(rs !=null){
             while(rs.next()){
                 Booking book = new Booking();
-                book.setAttdNumberStud(rs.getInt("STUDENT_NUMBER"));
+                book.setAttdNumber(rs.getInt("ATT_NUMBER"));
                 book.setTicketNumber(rs.getInt("TICKET_NUMBER"));
                 book.setEventId(rs.getString("EVENT_ID"));
                 book.setAttdType(rs.getString("ATT_TYPE").charAt(0));
                 book.setDate(rs.getDate("DATE"));
                 book.setTime(rs.getTime("TIME").toLocalTime());
-                book.setAttdNumberLec(rs.getInt("STAFF_NUMBER"));
                 arr.add(book);
             }
         }
@@ -128,16 +102,15 @@ public class BookingDAO {
     }
     
     public void InsertRecord(Connection c,Booking obj) throws SQLException{
-        insert_Values_stmt = "INSERT INTO BOOKING VALUES(?,?,?,?,?,?,?)";
+        insert_Values_stmt = "INSERT INTO BOOKING VALUES(?,?,?,?,?,?)";
         
         PreparedStatement ps = c.prepareStatement(insert_Values_stmt);
         ps.setInt(1, obj.getTicketNumber());
-        ps.setInt(2, obj.getAttdNumberStud());
-        ps.setTime(3, Time.valueOf(obj.getTime()));
-        ps.setString(4, obj.getEventId());
-        ps.setString(5, String.valueOf(obj.getAttdType()));
-        ps.setDate(6, obj.getDate());
-        ps.setInt(7, obj.getAttdNumberLec());
+        ps.setTime(2, Time.valueOf(obj.getTime()));
+        ps.setString(3, obj.getEventId());
+        ps.setString(4, String.valueOf(obj.getAttdType()));
+        ps.setDate(5, obj.getDate());
+        ps.setInt(6, obj.getAttdNumber() );
         
         int rows = ps.executeUpdate();
         if (rows == 0) {

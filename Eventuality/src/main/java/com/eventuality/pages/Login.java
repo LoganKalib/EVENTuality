@@ -407,7 +407,7 @@ public class Login extends javax.swing.JFrame {
                     try {
                         Student_Live_Events obj = new Student_Live_Events(stud, db);
                         obj.setVisible(true);
-                        obj.setSize(1000, 1000);
+                      
                     } catch (SQLException ex) {
                         Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -429,7 +429,7 @@ public class Login extends javax.swing.JFrame {
                     try {
                         Lecture_Live_Events obj = new Lecture_Live_Events(lec, db);
                         obj.setVisible(true);
-                        obj.setSize(1000, 1000);
+                       
                     } catch (SQLException ex) {
                         Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                     }

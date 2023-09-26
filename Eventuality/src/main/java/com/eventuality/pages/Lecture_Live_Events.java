@@ -408,7 +408,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         lstBooked.setModel(dlmBook);
 
         try {
-            book = bookDAO.SelectLectRecords(db.getConnection(), loggedin.getStaffNumber());
+            book = bookDAO.SelectRecords(db.getConnection(), loggedin.getStaffNumber());
             for (var x : book) {
                 System.out.println("Event: " + x.getEventId());
                 dlmBook.addElement(x.getEventId() + " - " + x.getTicketNumber() + " - " + x.getDate() + " - " + x.getTime());
@@ -495,13 +495,11 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         BookingDAO bookDAO = new BookingDAO();
 
         lecBook.setTicketNumber(generate8DigitInteger());
-        lecBook.setAttdNumberLec(loggedin.getStaffNumber());
+        lecBook.setAttdNumber(loggedin.getStaffNumber());
         lecBook.setTime(ev.getTime());
         lecBook.setEventId(ev.getEventId());
         lecBook.setAttdType("L".charAt(0));
         lecBook.setDate(ev.getDate());
-        lecBook.setAttdNumberLec(ev.getIsApprovedBy());
-        lecBook.setAttdNumberStud(ev.getLeader());
 
         bookDAO.InsertRecord(db.getConnection(), lecBook);
         PopulateBookingEvt();
