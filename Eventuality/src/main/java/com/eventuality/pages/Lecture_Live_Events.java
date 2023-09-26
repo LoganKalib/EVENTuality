@@ -12,6 +12,7 @@ import com.eventuality.objects.Location;
 import com.eventuality.objects.Volunteer;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
@@ -491,7 +492,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         Booking lecBook = new Booking();
         BookingDAO bookDAO = new BookingDAO();
 
-        lecBook.setTicketNumber(5631509);
+        lecBook.setTicketNumber(generate8DigitInteger());
         lecBook.setAttdNumberLec(loggedin.getStaffNumber());
         lecBook.setTime(ev.getTime());
         lecBook.setEventId(ev.getEventId());
@@ -503,5 +504,12 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         bookDAO.InsertRecord(db.getConnection(), lecBook);
         PopulateBookingEvt();
 
+    }
+    
+    private static int generate8DigitInteger() {
+        Random random = new Random();
+        int min = 10000000; // Smallest 8-digit integer (10,000,000)
+        int max = 99999999; // Largest 8-digit integer (99,999,999)
+        return random.nextInt((max - min) + 1) + min;
     }
 }
