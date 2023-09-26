@@ -456,7 +456,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     }
 
     public void DisplayAllDetails(JList list1, JList list2, ArrayList<Event> array) throws SQLException {
-        int i = lstPending.getSelectedIndex();
+        int i = list1.getSelectedIndex();
         DefaultListModel<String> dlm = new DefaultListModel<String>();
         VolunteerDAO volsDAO = new VolunteerDAO();
 
