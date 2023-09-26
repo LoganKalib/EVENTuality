@@ -129,6 +129,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(960, 540));
         getContentPane().setLayout(null);
 
         tabStudent.setBackground(new java.awt.Color(102, 153, 255));
