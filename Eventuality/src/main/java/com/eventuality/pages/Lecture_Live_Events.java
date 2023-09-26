@@ -333,7 +333,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
 
             //this populates the live event list
             PopulateLiveEvents();
-            
+
         } catch (SQLException e) {
             System.out.println("Err: " + e.getMessage());
         }
@@ -342,24 +342,8 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     private void btnBookEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookEventActionPerformed
 
         // when the user books to an event the below writes it the database
- 
-        Event ev = events.get(lstEventsL.getSelectedIndex());
-        Booking lecBook = new Booking();
-
-        lecBook.setTicketNumber(5631509);
-        lecBook.setAttdNumberLec(loggedin.getStaffNumber());
-        lecBook.setTime(ev.getTime());
-        lecBook.setEventId(ev.getEventId());
-        lecBook.setAttdType("L".charAt(0));
-        lecBook.setDate(ev.getDate());
-        lecBook.setAttdNumberLec(ev.getIsApprovedBy());
-        lecBook.setAttdNumberStud(ev.getLeader());
-
-        bookDAO = new BookingDAO();
-
         try {
-            bookDAO.InsertRecord(db.getC(), lecBook);
-            dlmBook.addElement(lecBook.getEventId() + " - " + lecBook.getTicketNumber() + " - " + lecBook.getDate() + " - " + lecBook.getTime());
+            BookEvt();
         } catch (SQLException ex) {
             Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
         }    }//GEN-LAST:event_btnBookEventActionPerformed
@@ -501,8 +485,23 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         }
         list2.setModel(dlm);
     }
-    
-    public void BookEvt(){
-        
+
+    public void BookEvt() throws SQLException, SQLException {
+        Event ev = events.get(lstEventsL.getSelectedIndex());
+        Booking lecBook = new Booking();
+        BookingDAO bookDAO = new BookingDAO();
+
+        lecBook.setTicketNumber(5631509);
+        lecBook.setAttdNumberLec(loggedin.getStaffNumber());
+        lecBook.setTime(ev.getTime());
+        lecBook.setEventId(ev.getEventId());
+        lecBook.setAttdType("L".charAt(0));
+        lecBook.setDate(ev.getDate());
+        lecBook.setAttdNumberLec(ev.getIsApprovedBy());
+        lecBook.setAttdNumberStud(ev.getLeader());
+
+        bookDAO.InsertRecord(db.getC(), lecBook);
+        PopulateBookingEvt();
+
     }
 }
