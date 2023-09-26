@@ -532,12 +532,11 @@ public class Student_Live_Events extends javax.swing.JFrame {
 
         studBook.setTicketNumber(5831509);
         loggedin.setStudNum(47891324);
-        studBook.setAttdNumberStud(loggedin.getStudNum());
+        studBook.setAttdNumber(loggedin.getStudNum());
         studBook.setTime(ev.getTime());
         studBook.setEventId(ev.getEventId());
         studBook.setAttdType("S".charAt(0));
         studBook.setDate(ev.getDate());
-        studBook.setAttdNumberLec(ev.getIsApprovedBy());
 
         try {
             BookingDAO bookDAO = new BookingDAO();
