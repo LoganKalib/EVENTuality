@@ -412,7 +412,9 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "This Lecturer does not exist");
         } else {
             db.CloseAll();
-            new Student_Live_Events(stud).setVisible(true);
+            Student_Live_Events obj = new Student_Live_Events(stud);
+            obj.setVisible(true);
+            obj.setSize(500, 500);
             this.dispose();
         }
     }
@@ -425,7 +427,9 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "This user does not exist");
         } else {
             db.CloseAll();
-            new Lecture_Live_Events(lec).setVisible(true);
+            Lecture_Live_Events obj = new Lecture_Live_Events(lec);
+            obj.setVisible(true);
+            obj.setSize(500, 500);
             this.dispose();
         }
     }
