@@ -23,7 +23,7 @@ public class EventTypeDAO {
 
                 evc.setEventTypeId(rs.getString("EVENT_TYPE_ID"));
                 evc.setDescription(rs.getString("DESCRIPTION"));
-                evc.setEventKeyword(rs.getString("KEYWORDS"));
+                evc.setEventKeyword(rs.getString("KEYWORD"));
                 arr.add(evc);
             }
             rs.close();
