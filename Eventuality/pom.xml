@@ -24,7 +24,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.derby</groupId>
-            <artifactId>derbynet</artifactId>
+            <artifactId>derbyclient</artifactId>
             <version>10.16.1.1</version>
         </dependency>
     </dependencies>
