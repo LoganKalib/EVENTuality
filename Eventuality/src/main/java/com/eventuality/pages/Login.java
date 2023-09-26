@@ -411,11 +411,11 @@ public class Login extends javax.swing.JFrame {
         if (stud == null) {
             JOptionPane.showMessageDialog(null, "This Lecturer does not exist");
         } else {
+            this.dispose();
             db.closeAll();
             Student_Live_Events obj = new Student_Live_Events(stud);
             obj.setVisible(true);
             obj.setSize(500, 500);
-            this.dispose();
         }
     }
 
@@ -426,11 +426,12 @@ public class Login extends javax.swing.JFrame {
         if (lec == null) {
             JOptionPane.showMessageDialog(null, "This user does not exist");
         } else {
+            this.dispose();
             db.closeAll();
             Lecture_Live_Events obj = new Lecture_Live_Events(lec);
             obj.setVisible(true);
             obj.setSize(500, 500);
-            this.dispose();
+            
         }
     }
 
