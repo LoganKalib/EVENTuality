@@ -400,7 +400,7 @@ public class Login extends javax.swing.JFrame {
         StudentDAO dao = new StudentDAO();
         Student stud = dao.SelectLogin(db.getConnection(), txtEmail.getText(), txtPass.getText()); 
         if (stud == null) {
-            JOptionPane.showMessageDialog(null, "This Lecturer does not exist");
+            JOptionPane.showMessageDialog(null, "This user does not exist");
         } else {
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
