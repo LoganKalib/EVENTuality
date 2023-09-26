@@ -41,10 +41,10 @@ public class Student_Live_Events extends javax.swing.JFrame {
     /**
      * Creates new form Student_Live_Events
      */
-    public Student_Live_Events(Student stud) throws SQLException {
+    public Student_Live_Events(Student stud, DbConnect thisDB) throws SQLException {
         initComponents();
 
-        db = DbConnect.getInstance();
+        db = thisDB;
 
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

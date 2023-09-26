@@ -17,9 +17,9 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    public Login() throws SQLException {
+    public Login(DbConnect thisDB) throws SQLException {
         initComponents();
-        db = DbConnect.getInstance();
+        db = thisDB;
 
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -315,15 +315,15 @@ public class Login extends javax.swing.JFrame {
 
             if (cboRoll.getSelectedIndex() == 0) {
                 //if the logging in user is a student the below will execute
-//                java.awt.EventQueue.invokeLater(new Runnable() {
-//                    public void run() {
-//                        try {
-//                            LoginStud();
-//                        } catch (SQLException ex) {
-//                            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-//                        }
-//                    }
-//                });
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        try {
+                            LoginStud();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                });
             } else {
                 //if its a lecturer the below will execute
                 java.awt.EventQueue.invokeLater(new Runnable() {
@@ -412,8 +412,7 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "This Lecturer does not exist");
         } else {
             this.dispose();
-            db.closeAll();
-            Student_Live_Events obj = new Student_Live_Events(stud);
+            Student_Live_Events obj = new Student_Live_Events(stud,db);
             obj.setVisible(true);
             obj.setSize(500, 500);
         }
@@ -427,8 +426,7 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "This user does not exist");
         } else {
             this.dispose();
-            db.closeAll();
-            Lecture_Live_Events obj = new Lecture_Live_Events(lec);
+            Lecture_Live_Events obj = new Lecture_Live_Events(lec, db);
             obj.setVisible(true);
             obj.setSize(500, 500);
             

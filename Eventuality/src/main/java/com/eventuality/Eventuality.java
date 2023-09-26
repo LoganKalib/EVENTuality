@@ -1,5 +1,6 @@
 package com.eventuality;
 
+import com.eventuality.controls.DbConnect;
 import com.eventuality.pages.Login;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -11,7 +12,7 @@ public class Eventuality {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new Login().setVisible(true);
+                    new Login(DbConnect.getInstance()).setVisible(true);
                 } catch (SQLException ex) {
                     Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                 }

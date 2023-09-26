@@ -30,9 +30,9 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     /**
      * Creates new form Lecture_Live_Events
      */
-    public Lecture_Live_Events(Lecturer lec) throws SQLException {
+    public Lecture_Live_Events(Lecturer lec, DbConnect thisDB) throws SQLException {
         initComponents();
-        db = DbConnect.getInstance();
+        db = thisDB;
         loggedin = lec;
 
         try {
@@ -287,8 +287,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
 
     private void btnLSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLSignOutActionPerformed
         try {
-            db.closeAll();
-            new Login().setVisible(true);
+            new Login(db).setVisible(true);
             this.dispose();
         } catch (SQLException ex) {
             Logger.getLogger(Lecture_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
