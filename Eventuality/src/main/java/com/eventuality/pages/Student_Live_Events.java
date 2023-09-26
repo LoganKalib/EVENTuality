@@ -29,11 +29,11 @@ public class Student_Live_Events extends javax.swing.JFrame {
 
     private Student loggedin = new Student();
     LocationDAO locDAO;
-    private DbConnect db= DbConnect.getInstance();
+    private DbConnect db = DbConnect.getInstance();
     private ArrayList<Volunteer> volArr = new ArrayList();
     private ArrayList<Location> locArr;
     private ArrayList<Event> events = new ArrayList();
-    DefaultListModel<String> dlmBook = new DefaultListModel<String>();
+
     private ArrayList<Booking> book = new ArrayList();
     Booking studBook;
     ArrayList<Event> evtArray = new ArrayList();
@@ -530,8 +530,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
         Event ev = events.get(i);
         studBook = new Booking();
 
-        studBook.setTicketNumber(5831509);
-        loggedin.setStudNum(47891324);
+        studBook.setTicketNumber(generate8DigitInteger());
         studBook.setAttdNumber(loggedin.getStudNum());
         studBook.setTime(ev.getTime());
         studBook.setEventId(ev.getEventId());
@@ -541,7 +540,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
         try {
             BookingDAO bookDAO = new BookingDAO();
             bookDAO.InsertRecord(db.getConnection(), studBook);
-            dlmBook.addElement(studBook.getEventId() + " - " + studBook.getTicketNumber() + " - " + studBook.getDate() + " - " + studBook.getTime());
+            populateBookings();
         } catch (SQLException ex) {
             Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -796,6 +795,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }
 
     public void populateBookings() throws SQLException {
+        DefaultListModel<String> dlmBook = new DefaultListModel<String>();
         BookingDAO bookDAO = new BookingDAO();
         bookDAO.InsertRecord(db.getConnection(), studBook);
         dlmBook.addElement(studBook.getEventId() + " - " + studBook.getTicketNumber() + " - " + studBook.getDate() + " - " + studBook.getTime());
@@ -816,4 +816,10 @@ public class Student_Live_Events extends javax.swing.JFrame {
         return randomString.toString();
     }
 
+    private static int generate8DigitInteger() {
+        Random random = new Random();
+        int min = 10000000; // Smallest 8-digit integer (10,000,000)
+        int max = 99999999; // Largest 8-digit integer (99,999,999)
+        return random.nextInt((max - min) + 1) + min;
+    }
 }
