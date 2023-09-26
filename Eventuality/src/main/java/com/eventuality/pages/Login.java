@@ -314,27 +314,19 @@ public class Login extends javax.swing.JFrame {
         if (evt.getSource() == btnLog) {
 
             if (cboRoll.getSelectedIndex() == 0) {
-                //if the logging in user is a student the below will execute
-                java.awt.EventQueue.invokeLater(new Runnable() {
-                    public void run() {
-                        try {
-                            LoginStud();
-                        } catch (SQLException ex) {
-                            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    }
-                });
+                try {
+                    //if the logging in user is a student the below will execute
+                    LoginStud();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else {
-                //if its a lecturer the below will execute
-                java.awt.EventQueue.invokeLater(new Runnable() {
-                    public void run() {
-                        try {
-                            LoginStaff();
-                        } catch (SQLException ex) {
-                            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    }
-                });
+                try {
+                    //if its a lecturer the below will execute
+                    LoginStaff();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
     }//GEN-LAST:event_btnLogActionPerformed
@@ -406,30 +398,46 @@ public class Login extends javax.swing.JFrame {
 
     public void LoginStud() throws SQLException {
         StudentDAO dao = new StudentDAO();
-        Student stud = new Student();
-        stud = dao.SelectLogin(db.getConnection(), txtEmail.getText(), txtPass.getText());
+        Student stud = dao.SelectLogin(db.getConnection(), txtEmail.getText(), txtPass.getText()); 
         if (stud == null) {
             JOptionPane.showMessageDialog(null, "This Lecturer does not exist");
         } else {
-            Student_Live_Events obj = new Student_Live_Events(stud,db);
-            obj.setVisible(true);
-            obj.setSize(500, 500);
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    try {
+                        Student_Live_Events obj = new Student_Live_Events(stud, db);
+                        obj.setVisible(true);
+                        obj.setSize(500, 500);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            });
             this.dispose();
+
         }
     }
 
     public void LoginStaff() throws SQLException {
         LecturerDAO dao = new LecturerDAO();
-        Lecturer lec = new Lecturer();
-        lec = dao.SelectLogin(db.getConnection(), txtEmail.getText(), txtPass.getText());
+        Lecturer lec =dao.SelectLogin(db.getConnection(), txtEmail.getText(), txtPass.getText()); 
         if (lec == null) {
             JOptionPane.showMessageDialog(null, "This user does not exist");
         } else {
-            Lecture_Live_Events obj = new Lecture_Live_Events(lec, db);
-            obj.setVisible(true);
-            obj.setSize(500, 500);
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    try {
+                        Lecture_Live_Events obj = new Lecture_Live_Events(lec, db);
+                        obj.setVisible(true);
+                        obj.setSize(500, 500);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            });
+
             this.dispose();
-            
+
         }
     }
 
