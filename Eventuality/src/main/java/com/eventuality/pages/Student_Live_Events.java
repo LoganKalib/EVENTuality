@@ -695,7 +695,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
     public void checkMyEvt() throws SQLException {
         EventDAO evtDAO = new EventDAO();
         ArrayList<Event> evtArray = new ArrayList();
-        evtArray = evtDAO.SelectTable(db.getStatement());
+        evtArray = evtDAO.SelectTable(db.getConnection());
 
         for (var i : evtArray) {
             if (i.getLeader() == loggedin.getStudNum()) {
@@ -770,7 +770,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
     public void populateLiveEvt() throws SQLException {
         EventDAO evtDAO = new EventDAO();
         DefaultListModel<String> dlm = new DefaultListModel<String>();
-        evtArray = evtDAO.SelectTable(db.getStatement());
+        evtArray = evtDAO.SelectTable(db.getConnection());
         for (var i : evtArray) {
             if (i.isApprovalStatus() == true) {
                 events.add(i);
