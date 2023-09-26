@@ -387,7 +387,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         pendevtArray = new ArrayList<>();
         DefaultListModel<String> dlm = new DefaultListModel<String>();
 
-        evtArray = evtDAO.SelectTable(db.getStatement());
+        evtArray = evtDAO.SelectTable(db.getConnection());
 
         for (var i : evtArray) {
             if (i.isApprovalStatus() == false) {
@@ -421,7 +421,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         EventDAO evtDAO = new EventDAO();
         ArrayList<Event> evtArray = new ArrayList();
         DefaultListModel<String> dlm = new DefaultListModel<String>();
-        evtArray = evtDAO.SelectTable(db.getStatement());
+        evtArray = evtDAO.SelectTable(db.getConnection());
         for (var i : evtArray) {
             if (i.isApprovalStatus() == true) {
                 events.add(i);
