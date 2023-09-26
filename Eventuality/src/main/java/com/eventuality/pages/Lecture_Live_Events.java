@@ -31,7 +31,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
      */
     public Lecture_Live_Events(Lecturer lec) throws SQLException {
         initComponents();
-        db = new DbConnect();
+        db = DbConnect.getInstance();
         loggedin = lec;
 
         try {
@@ -286,7 +286,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
 
     private void btnLSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLSignOutActionPerformed
         try {
-            db.CloseAll();
+            db.closeAll();
             new Login().setVisible(true);
             this.dispose();
         } catch (SQLException ex) {
@@ -386,7 +386,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         pendevtArray = new ArrayList<>();
         DefaultListModel<String> dlm = new DefaultListModel<String>();
 
-        evtArray = evtDAO.SelectTable(db.getS());
+        evtArray = evtDAO.SelectTable(db.getStatement());
 
         for (var i : evtArray) {
             if (i.isApprovalStatus() == false) {
@@ -405,7 +405,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         lstBooked.setModel(dlmBook);
 
         try {
-            book = bookDAO.SelectLectRecords(db.getC(), loggedin.getStaffNumber());
+            book = bookDAO.SelectLectRecords(db.getConnection(), loggedin.getStaffNumber());
             for (var x : book) {
                 System.out.println("Event: " + x.getEventId());
                 dlmBook.addElement(x.getEventId() + " - " + x.getTicketNumber() + " - " + x.getDate() + " - " + x.getTime());
@@ -420,7 +420,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         EventDAO evtDAO = new EventDAO();
         ArrayList<Event> evtArray = new ArrayList();
         DefaultListModel<String> dlm = new DefaultListModel<String>();
-        evtArray = evtDAO.SelectTable(db.getS());
+        evtArray = evtDAO.SelectTable(db.getStatement());
         for (var i : evtArray) {
             if (i.isApprovalStatus() == true) {
                 events.add(i);
@@ -436,7 +436,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         int confirm = JOptionPane.showConfirmDialog(null, pendevtArray.get(i).toString() + "Are you sure you want to approve this event?");
 
         if (confirm == 0) {
-            evtDao.UpdateRecord(db.getC(), "TRUE", pendevtArray.get(i).getEventId(), loggedin.getStaffNumber());
+            evtDao.UpdateRecord(db.getConnection(), "TRUE", pendevtArray.get(i).getEventId(), loggedin.getStaffNumber());
         }
     }
 
@@ -447,8 +447,8 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         int confirm = JOptionPane.showConfirmDialog(null, pendevtArray.get(i).toString() + "Are you sure you want to deny this event? please note this will delete the event.");
 
         if (confirm == 0) {
-            volDao.DeleteRecord(db.getC(), pendevtArray.get(i).getEventId());
-            evtDao.DeleteRecord(db.getC(), pendevtArray.get(i).getEventId());
+            volDao.DeleteRecord(db.getConnection(), pendevtArray.get(i).getEventId());
+            evtDao.DeleteRecord(db.getConnection(), pendevtArray.get(i).getEventId());
         }
     }
 
@@ -459,7 +459,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
 
         ArrayList<Volunteer> volsArr = new ArrayList();
 
-        volsArr = volsDAO.SelectVols(db.getC(), array.get(i).getEventId());
+        volsArr = volsDAO.SelectVols(db.getConnection(), array.get(i).getEventId());
 
         dlm.addElement("EVENT ID: " + array.get(i).getEventId());
         dlm.addElement("TITLE: " + array.get(i).getTitle());
@@ -469,7 +469,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
 
         LocationDAO locDAO = new LocationDAO();
         ArrayList<Location> locArr = new ArrayList();
-        locArr = locDAO.SeleteAll(db.getS());
+        locArr = locDAO.SeleteAll(db.getStatement());
 
         for (var x : locArr) {
             if (array.get(i).getLocation().equalsIgnoreCase(x.getEventLocation())) {
@@ -500,7 +500,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         lecBook.setAttdNumberLec(ev.getIsApprovedBy());
         lecBook.setAttdNumberStud(ev.getLeader());
 
-        bookDAO.InsertRecord(db.getC(), lecBook);
+        bookDAO.InsertRecord(db.getConnection(), lecBook);
         PopulateBookingEvt();
 
     }

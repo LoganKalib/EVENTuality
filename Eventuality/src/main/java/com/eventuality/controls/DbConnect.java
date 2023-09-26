@@ -4,36 +4,48 @@ import java.sql.*;
 
 public class DbConnect {
     
-    //please note the URL will change on windows so we need to remember
-    private String dbURL = "jdbc:derby://localhost:1527/Eventuality2.0";
-    private final Connection c;
-    private final Statement s;
+    private static final String DB_URL = "jdbc:derby://localhost:1527/Eventuality2.0";
+    private static final String DB_USER = "APP";
+    private static final String DB_PASSWORD = "Password";
+    
+    private static DbConnect instance;
+    private Connection connection;
+    private Statement statement;
 
-    public DbConnect() throws SQLException {
-        this.c = ConnectToDB();
-        this.s = StatementCreate();
+    private DbConnect() throws SQLException {
+        connection = connectToDB();
+        statement = createStatement();
     }
 
-    public Connection getC() {
-        return c;
+    public static DbConnect getInstance() throws SQLException {
+        if (instance == null) {
+            instance = new DbConnect();
+        }
+        return instance;
     }
 
-    public Statement getS() {
-        return s;
+    public Connection getConnection() {
+        return connection;
     }
-    
-    
-    
-    private Connection ConnectToDB() throws SQLException{
-        return DriverManager.getConnection(dbURL, "Administrator","Password");
+
+    public Statement getStatement() {
+        return statement;
     }
-    
-    private Statement StatementCreate() throws SQLException{
-        return c.createStatement();
+
+    public void closeAll() throws SQLException {
+        if (statement != null) {
+            statement.close();
+        }
+        if (connection != null && !connection.isClosed()) {
+            connection.close();
+        }
     }
-    
-    public void CloseAll() throws SQLException{
-        this.s.close();
-        this.c.close();
+
+    private Connection connectToDB() throws SQLException {
+        return DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+    }
+
+    private Statement createStatement() throws SQLException {
+        return connection.createStatement();
     }
 }

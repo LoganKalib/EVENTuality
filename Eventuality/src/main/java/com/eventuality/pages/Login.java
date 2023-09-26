@@ -19,7 +19,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() throws SQLException {
         initComponents();
-        db = new DbConnect();
+        db = DbConnect.getInstance();
 
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -315,15 +315,15 @@ public class Login extends javax.swing.JFrame {
 
             if (cboRoll.getSelectedIndex() == 0) {
                 //if the logging in user is a student the below will execute
-                java.awt.EventQueue.invokeLater(new Runnable() {
-                    public void run() {
-                        try {
-                            LoginStud();
-                        } catch (SQLException ex) {
-                            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    }
-                });
+//                java.awt.EventQueue.invokeLater(new Runnable() {
+//                    public void run() {
+//                        try {
+//                            LoginStud();
+//                        } catch (SQLException ex) {
+//                            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+//                        }
+//                    }
+//                });
             } else {
                 //if its a lecturer the below will execute
                 java.awt.EventQueue.invokeLater(new Runnable() {
@@ -396,22 +396,22 @@ public class Login extends javax.swing.JFrame {
 
     public void ForgotPass(String studEmail, String studNum) throws SQLException {
         StudentDAO dao = new StudentDAO();
-        dao.Checkuser(db.getC(), studEmail, studNum);
+        dao.Checkuser(db.getConnection(), studEmail, studNum);
     }
 
     public void ForgotPass(String lecEmail, int staffNum) throws SQLException {
         LecturerDAO dao = new LecturerDAO();
-        dao.Checkuser(db.getC(), lecEmail, staffNum);
+        dao.Checkuser(db.getConnection(), lecEmail, staffNum);
     }
 
     public void LoginStud() throws SQLException {
         StudentDAO dao = new StudentDAO();
         Student stud = new Student();
-        stud = dao.SelectLogin(db.getC(), txtEmail.getText(), txtPass.getText());
+        stud = dao.SelectLogin(db.getConnection(), txtEmail.getText(), txtPass.getText());
         if (stud == null) {
             JOptionPane.showMessageDialog(null, "This Lecturer does not exist");
         } else {
-            db.CloseAll();
+            db.closeAll();
             Student_Live_Events obj = new Student_Live_Events(stud);
             obj.setVisible(true);
             obj.setSize(500, 500);
@@ -422,11 +422,11 @@ public class Login extends javax.swing.JFrame {
     public void LoginStaff() throws SQLException {
         LecturerDAO dao = new LecturerDAO();
         Lecturer lec = new Lecturer();
-        lec = dao.SelectLogin(db.getC(), txtEmail.getText(), txtPass.getText());
+        lec = dao.SelectLogin(db.getConnection(), txtEmail.getText(), txtPass.getText());
         if (lec == null) {
             JOptionPane.showMessageDialog(null, "This user does not exist");
         } else {
-            db.CloseAll();
+            db.closeAll();
             Lecture_Live_Events obj = new Lecture_Live_Events(lec);
             obj.setVisible(true);
             obj.setSize(500, 500);
@@ -471,7 +471,7 @@ public class Login extends javax.swing.JFrame {
         int confirm = JOptionPane.showConfirmDialog(null, stud.toString() + "Are you sure your want to create this Student?");
 
         if (confirm == 0) {
-            studDao.InsertRecord(db.getC(), stud);
+            studDao.InsertRecord(db.getConnection(), stud);
         }
 
     }
@@ -481,7 +481,7 @@ public class Login extends javax.swing.JFrame {
         int confirm = JOptionPane.showConfirmDialog(null, lec.toString() + "Are you sure your want to create this Lecturer?");
 
         if (confirm == 0) {
-            studDao.InsertRecord(db.getC(), lec);
+            studDao.InsertRecord(db.getConnection(), lec);
         }
 
     }
