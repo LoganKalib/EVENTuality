@@ -29,7 +29,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
 
     private Student loggedin = new Student();
     LocationDAO locDAO;
-    private DbConnect db;
+    private DbConnect db= DbConnect.getInstance();
     private ArrayList<Volunteer> volArr = new ArrayList();
     private ArrayList<Location> locArr;
     private ArrayList<Event> events = new ArrayList();

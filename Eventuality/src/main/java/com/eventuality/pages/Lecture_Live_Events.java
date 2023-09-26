@@ -19,7 +19,7 @@ import javax.swing.*;
 
 public class Lecture_Live_Events extends javax.swing.JFrame {
 
-    private DbConnect db;
+    private DbConnect db = DbConnect.getInstance();
     private Lecturer loggedin;
 
     private ArrayList<Event> evtArray;
