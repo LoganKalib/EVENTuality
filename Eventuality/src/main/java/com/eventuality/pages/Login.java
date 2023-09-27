@@ -197,7 +197,7 @@ public class Login extends javax.swing.JFrame {
         btnSignIn.setBackground(new java.awt.Color(102, 153, 255));
         btnSignIn.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
         btnSignIn.setForeground(new java.awt.Color(0, 0, 0));
-        btnSignIn.setText("SIGN UP");
+        btnSignIn.setText("SIGN IN");
         btnSignIn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
         btnSignIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
