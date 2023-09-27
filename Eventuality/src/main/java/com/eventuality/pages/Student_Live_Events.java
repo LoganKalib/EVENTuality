@@ -628,7 +628,10 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSignOutActionPerformed
 
     private void LocationChoosen(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LocationChoosen
-        cbxCapacity.setSelectedIndex(cbxCampus.getSelectedIndex());
+        if (cbxCampus.getItemCount() > 0) {
+            cbxCapacity.setSelectedIndex(cbxCampus.getSelectedIndex());
+        }
+
 
     }//GEN-LAST:event_LocationChoosen
 
