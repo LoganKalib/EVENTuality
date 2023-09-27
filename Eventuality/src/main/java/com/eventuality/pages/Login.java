@@ -448,26 +448,30 @@ public class Login extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Passwords do not match.");
             }
 
+        } else {
+            JOptionPane.showMessageDialog(null, "Please enter all details.");
         }
 
     }
 
     public void NewLec() throws SQLException {
-        if (txtName.getText() != "" || txtSurname.getText() != "" || txtSID.getText() != "" || !"".equals(txtEmail.getText()) || txtSPass.getText() != ""){
-             Lecturer staff = new Lecturer();
-        staff.setLectName(txtName.getText());
-        staff.setLectSurname(txtSurname.getText());
-        staff.setStaffNumber(Integer.parseInt(txtSID.getText()));
-        staff.setLectEmail(txtEmail.getText());
+        if (txtName.getText() != "" || txtSurname.getText() != "" || txtSID.getText() != "" || !"".equals(txtEmail.getText()) || txtSPass.getText() != "") {
+            Lecturer staff = new Lecturer();
+            staff.setLectName(txtName.getText());
+            staff.setLectSurname(txtSurname.getText());
+            staff.setStaffNumber(Integer.parseInt(txtSID.getText()));
+            staff.setLectEmail(txtEmail.getText());
 
-        if (txtSPass.getText().equals(txtConfirmPass.getText())) {
-            staff.setLectPassword(txtSPass.getText());
-            UserCreated(staff);
-            tabLogin.setSelectedIndex(0);
+            if (txtSPass.getText().equals(txtConfirmPass.getText())) {
+                staff.setLectPassword(txtSPass.getText());
+                UserCreated(staff);
+                tabLogin.setSelectedIndex(0);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Passwords do not match.");
+            }
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Passwords do not match.");
+            JOptionPane.showMessageDialog(null, "Please enter all details.");
         }
-        } 
     }
 
     private void UserCreated(Student stud) throws SQLException {
