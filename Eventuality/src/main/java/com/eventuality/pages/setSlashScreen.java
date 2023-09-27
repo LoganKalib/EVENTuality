@@ -12,7 +12,7 @@ public class setSlashScreen extends JWindow {
         ImageIcon logo = new ImageIcon("/home/logan/Documents/GitHub/EVENTuality/Images/logo (1).png"); // Replace with your image file
         content.add(new JLabel(logo), BorderLayout.CENTER);
         setContentPane(content);
-        setSize(400, 150);
+        setSize(450, 150);
 
         // Center the splash screen on the screen
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

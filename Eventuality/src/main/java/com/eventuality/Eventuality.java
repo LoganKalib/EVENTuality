@@ -14,10 +14,10 @@ public class Eventuality {
     public static void main(String[] args) {
         setSlashScreen splash = new setSlashScreen();
         splash.setVisible(true);
-        Dimension preferredSize = new Dimension(400, 300);
+        Dimension preferredSize = new Dimension(450, 300);
         splash.setPreferredSize(preferredSize);
         try {
-            Thread.sleep(7000); //  7 seconds of loading
+            Thread.sleep(9000); //  9 seconds of loading
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

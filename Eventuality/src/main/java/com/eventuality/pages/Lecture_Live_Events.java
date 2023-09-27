@@ -113,6 +113,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         pnlPending.add(lblPending);
         lblPending.setBounds(130, 20, 270, 22);
 
+        lstPending.setBackground(new java.awt.Color(0, 51, 102));
         lstPending.setFont(new java.awt.Font("Malgun Gothic", 1, 12)); // NOI18N
         lstPending.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -156,6 +157,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         pnlPending.add(btnDenyStatus);
         btnDenyStatus.setBounds(470, 360, 370, 21);
 
+        lstEDetails.setBackground(new java.awt.Color(0, 51, 102));
         lstEDetails.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
         lstEDetails.setEnabled(false);
         jScrollPane4.setViewportView(lstEDetails);
@@ -214,13 +216,13 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
             }
         });
         pnlLive.add(btnBookEvent);
-        btnBookEvent.setBounds(440, 270, 400, 30);
+        btnBookEvent.setBounds(440, 240, 400, 30);
 
         lblBooked.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         lblBooked.setForeground(new java.awt.Color(0, 0, 0));
         lblBooked.setText("BOOKED EVENTS");
         pnlLive.add(lblBooked);
-        lblBooked.setBounds(440, 310, 120, 17);
+        lblBooked.setBounds(440, 280, 120, 17);
 
         jPanel2.setBackground(new java.awt.Color(102, 153, 255));
         pnlLive.add(jPanel2);
@@ -232,7 +234,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         jScrollPane5.setViewportView(lstDetails);
 
         pnlLive.add(jScrollPane5);
-        jScrollPane5.setBounds(440, 50, 400, 210);
+        jScrollPane5.setBounds(440, 50, 400, 190);
 
         lstBooked.setBackground(new java.awt.Color(0, 51, 102));
         lstBooked.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
@@ -244,7 +246,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         jScrollPane2.setViewportView(lstBooked);
 
         pnlLive.add(jScrollPane2);
-        jScrollPane2.setBounds(440, 324, 400, 70);
+        jScrollPane2.setBounds(440, 300, 400, 100);
 
         jLabel3.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
@@ -341,6 +343,9 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         lstBooked.clearSelection();
 
         switch (selectedIndex) {
+            case-1:
+                break;
+                
             case 0: {
                 try {
                     PopulatePendingEvt();
