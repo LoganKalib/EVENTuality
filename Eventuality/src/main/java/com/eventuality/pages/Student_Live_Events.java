@@ -44,6 +44,8 @@ public class Student_Live_Events extends javax.swing.JFrame {
      */
     public Student_Live_Events(Student stud, DbConnect thisDB) throws SQLException {
         db = thisDB;
+        // when the page loads it populates the form
+        populateForm();
         initComponents();
 
         try {
@@ -62,9 +64,6 @@ public class Student_Live_Events extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Student_Live_Events.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-
-        // when the page loads it populates the form
-        populateForm();
     }
 
     /**
@@ -628,9 +627,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSignOutActionPerformed
 
     private void LocationChoosen(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LocationChoosen
-        if (cbxCampus.getItemCount() > 0) {
-            cbxCapacity.setSelectedIndex(cbxCampus.getSelectedIndex());
-        }
+        
     }//GEN-LAST:event_LocationChoosen
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
