@@ -44,8 +44,6 @@ public class Student_Live_Events extends javax.swing.JFrame {
      */
     public Student_Live_Events(Student stud, DbConnect thisDB) throws SQLException {
         db = thisDB;
-        // when the page loads it populates the form
-        populateForm();
         initComponents();
 
         try {
@@ -136,6 +134,8 @@ public class Student_Live_Events extends javax.swing.JFrame {
         tabStudent.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
         tabStudent.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                // when the page loads it populates the form
+                populateForm();
                 Student_Live_Events.this.stateChanged(evt);
             }
         });
