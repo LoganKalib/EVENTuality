@@ -24,6 +24,7 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 public class Student_Live_Events extends javax.swing.JFrame {
 
@@ -571,7 +572,11 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
-        ifEmpty();
+        try {
+            alreadyEvt();
+        } catch (SQLException ex) {
+            Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnApproveActionPerformed
 
     private void stateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_stateChanged
@@ -840,6 +845,23 @@ public class Student_Live_Events extends javax.swing.JFrame {
         if(!txtTitle.getText().isBlank()
                 && !txtDescript.getText().isBlank()){
             createEvt();
+        }else{
+            JOptionPane.showMessageDialog(null, "Please make sure all details are entered.");
+        }
+    }
+    
+    public void alreadyEvt() throws SQLException{
+        EventDAO evtDAO = new EventDAO();
+        ArrayList<Event> evtArray = new ArrayList();
+        evtArray = evtDAO.SelectTable(db.getConnection());
+        for(Event i:evtArray){
+            if(i.getLeader() == loggedin.getStudNum()){
+                int confirm = JOptionPane.showConfirmDialog(null, "You have already created an event, would you like to over write it?");
+                if(confirm == 0){
+                    ifEmpty();
+                    break;
+                }
+            }
         }
     }
 }
