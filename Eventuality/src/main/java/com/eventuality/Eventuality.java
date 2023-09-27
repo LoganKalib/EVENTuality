@@ -3,6 +3,7 @@ package com.eventuality;
 import com.eventuality.controls.DbConnect;
 import com.eventuality.pages.Login;
 import com.eventuality.pages.setSlashScreen;
+import java.awt.Dimension;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,8 +14,10 @@ public class Eventuality {
     public static void main(String[] args) {
         setSlashScreen splash = new setSlashScreen();
         splash.setVisible(true);
+        Dimension preferredSize = new Dimension(400, 300);
+        splash.setPreferredSize(preferredSize);
         try {
-            Thread.sleep(5000); //  5 seconds of loading
+            Thread.sleep(10000); //  10 seconds of loading
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
