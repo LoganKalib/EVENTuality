@@ -9,14 +9,13 @@ public class setSlashScreen extends JWindow {
     public setSlashScreen(){
         
         content = new JPanel(new BorderLayout());
-        content.setBackground(Color.CYAN);
         ImageIcon logo = new ImageIcon("/home/logan/Documents/GitHub/EVENTuality/Images/logo (1).png"); // Replace with your image file
         content.add(new JLabel(logo), BorderLayout.CENTER);
         JLabel loadingLabel = new JLabel("Loading...");
         loadingLabel.setHorizontalAlignment(SwingConstants.CENTER);
         content.add(loadingLabel, BorderLayout.SOUTH);
         setContentPane(content);
-        setSize(600, 400);
+        pack();
 
         // Center the splash screen on the screen
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
