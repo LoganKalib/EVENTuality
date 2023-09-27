@@ -62,9 +62,6 @@ public class Student_Live_Events extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Student_Live_Events.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-
-        // when the page loads it populates the form
-        populateForm();
     }
 
     /**
@@ -630,6 +627,12 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSignOutActionPerformed
 
     private void LocationChoosen(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LocationChoosen
+        try {
+            // when the page loads it populates the form
+            populateForm();
+        } catch (SQLException ex) {
+            Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+        }
         cbxCapacity.setSelectedIndex(cbxCampus.getSelectedIndex());
         
     }//GEN-LAST:event_LocationChoosen
