@@ -158,6 +158,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         btnDenyStatus.setBounds(470, 360, 370, 21);
 
         lstEDetails.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
+        lstEDetails.setEnabled(false);
         jScrollPane4.setViewportView(lstEDetails);
 
         pnlPending.add(jScrollPane4);
@@ -189,7 +190,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         lblDetailsEvent.setForeground(new java.awt.Color(0, 0, 0));
         lblDetailsEvent.setText("EVENT DETAILS");
         pnlLive.add(lblDetailsEvent);
-        lblDetailsEvent.setBounds(590, 20, 250, 22);
+        lblDetailsEvent.setBounds(550, 20, 250, 22);
 
         lstEventsL.setBackground(new java.awt.Color(0, 51, 102));
         lstEventsL.setFont(new java.awt.Font("Malgun Gothic", 1, 12)); // NOI18N
@@ -214,31 +215,32 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
             }
         });
         pnlLive.add(btnBookEvent);
-        btnBookEvent.setBounds(470, 200, 370, 30);
+        btnBookEvent.setBounds(440, 270, 400, 30);
 
         lblBooked.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         lblBooked.setForeground(new java.awt.Color(0, 0, 0));
         lblBooked.setText("BOOKED EVENTS");
         pnlLive.add(lblBooked);
-        lblBooked.setBounds(470, 240, 120, 17);
+        lblBooked.setBounds(440, 310, 120, 17);
 
         jPanel2.setBackground(new java.awt.Color(102, 153, 255));
         pnlLive.add(jPanel2);
-        jPanel2.setBounds(430, 50, 10, 350);
+        jPanel2.setBounds(410, 50, 10, 350);
 
         lstDetails.setBackground(new java.awt.Color(0, 51, 102));
         lstDetails.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
+        lstDetails.setEnabled(false);
         jScrollPane5.setViewportView(lstDetails);
 
         pnlLive.add(jScrollPane5);
-        jScrollPane5.setBounds(470, 50, 370, 140);
+        jScrollPane5.setBounds(440, 50, 400, 210);
 
         lstBooked.setBackground(new java.awt.Color(0, 51, 102));
         lstBooked.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
         jScrollPane2.setViewportView(lstBooked);
 
         pnlLive.add(jScrollPane2);
-        jScrollPane2.setBounds(470, 260, 370, 134);
+        jScrollPane2.setBounds(440, 324, 400, 70);
 
         jLabel3.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
