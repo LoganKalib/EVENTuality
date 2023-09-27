@@ -62,6 +62,9 @@ public class Student_Live_Events extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Student_Live_Events.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+
+        // when the page loads it populates the form
+        populateForm();
     }
 
     /**
@@ -553,12 +556,10 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBookActionPerformed
 
     private void btnRedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRedoActionPerformed
-
         cbxCategory.setSelectedIndex(0);
         txtTitle.setText("");
         txtDescript.setText("");
         cbxSTime.setSelectedIndex(0);
-        cbxCampus.setSelectedIndex(0);
         cbxVolunteer.setSelectedIndex(0);
         txtVolsArea.setText("");
     }//GEN-LAST:event_btnRedoActionPerformed
@@ -627,14 +628,8 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSignOutActionPerformed
 
     private void LocationChoosen(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LocationChoosen
-        try {
-            // when the page loads it populates the form
-            populateForm();
-        } catch (SQLException ex) {
-            Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
-        }
         cbxCapacity.setSelectedIndex(cbxCampus.getSelectedIndex());
-        
+
     }//GEN-LAST:event_LocationChoosen
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -816,7 +811,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }
 
     public void populateBookings() throws SQLException {
-        
+
         DefaultListModel<String> dlmBook = new DefaultListModel<String>();
         ArrayList<Booking> book = new ArrayList();
         BookingDAO bookDAO = new BookingDAO();
@@ -858,24 +853,24 @@ public class Student_Live_Events extends javax.swing.JFrame {
         int max = 99999999; // Largest 8-digit integer (99,999,999)
         return random.nextInt((max - min) + 1) + min;
     }
-    
-    public void ifEmpty(){
-        if(!txtTitle.getText().isBlank()
-                && !txtDescript.getText().isBlank()){
+
+    public void ifEmpty() {
+        if (!txtTitle.getText().isBlank()
+                && !txtDescript.getText().isBlank()) {
             createEvt();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Please make sure all details are entered.");
         }
     }
-    
-    public void alreadyEvt() throws SQLException{
+
+    public void alreadyEvt() throws SQLException {
         EventDAO evtDAO = new EventDAO();
         ArrayList<Event> evtArray = new ArrayList();
         evtArray = evtDAO.SelectTable(db.getConnection());
-        for(Event i:evtArray){
-            if(i.getLeader() == loggedin.getStudNum()){
+        for (Event i : evtArray) {
+            if (i.getLeader() == loggedin.getStudNum()) {
                 int confirm = JOptionPane.showConfirmDialog(null, "You have already created an event, would you like to over write it?");
-                if(confirm == 0){
+                if (confirm == 0) {
                     ifEmpty();
                     break;
                 }
