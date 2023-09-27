@@ -66,47 +66,6 @@ public class BookingDAO {
         return arr;
     }
 
-    public void DeleteRecordStud(Connection c, int studNum, String eventId) throws SQLException {
-        delete_Values_stmt = "DELETE FROM BOOKING WHERE Student_Number=?,Event_id=?";
-        PreparedStatement ps = c.prepareStatement(delete_Values_stmt);
-        ps.setInt(1, studNum);
-        ps.setString(2, eventId);
-        int rows = ps.executeUpdate();
-        if (rows == 0) {
-            JOptionPane.showMessageDialog(null, "No record with that ID...");
-        } else {
-            JOptionPane.showMessageDialog(null, "Record(s) successfully deleted.");
-        }
-
-    }
-
-    public void DeleteRecord(Connection c, String eventId) throws SQLException {
-        delete_Values_stmt = "DELETE FROM BOOKING WHERE Event_id=?";
-        PreparedStatement ps = c.prepareStatement(delete_Values_stmt);
-        ps.setString(1, eventId);
-        int rows = ps.executeUpdate();
-        if (rows == 0) {
-            JOptionPane.showMessageDialog(null, "No record with that ID...");
-        } else {
-            JOptionPane.showMessageDialog(null, "Record(s) successfully deleted.");
-        }
-
-    }
-
-    public void DeleteRecordLec(Connection c, int staffNum, String eventId) throws SQLException {
-        delete_Values_stmt = "DELETE FROM BOOKING WHERE Event_id=?";
-        PreparedStatement ps = c.prepareStatement(delete_Values_stmt);
-        ps.setInt(1, staffNum);
-        ps.setString(2, eventId);
-        int rows = ps.executeUpdate();
-        if (rows == 0) {
-            JOptionPane.showMessageDialog(null, "No record with that ID...");
-        } else {
-            JOptionPane.showMessageDialog(null, "Record(s) successfully deleted.");
-        }
-
-    }
-
     public void InsertRecord(Connection c, Booking obj) throws SQLException {
         insert_Values_stmt = "INSERT INTO BOOKING VALUES(?,?,?,?,?,?)";
 
@@ -119,10 +78,14 @@ public class BookingDAO {
         ps.setInt(6, obj.getAttdNumber());
 
         int rows = ps.executeUpdate();
-        if (rows == 0) {
+        int confirm = JOptionPane.showConfirmDialog(null, "Are you sure?");
+        
+        if(confirm == 0){
+            if (rows == 0) {
             JOptionPane.showMessageDialog(null, "Record not added.");
         } else {
             JOptionPane.showMessageDialog(null, "Record(s) successfully added.");
+        }
         }
 
     }
