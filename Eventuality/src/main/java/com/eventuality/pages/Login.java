@@ -50,7 +50,6 @@ public class Login extends javax.swing.JFrame {
         txtEmail = new javax.swing.JTextField();
         btnLog = new javax.swing.JButton();
         btnForgotPass = new javax.swing.JButton();
-        imgAvatar = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         cboRoll = new javax.swing.JComboBox<>();
@@ -70,7 +69,6 @@ public class Login extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         lblWlcome1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
         cbxRoll = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -94,14 +92,14 @@ public class Login extends javax.swing.JFrame {
         txtPass.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         txtPass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, java.awt.Color.white, null, null));
         pnlLogin.add(txtPass);
-        txtPass.setBounds(300, 290, 316, 37);
+        txtPass.setBounds(290, 170, 316, 37);
         txtPass.getAccessibleContext().setAccessibleName("txtPass");
 
         txtEmail.setBackground(new java.awt.Color(102, 153, 255));
         txtEmail.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         txtEmail.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, java.awt.Color.white, null, null));
         pnlLogin.add(txtEmail);
-        txtEmail.setBounds(300, 230, 316, 37);
+        txtEmail.setBounds(290, 110, 316, 37);
         txtEmail.getAccessibleContext().setAccessibleName("txtEmail");
 
         btnLog.setBackground(new java.awt.Color(102, 153, 255));
@@ -115,9 +113,9 @@ public class Login extends javax.swing.JFrame {
             }
         });
         pnlLogin.add(btnLog);
-        btnLog.setBounds(300, 360, 316, 21);
+        btnLog.setBounds(340, 260, 210, 40);
 
-        btnForgotPass.setBackground(new java.awt.Color(102, 153, 255));
+        btnForgotPass.setBackground(new java.awt.Color(255, 255, 255));
         btnForgotPass.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
         btnForgotPass.setForeground(new java.awt.Color(0, 0, 204));
         btnForgotPass.setText("FORGOT PASSWORD");
@@ -128,24 +126,19 @@ public class Login extends javax.swing.JFrame {
             }
         });
         pnlLogin.add(btnForgotPass);
-        btnForgotPass.setBounds(360, 320, 195, 40);
-
-        imgAvatar.setText("AVATAR");
-        pnlLogin.add(imgAvatar);
-        imgAvatar.setBounds(390, 40, 130, 130);
-        imgAvatar.getAccessibleContext().setAccessibleName("imgAvatar");
+        btnForgotPass.setBounds(290, 210, 150, 17);
 
         jLabel10.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Password:");
         pnlLogin.add(jLabel10);
-        jLabel10.setBounds(300, 270, 70, 17);
+        jLabel10.setBounds(290, 150, 70, 17);
 
         jLabel11.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Email:");
         pnlLogin.add(jLabel11);
-        jLabel11.setBounds(300, 210, 50, 17);
+        jLabel11.setBounds(290, 90, 50, 17);
 
         cboRoll.setBackground(new java.awt.Color(102, 153, 255));
         cboRoll.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
@@ -153,7 +146,7 @@ public class Login extends javax.swing.JFrame {
         cboRoll.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Lecturer" }));
         cboRoll.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
         pnlLogin.add(cboRoll);
-        cboRoll.setBounds(380, 190, 160, 24);
+        cboRoll.setBounds(360, 60, 160, 24);
 
         jLabel2.setIcon(new javax.swing.ImageIcon("/home/logan/Documents/GitHub/EVENTuality/Images/white_blue_marble_hd_marble.jpg")); // NOI18N
         jLabel2.setText("jLabel2");
@@ -169,42 +162,42 @@ public class Login extends javax.swing.JFrame {
         txtName.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         txtName.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, java.awt.Color.white, null, null));
         pnlSignIn.add(txtName);
-        txtName.setBounds(260, 90, 370, 30);
+        txtName.setBounds(160, 140, 200, 30);
 
         txtSurname.setBackground(new java.awt.Color(102, 153, 255));
         txtSurname.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         txtSurname.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, java.awt.Color.white, null, null));
         pnlSignIn.add(txtSurname);
-        txtSurname.setBounds(260, 140, 370, 30);
+        txtSurname.setBounds(160, 190, 200, 30);
 
         txtSID.setBackground(new java.awt.Color(102, 153, 255));
         txtSID.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         txtSID.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, java.awt.Color.white, null, null));
         pnlSignIn.add(txtSID);
-        txtSID.setBounds(260, 190, 370, 30);
+        txtSID.setBounds(160, 240, 200, 30);
 
         txtSEmail.setBackground(new java.awt.Color(102, 153, 255));
         txtSEmail.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         txtSEmail.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, java.awt.Color.white, null, null));
         pnlSignIn.add(txtSEmail);
-        txtSEmail.setBounds(260, 240, 370, 30);
+        txtSEmail.setBounds(400, 140, 350, 30);
 
         txtSPass.setBackground(new java.awt.Color(102, 153, 255));
         txtSPass.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         txtSPass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, java.awt.Color.white, null, null));
         pnlSignIn.add(txtSPass);
-        txtSPass.setBounds(260, 290, 370, 30);
+        txtSPass.setBounds(400, 190, 350, 30);
 
         txtConfirmPass.setBackground(new java.awt.Color(102, 153, 255));
         txtConfirmPass.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         txtConfirmPass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, java.awt.Color.white, null, null));
         pnlSignIn.add(txtConfirmPass);
-        txtConfirmPass.setBounds(260, 340, 370, 30);
+        txtConfirmPass.setBounds(400, 240, 350, 30);
 
         btnSignIn.setBackground(new java.awt.Color(102, 153, 255));
         btnSignIn.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
         btnSignIn.setForeground(new java.awt.Color(0, 0, 0));
-        btnSignIn.setText("SIGN IN");
+        btnSignIn.setText("SIGN UP");
         btnSignIn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
         btnSignIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,59 +205,55 @@ public class Login extends javax.swing.JFrame {
             }
         });
         pnlSignIn.add(btnSignIn);
-        btnSignIn.setBounds(260, 380, 370, 21);
+        btnSignIn.setBounds(360, 320, 110, 40);
 
         jLabel4.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Name:");
         pnlSignIn.add(jLabel4);
-        jLabel4.setBounds(260, 70, 150, 17);
+        jLabel4.setBounds(160, 120, 90, 17);
 
         jLabel5.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Surname:");
         pnlSignIn.add(jLabel5);
-        jLabel5.setBounds(260, 120, 150, 17);
+        jLabel5.setBounds(160, 170, 90, 17);
 
         jLabel6.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Campus ID:");
         pnlSignIn.add(jLabel6);
-        jLabel6.setBounds(260, 170, 150, 17);
+        jLabel6.setBounds(160, 220, 90, 17);
 
         jLabel7.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Email:");
         pnlSignIn.add(jLabel7);
-        jLabel7.setBounds(260, 220, 150, 17);
+        jLabel7.setBounds(400, 120, 130, 17);
 
         jLabel8.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Password:");
         pnlSignIn.add(jLabel8);
-        jLabel8.setBounds(260, 270, 150, 17);
+        jLabel8.setBounds(400, 170, 130, 17);
 
         jLabel9.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Confirm Password:");
         pnlSignIn.add(jLabel9);
-        jLabel9.setBounds(260, 320, 150, 17);
+        jLabel9.setBounds(400, 220, 130, 17);
 
         lblWlcome1.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 18)); // NOI18N
         lblWlcome1.setForeground(new java.awt.Color(51, 0, 51));
         lblWlcome1.setText("SIGN UP TO VIEW ALL UPCOMING EVENTS");
         pnlSignIn.add(lblWlcome1);
-        lblWlcome1.setBounds(270, 0, 450, 60);
-
-        jPanel1.setBackground(new java.awt.Color(102, 153, 255));
-        pnlSignIn.add(jPanel1);
-        jPanel1.setBounds(20, 50, 870, 10);
+        lblWlcome1.setBounds(230, 10, 390, 30);
 
         cbxRoll.setBackground(new java.awt.Color(102, 153, 255));
         cbxRoll.setForeground(new java.awt.Color(0, 0, 0));
         cbxRoll.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Lecturer" }));
         pnlSignIn.add(cbxRoll);
-        cbxRoll.setBounds(60, 190, 150, 25);
+        cbxRoll.setBounds(160, 80, 150, 25);
         pnlSignIn.add(jLabel3);
         jLabel3.setBounds(-10, 0, 940, 420);
 
@@ -338,6 +327,7 @@ public class Login extends javax.swing.JFrame {
                 // this if will run in the user being created is a student
                 try {
                     NewStud();
+                    tabLogin.setSelectedIndex(0);
                 } catch (SQLException ex) {
                     Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -345,6 +335,7 @@ public class Login extends javax.swing.JFrame {
                 // this if will run in the user being created is a lecturer
                 try {
                     NewLec();
+                    tabLogin.setSelectedIndex(0);
                 } catch (SQLException ex) {
                     Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -358,7 +349,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton btnSignIn;
     private javax.swing.JComboBox<String> cboRoll;
     private javax.swing.JComboBox<String> cbxRoll;
-    private javax.swing.JLabel imgAvatar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -370,7 +360,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblWlcome1;
     private javax.swing.JPanel pnlLogin;
@@ -398,7 +387,7 @@ public class Login extends javax.swing.JFrame {
 
     public void LoginStud() throws SQLException {
         StudentDAO dao = new StudentDAO();
-        Student stud = dao.SelectLogin(db.getConnection(), txtEmail.getText(), txtPass.getText()); 
+        Student stud = dao.SelectLogin(db.getConnection(), txtEmail.getText(), txtPass.getText());
         if (stud == null) {
             JOptionPane.showMessageDialog(null, "This user does not exist");
         } else {
@@ -408,7 +397,7 @@ public class Login extends javax.swing.JFrame {
                         Student_Live_Events obj = new Student_Live_Events(stud, db);
                         obj.setVisible(true);
                         obj.setLocationRelativeTo(null);
-                      
+
                     } catch (SQLException ex) {
                         Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -421,7 +410,7 @@ public class Login extends javax.swing.JFrame {
 
     public void LoginStaff() throws SQLException {
         LecturerDAO dao = new LecturerDAO();
-        Lecturer lec =dao.SelectLogin(db.getConnection(), txtEmail.getText(), txtPass.getText()); 
+        Lecturer lec = dao.SelectLogin(db.getConnection(), txtEmail.getText(), txtPass.getText());
         if (lec == null) {
             JOptionPane.showMessageDialog(null, "This user does not exist");
         } else {
@@ -430,7 +419,7 @@ public class Login extends javax.swing.JFrame {
                     try {
                         Lecture_Live_Events obj = new Lecture_Live_Events(lec, db);
                         obj.setVisible(true);
-                       obj.setLocationRelativeTo(null);
+                        obj.setLocationRelativeTo(null);
                     } catch (SQLException ex) {
                         Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -443,23 +432,29 @@ public class Login extends javax.swing.JFrame {
     }
 
     public void NewStud() throws SQLException {
-        Student stu = new Student();
-        stu.setStudName(txtName.getText());
-        stu.setStudSurname(txtSurname.getText());
-        stu.setStudNum(Integer.parseInt(txtSID.getText()));
-        stu.setStudEmail(txtEmail.getText());
+        if (txtName.getText() != "" || txtSurname.getText() != "" || txtSID.getText() != "" || !"".equals(txtEmail.getText()) || txtSPass.getText() != "") {
 
-        if (txtSPass.getText().equals(txtConfirmPass.getText())) {
-            stu.setStudPassword(txtSPass.getText());
-            UserCreated(stu);
-            tabLogin.setSelectedIndex(0);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Passwords do not match.");
+            Student stu = new Student();
+            stu.setStudName(txtName.getText());
+            stu.setStudSurname(txtSurname.getText());
+            stu.setStudNum(Integer.parseInt(txtSID.getText()));
+            stu.setStudEmail(txtEmail.getText());
+
+            if (txtSPass.getText().equals(txtConfirmPass.getText())) {
+                stu.setStudPassword(txtSPass.getText());
+                UserCreated(stu);
+                tabLogin.setSelectedIndex(0);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Passwords do not match.");
+            }
+
         }
+
     }
 
     public void NewLec() throws SQLException {
-        Lecturer staff = new Lecturer();
+        if (txtName.getText() != "" || txtSurname.getText() != "" || txtSID.getText() != "" || !"".equals(txtEmail.getText()) || txtSPass.getText() != ""){
+             Lecturer staff = new Lecturer();
         staff.setLectName(txtName.getText());
         staff.setLectSurname(txtSurname.getText());
         staff.setStaffNumber(Integer.parseInt(txtSID.getText()));
@@ -472,6 +467,7 @@ public class Login extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(rootPane, "Passwords do not match.");
         }
+        } 
     }
 
     private void UserCreated(Student stud) throws SQLException {
@@ -493,4 +489,5 @@ public class Login extends javax.swing.JFrame {
         }
 
     }
+
 }
