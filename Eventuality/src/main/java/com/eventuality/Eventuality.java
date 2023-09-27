@@ -17,7 +17,7 @@ public class Eventuality {
         Dimension preferredSize = new Dimension(400, 300);
         splash.setPreferredSize(preferredSize);
         try {
-            Thread.sleep(10000); //  10 seconds of loading
+            Thread.sleep(7000); //  7 seconds of loading
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
