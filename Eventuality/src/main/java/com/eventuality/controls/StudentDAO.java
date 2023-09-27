@@ -47,7 +47,7 @@ public class StudentDAO {
     }
 
     private void UpdateRecord(Connection c, String setField, String setValue, String Email) throws SQLException {
-        update_Values_stmt = "UPDATE Lecturer SET " + setField + " = ? WHERE STUDENT_NUMBER = ?";
+        update_Values_stmt = "UPDATE Lecturer SET " + setField + " = ? WHERE EMAIL = ?";
         PreparedStatement ps = c.prepareStatement(update_Values_stmt);
         ps.setString(1, setValue);
         ps.setString(2, Email);
