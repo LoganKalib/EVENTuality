@@ -687,22 +687,26 @@ public class Student_Live_Events extends javax.swing.JFrame {
     private javax.swing.JTextArea txtVolsArea;
     // End of variables declaration//GEN-END:variables
 
-    public void populateForm() throws SQLException {
+    public void populateForm() {
 
-        EventTypeDAO evtTypeDAO = new EventTypeDAO();
-        ArrayList<Event_Category> evtType = evtTypeDAO.SelectTable(db.getStatement());
-
-        for (var i : evtType) {
-            cbxCategory.addItem(i.getEventKeyword());
-        }
-
-        LocationDAO locDAO = new LocationDAO();
-        ArrayList<Location> locArr = locDAO.SeleteAll(db.getStatement());
-
-        for (var i : locArr) {
-            cbxCampus.addItem(i.getCampus() + " - " + i.getDepartment() + " - " + i.getBuilding());
-            String cap = Integer.toString(i.getCapacity());
-            cbxCapacity.addItem(cap);
+        try {
+            EventTypeDAO evtTypeDAO = new EventTypeDAO();
+            ArrayList<Event_Category> evtType = evtTypeDAO.SelectTable(db.getStatement());
+            
+            for (var i : evtType) {
+                cbxCategory.addItem(i.getEventKeyword());
+            }
+            
+            LocationDAO locDAO = new LocationDAO();
+            ArrayList<Location> locArr = locDAO.SeleteAll(db.getStatement());
+            
+            for (var i : locArr) {
+                cbxCampus.addItem(i.getCampus() + " - " + i.getDepartment() + " - " + i.getBuilding());
+                String cap = Integer.toString(i.getCapacity());
+                cbxCapacity.addItem(cap);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
