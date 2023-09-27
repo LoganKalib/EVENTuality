@@ -813,11 +813,26 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }
 
     public void populateBookings() throws SQLException {
+        
         DefaultListModel<String> dlmBook = new DefaultListModel<String>();
+        ArrayList<Booking> book = new ArrayList();
         BookingDAO bookDAO = new BookingDAO();
-        bookDAO.InsertRecord(db.getConnection(), studBook);
-        dlmBook.addElement(studBook.getEventId() + " - " + studBook.getTicketNumber() + " - " + studBook.getDate() + " - " + studBook.getTime());
         lstBooked.setModel(dlmBook);
+
+        try {
+            book = bookDAO.SelectRecords(db.getConnection(), loggedin.getStudNum());
+            if (book == null) {
+                dlmBook.addElement("No bookings made...");
+            } else {
+                for (var x : book) {
+                    dlmBook.addElement(x.getEventId() + " - " + x.getTicketNumber() + " - " + x.getDate() + " - " + x.getTime());
+                }
+                lstBooked.setModel(dlmBook);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public String generateID() {
