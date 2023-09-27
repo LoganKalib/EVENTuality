@@ -551,8 +551,6 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         lecBook.setDate(ev.getDate());
 
         bookDAO.InsertRecord(db.getConnection(), lecBook);
-        PopulateBookingEvt();
-
     }
 
     private static int generate8DigitInteger() {
