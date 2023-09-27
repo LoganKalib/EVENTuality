@@ -34,7 +34,6 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         db = thisDB;
         loggedin = lec;
         initComponents();
-        
 
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -295,7 +294,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
             Login obj = new Login(db);
             obj.setVisible(true);
             obj.setLocationRelativeTo(null);
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(Lecture_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -331,31 +330,33 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
 
 
     private void SwitchPage(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SwitchPage
-        System.out.println(evt.getSource());
-        if(evt.getSource() == pnlPending){
-            lstEventsL.clearSelection();
-            lstPending.clearSelection();
-            try {
-                // the below try is used to populate the the pending events list
-                PopulatePendingEvt();
-            } catch (SQLException ex) {
-                Logger.getLogger(Lecture_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }else if (evt.getSource() == pnlLive){
-            lstEventsL.clearSelection();
-            lstPending.clearSelection();
+        int selectedIndex = tabLecturer.getSelectedIndex();
 
-            // this populates the booking section
-            PopulateBookingEvt();
-
-            try {
-                //this populates the live event list
-                PopulateLiveEvents();
-            } catch (SQLException ex) {
-                Logger.getLogger(Lecture_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+        switch (selectedIndex) {
+            case 0: {
+                try {
+                    PopulatePendingEvt();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Lecture_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
+            break;
+
+            case 1:
+                PopulateBookingEvt();
+                 {
+                    try {
+                        PopulateLiveEvents();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Lecture_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                break;
+
+            default:
+                System.out.println("no index");
         }
-        
+
     }//GEN-LAST:event_SwitchPage
 
     private void btnBookEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookEventActionPerformed
@@ -418,7 +419,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     }
 
     public void PopulateBookingEvt() {
-        
+
         DefaultListModel<String> dlmBook = new DefaultListModel<String>();
         ArrayList<Booking> book = new ArrayList();
         BookingDAO bookDAO = new BookingDAO();
@@ -426,15 +427,15 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
 
         try {
             book = bookDAO.SelectRecords(db.getConnection(), loggedin.getStaffNumber());
-            if(book == null){
+            if (book == null) {
                 dlmBook.addElement("No bookings made...");
-            }else{
+            } else {
                 for (var x : book) {
-                dlmBook.addElement(x.getEventId() + " - " + x.getTicketNumber() + " - " + x.getDate() + " - " + x.getTime());
+                    dlmBook.addElement(x.getEventId() + " - " + x.getTicketNumber() + " - " + x.getDate() + " - " + x.getTime());
+                }
+                lstBooked.setModel(dlmBook);
             }
-            lstBooked.setModel(dlmBook);
-            }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -525,7 +526,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         PopulateBookingEvt();
 
     }
-    
+
     private static int generate8DigitInteger() {
         Random random = new Random();
         int min = 10000000; // Smallest 8-digit integer (10,000,000)
