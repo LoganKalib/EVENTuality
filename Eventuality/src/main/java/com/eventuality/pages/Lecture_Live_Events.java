@@ -290,6 +290,8 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         try {
             // the below code executes when the user approves an event
             ApproveEvt();
+            PopulatePendingEvt();
+            PopulateLiveEvents();
         } catch (SQLException ex) {
             Logger.getLogger(Lecture_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -322,6 +324,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         try {
             // if the user deny an event it will delete it from the database, as well as any volunteers registered
             DenyEvt();
+            PopulatePendingEvt();
         } catch (SQLException ex) {
             Logger.getLogger(Lecture_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -378,6 +381,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         // when the user books to an event the below writes it the database
         try {
             BookEvt();
+            PopulateBookingEvt();
         } catch (SQLException ex) {
             Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
         }    }//GEN-LAST:event_btnBookEventActionPerformed
