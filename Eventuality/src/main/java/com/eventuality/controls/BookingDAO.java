@@ -29,18 +29,15 @@ public class BookingDAO {
                 book.setDate(rs.getDate("DATE"));
                 book.setTime(rs.getTime("TIME").toLocalTime());
                 arr.add(book);
+            }
                 rs.close();
                 ps.close();
                 return arr;
-            }
         } else {
             rs.close();
             ps.close();
             return null;
         }
-        rs.close();
-        ps.close();
-        return null;
     }
 
     public ArrayList<Booking> SelectEventRecords(Connection c, String eventId) throws SQLException {
