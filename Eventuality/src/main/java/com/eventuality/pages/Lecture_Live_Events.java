@@ -409,11 +409,16 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
 
         try {
             book = bookDAO.SelectRecords(db.getConnection(), loggedin.getStaffNumber());
-            for (var x : book) {
+            if(book == null){
+                dlmBook.addElement("No bookings made...");
+            }else{
+                for (var x : book) {
                 System.out.println("Event: " + x.getEventId());
                 dlmBook.addElement(x.getEventId() + " - " + x.getTicketNumber() + " - " + x.getDate() + " - " + x.getTime());
             }
             lstBooked.setModel(dlmBook);
+            }
+            
         } catch (SQLException ex) {
             Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -476,12 +481,13 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
 
         for (var x : locArr) {
             if (array.get(i).getLocation().equalsIgnoreCase(x.getEventLocation())) {
-                dlm.addElement("EVENT LOCATION: " + x.getCampus() + "---" + x.getBuilding() + "---" + x.getDepartment() + "---" + x.getRoom());
+                dlm.addElement("EVENT LOCATION: " + x.getCampus() + " " + x.getBuilding() + " " + x.getDepartment() + " " + x.getRoom());
                 break;
             }
         }
 
-        dlm.addElement("====================================================");
+        dlm.addElement(" ");
+        dlm.addElement(" ");
         dlm.addElement("Volunteers:");
         for (var v : volsArr) {
             dlm.addElement(v.toString());
