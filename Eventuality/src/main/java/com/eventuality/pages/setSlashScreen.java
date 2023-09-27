@@ -11,9 +11,6 @@ public class setSlashScreen extends JWindow {
         content = new JPanel(new BorderLayout());
         ImageIcon logo = new ImageIcon("/home/logan/Documents/GitHub/EVENTuality/Images/logo (1).png"); // Replace with your image file
         content.add(new JLabel(logo), BorderLayout.CENTER);
-        JLabel loadingLabel = new JLabel("Loading...");
-        loadingLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        content.add(loadingLabel, BorderLayout.CENTER);
         setContentPane(content);
         pack();
 
