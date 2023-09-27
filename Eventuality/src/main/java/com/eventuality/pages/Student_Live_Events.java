@@ -134,8 +134,6 @@ public class Student_Live_Events extends javax.swing.JFrame {
         tabStudent.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
         tabStudent.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                // when the page loads it populates the form
-                populateForm();
                 Student_Live_Events.this.stateChanged(evt);
             }
         });
@@ -296,6 +294,8 @@ public class Student_Live_Events extends javax.swing.JFrame {
         cbxCampus.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         cbxCampus.setForeground(new java.awt.Color(0, 0, 0));
         cbxCampus.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        // when the page loads it populates the form
+        populateForm();
         cbxCampus.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 LocationChoosen(evt);
