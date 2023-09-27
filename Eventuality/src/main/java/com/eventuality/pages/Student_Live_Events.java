@@ -571,7 +571,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
-        createEvt();
+        ifEmpty();
     }//GEN-LAST:event_btnApproveActionPerformed
 
     private void stateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_stateChanged
@@ -829,10 +829,17 @@ public class Student_Live_Events extends javax.swing.JFrame {
         return randomString.toString();
     }
 
-    private static int generate8DigitInteger() {
+    private int generate8DigitInteger() {
         Random random = new Random();
         int min = 10000000; // Smallest 8-digit integer (10,000,000)
         int max = 99999999; // Largest 8-digit integer (99,999,999)
         return random.nextInt((max - min) + 1) + min;
+    }
+    
+    public void ifEmpty(){
+        if(!txtTitle.getText().isBlank()
+                && !txtDescript.getText().isBlank()){
+            createEvt();
+        }
     }
 }
