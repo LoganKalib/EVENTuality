@@ -631,8 +631,6 @@ public class Student_Live_Events extends javax.swing.JFrame {
         if (cbxCampus.getItemCount() > 0) {
             cbxCapacity.setSelectedIndex(cbxCampus.getSelectedIndex());
         }
-
-
     }//GEN-LAST:event_LocationChoosen
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
