@@ -290,7 +290,9 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     private void btnLSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLSignOutActionPerformed
         try {
             this.dispose();
-            new Login(db).setVisible(true);
+            Login obj = new Login(db);
+            obj.setVisible(true);
+            obj.setLocationRelativeTo(null);
             
         } catch (SQLException ex) {
             Logger.getLogger(Lecture_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
@@ -327,22 +329,30 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
 
 
     private void SwitchPage(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SwitchPage
-        try {
+        if(evt.getSource() == pnlPending){
             lstEventsL.clearSelection();
             lstPending.clearSelection();
-            
-            // the below try is used to populate the the pending events list
-            PopulatePendingEvt();
+            try {
+                // the below try is used to populate the the pending events list
+                PopulatePendingEvt();
+            } catch (SQLException ex) {
+                Logger.getLogger(Lecture_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            lstEventsL.clearSelection();
+            lstPending.clearSelection();
 
             // this populates the booking section
             PopulateBookingEvt();
 
-            //this populates the live event list
-            PopulateLiveEvents();
-
-        } catch (SQLException e) {
-            System.out.println("Err: " + e.getMessage());
+            try {
+                //this populates the live event list
+                PopulateLiveEvents();
+            } catch (SQLException ex) {
+                Logger.getLogger(Lecture_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+        
     }//GEN-LAST:event_SwitchPage
 
     private void btnBookEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookEventActionPerformed

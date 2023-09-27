@@ -13,7 +13,7 @@ public class setSlashScreen extends JWindow {
         content.add(new JLabel(logo), BorderLayout.CENTER);
         JLabel loadingLabel = new JLabel("Loading...");
         loadingLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        content.add(loadingLabel, BorderLayout.SOUTH);
+        content.add(loadingLabel, BorderLayout.CENTER);
         setContentPane(content);
         pack();
 
