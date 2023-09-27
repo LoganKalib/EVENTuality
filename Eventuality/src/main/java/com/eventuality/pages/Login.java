@@ -327,7 +327,7 @@ public class Login extends javax.swing.JFrame {
                 // this if will run in the user being created is a student
                 try {
                     NewStud();
-                    tabLogin.setSelectedIndex(0);
+                    
                 } catch (SQLException ex) {
                     Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -335,7 +335,7 @@ public class Login extends javax.swing.JFrame {
                 // this if will run in the user being created is a lecturer
                 try {
                     NewLec();
-                    tabLogin.setSelectedIndex(0);
+                    
                 } catch (SQLException ex) {
                     Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -432,12 +432,24 @@ public class Login extends javax.swing.JFrame {
     }
 
     public void NewStud() throws SQLException {
-        if (txtName.getText() != "" || txtSurname.getText() != "" || txtSID.getText() != "" || !"".equals(txtEmail.getText()) || txtSPass.getText() != "") {
+        if (!txtName.getText().isEmpty()
+                && !txtSurname.getText().isEmpty()
+                && !txtSID.getText().isEmpty()
+                && !txtEmail.getText().isEmpty()
+                && !txtSPass.getText().isEmpty()) {
 
             Student stu = new Student();
             stu.setStudName(txtName.getText());
             stu.setStudSurname(txtSurname.getText());
-            stu.setStudNum(Integer.parseInt(txtSID.getText()));
+
+            try {
+                int studNum = Integer.parseInt(txtSID.getText());
+                stu.setStudNum(studNum);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(rootPane, "Invalid Student ID. Please enter a valid number.");
+                return; // Exit the method since the input is not valid.
+            }
+
             stu.setStudEmail(txtEmail.getText());
 
             if (txtSPass.getText().equals(txtConfirmPass.getText())) {
@@ -451,15 +463,27 @@ public class Login extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Please enter all details.");
         }
-
     }
 
     public void NewLec() throws SQLException {
-        if (txtName.getText() != "" || txtSurname.getText() != "" || txtSID.getText() != "" || !"".equals(txtEmail.getText()) || txtSPass.getText() != "") {
+        if (!txtName.getText().isEmpty()
+                && !txtSurname.getText().isEmpty()
+                && !txtSID.getText().isEmpty()
+                && !txtEmail.getText().isEmpty()
+                && !txtSPass.getText().isEmpty()) {
+
             Lecturer staff = new Lecturer();
             staff.setLectName(txtName.getText());
             staff.setLectSurname(txtSurname.getText());
-            staff.setStaffNumber(Integer.parseInt(txtSID.getText()));
+
+            try {
+                int staffNumber = Integer.parseInt(txtSID.getText());
+                staff.setStaffNumber(staffNumber);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(rootPane, "Invalid Staff Number. Please enter a valid number.");
+                return;
+            }
+
             staff.setLectEmail(txtEmail.getText());
 
             if (txtSPass.getText().equals(txtConfirmPass.getText())) {
@@ -468,6 +492,7 @@ public class Login extends javax.swing.JFrame {
                 tabLogin.setSelectedIndex(0);
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Passwords do not match.");
+                return;
             }
         } else {
             JOptionPane.showMessageDialog(null, "Please enter all details.");
