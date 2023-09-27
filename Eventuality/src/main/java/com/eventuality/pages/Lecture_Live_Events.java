@@ -328,6 +328,9 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
 
     private void SwitchPage(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SwitchPage
         try {
+            lstEventsL.clearSelection();
+            lstPending.clearSelection();
+            
             // the below try is used to populate the the pending events list
             PopulatePendingEvt();
 
@@ -481,12 +484,10 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
 
         for (var x : locArr) {
             if (array.get(i).getLocation().equalsIgnoreCase(x.getEventLocation())) {
-                dlm.addElement("EVENT LOCATION: " + x.getCampus() + " " + x.getBuilding() + " " + x.getDepartment() + " " + x.getRoom());
+                dlm.addElement("EVENT LOCATION: " + x.getCampus() + ", " + x.getBuilding() + ", " + x.getDepartment() + ", " + x.getRoom());
                 break;
             }
         }
-
-        dlm.addElement(" ");
         dlm.addElement(" ");
         dlm.addElement("Volunteers:");
         for (var v : volsArr) {
