@@ -236,6 +236,11 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
 
         lstBooked.setBackground(new java.awt.Color(0, 51, 102));
         lstBooked.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
+        lstBooked.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                BookDetails(evt);
+            }
+        });
         jScrollPane2.setViewportView(lstBooked);
 
         pnlLive.add(jScrollPane2);
@@ -331,6 +336,9 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
 
     private void SwitchPage(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SwitchPage
         int selectedIndex = tabLecturer.getSelectedIndex();
+        lstPending.clearSelection();
+        lstEventsL.clearSelection();
+        lstBooked.clearSelection();
 
         switch (selectedIndex) {
             case 0: {
@@ -355,6 +363,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
 
             default:
                 System.out.println("no index");
+                break;
         }
 
     }//GEN-LAST:event_SwitchPage
@@ -367,6 +376,16 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
         }    }//GEN-LAST:event_btnBookEventActionPerformed
+
+    private void BookDetails(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_BookDetails
+        try {
+            //this function is used to populate the live events list on the second tab
+            DisplayAllDetails(lstBooked, lstDetails, events);
+        } catch (SQLException ex) {
+            Logger.getLogger(Lecture_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_BookDetails
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAppStatus;
