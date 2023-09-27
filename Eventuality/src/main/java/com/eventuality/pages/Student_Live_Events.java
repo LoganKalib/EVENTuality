@@ -84,7 +84,6 @@ public class Student_Live_Events extends javax.swing.JFrame {
         cbxETime = new javax.swing.JComboBox<>();
         cbxCapacity = new javax.swing.JComboBox<>();
         txtStudentNo = new javax.swing.JTextField();
-        cbxVolunteer = new javax.swing.JComboBox<>();
         btnRegister = new javax.swing.JButton();
         btnApprove = new javax.swing.JButton();
         lblCreate = new javax.swing.JLabel();
@@ -103,6 +102,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         txtAVols = new javax.swing.JScrollPane();
         txtVolsArea = new javax.swing.JTextArea();
+        txtRole = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         pnlLiveEvents = new javax.swing.JPanel();
         lblLive = new javax.swing.JLabel();
@@ -205,13 +205,6 @@ public class Student_Live_Events extends javax.swing.JFrame {
         pnlMyEvents.add(txtStudentNo);
         txtStudentNo.setBounds(490, 80, 170, 30);
 
-        cbxVolunteer.setBackground(new java.awt.Color(102, 153, 255));
-        cbxVolunteer.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
-        cbxVolunteer.setForeground(new java.awt.Color(0, 0, 0));
-        cbxVolunteer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        pnlMyEvents.add(cbxVolunteer);
-        cbxVolunteer.setBounds(670, 80, 230, 30);
-
         btnRegister.setBackground(new java.awt.Color(102, 153, 255));
         btnRegister.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
         btnRegister.setForeground(new java.awt.Color(0, 0, 0));
@@ -294,8 +287,6 @@ public class Student_Live_Events extends javax.swing.JFrame {
         cbxCampus.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         cbxCampus.setForeground(new java.awt.Color(0, 0, 0));
         cbxCampus.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        // when the page loads it populates the form
-        populateForm();
         cbxCampus.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 LocationChoosen(evt);
@@ -350,6 +341,13 @@ public class Student_Live_Events extends javax.swing.JFrame {
 
         pnlMyEvents.add(txtAVols);
         txtAVols.setBounds(490, 150, 410, 170);
+
+        txtRole.setBackground(new java.awt.Color(102, 153, 255));
+        txtRole.setForeground(new java.awt.Color(0, 0, 0));
+        txtRole.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        txtRole.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        pnlMyEvents.add(txtRole);
+        txtRole.setBounds(670, 80, 230, 30);
 
         jLabel1.setBackground(new java.awt.Color(102, 153, 255));
         jLabel1.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 14)); // NOI18N
@@ -559,7 +557,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
         txtTitle.setText("");
         txtDescript.setText("");
         cbxSTime.setSelectedIndex(0);
-        cbxVolunteer.setSelectedIndex(0);
+        txtRole.setText("");
         txtVolsArea.setText("");
     }//GEN-LAST:event_btnRedoActionPerformed
 
@@ -644,7 +642,6 @@ public class Student_Live_Events extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxCategory;
     private javax.swing.JComboBox<String> cbxETime;
     private javax.swing.JComboBox<String> cbxSTime;
-    private javax.swing.JComboBox<String> cbxVolunteer;
     private com.toedter.calendar.JDateChooser jCalender;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -682,6 +679,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
     private javax.swing.JScrollPane txtAVols;
     private javax.swing.JTextArea txtDescript;
     private javax.swing.JScrollPane txtDescription;
+    private javax.swing.JTextField txtRole;
     private javax.swing.JTextField txtStudentNo;
     private javax.swing.JTextField txtTitle;
     private javax.swing.JTextArea txtVolsArea;
@@ -726,11 +724,11 @@ public class Student_Live_Events extends javax.swing.JFrame {
     public void registerVol() {
         Volunteer vol = new Volunteer();
         vol.setStudentNumber(Integer.parseInt(txtStudentNo.getText()));
-        vol.setRole((String) cbxVolunteer.getSelectedItem());
+        vol.setRole((String) txtRole.getText());
         volArr.add(vol);
         txtVolsArea.append(vol.getStudentNumber() + "\t" + vol.getRole() + "\n");
         txtStudentNo.setText("");
-        cbxVolunteer.setSelectedIndex(0);
+        txtRole.setText("");
     }
 
     public void createEvt() {
@@ -781,7 +779,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
         txtDescript.setText("");
         cbxSTime.setSelectedIndex(0);
         cbxCampus.setSelectedIndex(0);
-        cbxVolunteer.setSelectedIndex(0);
+        txtRole.setText("");
         txtVolsArea.setText("");
     }
 
