@@ -331,6 +331,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
 
 
     private void SwitchPage(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SwitchPage
+        System.out.println(evt.getSource());
         if(evt.getSource() == pnlPending){
             lstEventsL.clearSelection();
             lstPending.clearSelection();
@@ -340,7 +341,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(Lecture_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }else{
+        }else if (evt.getSource() == pnlLive){
             lstEventsL.clearSelection();
             lstPending.clearSelection();
 
@@ -417,6 +418,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
     }
 
     public void PopulateBookingEvt() {
+        
         DefaultListModel<String> dlmBook = new DefaultListModel<String>();
         ArrayList<Booking> book = new ArrayList();
         BookingDAO bookDAO = new BookingDAO();
@@ -428,7 +430,6 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
                 dlmBook.addElement("No bookings made...");
             }else{
                 for (var x : book) {
-                System.out.println("Event: " + x.getEventId());
                 dlmBook.addElement(x.getEventId() + " - " + x.getTicketNumber() + " - " + x.getDate() + " - " + x.getTime());
             }
             lstBooked.setModel(dlmBook);
