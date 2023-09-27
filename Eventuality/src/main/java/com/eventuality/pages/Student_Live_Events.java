@@ -196,6 +196,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
         cbxCapacity.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         cbxCapacity.setForeground(new java.awt.Color(0, 0, 0));
         cbxCapacity.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cbxCapacity.setEnabled(false);
         pnlMyEvents.add(cbxCapacity);
         cbxCapacity.setBounds(340, 360, 100, 22);
 
@@ -295,6 +296,11 @@ public class Student_Live_Events extends javax.swing.JFrame {
         cbxCampus.setFont(new java.awt.Font("Malgun Gothic Semilight", 0, 12)); // NOI18N
         cbxCampus.setForeground(new java.awt.Color(0, 0, 0));
         cbxCampus.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cbxCampus.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                LocationChoosen(evt);
+            }
+        });
         pnlMyEvents.add(cbxCampus);
         cbxCampus.setBounds(30, 360, 300, 22);
 
@@ -617,6 +623,11 @@ public class Student_Live_Events extends javax.swing.JFrame {
             Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnSignOutActionPerformed
+
+    private void LocationChoosen(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LocationChoosen
+        cbxCapacity.setSelectedIndex(cbxCampus.getSelectedIndex());
+        
+    }//GEN-LAST:event_LocationChoosen
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApprove;
