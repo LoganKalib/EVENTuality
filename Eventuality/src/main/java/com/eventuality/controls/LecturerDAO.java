@@ -56,7 +56,7 @@ public class LecturerDAO {
         ps.setString(2, setValue);
         ps.setString(3, email);
 
-        int rows = ps.executeUpdate(update_Values_stmt);
+        int rows = ps.executeUpdate();
         String msg = String.format("Staff_Number: %s \n Successfully updated %s, with value: %s.", email, setField, setValue);
         if (rows == 0) {
             JOptionPane.showMessageDialog(null, "No record with that Number...");

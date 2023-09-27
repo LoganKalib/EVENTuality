@@ -53,7 +53,7 @@ public class StudentDAO {
         ps.setString(2, setValue);
         ps.setString(3, Email);
 
-        int rows = ps.executeUpdate(update_Values_stmt);
+        int rows = ps.executeUpdate();
         String msg = String.format("Student_Number: %s \n Successfully updated %s, with value: %s.", Email, setField, setValue);
         if (rows == 0) {
             JOptionPane.showMessageDialog(null, "No record with that Number...");
