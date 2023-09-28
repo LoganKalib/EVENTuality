@@ -19,8 +19,8 @@ public class BookingDAO {
         ps.setInt(1, Num);
         ResultSet rs = ps.executeQuery();
 
-        if (rs != null) {
-            while (rs.next()) {
+        if (rs.next()) {
+            do {
                 Booking book = new Booking();
                 book.setAttdNumber(rs.getInt("ATT_NUMBER"));
                 book.setTicketNumber(rs.getInt("TICKET_NUMBER"));
@@ -29,10 +29,10 @@ public class BookingDAO {
                 book.setDate(rs.getDate("DATE"));
                 book.setTime(rs.getTime("TIME").toLocalTime());
                 arr.add(book);
-            }
-                rs.close();
-                ps.close();
-                return arr;
+            } while (rs.next());
+            rs.close();
+            ps.close();
+            return arr;
         } else {
             rs.close();
             ps.close();
@@ -76,13 +76,13 @@ public class BookingDAO {
 
         int rows = ps.executeUpdate();
         int confirm = JOptionPane.showConfirmDialog(null, "Are you sure?");
-        
-        if(confirm == 0){
+
+        if (confirm == 0) {
             if (rows == 0) {
-            JOptionPane.showMessageDialog(null, "Record not added.");
-        } else {
-            JOptionPane.showMessageDialog(null, "Record(s) successfully added.");
-        }
+                JOptionPane.showMessageDialog(null, "Record not added.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Record(s) successfully added.");
+            }
         }
 
     }
