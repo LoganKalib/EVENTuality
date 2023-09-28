@@ -24,6 +24,7 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 public class Student_Live_Events extends javax.swing.JFrame {
@@ -396,6 +397,11 @@ public class Student_Live_Events extends javax.swing.JFrame {
 
         lstBooked.setBackground(new java.awt.Color(0, 51, 102));
         lstBooked.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 12)); // NOI18N
+        lstBooked.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                BookedLst(evt);
+            }
+        });
         spBookedE.setViewportView(lstBooked);
 
         pnlLiveEvents.add(spBookedE);
@@ -590,27 +596,12 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_stateChanged
 
     private void DisplayDetails(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_DisplayDetails
-        // this displays event details when a user clicks on it
-        int i = lstLiveEvents.getSelectedIndex();
-        DefaultListModel<String> dlm = new DefaultListModel<String>();
-        Event ev = events.get(i);
-
-        dlm.addElement("TITLE: " + ev.getTitle());
-        dlm.addElement("DESCRIPTION: " + ev.getDescription());
-        dlm.addElement("START TIME:" + ev.getTime());
-        dlm.addElement("EVENT DATE: " + ev.getDate());
         try {
-            locArr = locDAO.SeleteAll(db.getStatement());
+            // this displays event details when a user clicks on it
+            DisplayAllDetails(lstLiveEvents,lstEventDetails,events);
         } catch (SQLException ex) {
             Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
         }
-        for (var x : locArr) {
-            if (ev.getLocation().equalsIgnoreCase(x.getEventLocation())) {
-                dlm.addElement("EVENT LOCATION: " + x.getCampus() + "-" + x.getBuilding() + " -" + x.getDepartment() + "-" + x.getRoom());
-            }
-        }
-        dlm.addElement("EVENT TYPE: " + ev.getEventType());
-        lstEventDetails.setModel(dlm);
     }//GEN-LAST:event_DisplayDetails
 
     private void btnSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignOutActionPerformed
@@ -629,6 +620,15 @@ public class Student_Live_Events extends javax.swing.JFrame {
             cbxCapacity.setSelectedIndex(cbxCampus.getSelectedIndex()); 
         }
     }//GEN-LAST:event_LocationChoosen
+
+    private void BookedLst(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_BookedLst
+        try {
+            // TODO add your handling code here:
+            DisplayAllDetails(lstBooked,lstEventDetails,events);
+        } catch (SQLException ex) {
+            Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_BookedLst
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApprove;
@@ -814,7 +814,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
 
     public void populateBookings() throws SQLException {
 
-        DefaultListModel<String> dlmBook = new DefaultListModel<String>();
+       DefaultListModel<String> dlmBook = new DefaultListModel<String>();
         ArrayList<Booking> book = new ArrayList();
         BookingDAO bookDAO = new BookingDAO();
         lstBooked.setModel(dlmBook);
@@ -878,5 +878,38 @@ public class Student_Live_Events extends javax.swing.JFrame {
                 }
             }
         }
+    }
+    
+    public void DisplayAllDetails(JList list1, JList list2, ArrayList<Event> array) throws SQLException {
+        int i = list1.getSelectedIndex();
+        DefaultListModel<String> dlm = new DefaultListModel<String>();
+        VolunteerDAO volsDAO = new VolunteerDAO();
+
+        ArrayList<Volunteer> volsArr = new ArrayList();
+
+        volsArr = volsDAO.SelectVols(db.getConnection(), array.get(i).getEventId());
+
+        dlm.addElement("EVENT ID: " + array.get(i).getEventId());
+        dlm.addElement("TITLE: " + array.get(i).getTitle());
+        dlm.addElement("DESCRIPTION: " + array.get(i).getDescription());
+        dlm.addElement("EVENT DATE: " + array.get(i).getDate());
+        dlm.addElement("START TIME: " + array.get(i).getTime());
+
+        LocationDAO locDAO = new LocationDAO();
+        ArrayList<Location> locArr = new ArrayList();
+        locArr = locDAO.SeleteAll(db.getStatement());
+
+        for (var x : locArr) {
+            if (array.get(i).getLocation().equalsIgnoreCase(x.getEventLocation())) {
+                dlm.addElement("EVENT LOCATION: " + x.getCampus() + ", " + x.getBuilding() + ", " + x.getDepartment() + ", " + x.getRoom());
+                break;
+            }
+        }
+        dlm.addElement(" ");
+        dlm.addElement("Volunteers:");
+        for (var v : volsArr) {
+            dlm.addElement(v.toString());
+        }
+        list2.setModel(dlm);
     }
 }
