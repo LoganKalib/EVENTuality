@@ -45,6 +45,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
      */
     public Student_Live_Events(Student stud, DbConnect thisDB) throws SQLException {
         db = thisDB;
+        loggedin = stud;
         initComponents();
 
         try {
@@ -600,7 +601,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
     private void DisplayDetails(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_DisplayDetails
         try {
             // this displays event details when a user clicks on it
-            DisplayAllDetails(lstLiveEvents,lstEventDetails,events);
+            DisplayAllDetails(lstLiveEvents, lstEventDetails, events);
         } catch (SQLException ex) {
             Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -618,16 +619,16 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSignOutActionPerformed
 
     private void LocationChoosen(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LocationChoosen
-        
+
         if (cbxCampus.getItemCount() > 0) {
-            cbxCapacity.setSelectedIndex(cbxCampus.getSelectedIndex()); 
+            cbxCapacity.setSelectedIndex(cbxCampus.getSelectedIndex());
         }
     }//GEN-LAST:event_LocationChoosen
 
     private void BookedLst(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_BookedLst
         try {
             // TODO add your handling code here:
-            DisplayAllDetails(lstBooked,lstEventDetails,events);
+            DisplayAllDetails(lstBooked, lstEventDetails, events);
         } catch (SQLException ex) {
             Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -693,14 +694,14 @@ public class Student_Live_Events extends javax.swing.JFrame {
         try {
             EventTypeDAO evtTypeDAO = new EventTypeDAO();
             ArrayList<Event_Category> evtType = evtTypeDAO.SelectTable(db.getStatement());
-            
+
             for (var i : evtType) {
                 cbxCategory.addItem(i.getEventKeyword());
             }
-            
+
             LocationDAO locDAO = new LocationDAO();
             ArrayList<Location> locArr = locDAO.SeleteAll(db.getStatement());
-            
+
             for (var i : locArr) {
                 cbxCampus.addItem(i.getCampus() + " - " + i.getDepartment() + " - " + i.getBuilding());
                 String cap = Integer.toString(i.getCapacity());
@@ -817,7 +818,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
 
     public void populateBookings() throws SQLException {
 
-       DefaultListModel<String> dlmBook = new DefaultListModel<String>();
+        DefaultListModel<String> dlmBook = new DefaultListModel<String>();
         ArrayList<Booking> book = new ArrayList();
         BookingDAO bookDAO = new BookingDAO();
         lstBooked.setModel(dlmBook);
@@ -882,7 +883,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
             }
         }
     }
-    
+
     public void DisplayAllDetails(JList list1, JList list2, ArrayList<Event> array) throws SQLException {
         int i = list1.getSelectedIndex();
         DefaultListModel<String> dlm = new DefaultListModel<String>();
