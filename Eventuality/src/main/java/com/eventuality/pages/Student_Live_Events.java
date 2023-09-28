@@ -130,6 +130,8 @@ public class Student_Live_Events extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(960, 540));
         getContentPane().setLayout(null);
+        
+        populateForm();
 
         tabStudent.setBackground(new java.awt.Color(102, 153, 255));
         tabStudent.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
@@ -617,7 +619,6 @@ public class Student_Live_Events extends javax.swing.JFrame {
 
     private void LocationChoosen(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LocationChoosen
         
-        populateForm();
         if (cbxCampus.getItemCount() > 0) {
             cbxCapacity.setSelectedIndex(cbxCampus.getSelectedIndex()); 
         }
