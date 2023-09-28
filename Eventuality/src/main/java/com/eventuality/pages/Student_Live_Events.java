@@ -30,10 +30,8 @@ import javax.swing.JOptionPane;
 public class Student_Live_Events extends javax.swing.JFrame {
 
     private Student loggedin = new Student();
-    LocationDAO locDAO;
     private DbConnect db = DbConnect.getInstance();
     private ArrayList<Volunteer> volArr = new ArrayList();
-    private ArrayList<Location> locArr;
     private ArrayList<Event> events = new ArrayList();
 
     private ArrayList<Booking> book = new ArrayList();
@@ -747,6 +745,9 @@ public class Student_Live_Events extends javax.swing.JFrame {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         LocalTime localTime = LocalTime.parse(cbxSTime.getSelectedItem().toString(), formatter);
         e.setTime(localTime);
+        LocationDAO locDAO = new LocationDAO();
+        ArrayList<Location> locArr = new ArrayList();
+
         try {
             locArr = locDAO.SeleteAll(db.getStatement());
         } catch (SQLException ex) {
