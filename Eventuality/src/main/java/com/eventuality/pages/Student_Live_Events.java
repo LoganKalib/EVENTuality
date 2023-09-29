@@ -583,6 +583,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
     private void stateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_stateChanged
 
         try {
+            populateForm();
             populateLiveEvt();
 
             checkEvtStatus();
