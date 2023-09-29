@@ -41,7 +41,7 @@ public class EventDAO {
     }
 
     public void DeleteRecord(Connection c, String eventId) throws SQLException {
-        delete_Values_stmt = "DELETE FROM Event WHERE Event_Id= ?";
+        delete_Values_stmt = "DELETE * FROM Event WHERE Event_Id= ?";
         PreparedStatement ps = c.prepareStatement(delete_Values_stmt);
         ps.setString(1, eventId);
         int rows = ps.executeUpdate();
