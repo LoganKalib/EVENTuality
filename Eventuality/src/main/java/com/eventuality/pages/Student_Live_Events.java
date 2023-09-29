@@ -791,16 +791,17 @@ public class Student_Live_Events extends javax.swing.JFrame {
         EventDAO evtDAO = new EventDAO();
         DefaultListModel<String> dlm = new DefaultListModel<String>();
         evtArray = evtDAO.SelectTable(db.getConnection());
-        
-         LocalDateTime currentDateTime = LocalDateTime.now();
-         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-         String formattedDateTime = currentDateTime.format(formatter);
-         System.out.println(formattedDateTime.toString());
+
+        LocalDateTime currentDateTime = LocalDateTime.now();
         
         for (var i : evtArray) {
             if (i.isApprovalStatus() == true) {
-                events.add(i);
-                dlm.addElement(i.getEventId() + " - " + i.getTitle() + " - " + i.getLeader() + " - " + i.getDate());
+                Date eventDate = i.getDate();
+                if (!eventDate.toLocalDate().isAfter(currentDateTime.toLocalDate())) {
+                    events.add(i);
+                    dlm.addElement(i.getEventId() + " - " + i.getTitle() + " - " + i.getLeader() + " - " + i.getDate());
+                }
+
             }
         }
         lstLiveEvents.setModel(dlm);
