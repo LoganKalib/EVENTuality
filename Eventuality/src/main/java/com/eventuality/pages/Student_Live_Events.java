@@ -129,8 +129,6 @@ public class Student_Live_Events extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(960, 540));
         getContentPane().setLayout(null);
-        
-        populateForm();
 
         tabStudent.setBackground(new java.awt.Color(102, 153, 255));
         tabStudent.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
@@ -863,7 +861,8 @@ public class Student_Live_Events extends javax.swing.JFrame {
 
     public void ifEmpty() {
         if (!txtTitle.getText().isBlank()
-                && !txtDescript.getText().isBlank()) {
+                && !txtDescript.getText().isBlank()
+                && jCalender != null) {
             createEvt();
         } else {
             JOptionPane.showMessageDialog(null, "Please make sure all details are entered.");
@@ -876,11 +875,18 @@ public class Student_Live_Events extends javax.swing.JFrame {
         evtArray = evtDAO.SelectTable(db.getConnection());
         for (Event i : evtArray) {
             if (i.getLeader() == loggedin.getStudNum()) {
-                int confirm = JOptionPane.showConfirmDialog(null, "You have already created an event, would you like to over write it?");
-                if (confirm == 0) {
-                    ifEmpty();
-                    break;
+                if (!i.isApprovalStatus()) {
+                    int confirm = JOptionPane.showConfirmDialog(null, "You have already created an event, would you like to over write it?");
+                    if (confirm == 0) {
+                        ifEmpty();
+                        break;
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "you already have an approved event, please complete it first.");
                 }
+
+            } else {
+                ifEmpty();
             }
         }
     }
