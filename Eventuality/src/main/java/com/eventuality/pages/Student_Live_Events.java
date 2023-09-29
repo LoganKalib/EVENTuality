@@ -761,7 +761,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
         e.setLeader(loggedin.getStudNum());
         e.setTitle(txtTitle.getText());
         e.setDescription(txtDescript.getText());
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
         LocalTime localTime = LocalTime.parse(cbxSTime.getSelectedItem().toString(), formatter);
         e.setTime(localTime);
         LocationDAO locDAO = new LocationDAO();
@@ -777,7 +777,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
         e.setApprovalStatus(false);
         java.sql.Date sqlDate = new java.sql.Date(jCalender.getDate().getTime());
         
-        if (sqlDate.toLocalDate().isBefore(LocalDateTime.now().toLocalDate())) {
+        if (sqlDate.toLocalDate().isAfter(LocalDateTime.now().toLocalDate())) {
             JOptionPane.showMessageDialog(null, "the date you have entered is invalid.");
         } else {
             e.setDate(sqlDate);
@@ -912,10 +912,12 @@ public class Student_Live_Events extends javax.swing.JFrame {
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "you already have an approved event, please complete it first.");
+                    break;
                 }
                 
             } else {
                 ifEmpty();
+                break;
             }
         }
     }
