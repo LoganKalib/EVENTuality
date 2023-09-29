@@ -5,6 +5,7 @@ import com.eventuality.controls.DbConnect;
 import com.eventuality.controls.EventDAO;
 import com.eventuality.controls.EventTypeDAO;
 import com.eventuality.controls.LocationDAO;
+import com.eventuality.controls.StudentDAO;
 import com.eventuality.controls.VolunteerDAO;
 import com.eventuality.objects.Booking;
 import com.eventuality.objects.Event;
@@ -29,12 +30,12 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 public class Student_Live_Events extends javax.swing.JFrame {
-
+    
     private Student loggedin = new Student();
     private DbConnect db = DbConnect.getInstance();
     private ArrayList<Volunteer> volArr = new ArrayList();
     private ArrayList<Event> events = new ArrayList();
-
+    
     private ArrayList<Booking> book = new ArrayList();
     Booking studBook;
     ArrayList<Event> evtArray = new ArrayList();
@@ -46,7 +47,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
         db = thisDB;
         loggedin = stud;
         initComponents();
-
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -133,7 +134,6 @@ public class Student_Live_Events extends javax.swing.JFrame {
 
         tabStudent.setBackground(new java.awt.Color(102, 153, 255));
         tabStudent.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
-        populateForm();
         tabStudent.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 Student_Live_Events.this.stateChanged(evt);
@@ -540,14 +540,14 @@ public class Student_Live_Events extends javax.swing.JFrame {
         int i = lstLiveEvents.getSelectedIndex();
         Event ev = events.get(i);
         studBook = new Booking();
-
+        
         studBook.setTicketNumber(generate8DigitInteger());
         studBook.setAttdNumber(loggedin.getStudNum());
         studBook.setTime(ev.getTime());
         studBook.setEventId(ev.getEventId());
         studBook.setAttdType("S".charAt(0));
         studBook.setDate(ev.getDate());
-
+        
         try {
             BookingDAO bookDAO = new BookingDAO();
             bookDAO.InsertRecord(db.getConnection(), studBook);
@@ -555,7 +555,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
 
     }//GEN-LAST:event_btnBookActionPerformed
 
@@ -569,8 +569,12 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRedoActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        // this populates the volunteer panel when they are added
-        registerVol();
+        try {
+            // this populates the volunteer panel when they are added
+            registerVol();
+        } catch (SQLException ex) {
+            Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
@@ -582,14 +586,14 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_btnApproveActionPerformed
 
     private void stateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_stateChanged
-
+        
         try {
             populateLiveEvt();
-
+            
             checkEvtStatus();
-
+            
             populateBookings();
-
+            
         } catch (SQLException e) {
             System.out.println("Err: " + e.getMessage());
         }
@@ -617,7 +621,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSignOutActionPerformed
 
     private void LocationChoosen(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LocationChoosen
-
+        
         if (cbxCampus.getItemCount() > 0) {
             cbxCapacity.setSelectedIndex(cbxCampus.getSelectedIndex());
         }
@@ -688,18 +692,18 @@ public class Student_Live_Events extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void populateForm() {
-
+        
         try {
             EventTypeDAO evtTypeDAO = new EventTypeDAO();
             ArrayList<Event_Category> evtType = evtTypeDAO.SelectTable(db.getStatement());
-
+            
             for (var i : evtType) {
                 cbxCategory.addItem(i.getEventKeyword());
             }
-
+            
             LocationDAO locDAO = new LocationDAO();
             ArrayList<Location> locArr = locDAO.SeleteAll(db.getStatement());
-
+            
             for (var i : locArr) {
                 cbxCampus.addItem(i.getCampus() + " - " + i.getDepartment() + " - " + i.getBuilding());
                 String cap = Integer.toString(i.getCapacity());
@@ -709,34 +713,48 @@ public class Student_Live_Events extends javax.swing.JFrame {
             Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     public void checkMyEvt() throws SQLException {
         EventDAO evtDAO = new EventDAO();
+        BookingDAO books = new BookingDAO();
         ArrayList<Event> evtArray = new ArrayList();
         evtArray = evtDAO.SelectTable(db.getConnection());
-
+        
         for (var i : evtArray) {
             if (i.getLeader() == loggedin.getStudNum()) {
-                lblApprove.setText(Boolean.toString(i.isApprovalStatus()));
-                break;
+                if(!i.isApprovalStatus()){
+                    lblApprove.setText(Boolean.toString(i.isApprovalStatus()));
+                    break;
+                }else{
+                    int x = books.SelectEventRecords(db.getConnection(), i.getEventId());
+                    lblApprove.setText(Boolean.toString(i.isApprovalStatus()) + "\nAmount Booked: " + x);
+                }
+                
+                
             }
         }
     }
-
-    public void registerVol() {
+    
+    public void registerVol() throws SQLException {
         Volunteer vol = new Volunteer();
+        StudentDAO studLook = new StudentDAO();
         vol.setStudentNumber(Integer.parseInt(txtStudentNo.getText()));
-        vol.setRole((String) txtRole.getText());
-        volArr.add(vol);
-        txtVolsArea.append(vol.getStudentNumber() + "\t" + vol.getRole() + "\n");
-        txtStudentNo.setText("");
-        txtRole.setText("");
+        int result = studLook.checkVol(db.getConnection(), vol.getStudentNumber());
+        if (result == -1) {
+            JOptionPane.showMessageDialog(null, "This student does not exist in our records");
+        } else {
+            vol.setRole((String) txtRole.getText());
+            volArr.add(vol);
+            txtVolsArea.append(vol.getStudentNumber() + "\t" + vol.getRole() + "\n");
+            txtStudentNo.setText("");
+            txtRole.setText("");
+        }
     }
-
+    
     public void createEvt() {
         Event e = new Event();
         String ID = generateID();
-
+        
         e.setEventId(ID);
         e.setEventType((String) cbxCategory.getSelectedItem());
         e.setLeader(loggedin.getStudNum());
@@ -747,17 +765,17 @@ public class Student_Live_Events extends javax.swing.JFrame {
         e.setTime(localTime);
         LocationDAO locDAO = new LocationDAO();
         ArrayList<Location> locArr = new ArrayList();
-
+        
         try {
             locArr = locDAO.SeleteAll(db.getStatement());
         } catch (SQLException ex) {
             System.out.println("Err:" + ex.getMessage());
         }
-
+        
         e.setLocation(locArr.get(cbxCampus.getSelectedIndex()).getEventLocation());
         e.setApprovalStatus(false);
         java.sql.Date sqlDate = new java.sql.Date(jCalender.getDate().getTime());
-
+        
         if (sqlDate.toLocalDate().isBefore(LocalDateTime.now().toLocalDate())) {
             JOptionPane.showMessageDialog(null, "the date you have entered is invalid.");
         } else {
@@ -768,11 +786,11 @@ public class Student_Live_Events extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 System.out.println("Err: " + ex.getMessage());
             }
-
+            
             for (var i : volArr) {
                 i.setEventId(ID);
             }
-
+            
             try {
                 VolunteerDAO volDAO = new VolunteerDAO();
                 for (var i : volArr) {
@@ -780,10 +798,10 @@ public class Student_Live_Events extends javax.swing.JFrame {
                 }
             } catch (Exception ex) {
                 System.out.println("Err: " + ex.getMessage());
-
+                
             }
         }
-
+        
         cbxCategory.setSelectedIndex(0);
         txtTitle.setText("");
         txtDescript.setText("");
@@ -792,26 +810,26 @@ public class Student_Live_Events extends javax.swing.JFrame {
         txtRole.setText("");
         txtVolsArea.setText("");
     }
-
+    
     public void populateLiveEvt() throws SQLException {
         EventDAO evtDAO = new EventDAO();
         DefaultListModel<String> dlm = new DefaultListModel<String>();
         evtArray = evtDAO.SelectTable(db.getConnection());
-
+        
         for (var i : evtArray) {
             if (i.isApprovalStatus() == true) {
-
+                
                 events.add(i);
                 dlm.addElement(i.getEventId() + " - " + i.getTitle() + " - " + i.getLeader() + " - " + i.getDate());
-
+                
             }
         }
         lstLiveEvents.setModel(dlm);
     }
-
+    
     public void checkEvtStatus() {
         Boolean eventFound = false;
-
+        
         for (var i : evtArray) {
             if (i.getLeader() == loggedin.getStudNum()) {
                 lblTCreate.setText(i.getEventId() + " - " + i.getTitle());
@@ -819,19 +837,19 @@ public class Student_Live_Events extends javax.swing.JFrame {
                 break;
             }
         }
-
+        
         if (!eventFound) {
             btnStatus.setEnabled(false);
         }
     }
-
+    
     public void populateBookings() throws SQLException {
-
+        
         DefaultListModel<String> dlmBook = new DefaultListModel<String>();
         ArrayList<Booking> book = new ArrayList();
         BookingDAO bookDAO = new BookingDAO();
         lstBooked.setModel(dlmBook);
-
+        
         try {
             book = bookDAO.SelectRecords(db.getConnection(), loggedin.getStudNum());
             if (book == null) {
@@ -842,33 +860,33 @@ public class Student_Live_Events extends javax.swing.JFrame {
                 }
                 lstBooked.setModel(dlmBook);
             }
-
+            
         } catch (SQLException ex) {
             Logger.getLogger(Student_Live_Events.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     public String generateID() {
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         StringBuilder randomString = new StringBuilder();
         Random random = new Random();
-
+        
         for (int i = 0; i < 8; i++) {
             int randomIndex = random.nextInt(characters.length());
             char randomChar = characters.charAt(randomIndex);
             randomString.append(randomChar);
         }
-
+        
         return randomString.toString();
     }
-
+    
     private int generate8DigitInteger() {
         Random random = new Random();
         int min = 10000000; // Smallest 8-digit integer (10,000,000)
         int max = 99999999; // Largest 8-digit integer (99,999,999)
         return random.nextInt((max - min) + 1) + min;
     }
-
+    
     public void ifEmpty() {
         if (!txtTitle.getText().isBlank()
                 && !txtDescript.getText().isBlank()
@@ -878,7 +896,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please make sure all details are entered.");
         }
     }
-
+    
     public void alreadyEvt() throws SQLException {
         EventDAO evtDAO = new EventDAO();
         ArrayList<Event> evtArray = new ArrayList();
@@ -894,32 +912,32 @@ public class Student_Live_Events extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(null, "you already have an approved event, please complete it first.");
                 }
-
+                
             } else {
                 ifEmpty();
             }
         }
     }
-
+    
     public void DisplayAllDetails(JList list1, JList list2, ArrayList<Event> array) throws SQLException {
         int i = list1.getSelectedIndex();
         DefaultListModel<String> dlm = new DefaultListModel<String>();
         VolunteerDAO volsDAO = new VolunteerDAO();
-
+        
         ArrayList<Volunteer> volsArr = new ArrayList();
-
+        
         volsArr = volsDAO.SelectVols(db.getConnection(), array.get(i).getEventId());
-
+        
         dlm.addElement("EVENT ID: " + array.get(i).getEventId());
         dlm.addElement("TITLE: " + array.get(i).getTitle());
         dlm.addElement("DESCRIPTION: " + array.get(i).getDescription());
         dlm.addElement("EVENT DATE: " + array.get(i).getDate());
         dlm.addElement("START TIME: " + array.get(i).getTime());
-
+        
         LocationDAO locDAO = new LocationDAO();
         ArrayList<Location> locArr = new ArrayList();
         locArr = locDAO.SeleteAll(db.getStatement());
-
+        
         for (var x : locArr) {
             if (array.get(i).getLocation().equalsIgnoreCase(x.getEventLocation())) {
                 dlm.addElement("EVENT LOCATION: " + x.getCampus() + ", " + x.getBuilding() + ", " + x.getDepartment() + ", " + x.getRoom());

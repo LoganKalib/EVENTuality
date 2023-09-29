@@ -77,6 +77,17 @@ public class StudentDAO {
         }
         ps.close();
     }
+    
+    public int checkVol(Connection c, int Studnum) throws SQLException{
+        String checkVol= "SELECT * from Student WHERE Student_Number=?";
+        PreparedStatement ps = c.prepareStatement(checkVol);
+        int rows = ps.executeUpdate();
+        if(rows==0){
+            return -1;
+        }else{
+            return 1;
+        }
+    }
 
     public void Checkuser(Connection c, String email, String studNum) throws SQLException {
         String checkif = "SELECT * FROM Student WHERE email=? AND student_Number=?";

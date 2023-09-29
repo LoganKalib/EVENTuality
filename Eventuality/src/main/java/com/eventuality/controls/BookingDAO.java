@@ -40,11 +40,12 @@ public class BookingDAO {
         }
     }
 
-    public ArrayList<Booking> SelectEventRecords(Connection c, String eventId) throws SQLException {
+    public int SelectEventRecords(Connection c, String eventId) throws SQLException {
         ArrayList<Booking> arr = new ArrayList();
         retrieve_Values_qry = "SELECT * FROM BOOKING WHERE Event_Id=?";
         PreparedStatement ps = c.prepareStatement(eventId);
         ResultSet rs = ps.executeQuery();
+        int i =0;
 
         if (rs != null) {
             while (rs.next()) {
@@ -56,11 +57,12 @@ public class BookingDAO {
                 book.setDate(rs.getDate("DATE"));
                 book.setTime(rs.getTime("TIME").toLocalTime());
                 arr.add(book);
+                i++;
             }
         }
         rs.close();
         ps.close();
-        return arr;
+        return i;
     }
 
     public void InsertRecord(Connection c, Booking obj) throws SQLException {
