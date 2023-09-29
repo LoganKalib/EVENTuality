@@ -757,26 +757,31 @@ public class Student_Live_Events extends javax.swing.JFrame {
         e.setLocation(locArr.get(cbxCampus.getSelectedIndex()).getEventLocation());
         e.setApprovalStatus(false);
         java.sql.Date sqlDate = new java.sql.Date(jCalender.getDate().getTime());
-        e.setDate(sqlDate);
-        EventDAO evtDAO = new EventDAO();
-        try {
-            evtDAO.InsertRecord(db.getConnection(), e);
-        } catch (SQLException ex) {
-            System.out.println("Err: " + ex.getMessage());
-        }
 
-        for (var i : volArr) {
-            i.setEventId(ID);
-        }
-
-        try {
-            VolunteerDAO volDAO = new VolunteerDAO();
-            for (var i : volArr) {
-                volDAO.InserRecord(db.getConnection(), i);
+        if (sqlDate.toLocalDate().isBefore(LocalDateTime.now().toLocalDate())) {
+            JOptionPane.showMessageDialog(null, "the date you have entered is invalid.");
+        } else {
+            e.setDate(sqlDate);
+            EventDAO evtDAO = new EventDAO();
+            try {
+                evtDAO.InsertRecord(db.getConnection(), e);
+            } catch (SQLException ex) {
+                System.out.println("Err: " + ex.getMessage());
             }
-        } catch (Exception ex) {
-            System.out.println("Err: " + ex.getMessage());
 
+            for (var i : volArr) {
+                i.setEventId(ID);
+            }
+
+            try {
+                VolunteerDAO volDAO = new VolunteerDAO();
+                for (var i : volArr) {
+                    volDAO.InserRecord(db.getConnection(), i);
+                }
+            } catch (Exception ex) {
+                System.out.println("Err: " + ex.getMessage());
+
+            }
         }
 
         cbxCategory.setSelectedIndex(0);
