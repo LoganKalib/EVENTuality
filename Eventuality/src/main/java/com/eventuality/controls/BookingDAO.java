@@ -43,20 +43,13 @@ public class BookingDAO {
     public int SelectEventRecords(Connection c, String eventId) throws SQLException {
         ArrayList<Booking> arr = new ArrayList();
         retrieve_Values_qry = "SELECT * FROM BOOKING WHERE Event_Id=?";
-        PreparedStatement ps = c.prepareStatement(eventId);
+        PreparedStatement ps = c.prepareStatement(retrieve_Values_qry);
+        ps.setString(1, eventId);
         ResultSet rs = ps.executeQuery();
         int i =0;
 
         if (rs != null) {
             while (rs.next()) {
-                Booking book = new Booking();
-                book.setAttdNumber(rs.getInt("ATT_NUMBER"));
-                book.setTicketNumber(rs.getInt("TICKET_NUMBER"));
-                book.setEventId(rs.getString("EVENT_ID"));
-                book.setAttdType(rs.getString("ATT_TYPE").charAt(0));
-                book.setDate(rs.getDate("DATE"));
-                book.setTime(rs.getTime("TIME").toLocalTime());
-                arr.add(book);
                 i++;
             }
         }
