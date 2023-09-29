@@ -17,6 +17,7 @@ import java.sql.SQLException;
 import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -790,6 +791,12 @@ public class Student_Live_Events extends javax.swing.JFrame {
         EventDAO evtDAO = new EventDAO();
         DefaultListModel<String> dlm = new DefaultListModel<String>();
         evtArray = evtDAO.SelectTable(db.getConnection());
+        
+         LocalDateTime currentDateTime = LocalDateTime.now();
+         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+         String formattedDateTime = currentDateTime.format(formatter);
+         System.out.println(formattedDateTime.toString());
+        
         for (var i : evtArray) {
             if (i.isApprovalStatus() == true) {
                 events.add(i);
