@@ -68,11 +68,11 @@ public class BookingDAO {
         ps.setString(4, String.valueOf(obj.getAttdType()));
         ps.setDate(5, obj.getDate());
         ps.setInt(6, obj.getAttdNumber());
-
-        int rows = ps.executeUpdate();
+        
         int confirm = JOptionPane.showConfirmDialog(null, "Are you sure?");
 
         if (confirm == 0) {
+            int rows = ps.executeUpdate();
             if (rows == 0) {
                 ps.close();
                 JOptionPane.showMessageDialog(null, "Record not added.");
