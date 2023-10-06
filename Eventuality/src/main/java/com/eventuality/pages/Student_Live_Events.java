@@ -774,27 +774,31 @@ public class Student_Live_Events extends javax.swing.JFrame {
 
         e.setLocation(locArr.get(cbxCampus.getSelectedIndex()).getEventLocation());
         e.setApprovalStatus(false);
-        java.sql.Date sqlDate = new java.sql.Date(jCalender.getDate().getTime());
+        try {
+            java.sql.Date sqlDate = new java.sql.Date(jCalender.getDate().getTime());
 
-        if (sqlDate.toLocalDate().isAfter(LocalDateTime.now().toLocalDate())) {
-            JOptionPane.showMessageDialog(null, "the date you have entered is invalid.");
-        } else {
-            e.setDate(sqlDate);
-            EventDAO evtDAO = new EventDAO();
-            try {
-                int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to add this record?");
-                if (confirm == 0) {
-                    evtDAO.InsertRecord(db.getConnection(), e);
-                    VolunteerDAO volDAO = new VolunteerDAO();
-                    for (var i : volArr) {
-                        i.setEventId(ID);
-                        volDAO.InserRecord(db.getConnection(), i);
+            if (sqlDate.toLocalDate().isAfter(LocalDateTime.now().toLocalDate())) {
+                JOptionPane.showMessageDialog(null, "the date you have entered is invalid.");
+            } else {
+                e.setDate(sqlDate);
+                EventDAO evtDAO = new EventDAO();
+                try {
+                    int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to add this record?");
+                    if (confirm == 0) {
+                        evtDAO.InsertRecord(db.getConnection(), e);
+                        VolunteerDAO volDAO = new VolunteerDAO();
+                        for (var i : volArr) {
+                            i.setEventId(ID);
+                            volDAO.InserRecord(db.getConnection(), i);
+                        }
                     }
-                }
 
-            } catch (SQLException ex) {
-                System.out.println("Err: " + ex.getMessage());
+                } catch (SQLException ex) {
+                    System.out.println("Err: " + ex.getMessage());
+                }
             }
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Not a valid date.");
         }
 
         cbxCategory.setSelectedIndex(0);
@@ -839,11 +843,10 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }
 
     public void populateBookings() throws SQLException {
-        
+
         DefaultListModel<String> dlmBook = new DefaultListModel<String>();
         dlmBook.clear();
-        
-        
+
         ArrayList<Booking> book = new ArrayList();
         BookingDAO bookDAO = new BookingDAO();
         lstBooked.setModel(dlmBook);
@@ -909,6 +912,8 @@ public class Student_Live_Events extends javax.swing.JFrame {
                         evtDAO.DeleteRecord(db.getConnection(), i.getEventId());
                         ifEmpty();
                         return;
+                    } else {
+                        return;
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "you already have an approved event, please complete it first.");
@@ -917,8 +922,6 @@ public class Student_Live_Events extends javax.swing.JFrame {
 
             }
         }
-
-        ifEmpty();
     }
 
     public void DisplayAllDetails(JList list1, JList list2, ArrayList<Event> array) throws SQLException {
