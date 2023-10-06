@@ -59,5 +59,6 @@ public class EventTypeDAO {
         } else {
             JOptionPane.showMessageDialog(null, msg);
         }
+        ps.close();
     }
 }

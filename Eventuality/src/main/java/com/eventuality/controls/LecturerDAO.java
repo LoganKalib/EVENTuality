@@ -97,5 +97,6 @@ public class LecturerDAO {
                 UpdateRecord(c, "Password", newPass, email);
             }
         }
+        ps.close();
     }
 }

@@ -1,3 +1,4 @@
+
 package com.eventuality.controls;
 
 import com.eventuality.objects.Volunteer;
@@ -29,6 +30,7 @@ public class VolunteerDAO {
                 arr.add(vol);
             }
         }
+        ps.close();
         rs.close();
         return arr;
     }
@@ -49,6 +51,7 @@ public class VolunteerDAO {
                 arr.add(vol);
             }
         }
+        ps.close();
         rs.close();
         return arr;
     }

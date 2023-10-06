@@ -839,8 +839,11 @@ public class Student_Live_Events extends javax.swing.JFrame {
     }
 
     public void populateBookings() throws SQLException {
-
+        
         DefaultListModel<String> dlmBook = new DefaultListModel<String>();
+        dlmBook.clear();
+        
+        
         ArrayList<Booking> book = new ArrayList();
         BookingDAO bookDAO = new BookingDAO();
         lstBooked.setModel(dlmBook);

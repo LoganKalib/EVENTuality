@@ -74,8 +74,10 @@ public class BookingDAO {
 
         if (confirm == 0) {
             if (rows == 0) {
+                ps.close();
                 JOptionPane.showMessageDialog(null, "Record not added.");
             } else {
+                ps.close();
                 JOptionPane.showMessageDialog(null, "Record(s) successfully added.");
             }
         }
