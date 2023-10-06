@@ -456,6 +456,7 @@ public class Lecture_Live_Events extends javax.swing.JFrame {
         try {
             book = bookDAO.SelectRecords(db.getConnection(), loggedin.getStaffNumber());
             if (book == null) {
+                lstBooked.setEnabled(false);
                 dlmBook.addElement("No bookings made...");
             } else {
                 for (var x : book) {
