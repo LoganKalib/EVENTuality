@@ -46,7 +46,7 @@ public class BookingDAO {
         PreparedStatement ps = c.prepareStatement(retrieve_Values_qry);
         ps.setString(1, eventId);
         ResultSet rs = ps.executeQuery();
-        int i =0;
+        int i = 0;
 
         if (rs != null) {
             while (rs.next()) {
@@ -59,26 +59,43 @@ public class BookingDAO {
     }
 
     public void InsertRecord(Connection c, Booking obj) throws SQLException {
-        insert_Values_stmt = "INSERT INTO BOOKING VALUES(?,?,?,?,?,?)";
 
-        PreparedStatement ps = c.prepareStatement(insert_Values_stmt);
-        ps.setInt(1, obj.getTicketNumber());
-        ps.setTime(2, Time.valueOf(obj.getTime()));
-        ps.setString(3, obj.getEventId());
-        ps.setString(4, String.valueOf(obj.getAttdType()));
-        ps.setDate(5, obj.getDate());
-        ps.setInt(6, obj.getAttdNumber());
-        
         int confirm = JOptionPane.showConfirmDialog(null, "Are you sure?");
 
+        retrieve_Values_qry = "SELECT * FROM BOOKING WHERE ATT_NUMBER=? AND EVENT_ID=?";
+
+        PreparedStatement ps1 = c.prepareStatement(retrieve_Values_qry);
+
+        ps1.setInt(1, obj.getAttdNumber());
+        ps1.setString(2, obj.getEventId());
+
         if (confirm == 0) {
-            int rows = ps.executeUpdate();
-            if (rows == 0) {
-                ps.close();
-                JOptionPane.showMessageDialog(null, "Record not added.");
+            ResultSet rs = ps1.executeQuery();
+
+            if (rs.next()) {
+                rs.close();
+                JOptionPane.showMessageDialog(null, "Record not added, because you have already booked to it.");
             } else {
-                ps.close();
-                JOptionPane.showMessageDialog(null, "Record(s) successfully added.");
+                rs.close();
+                insert_Values_stmt = "INSERT INTO BOOKING VALUES(?,?,?,?,?,?)";
+
+                PreparedStatement ps = c.prepareStatement(insert_Values_stmt);
+                ps.setInt(1, obj.getTicketNumber());
+                ps.setTime(2, Time.valueOf(obj.getTime()));
+                ps.setString(3, obj.getEventId());
+                ps.setString(4, String.valueOf(obj.getAttdType()));
+                ps.setDate(5, obj.getDate());
+                ps.setInt(6, obj.getAttdNumber());
+
+                int rows = ps.executeUpdate();
+                if (rows == 0) {
+                    ps.close();
+                    JOptionPane.showMessageDialog(null, "Record not added.");
+
+                } else {
+                    ps.close();
+                    JOptionPane.showMessageDialog(null, "Record(s) successfully added.");
+                }
             }
         }
 
