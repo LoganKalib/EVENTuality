@@ -134,7 +134,6 @@ public class Student_Live_Events extends javax.swing.JFrame {
 
         tabStudent.setBackground(new java.awt.Color(102, 153, 255));
         tabStudent.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
-        populateForm();
         tabStudent.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 Student_Live_Events.this.stateChanged(evt);
@@ -725,14 +724,16 @@ public class Student_Live_Events extends javax.swing.JFrame {
             if (i.getLeader() == loggedin.getStudNum()) {
                 if (!i.isApprovalStatus()) {
                     lblApprove.setText(Boolean.toString(i.isApprovalStatus()));
-                    break;
+                    return;
                 } else {
                     int x = books.SelectEventRecords(db.getConnection(), i.getEventId());
                     lblApprove.setText(Boolean.toString(i.isApprovalStatus()) + "   Amount Booked: " + x);
+                    return;
                 }
 
             }
         }
+        lblApprove.setText("No Current Event");
     }
 
     public void registerVol() throws SQLException {
@@ -777,27 +778,24 @@ public class Student_Live_Events extends javax.swing.JFrame {
         try {
             java.sql.Date sqlDate = new java.sql.Date(jCalender.getDate().getTime());
 
-            if (sqlDate.toLocalDate().isAfter(LocalDateTime.now().toLocalDate())) {
-                JOptionPane.showMessageDialog(null, "the date you have entered is invalid.");
-            } else {
-                e.setDate(sqlDate);
-                EventDAO evtDAO = new EventDAO();
-                try {
-                    int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to add this record?");
-                    if (confirm == 0) {
-                        evtDAO.InsertRecord(db.getConnection(), e);
-                        VolunteerDAO volDAO = new VolunteerDAO();
-                        for (var i : volArr) {
-                            i.setEventId(ID);
-                            volDAO.InserRecord(db.getConnection(), i);
-                        }
+            e.setDate(sqlDate);
+            EventDAO evtDAO = new EventDAO();
+            try {
+                int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to add this record?");
+                if (confirm == 0) {
+                    evtDAO.InsertRecord(db.getConnection(), e);
+                    VolunteerDAO volDAO = new VolunteerDAO();
+                    for (var i : volArr) {
+                        i.setEventId(ID);
+                        volDAO.InserRecord(db.getConnection(), i);
                     }
-
-                } catch (SQLException ex) {
-                    System.out.println("Err: " + ex.getMessage());
                 }
+
+            } catch (SQLException ex) {
+                System.out.println("Err: " + ex.getMessage());
             }
-        }catch(Exception ex){
+
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Not a valid date.");
         }
 
@@ -891,8 +889,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
 
     public void ifEmpty() {
         if (!txtTitle.getText().isBlank()
-                && !txtDescript.getText().isBlank()
-                && jCalender != null) {
+                && !txtDescript.getText().isBlank()) {
             createEvt();
         } else {
             JOptionPane.showMessageDialog(null, "Please make sure all details are entered.");
