@@ -46,29 +46,25 @@ public class StudentDAO {
         ps.close();
     }
 
-    private void UpdateRecord(Connection c, String setValue, String Email) {
+    private void UpdateRecord(Connection c, String setValue, String Email) throws SQLException {
         update_Values_stmt = "UPDATE Lecturer SET Password = ? WHERE EMAIL = ?";
 
-        try {
-            PreparedStatement ps = c.prepareStatement(update_Values_stmt);
-            ps.setString(1, setValue);
-            ps.setString(2, Email);
+        PreparedStatement ps = c.prepareStatement(update_Values_stmt);
+        ps.setString(1, setValue);
+        ps.setString(2, Email);
 
-            int rows = ps.executeUpdate();
+        int rows = ps.executeUpdate();
 
-            if (rows > 0) {
-                String msg = String.format("Email: %s\nSuccessfully updated Password, with value: %s.", Email, setValue);
-                System.out.println(msg);
-                JOptionPane.showMessageDialog(null, msg);
-            } else {
-                JOptionPane.showMessageDialog(null, "No record with that Email...");
-            }
-
-            ps.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            // Handle the exception appropriately, log it, or display an error message.
+        if (rows > 0) {
+            String msg = String.format("Email: %s\nSuccessfully updated Password, with value: %s.", Email, setValue);
+            System.out.println(msg);
+            JOptionPane.showMessageDialog(null, msg);
+        } else {
+            JOptionPane.showMessageDialog(null, "No record with that Email...");
         }
+
+        ps.close();
+
     }
 
     public void InsertRecord(Connection c, Student stud) throws SQLException {
