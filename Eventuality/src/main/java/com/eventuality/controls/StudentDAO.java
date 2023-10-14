@@ -46,20 +46,29 @@ public class StudentDAO {
         ps.close();
     }
 
-    private void UpdateRecord(Connection c, String setField, String setValue, String Email) throws SQLException {
-        update_Values_stmt = "UPDATE Lecturer SET Password= ? WHERE EMAIL = ?";
-        PreparedStatement ps = c.prepareStatement(update_Values_stmt);
-        ps.setString(1, setValue);
-        ps.setString(2, Email);
+    private void UpdateRecord(Connection c, String setValue, String Email) {
+        update_Values_stmt = "UPDATE Lecturer SET Password = ? WHERE EMAIL = ?";
 
-        int rows = ps.executeUpdate();
-        String msg = String.format("Student_Number: %s \n Successfully updated %s, with value: %s.", Email, setField, setValue);
-        if (rows > 0) {
-            JOptionPane.showMessageDialog(null, msg);
-        } else {
-            JOptionPane.showMessageDialog(null, "No record with that Number...");
+        try {
+            PreparedStatement ps = c.prepareStatement(update_Values_stmt);
+            ps.setString(1, setValue);
+            ps.setString(2, Email);
+
+            int rows = ps.executeUpdate();
+
+            if (rows > 0) {
+                String msg = String.format("Email: %s\nSuccessfully updated Password, with value: %s.", Email, setValue);
+                System.out.println(msg);
+                JOptionPane.showMessageDialog(null, msg);
+            } else {
+                JOptionPane.showMessageDialog(null, "No record with that Email...");
+            }
+
+            ps.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle the exception appropriately, log it, or display an error message.
         }
-        ps.close();
     }
 
     public void InsertRecord(Connection c, Student stud) throws SQLException {
@@ -77,15 +86,15 @@ public class StudentDAO {
         }
         ps.close();
     }
-    
-    public int checkVol(Connection c, int Studnum) throws SQLException{
-        String checkVol= "SELECT * from Student WHERE Student_Number=?";
+
+    public int checkVol(Connection c, int Studnum) throws SQLException {
+        String checkVol = "SELECT * from Student WHERE Student_Number=?";
         PreparedStatement ps = c.prepareStatement(checkVol);
-        ps.setInt(1,Studnum);
+        ps.setInt(1, Studnum);
         ResultSet rows = ps.executeQuery();
-        if(!rows.next()){
+        if (!rows.next()) {
             return -1;
-        }else{
+        } else {
             return 1;
         }
     }
@@ -97,8 +106,6 @@ public class StudentDAO {
         ps.setInt(2, Integer.parseInt(studNum));
         ResultSet rows = ps.executeQuery();
 
-        
-
         if (!rows.next()) {
             JOptionPane.showMessageDialog(null, "this user does not exsist, please sign up.");
         } else {
@@ -106,11 +113,13 @@ public class StudentDAO {
             int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to reset your password?");
 
             if (confirm == 0) {
-                UpdateRecord(c, "Password", newPass, email);
+                ps.close();
+                rows.close();
+                UpdateRecord(c, newPass, email);
             }
 
         }
-        
+
         ps.close();
         rows.close();
 
