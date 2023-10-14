@@ -432,11 +432,11 @@ public class Login extends javax.swing.JFrame {
     }
 
     public void NewStud() throws SQLException {
-        if (!txtName.getText().isEmpty()
-                && !txtSurname.getText().isEmpty()
-                && !txtSID.getText().isEmpty()
-                && !txtEmail.getText().isEmpty()
-                && !txtSPass.getText().isEmpty()) {
+        if (txtName.getText().isEmpty()
+                && txtSurname.getText().isEmpty()
+                && txtSID.getText().isEmpty()
+                && txtEmail.getText().isEmpty()
+                && txtSPass.getText().isEmpty()) {
 
             Student stu = new Student();
             stu.setStudName(txtName.getText());
@@ -466,11 +466,11 @@ public class Login extends javax.swing.JFrame {
     }
 
     public void NewLec() throws SQLException {
-        if (!txtName.getText().isEmpty()
-                && !txtSurname.getText().isEmpty()
-                && !txtSID.getText().isEmpty()
-                && !txtEmail.getText().isEmpty()
-                && !txtSPass.getText().isEmpty()) {
+        if (txtName.getText().isEmpty()
+                && txtSurname.getText().isEmpty()
+                && txtSID.getText().isEmpty()
+                && txtEmail.getText().isEmpty()
+                && txtSPass.getText().isEmpty()) {
 
             Lecturer staff = new Lecturer();
             staff.setLectName(txtName.getText());
