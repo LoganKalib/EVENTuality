@@ -81,6 +81,7 @@ public class StudentDAO {
     public int checkVol(Connection c, int Studnum) throws SQLException{
         String checkVol= "SELECT * from Student WHERE Student_Number=?";
         PreparedStatement ps = c.prepareStatement(checkVol);
+        ps.setInt(1,Studnum);
         ResultSet rows = ps.executeQuery();
         if(!rows.next()){
             return -1;
