@@ -97,7 +97,7 @@ public class StudentDAO {
         ps.setInt(2, Integer.parseInt(studNum));
         ResultSet rows = ps.executeQuery();
 
-        ps.close();
+        
 
         if (!rows.next()) {
             JOptionPane.showMessageDialog(null, "this user does not exsist, please sign up.");
@@ -110,6 +110,9 @@ public class StudentDAO {
             }
 
         }
+        
+        ps.close();
+        rows.close();
 
     }
 

@@ -98,5 +98,6 @@ public class LecturerDAO {
             }
         }
         ps.close();
+        rows.close();
     }
 }
