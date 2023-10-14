@@ -435,7 +435,7 @@ public class Login extends javax.swing.JFrame {
         if (txtName.getText().isBlank()
                 || txtSurname.getText().isEmpty()
                 || txtSID.getText().isEmpty()
-                || txtEmail.getText().isEmpty()
+                || txtSEmail.getText().isEmpty()
                 || txtSPass.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter all details.");
         } else {
@@ -468,9 +468,9 @@ public class Login extends javax.swing.JFrame {
         if (txtName.getText().isEmpty()
                 || txtSurname.getText().isEmpty()
                 || txtSID.getText().isEmpty()
-                || txtEmail.getText().isEmpty()
+                || txtSEmail.getText().isEmpty()
                 || txtSPass.getText().isEmpty()) {
-
+            
             JOptionPane.showMessageDialog(null, "Please enter all details.");
         } else {
 
