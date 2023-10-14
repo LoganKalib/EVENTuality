@@ -134,6 +134,7 @@ public class Student_Live_Events extends javax.swing.JFrame {
 
         tabStudent.setBackground(new java.awt.Color(102, 153, 255));
         tabStudent.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 14)); // NOI18N
+        populateForm();
         tabStudent.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 Student_Live_Events.this.stateChanged(evt);
