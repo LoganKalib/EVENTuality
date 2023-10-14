@@ -327,7 +327,7 @@ public class Login extends javax.swing.JFrame {
                 // this if will run in the user being created is a student
                 try {
                     NewStud();
-                    
+
                 } catch (SQLException ex) {
                     Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -335,7 +335,7 @@ public class Login extends javax.swing.JFrame {
                 // this if will run in the user being created is a lecturer
                 try {
                     NewLec();
-                    
+
                 } catch (SQLException ex) {
                     Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -432,11 +432,13 @@ public class Login extends javax.swing.JFrame {
     }
 
     public void NewStud() throws SQLException {
-        if (txtName.getText().isEmpty()
-                && txtSurname.getText().isEmpty()
-                && txtSID.getText().isEmpty()
-                && txtEmail.getText().isEmpty()
-                && txtSPass.getText().isEmpty()) {
+        if (txtName.getText().isBlank()
+                || txtSurname.getText().isEmpty()
+                || txtSID.getText().isEmpty()
+                || txtEmail.getText().isEmpty()
+                || txtSPass.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter all details.");
+        } else {
 
             Student stu = new Student();
             stu.setStudName(txtName.getText());
@@ -459,18 +461,18 @@ public class Login extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Passwords do not match.");
             }
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Please enter all details.");
         }
     }
 
     public void NewLec() throws SQLException {
         if (txtName.getText().isEmpty()
-                && txtSurname.getText().isEmpty()
-                && txtSID.getText().isEmpty()
-                && txtEmail.getText().isEmpty()
-                && txtSPass.getText().isEmpty()) {
+                || txtSurname.getText().isEmpty()
+                || txtSID.getText().isEmpty()
+                || txtEmail.getText().isEmpty()
+                || txtSPass.getText().isEmpty()) {
+
+            JOptionPane.showMessageDialog(null, "Please enter all details.");
+        } else {
 
             Lecturer staff = new Lecturer();
             staff.setLectName(txtName.getText());
@@ -494,8 +496,6 @@ public class Login extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Passwords do not match.");
                 return;
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Please enter all details.");
         }
     }
 
