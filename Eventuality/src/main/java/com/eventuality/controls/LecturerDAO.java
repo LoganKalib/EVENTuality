@@ -50,7 +50,7 @@ public class LecturerDAO {
     }
 
     private void UpdateRecord(Connection c, String setField, String setValue, String email) throws SQLException {
-        update_Values_stmt = "UPDATE Lecturer SET Password= ? WHERE Email = ?";
+        update_Values_stmt = "UPDATE Lecturer SET Password=? WHERE Email =?";
         PreparedStatement ps = c.prepareStatement(update_Values_stmt);
         ps.setString(1, setValue);
         ps.setString(2, email);
