@@ -486,7 +486,7 @@ public class Login extends javax.swing.JFrame {
                 return;
             }
 
-            staff.setLectEmail(txtSEmail.getText());
+            staff.setLectEmail(txtEmail.getText());
 
             if (txtSPass.getText().equals(txtConfirmPass.getText())) {
                 staff.setLectPassword(txtSPass.getText());
