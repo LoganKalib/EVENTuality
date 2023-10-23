@@ -452,7 +452,7 @@ public class Login extends javax.swing.JFrame {
                 return; // Exit the method since the input is not valid.
             }
 
-            stu.setStudEmail(txtEmail.getText());
+            stu.setStudEmail(txtSEmail.getText());
 
             if (txtSPass.getText().equals(txtConfirmPass.getText())) {
                 stu.setStudPassword(txtSPass.getText());
